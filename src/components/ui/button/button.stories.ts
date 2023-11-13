@@ -19,7 +19,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
-    children: "Primary Button",
+    children: `Button`,
     disabled: false,
     variant: "primary",
   },
@@ -41,7 +41,7 @@ export const Tertiary: Story = {
 };
 export const Link: Story = {
   args: {
-    as: "button",
+    as: "a",
     children: "Tertiary Button",
     disabled: false,
     href: "https://www.google.com",

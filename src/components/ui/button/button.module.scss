@@ -1,17 +1,101 @@
+* {
+  border: none;
+  border-radius: 4px;
+  font-weight: var(--font-weight-bold);
+  line-height: 24px; /* 171.429% */
+  padding: 6px 28px;
+  cursor: pointer;
+}
+*:disabled {
+  color: var(--color-light-900);
+}
+//////primary
 .primary {
-  background-color: red;
+  background: var(--color-info-500);
+  box-shadow: 0 4px 18px 0 rgba(140, 97, 255, 0.35);
+  color: var(--color-light-100);
 }
 
-.secondary {
-  background-color: green;
+.primary:active {
+  background: var(--color-accent-700);
 }
+
+.primary:hover {
+  background: var(--color-accent-300);
+}
+
+.primary:disabled {
+  background: var(--color-accent-900);
+}
+.primary:active {
+  border: 1px solid var(--color-info-700);
+}
+.primary:focus {
+  outline: 2px solid var(--color-info-700);
+}
+
+//secondary
+.secondary {
+  background: var(--color-dark-300);
+  box-shadow: 0 2px 10px 0 rgba(109, 109, 109, 0.25);
+}
+.secondary:active {
+  background: var(--color-dark-500);
+}
+.secondary:hover {
+  background: var(--color-dark-100);
+}
+.secondary:focus {
+  outline: 2px solid var(--color-info-700);
+  background: var(--color-dark-300);
+}
+.secondary:disabled {
+  background: var(--color-light-900);
+}
+///////////tertiary
 
 .tertiary {
-  background-color: blue;
+  background-color: transparent;
+  color: var(--color-accent-500);
+  border: 1px solid var(--primary-500, #8c61ff);
 }
 
-.link {
-  background-color: yellow;
+.tertiary:active {
+  background: var(--color-accent-900);
+}
+
+.tertiary:hover {
+  background: var(--color-accent-700);
+}
+
+.tertiary:focus {
+  outline: 2px solid var(--color-info-700);
+}
+.tertiary:disabled {
+  border: 1px solid var(--color-accent-900);
+  color: var(--color-accent-900);
+}
+////link
+.link,
+.link:link,
+.link:visited {
+  background-color: transparent;
+  text-decoration: none;
+  color: var(--color-accent-500);
+  outline: none;
+}
+.link:active {
+  color: var(--color-accent-700);
+}
+.link:hover {
+  color: var(--color-accent-300);
+}
+.link:focus {
+  outline: 2px solid var(--color-info-700);
+  border-radius: 130px;
+}
+.link:disabled {
+  color: var(--color-accent-900);
 }
 
 .fullWidth {
