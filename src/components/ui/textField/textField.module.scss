@@ -1,0 +1,65 @@
+.label {
+  color: var(--color-dark-300);
+}
+
+.defaultInput {
+  background-color: transparent;
+  text-decoration: none;
+  border-radius: 2px;
+  border: 1px solid var(--color-dark-300);
+  color: var(--color-dark-300);
+  padding: 6px 12px;
+}
+
+.defaultInput:active {
+  border: 1px solid var(--color-light-100);
+  color: var(--color-light-100);
+}
+
+.errorInput {
+  border: 1px solid var(--color-danger-300);
+  color: var(--color-danger-300);
+}
+
+.errorText {
+  color: var(--color-danger-300);
+  font-size: 0.75rem;
+}
+
+.defaultInput:hover {
+  color: var(--color-dark-100);
+  border: 1px solid var(--color-dark-100);
+  background: var(--color-dark-700);
+}
+
+.defaultInput:focus {
+  outline: 2px solid var(--color-info-700);
+}
+
+.defaultInput:disabled {
+  color: var(--color-dark-300);
+  border: 1px solid var(--color-dark-300);
+}
+
+.wrapper {
+  display: inline;
+  position: relative;
+}
+.searchIcon {
+  position: absolute;
+  width: 1.25rem;
+  height: 1.25rem;
+  top: -3px;
+  left: 4px;
+}
+.crossIcon {
+  position: absolute;
+  width: 1.25rem;
+  height: 1.25rem;
+  top: -2px;
+  right: 4px;
+}
+.searchInput {
+  padding-left: 30px;
+  padding-right: 30px;
+}
