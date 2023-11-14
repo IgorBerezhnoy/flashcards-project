@@ -1,38 +1,42 @@
-import { ChangeEvent, useState } from "react";
+import {
+  ChangeEvent,
+  DetailedHTMLProps,
+  InputHTMLAttributes,
+  useState,
+} from "react";
 
 import { ClouseEyes, Cross, OpenEyes, Search } from "@/icons";
 
 import s from "./textField.module.scss";
 
-export type TextFieldProps = {
+type DefaultInputPropsType = DetailedHTMLProps<
+  InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+>;
+
+export type TextFieldProps = Omit<DefaultInputPropsType, "type"> & {
   className?: string;
   clearText?: () => void;
-  disabled: boolean;
   error?: null | string;
   label: string;
   onChange: (e: string) => void;
-  placeholder?: string;
   type?: "default" | "password" | "search";
-  value: string;
-  withLoopIcon?: boolean;
 };
 
 export const TextField = (props: TextFieldProps) => {
   const {
     className,
     clearText,
-    disabled,
     error = null,
     label,
     onChange,
-    placeholder,
     type,
-    value,
+    ...rest
   } = props;
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     onChange(e.currentTarget.value);
   };
-  const [isPassword, setIsPasword] = useState(type === "password");
+  const [isPassword, setIsPassword] = useState(type === "password");
 
   return (
     <>
@@ -42,11 +46,9 @@ export const TextField = (props: TextFieldProps) => {
           className={`${s.defaultInput} ${className} ${
             error ? s.errorInput : ""
           }  ${type === "search" && s.searchInput}`}
-          disabled={disabled}
           onChange={onChangeHandler}
-          placeholder={placeholder}
           type={isPassword ? "password" : "text"}
-          value={value}
+          {...rest}
         />
         {type === "search" && (
           <>
@@ -62,12 +64,12 @@ export const TextField = (props: TextFieldProps) => {
           </>
         )}
         {isPassword && (
-          <div className={s.eyesIcon} onClick={() => setIsPasword(false)}>
+          <div className={s.eyesIcon} onClick={() => setIsPassword(false)}>
             <OpenEyes />
           </div>
         )}
         {type === "password" && !isPassword && (
-          <div className={s.eyesIcon} onClick={() => setIsPasword(true)}>
+          <div className={s.eyesIcon} onClick={() => setIsPassword(true)}>
             <ClouseEyes />
           </div>
         )}

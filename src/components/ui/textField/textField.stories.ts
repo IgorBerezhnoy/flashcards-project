@@ -14,7 +14,7 @@ const meta: Meta<typeof TextField> = {
   component: TextField,
   tags: ["autodocs"],
   title: "Components/UI/TextField",
-};
+} satisfies Meta<typeof TextField>;
 
 export default meta;
 type Story = StoryObj<typeof TextField>;
@@ -22,7 +22,7 @@ type Story = StoryObj<typeof TextField>;
 export const Default: Story = {
   args: {
     disabled: false,
-    error: null,
+    error: "",
     label: "Input",
     type: "default",
     value: "value",
@@ -54,5 +54,4 @@ export const Search: Story = {
     type: "search",
     value: "value",
   },
-  parameters: {},
 };
