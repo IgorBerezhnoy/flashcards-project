@@ -46,20 +46,31 @@
   position: relative;
 }
 .searchIcon {
+  //cursor: pointer;
   position: absolute;
   width: 1.25rem;
   height: 1.25rem;
-  top: -3px;
+  top: 28px;
   left: 4px;
 }
 .crossIcon {
+  cursor: pointer;
   position: absolute;
   width: 1.25rem;
   height: 1.25rem;
-  top: -2px;
+  top: 28px;
   right: 4px;
 }
 .searchInput {
   padding-left: 30px;
   padding-right: 30px;
+}
+
+.eyesIcon {
+  cursor: pointer;
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 28px;
+  right: 16px;
 }

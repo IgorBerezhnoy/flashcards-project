@@ -6,6 +6,9 @@ import { Button } from "./";
 
 const meta = {
   argTypes: {
+    onClick: {
+      action: "clicked",
+    },
     variant: {
       control: { type: "inline-radio" },
       options: ["primary", "secondary", "tertiary", "link"],

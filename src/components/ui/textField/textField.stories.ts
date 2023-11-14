@@ -3,6 +3,14 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { TextField } from "@/components/ui/textField/textField";
 
 const meta: Meta<typeof TextField> = {
+  argTypes: {
+    clearText: {
+      action: "clearText",
+    },
+    onChange: {
+      action: "Change",
+    },
+  },
   component: TextField,
   tags: ["autodocs"],
   title: "Components/UI/TextField",
@@ -16,7 +24,6 @@ export const Default: Story = {
     disabled: false,
     error: null,
     label: "Input",
-    onChange: () => {},
     type: "default",
     value: "value",
   },
@@ -26,7 +33,6 @@ export const DefaultWithError: Story = {
     disabled: false,
     error: "Very big error!!!",
     label: "Input",
-    onChange: () => {},
     type: "default",
     value: "value",
   },
@@ -36,7 +42,6 @@ export const Password: Story = {
     disabled: false,
     error: null,
     label: "Input",
-    onChange: () => {},
     type: "password",
     value: "value",
   },
@@ -46,8 +51,8 @@ export const Search: Story = {
     disabled: false,
     error: null,
     label: "Input",
-    onChange: () => {},
     type: "search",
     value: "value",
   },
+  parameters: {},
 };
