@@ -1,12 +1,11 @@
-import { ComponentPropsWithoutRef, ElementType } from "react";
+import { ComponentPropsWithoutRef, ElementType, ReactNode } from "react";
 
-import s from "./typography.module.css";
+import s from "./typography.module.scss";
 
 export type TypographyType<T extends ElementType = "span"> = {
   as?: T;
+  children?: ReactNode;
   className?: string;
-  fullWidth?: boolean;
-  text: string;
   variant?:
     | "body1"
     | "body2"
@@ -34,9 +33,5 @@ export const Typography = <T extends ElementType = "span">(
     ...rest
   } = props;
 
-  return (
-    <Component className={`${s[variant]} ${className}`} {...rest}>
-      {text}
-    </Component>
-  );
+  return <Component className={`${s[variant]} ${className}`} {...rest} />;
 };

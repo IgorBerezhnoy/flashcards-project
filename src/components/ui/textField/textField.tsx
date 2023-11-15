@@ -9,7 +9,7 @@ import { ClouseEyes, Cross, OpenEyes, Search } from "@/icons";
 
 import s from "./textField.module.scss";
 
-type DefaultInputPropsType = DetailedHTMLProps<
+export type DefaultInputPropsType = DetailedHTMLProps<
   InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement
 >;

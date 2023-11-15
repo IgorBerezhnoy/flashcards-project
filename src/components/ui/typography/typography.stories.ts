@@ -32,7 +32,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Large: Story = {
   args: {
-    text:
+    children:
       "Carosserie Test Zürich\n" +
       "Stauffacherstrasse 31\n" +
       "8004 Zürich, ZH, CH",
@@ -42,7 +42,7 @@ export const Large: Story = {
 export const H1: Story = {
   args: {
     as: "h1",
-    text:
+    children:
       "Carosserie Test Zürich\n" +
       "Stauffacherstrasse 31\n" +
       "8004 Zürich, ZH, CH",
@@ -52,7 +52,7 @@ export const H1: Story = {
 export const H2: Story = {
   args: {
     as: "h2",
-    text:
+    children:
       "Carosserie Test Zürich\n" +
       "Stauffacherstrasse 31\n" +
       "8004 Zürich, ZH, CH",
@@ -62,7 +62,7 @@ export const H2: Story = {
 export const H3: Story = {
   args: {
     as: "h3",
-    text:
+    children:
       "Carosserie Test Zürich\n" +
       "Stauffacherstrasse 31\n" +
       "8004 Zürich, ZH, CH",
@@ -72,7 +72,7 @@ export const H3: Story = {
 export const Subtitle1: Story = {
   args: {
     as: "div",
-    text:
+    children:
       "Carosserie Test Zürich\n" +
       "Stauffacherstrasse 31\n" +
       "8004 Zürich, ZH, CH",
@@ -82,7 +82,7 @@ export const Subtitle1: Story = {
 export const Subtitle2: Story = {
   args: {
     as: "div",
-    text:
+    children:
       "Carosserie Test Zürich\n" +
       "Stauffacherstrasse 31\n" +
       "8004 Zürich, ZH, CH",
@@ -92,7 +92,7 @@ export const Subtitle2: Story = {
 export const Body1: Story = {
   args: {
     as: "div",
-    text:
+    children:
       "Carosserie Test Zürich\n" +
       "Stauffacherstrasse 31\n" +
       "8004 Zürich, ZH, CH",
@@ -102,7 +102,7 @@ export const Body1: Story = {
 export const Body2: Story = {
   args: {
     as: "div",
-    text:
+    children:
       "Carosserie Test Zürich\n" +
       "Stauffacherstrasse 31\n" +
       "8004 Zürich, ZH, CH",
@@ -111,7 +111,7 @@ export const Body2: Story = {
 };
 export const Caption: Story = {
   args: {
-    text:
+    children:
       "Carosserie Test Zürich\n" +
       "Stauffacherstrasse 31\n" +
       "8004 Zürich, ZH, CH",
@@ -121,7 +121,7 @@ export const Caption: Story = {
 export const Overline: Story = {
   args: {
     as: "div",
-    text:
+    children:
       "Carosserie Test Zürich\n" +
       "Stauffacherstrasse 31\n" +
       "8004 Zürich, ZH, CH",
@@ -131,22 +131,22 @@ export const Overline: Story = {
 export const Link1: Story = {
   args: {
     as: "a",
-    href: "https://www.google.com",
-    text:
+    children:
       "Carosserie Test Zürich\n" +
       "Stauffacherstrasse 31\n" +
       "8004 Zürich, ZH, CH",
+    href: "https://www.google.com",
     variant: "link1",
   },
 };
 export const Link2: Story = {
   args: {
     as: "a",
-    href: "https://www.google.com",
-    text:
+    children:
       "Carosserie Test Zürich\n" +
       "Stauffacherstrasse 31\n" +
       "8004 Zürich, ZH, CH",
+    href: "https://www.google.com",
     variant: "link2",
   },
 };
