@@ -1,3 +1,9 @@
+import { Checkbox } from "@/components/ui/checkbox/checkbox";
+
 export function App() {
-  return <div>Hello</div>;
+  return (
+    <div>
+      <Checkbox />
+    </div>
+  );
 }
