@@ -1,79 +1,65 @@
-.container {
+@import "@radix-ui/colors/black-alpha.css";
+@import "@radix-ui/colors/violet.css";
+
+.wrapper {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  margin-left: 10px;
+}
+
+.around {
+  position: absolute;
+
+  padding: 10px;
+
+  background: transparent;
+  border: none;
+  border-radius: 100%;
+}
+
+.around:hover {
+  background: #333;
+}
+
+.around:active,
+.around:focus {
+  background: #7f7f80;
+}
+
+.checkboxRoot {
   display: flex;
   align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+
+  background: transparent;
+  border: white solid 2px;
+  border-radius: 4px;
+  outline: none;
+}
+
+.checkboxRoot[data-state="checked"] {
+  background: var(--color-light-100);
+}
+
+.checkboxRoot[data-state="checked"]:disabled {
+  background: #808080;
+  border: none;
+  color: #dad9df;
+}
+
+.checkboxRoot[data-state="unchecked"]:disabled {
+  border: 2px solid #808080;
 }
 
 .label {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-
-  &.disabled {
-    cursor: initial;
-    color: var(--color-dark-100);
-  }
+  margin-left: 2px;
+  color: white;
 }
 
-.root {
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 18px;
-  height: 18px;
-
-  background-color: var(--color-dark-900);
-  border: 2px solid var(--color-light-900);
-  border-radius: 2px;
-
-  &:focus {
-    background-color: var(--color-bg-focus);
-  }
-
-  &:disabled {
-    cursor: initial;
-    border-color: var(--color-dark-100);
-  }
-
-  &[data-state="checked"]:disabled {
-    background-color: var(--color-checkbox-disabled);
-  }
-}
-
-.buttonWrapper {
-  cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 36px;
-  height: 36px;
-
-  border-radius: 50%;
-
-  &.disabled {
-    cursor: initial;
-  }
-
-  &:focus-within,
-  &:hover:not(.disabled),
-  &:hover .root:not([data-state="checked"]) {
-    background-color: var(--color-dark-500);
-  }
-
-  &:active:not(.disabled) {
-    background-color: var(--color-dark-100);
-  }
-
-  &.left {
-    margin-left: -9px;
-  }
-}
-
-.indicator {
-  width: 18px;
-  height: 18px;
+.labelDisabled {
+  color: #808080;
 }
