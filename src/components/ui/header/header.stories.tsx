@@ -16,8 +16,14 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Primary: Story = {
+export const LogOut: Story = {
   args: {
     isLogin: false,
+  },
+};
+export const LogIn: Story = {
+  args: {
+    isLogin: true,
+    userPhoto: "public/img/userPhotoForTest.png",
   },
 };

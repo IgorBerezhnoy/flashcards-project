@@ -1,5 +1,6 @@
 .header {
   display: flex;
+  align-items: center;
   justify-content: space-between;
 
   height: 3.75em;
@@ -7,4 +8,15 @@
 
   background: var(--dark-700, #171717);
   border-bottom: 1px solid var(--dark-500, #333);
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+}
+
+.userInfo_img {
+  height: 36px;
+  padding-left: 0.88rem;
+  min-width: 36px;
 }
