@@ -1,57 +1,57 @@
-import type { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from '@storybook/react'
 
-import { TextField } from "@/components/ui/textField/textField";
+import { TextField } from '@/components/ui/textField/textField'
 
 const meta: Meta<typeof TextField> = {
   argTypes: {
     clearText: {
-      action: "clearText",
+      action: 'clearText',
     },
     onChange: {
-      action: "Change",
+      action: 'Change',
     },
   },
   component: TextField,
-  tags: ["autodocs"],
-  title: "Components/UI/TextField",
-} satisfies Meta<typeof TextField>;
+  tags: ['autodocs'],
+  title: 'Components/UI/TextField',
+} satisfies Meta<typeof TextField>
 
-export default meta;
-type Story = StoryObj<typeof TextField>;
+export default meta
+type Story = StoryObj<typeof TextField>
 
 export const Default: Story = {
   args: {
     disabled: false,
-    error: "",
-    label: "Input",
-    type: "default",
-    value: "value",
+    error: '',
+    label: 'Input',
+    type: 'default',
+    value: 'value',
   },
-};
+}
 export const DefaultWithError: Story = {
   args: {
     disabled: false,
-    error: "Very big error!!!",
-    label: "Input",
-    type: "default",
-    value: "value",
+    error: 'Very big error!!!',
+    label: 'Input',
+    type: 'default',
+    value: 'value',
   },
-};
+}
 export const Password: Story = {
   args: {
     disabled: false,
     error: null,
-    label: "Input",
-    type: "password",
-    value: "value",
+    label: 'Input',
+    type: 'password',
+    value: 'value',
   },
-};
+}
 export const Search: Story = {
   args: {
     disabled: false,
     error: null,
-    label: "Input",
-    type: "search",
-    value: "value",
+    label: 'Input',
+    type: 'search',
+    value: 'value',
   },
-};
+}

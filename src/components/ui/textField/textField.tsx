@@ -1,64 +1,48 @@
-import {
-  ChangeEvent,
-  DetailedHTMLProps,
-  InputHTMLAttributes,
-  useState,
-} from "react";
+import { ChangeEvent, DetailedHTMLProps, InputHTMLAttributes, useState } from 'react'
 
-import { ClouseEyes, Cross, OpenEyes, Search } from "@/icons";
+import { ClouseEyes, Cross, OpenEyes, Search } from '@/icons'
 
-import s from "./textField.module.scss";
+import s from './textField.module.scss'
 
 export type DefaultInputPropsType = DetailedHTMLProps<
   InputHTMLAttributes<HTMLInputElement>,
   HTMLInputElement
->;
+>
 
-export type TextFieldProps = Omit<DefaultInputPropsType, "type"> & {
-  className?: string;
-  clearText?: () => void;
-  error?: null | string;
-  label: string;
-  onChange: (e: string) => void;
-  type?: "default" | "password" | "search";
-};
+export type TextFieldProps = Omit<DefaultInputPropsType, 'type'> & {
+  className?: string
+  clearText?: () => void
+  error?: null | string
+  label: string
+  onChange: (e: string) => void
+  type?: 'default' | 'password' | 'search'
+}
 
 export const TextField = (props: TextFieldProps) => {
-  const {
-    className,
-    clearText,
-    error = null,
-    label,
-    onChange,
-    type,
-    ...rest
-  } = props;
+  const { className, clearText, error = null, label, onChange, type, ...rest } = props
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    onChange(e.currentTarget.value);
-  };
-  const [isPassword, setIsPassword] = useState(type === "password");
+    onChange(e.currentTarget.value)
+  }
+  const [isPassword, setIsPassword] = useState(type === 'password')
 
   return (
     <>
       <div className={`${s.wrapper} `}>
         {label && <div className={s.label}>{label}</div>}
         <input
-          className={`${s.defaultInput} ${className} ${
-            error ? s.errorInput : ""
-          }  ${type === "search" && s.searchInput}`}
+          className={`${s.defaultInput} ${className} ${error ? s.errorInput : ''}  ${
+            type === 'search' && s.searchInput
+          }`}
           onChange={onChangeHandler}
-          type={isPassword ? "password" : "text"}
+          type={isPassword ? 'password' : 'text'}
           {...rest}
         />
-        {type === "search" && (
+        {type === 'search' && (
           <>
             <div className={s.searchIcon}>
               <Search />
             </div>
-            <div
-              className={s.crossIcon}
-              onClick={() => (clearText ? clearText() : () => {})}
-            >
+            <div className={s.crossIcon} onClick={() => (clearText ? clearText() : () => {})}>
               <Cross />
             </div>
           </>
@@ -68,7 +52,7 @@ export const TextField = (props: TextFieldProps) => {
             <OpenEyes />
           </div>
         )}
-        {type === "password" && !isPassword && (
+        {type === 'password' && !isPassword && (
           <div className={s.eyesIcon} onClick={() => setIsPassword(true)}>
             <ClouseEyes />
           </div>
@@ -76,5 +60,5 @@ export const TextField = (props: TextFieldProps) => {
       </div>
       {error && <div className={s.errorText}>{error}</div>}
     </>
-  );
-};
+  )
+}
