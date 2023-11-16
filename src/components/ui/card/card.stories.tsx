@@ -1,11 +1,11 @@
-import { Card } from '@/components/ui/Card/card'
+import { Card } from '@/components/ui/card/card'
 import { Typography } from '@/components/ui/typography'
 import { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
   component: Card,
   tags: ['autodocs'],
-  title: 'Components/UI/Card',
+  title: 'Components/UI/card',
 } satisfies Meta<typeof Card>
 
 export default meta
