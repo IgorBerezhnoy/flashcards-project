@@ -18,7 +18,7 @@ export const Checkbox = (props: CheckboxType) => {
   const { checked = false, className, disabled = false, label, ...rest } = props
 
   return (
-    <div style={{ alignItems: 'center', display: 'flex', marginRight: '15px' }}>
+    <div className={s.checkbox_label}>
       <div className={s.wrapper}>
         <div className={s.around}>
           <CheckboxRadix.Root className={s.checkboxRoot} disabled={disabled} {...rest}>

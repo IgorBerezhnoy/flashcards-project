@@ -2,7 +2,10 @@
 @import '@radix-ui/colors/violet.css';
 
 .wrapper {
+  cursor: pointer;
+
   position: relative;
+
   width: 44px;
   height: 44px;
   margin-left: 10px;
@@ -27,6 +30,12 @@
   background: #7f7f80;
 }
 
+.checkbox_label {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+}
+
 .checkboxRoot {
   display: flex;
   align-items: center;
@@ -36,7 +45,7 @@
   height: 24px;
 
   background: transparent;
-  border: white solid 2px;
+  border: var(--color-light-100) solid 2px;
   border-radius: 4px;
   outline: none;
 }
@@ -46,13 +55,13 @@
 }
 
 .checkboxRoot[data-state='checked']:disabled {
-  background: #808080;
-  border: none;
   color: #dad9df;
+  background: var(--color-dark-100);
+  border: none;
 }
 
 .checkboxRoot[data-state='unchecked']:disabled {
-  border: 2px solid #808080;
+  border: 2px solid var(--color-dark-100);
 }
 
 .label {
@@ -61,5 +70,5 @@
 }
 
 .labelDisabled {
-  color: #808080;
+  color: var(--color-dark-100);
 }
