@@ -6,8 +6,8 @@
   height: 3.75em;
   padding: 0.75rem 8.5rem;
 
-  background: var(--dark-700, #171717);
-  border-bottom: 1px solid var(--dark-500, #333);
+  background: var(--color-dark-700);
+  border-bottom: 1px solid var(--color-dark-500);
 }
 
 .userInfo {
@@ -16,7 +16,7 @@
 }
 
 .userInfo_img {
+  min-width: 36px;
   height: 36px;
   padding-left: 0.88rem;
-  min-width: 36px;
 }
