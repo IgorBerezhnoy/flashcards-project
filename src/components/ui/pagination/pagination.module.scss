@@ -1,0 +1,64 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: var(--font-size-s);
+  color: var(--color-light-100, #FFF);
+}
+
+.select {
+  padding:2px 2px 2px 6px;
+  background-color: transparent;
+  color: var(--color-light-100, #FFF);
+  line-height: var(--line-height-m);
+  border-radius: 2px;
+  border: 1px solid var(--color-dark-500, #333);
+  background: var(--color-dark-700, #171717);
+  cursor: pointer;
+}
+
+.pageButton {
+  padding: 0 8px;
+  line-height: var(--line-height-m);
+  background: none;
+  border: none;
+  cursor: pointer;
+
+
+  &:hover {
+    background-color: var(--color-dark-500, #333);
+    border-radius: 2px;
+    transition: 0.4s;
+  }
+
+  &:focus {
+    outline: 2px solid var(--color-info-900, #234E99);
+    border-radius: 2px;
+  }
+}
+
+.active {
+  color: var(--color-dark-900, #000);
+  line-height: var(--line-height-m);
+  background-color: var(--color-light-100);
+  border-radius: 2px;
+  border: none;
+  outline: none;
+}
+
+.prevButton,
+.nextButton {
+  font-size: var(--font-size-m);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.text1,
+.text2 {
+  color: var(--color-light-100, #FFF);
+  font-size: var(--font-size-s);
+  line-height: var(--line-height-m);
+}
+
+
