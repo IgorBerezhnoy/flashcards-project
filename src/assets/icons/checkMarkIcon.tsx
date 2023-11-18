@@ -1,10 +1,10 @@
-type PropsType = {
+export type IconPropsType = {
   color?: string
   height?: string
   width?: string
 }
 
-export const CheckMarkIcon = (props: PropsType) => {
+export const CheckMarkIcon = (props: IconPropsType) => {
   const { color = 'black', height = '35', width = '35' } = props
 
   return (
