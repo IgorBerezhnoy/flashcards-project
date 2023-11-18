@@ -9,12 +9,12 @@ export function App() {
           {
             icon: <WhitePerson color={'white'} height={'16'} width={'16'} />,
             onClick: () => {},
-            title: 'sdf',
+            title: 'My Profile',
           },
           {
             icon: <LogOut color={'white'} height={'16'} width={'16'} />,
             onClick: () => {},
-            title: 'sdf',
+            title: 'Sign Out',
           },
         ]}
         isProfile
