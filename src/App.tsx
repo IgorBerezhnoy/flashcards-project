@@ -1,12 +1,20 @@
-import DropdownMenuDemo from '@/components/ui/dropdown/dropdown'
+import { DropdownMenu } from '@/components/ui/dropdownMenu/dropdown'
+import { WhitePerson } from '@/icons'
 
 export function App() {
   return (
     <div>
-      <DropdownMenuDemo
-        dropDownItems={[]}
+      <DropdownMenu
+        dropDownItems={[
+          {
+            icon: <WhitePerson color={'white'} height={'16'} width={'16'} />,
+            onClick: () => {},
+            title: 'sdf',
+          },
+        ]}
         email={'j&johnson@gmail.com'}
-        photo={'public/img/userPhotoForTest.png'}
+        isProfile
+        photo={{ alt: 'UserPhoto', srs: 'public/img/userPhotoForTest.png' }}
         userName={'Ivan'}
       />
     </div>

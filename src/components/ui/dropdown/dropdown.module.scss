@@ -123,6 +123,7 @@ button {
 
   width: 35px;
   height: 35px;
+  margin-left: 300px;
 
   font-family: inherit;
   color: var(--violet-11);
@@ -130,10 +131,10 @@ button {
   background-color: white;
   border-radius: 100%;
   box-shadow: 0 2px 10px var(--black-a7);
-}
 
-.iconButton:hover {
-  background-color: var(--violet-3);
+  &hover {
+    background-color: var(--violet-3);
+  }
 }
 
 .iconButton:focus {
@@ -152,4 +153,8 @@ button {
 
 [data-disabled] .rightSlot {
   color: var(--mauve-8);
+}
+
+.photoAndEmail {
+  display: flex;
 }

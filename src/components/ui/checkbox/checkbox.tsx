@@ -1,5 +1,5 @@
-import { CheckMarkIcon } from '@/components/ui/checkbox/checkMarkIcon'
 import { Typography } from '@/components/ui/typography'
+import { CheckMarkIcon } from '@/icons/checkMarkIcon'
 import * as CheckboxRadix from '@radix-ui/react-checkbox'
 import { CheckboxProps, CheckedState } from '@radix-ui/react-checkbox'
 
