@@ -25,16 +25,16 @@
 
 .primary {
   color: var(--color-light-100);
-  background: var(--color-info-500);
+  background: var(--color-accent-500);
   box-shadow: 0 4px 18px 0 rgb(140 97 255 / 35%);
-}
-
-.primary:active {
-  background: var(--color-accent-700);
 }
 
 .primary:hover {
   background: var(--color-accent-300);
+}
+
+.primary:active {
+  background: var(--color-accent-700);
 }
 
 .primary:disabled {
@@ -42,11 +42,7 @@
   background: var(--color-accent-900);
 }
 
-.primary:active {
-  border: 1px solid var(--color-info-700);
-}
-
-.primary:focus {
+.primary:focus-visible {
   outline: 2px solid var(--color-info-700);
 }
 
@@ -102,7 +98,7 @@
   color: var(--color-accent-500);
   text-decoration: none;
   background-color: transparent;
-  outline: none;
+  outline-color: transparent;
 }
 
 .link:active {

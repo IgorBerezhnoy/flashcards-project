@@ -1,8 +1,8 @@
 import { ComponentPropsWithoutRef } from 'react'
 
+import { ChevronDown } from '@/assets/icons/icons'
 import { SelectItem } from '@/components/ui/select/selectItem'
 import { Typography } from '@/components/ui/typography'
-import { ChevronDown } from '@/icons'
 import * as SelectRadix from '@radix-ui/react-select'
 
 import s from './select.module.scss'
@@ -31,9 +31,7 @@ export const Select = ({ disabled, label, options, placeholder }: SelectProps) =
           disabled={disabled}
         >
           <SelectRadix.Value placeholder={placeholder} />
-          <SelectRadix.Icon className={`${s.icon}`}>
-            <ChevronDown />
-          </SelectRadix.Icon>
+          <SelectRadix.Icon className={`${s.icon}`}>{<ChevronDown />}</SelectRadix.Icon>
         </SelectRadix.Trigger>
         <SelectRadix.Portal>
           <SelectRadix.Content className={`${s.content}`} collisionPadding={0} position={'popper'}>
