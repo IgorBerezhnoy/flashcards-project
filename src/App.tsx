@@ -1,29 +1,19 @@
-import { DropdownMenu } from '@/components/ui/dropdownMenu/dropdownMenu'
-import { LogOut, WhitePerson } from '@/icons'
+import { UserDropdown } from '@/components/layout/header/user-dropdown/user-dropdown'
+
+const user = {
+  email: 'j&johnson@gmail.com',
+  name: 'Ivan',
+  photo: { alt: 'UserPhoto', src: 'public/img/userPhotoForTest.png' },
+}
 
 export function App() {
   return (
-    <div>
-      <DropdownMenu
-        dropDownItems={[
-          {
-            icon: <WhitePerson color={'white'} height={'16'} width={'16'} />,
-            onClick: () => {},
-            title: 'My Profile',
-          },
-          {
-            icon: <LogOut color={'white'} height={'16'} width={'16'} />,
-            onClick: () => {},
-            title: 'Sign Out',
-          },
-        ]}
-        isProfile
-        user={{
-          email: 'j&johnson@gmail.com',
-          photo: { alt: 'UserPhoto', srs: 'public/img/userPhotoForTest.png' },
-          userName: 'Ivan',
-        }}
-      />
-    </div>
+    <UserDropdown
+      email={user.email}
+      name={user.name}
+      photo={user.photo.src}
+      photoDesc={user.photo.alt}
+      profilePageHref={'https://google.com'}
+    />
   )
 }
