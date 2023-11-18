@@ -1,9 +1,9 @@
 import { ReactNode } from 'react'
 
-import { WhitePerson } from '@/icons'
+import { Typography } from '@/components/ui/typography'
 import * as DropdownMenuRadix from '@radix-ui/react-dropdown-menu'
 
-import s from '@/components/ui/dropdown/dropdown.module.scss'
+import s from '@/components/ui/dropdownMenu/dropdown.module.scss'
 
 type Type = {
   children: ReactNode
@@ -15,14 +15,13 @@ export const DropDownItem = (props: Type) => {
 
   return (
     <div>
-      <DropdownMenuRadix.Item className={`${s.dropdownMenuItem} ${className ? className : ''}`}>
-        <div>
-          {children}
-          <WhitePerson color={'white'} height={'16'} width={'16'} />
-        </div>
-        {title}
-      </DropdownMenuRadix.Item>
       <DropdownMenuRadix.Separator className={s.dropdownMenuSeparator} />
+      <DropdownMenuRadix.Item className={`${s.dropdownMenuItem} ${className ? className : ''}`}>
+        <div>{children}</div>
+        <Typography className={s.item_title} variant={'caption'}>
+          {title}
+        </Typography>
+      </DropdownMenuRadix.Item>
     </div>
   )
 }

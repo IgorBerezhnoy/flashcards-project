@@ -1,0 +1,100 @@
+@import '../../../../node_modules/@radix-ui/colors/black-alpha.css';
+@import '../../../../node_modules/@radix-ui/colors/mauve.css';
+@import '../../../../node_modules/@radix-ui/colors/violet.css';
+
+/* reset */
+button {
+  all: unset;
+}
+
+.dropdownMenuContent,
+.dropdownMenuSubContent {
+  min-width: 7.5rem;
+  padding: 0.75rem;
+
+  background-color: #2b2b2b;
+  border: 0.25rem solid #333;
+  border-radius: 0.25rem;
+}
+
+.dropdownMenuItem {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  height: 25px;
+  margin-top: 0.75rem;
+
+  border-radius: 3px;
+  outline: none;
+}
+
+.dropdownMenuLabel {
+  padding-left: 25px;
+  font-size: 12px;
+  line-height: 25px;
+  color: var(--mauve-11);
+}
+
+.dropdownMenuSeparator {
+  height: 0.115rem;
+  margin: 0.75rem 0;
+  background-color: #333;
+}
+
+.dropdownMenuItemIndicator {
+  position: absolute;
+  left: 0;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 25px;
+}
+
+.dropdownMenuArrow {
+  fill: white;
+}
+
+.iconButton {
+  width: 35px;
+  height: 35px;
+  margin-left: 300px;
+  border-radius: 100%;
+}
+
+.rightSlot {
+  margin-left: auto;
+  padding-left: 20px;
+  color: var(--mauve-11);
+}
+
+[data-highlighted] > .rightSlot {
+  color: white;
+}
+
+[data-disabled] .rightSlot {
+  color: var(--mauve-8);
+}
+
+.photoAndEmail {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.dropdownMenuItem_img {
+  width: 2.25rem;
+  height: 2.25rem;
+  margin-right: 0.5rem;
+  border-radius: 100%;
+}
+
+.userEmail {
+  color: var(--dark-100, #808080);
+}
+
+.item_title {
+}
