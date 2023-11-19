@@ -1,8 +1,8 @@
 import { ChangeEvent, DetailedHTMLProps, InputHTMLAttributes, useState } from 'react'
 
-import s from './textField.module.scss'
+import { ClouseEyes, Cross, OpenEyes, Search } from '@/assets/icons/icons'
 
-import { ClouseEyes, Cross, OpenEyes, Search } from '../../../assets/icons/icons'
+import s from './textField.module.scss'
 
 export type DefaultInputPropsType = DetailedHTMLProps<
   InputHTMLAttributes<HTMLInputElement>,
