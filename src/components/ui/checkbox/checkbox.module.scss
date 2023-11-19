@@ -19,15 +19,15 @@
   background: transparent;
   border: none;
   border-radius: 100%;
-}
 
-.around:hover {
-  background: #333;
-}
+  &:hover {
+    background: #333;
+  }
 
-.around:active,
-.around:focus {
-  background: #7f7f80;
+  &:active,
+  &:focus-visible {
+    background: #7f7f80;
+  }
 }
 
 .checkbox_label {
