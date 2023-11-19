@@ -6,8 +6,8 @@ import s from './dropdown.module.scss'
 
 type Props = {
   /** List of DropdownItems */
-  children?: ReactNode
-  trigger?: ReactNode
+  children: ReactNode
+  trigger: ReactNode
 } & ComponentPropsWithoutRef<typeof DropdownMenuRadix.Root>
 
 export const DropdownMenu = (props: Props) => {

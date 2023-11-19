@@ -14,7 +14,7 @@ button {
   margin: 0.5rem 190px 0.5rem 0.5rem;
   padding: 0.75rem;
 
-  background-color: #2b2b2b;
+  background: #171717;
   border: 0.25rem solid #333;
   border-radius: 0.25rem;
 }
@@ -23,22 +23,22 @@ button {
   content: '';
 
   position: absolute;
-  top: 15px;
-  right: -30px;
+  top: -10px;
+  right: 10px;
+  transform: rotate(45deg);
 
-  border: 10px solid transparent;
-  border-left: 20px solid green;
+  width: 16px;
+  height: 16px;
+
+  background: #171717;
+  border-top: 0.25rem solid #333;
+  border-left: 0.25rem solid #333;
 }
 
 .dropdownMenuItem {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-
-  height: 25px;
-  margin-top: 0.75rem;
-
-  border-radius: 3px;
   outline: none;
 }
 
@@ -95,4 +95,11 @@ button {
 
 .item_title {
   margin-left: 0.4rem;
+}
+
+.icons {
+  width: 16px;
+  height: 16px;
+  margin-right: 0.4rem;
+  fill: white;
 }

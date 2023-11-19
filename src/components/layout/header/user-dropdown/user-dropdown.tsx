@@ -1,8 +1,8 @@
+import { LogOut } from '@/assets'
 import { DropDownItem } from '@/components/ui/dropdownMenu/dropDownItem'
 import { DropdownMenu } from '@/components/ui/dropdownMenu/dropdownMenu'
 import { DropdownSeparator } from '@/components/ui/dropdownMenu/dropdownSeparator'
 import { Typography } from '@/components/ui/typography'
-import { LogOut, WhitePerson } from '@/icons'
 
 import s from '@/components/ui/dropdownMenu/dropdown.module.scss'
 
@@ -33,7 +33,7 @@ export const UserDropdown = ({ email, name, photo, photoDesc, profilePageHref }:
       <DropdownSeparator />
       <DropDownItem asChild>
         <a href={profilePageHref}>
-          <WhitePerson color={'white'} height={'16'} width={'16'} />
+          {/*<WhitePerson color={'white'} height={'16'} width={'16'} />*/}
           My Profile
         </a>
       </DropDownItem>
