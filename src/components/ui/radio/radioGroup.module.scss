@@ -22,18 +22,18 @@ button {
   background: transparent;
   border: none;
   border-radius: 100%;
-}
 
-.around:hover {
-  background: #333;
-}
+  &:hover {
+    background: var(--color-dark-500);
+  }
 
-.around:active {
-  background: var(--color-accent-900);
-}
+  &:active {
+    background: var(--color-accent-900);
+  }
 
-.around:focus {
-  background: #171717;
+  &:focus-visible {
+    background: #171717;
+  }
 }
 
 .radioGroupRoot {
