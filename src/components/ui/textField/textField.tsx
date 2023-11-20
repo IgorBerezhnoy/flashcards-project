@@ -1,64 +1,79 @@
-import { ChangeEvent, DetailedHTMLProps, InputHTMLAttributes, useState } from 'react'
+import { ChangeEvent, ComponentProps, ComponentPropsWithoutRef, forwardRef, useState } from 'react'
 
 import { ClouseEyes, Cross, OpenEyes, Search } from '@/assets/icons/icons'
 
 import s from './textField.module.scss'
 
-export type DefaultInputPropsType = DetailedHTMLProps<
-  InputHTMLAttributes<HTMLInputElement>,
-  HTMLInputElement
->
-
-export type TextFieldProps = Omit<DefaultInputPropsType, 'type'> & {
-  className?: string
+export type TextFieldProps = {
   clearText?: () => void
-  error?: null | string
-  label: string
-  onChange: (e: string) => void
-  type?: 'default' | 'password' | 'search'
-}
+  containerProps?: ComponentProps<'div'>
+  errorMessage?: null | string
+  label?: string
+  labelProps?: ComponentProps<'label'>
+  onValueChange?: (value: string) => void
+  search?: boolean
+} & ComponentPropsWithoutRef<'input'>
 
-export const TextField = (props: TextFieldProps) => {
-  const { className, clearText, error = null, label, onChange, type, ...rest } = props
-  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    onChange(e.currentTarget.value)
+export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
+  (
+    {
+      className,
+      clearText,
+      containerProps,
+      errorMessage,
+      label,
+      labelProps,
+      onChange,
+      onValueChange,
+      placeholder,
+      search,
+      type,
+      ...restProps
+    },
+    ref
+  ) => {
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+      onChange?.(e)
+      onValueChange?.(e.currentTarget.value)
+    }
+    const [isPassword, setIsPassword] = useState(type === 'password')
+
+    return (
+      <>
+        <div className={`${s.wrapper} `}>
+          {label && <div className={s.label}>{label}</div>}
+          <input
+            className={`${s.defaultInput} ${className} ${errorMessage ? s.errorInput : ''}  ${
+              type === 'search' && s.searchInput
+            }`}
+            onChange={onChangeHandler}
+            ref={ref}
+            type={isPassword ? 'password' : 'text'}
+            {...restProps}
+          />
+          {type === 'search' && (
+            <>
+              <div className={s.searchIcon}>
+                <Search />
+              </div>
+              <div className={s.crossIcon} onClick={() => (clearText ? clearText() : () => {})}>
+                <Cross />
+              </div>
+            </>
+          )}
+          {isPassword && (
+            <div className={s.eyesIcon} onClick={() => setIsPassword(false)}>
+              <OpenEyes />
+            </div>
+          )}
+          {type === 'password' && !isPassword && (
+            <div className={s.eyesIcon} onClick={() => setIsPassword(true)}>
+              <ClouseEyes />
+            </div>
+          )}
+        </div>
+        {errorMessage && <div className={s.errorText}>{errorMessage}</div>}
+      </>
+    )
   }
-  const [isPassword, setIsPassword] = useState(type === 'password')
-
-  return (
-    <>
-      <div className={`${s.wrapper} `}>
-        {label && <div className={s.label}>{label}</div>}
-        <input
-          className={`${s.defaultInput} ${className} ${error ? s.errorInput : ''}  ${
-            type === 'search' && s.searchInput
-          }`}
-          onChange={onChangeHandler}
-          type={isPassword ? 'password' : 'text'}
-          {...rest}
-        />
-        {type === 'search' && (
-          <>
-            <div className={s.searchIcon}>
-              <Search />
-            </div>
-            <div className={s.crossIcon} onClick={() => (clearText ? clearText() : () => {})}>
-              <Cross />
-            </div>
-          </>
-        )}
-        {isPassword && (
-          <div className={s.eyesIcon} onClick={() => setIsPassword(false)}>
-            <OpenEyes />
-          </div>
-        )}
-        {type === 'password' && !isPassword && (
-          <div className={s.eyesIcon} onClick={() => setIsPassword(true)}>
-            <ClouseEyes />
-          </div>
-        )}
-      </div>
-      {error && <div className={s.errorText}>{error}</div>}
-    </>
-  )
-}
+)
