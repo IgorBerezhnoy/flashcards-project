@@ -12,6 +12,7 @@ type CheckboxType = CheckboxProps & {
   disabled?: boolean
   id?: string
   label?: string | undefined
+  onChange: (checked: boolean) => void
 }
 
 export const Checkbox = (props: CheckboxType) => {
@@ -24,7 +25,7 @@ export const Checkbox = (props: CheckboxType) => {
           <CheckboxRadix.Root
             className={s.checkboxRoot}
             disabled={disabled}
-            onChange={onChange}
+            onCheckedChange={onChange}
             {...rest}
             id={id}
           >
