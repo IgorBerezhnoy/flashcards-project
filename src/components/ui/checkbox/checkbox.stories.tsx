@@ -4,7 +4,7 @@ import { Checkbox } from '@/components/ui/checkbox/checkbox'
 
 const meta = {
   argTypes: {
-    onCheckedChange: {
+    onChange: {
       action: 'clicked',
     },
   },

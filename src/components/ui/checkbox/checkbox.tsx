@@ -10,18 +10,24 @@ type CheckboxType = CheckboxProps & {
   className?: string
   defaultChecked?: CheckedState
   disabled?: boolean
+  id?: string
   label?: string | undefined
-  onCheckedChange?(checked: CheckedState): void
 }
 
 export const Checkbox = (props: CheckboxType) => {
-  const { checked = false, className, disabled = false, label, ...rest } = props
+  const { className, disabled = false, id, label, onChange, ...rest } = props
 
   return (
     <div className={s.checkbox_label}>
       <div className={s.wrapper}>
         <div className={s.around}>
-          <CheckboxRadix.Root className={s.checkboxRoot} disabled={disabled} {...rest}>
+          <CheckboxRadix.Root
+            className={s.checkboxRoot}
+            disabled={disabled}
+            onChange={onChange}
+            {...rest}
+            id={id}
+          >
             <CheckboxRadix.Indicator className={s.checkboxIndicator}>
               <CheckMarkIcon color={disabled ? '#dad9df' : 'black'} />
             </CheckboxRadix.Indicator>

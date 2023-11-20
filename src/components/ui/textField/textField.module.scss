@@ -3,6 +3,7 @@
 }
 
 .defaultInput {
+  width: 100%;
   padding: 6px 12px;
 
   color: var(--color-dark-300);
@@ -84,4 +85,8 @@
 
   width: 10px;
   height: 10px;
+}
+
+.storyBook {
+  width: 200px;
 }
