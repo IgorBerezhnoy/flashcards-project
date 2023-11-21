@@ -8,12 +8,14 @@ const user = {
 
 export function App() {
   return (
-    <UserDropdown
-      email={user.email}
-      name={user.name}
-      photo={user.photo.src}
-      photoDesc={user.photo.alt}
-      profilePageHref={'https://google.com'}
-    />
+    <>
+      <UserDropdown
+        email={user.email}
+        name={user.name}
+        photo={user.photo.src}
+        photoDesc={user.photo.alt}
+        profilePageHref={'https://google.com'}
+      />
+    </>
   )
 }

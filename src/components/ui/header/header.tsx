@@ -1,6 +1,6 @@
+import { Logo } from '@/assets'
 import { Button } from '@/components/ui/button'
 import { Typography } from '@/components/ui/typography'
-import { Logo } from '@/assets/icons/logo'
 
 import s from './header.module.scss'
 

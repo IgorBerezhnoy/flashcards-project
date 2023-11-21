@@ -1,10 +1,14 @@
-export const Logo = () => (
+import { Ref, SVGProps, forwardRef, memo } from 'react'
+
+const SvgComponent = (props: SVGProps<SVGSVGElement>, ref: Ref<SVGSVGElement>) => (
   <svg
     fill={'none'}
     height={'36'}
+    ref={ref}
     viewBox={'0 0 157 36'}
     width={'157'}
     xmlns={'http://www.w3.org/2000/svg'}
+    {...props}
   >
     <path
       d={
@@ -84,3 +88,8 @@ export const Logo = () => (
     />
   </svg>
 )
+const ForwardRef = forwardRef(SvgComponent)
+
+export default memo(ForwardRef)
+
+

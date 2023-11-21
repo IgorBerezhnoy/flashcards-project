@@ -1,6 +1,6 @@
 import { ChangeEvent, ComponentProps, ComponentPropsWithoutRef, forwardRef, useState } from 'react'
 
-import { ClouseEyes, Cross, OpenEyes, Search } from '@/assets/icons/icons'
+import { CloseOutline, Eye, EyeOff, Search } from '@/assets'
 
 import s from './textField.module.scss'
 
@@ -57,18 +57,18 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
                 <Search />
               </div>
               <div className={s.crossIcon} onClick={() => (clearText ? clearText() : () => {})}>
-                <Cross />
+                <CloseOutline />
               </div>
             </>
           )}
           {isPassword && (
             <div className={s.eyesIcon} onClick={() => setIsPassword(false)}>
-              <OpenEyes />
+              <Eye />
             </div>
           )}
           {type === 'password' && !isPassword && (
             <div className={s.eyesIcon} onClick={() => setIsPassword(true)}>
-              <ClouseEyes />
+              <EyeOff />
             </div>
           )}
         </div>

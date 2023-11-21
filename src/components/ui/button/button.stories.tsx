@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { ArrowIcon } from '@/assets/icons/icons'
+import { LogOut } from '@/assets'
 
 import { Button } from './'
 
@@ -33,7 +33,7 @@ export const PrimaryWithIcon: Story = {
   args: {
     children: (
       <>
-        <ArrowIcon />
+        <LogOut />
         <div>Button primary</div>
       </>
     ),
@@ -79,7 +79,7 @@ export const ButtonPrimary: Story = {
     ...Primary.args,
     children: (
       <>
-        <ArrowIcon />
+        <LogOut />
         <div>Button secondary</div>
       </>
     ),

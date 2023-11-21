@@ -1,6 +1,6 @@
-import { ComponentPropsWithoutRef } from 'react'
+import { ComponentPropsWithoutRef, useState } from 'react'
 
-import { ChevronDown } from '@/assets/icons/icons'
+import { ArrowIosDownOutline, ArrowIosUp } from '@/assets'
 import { SelectItem } from '@/components/ui/select/selectItem'
 import { Typography } from '@/components/ui/typography'
 import * as SelectRadix from '@radix-ui/react-select'
@@ -19,19 +19,23 @@ export type SelectProps = {
 } & ComponentPropsWithoutRef<typeof SelectRadix.Root>
 
 export const Select = ({ disabled, label, options, placeholder }: SelectProps) => {
+  const [isOpen, setIsOpen] = useState(false)
+
   return (
     <div className={s.wrapper}>
       <Typography className={'test'} variant={'body2'}>
         {label}
       </Typography>
-      <SelectRadix.Root>
+      <SelectRadix.Root onOpenChange={setIsOpen}>
         <SelectRadix.Trigger
           aria-label={'Food'}
           className={`${s.trigger} ${disabled && s.disabled} `}
           disabled={disabled}
         >
           <SelectRadix.Value placeholder={placeholder} />
-          <SelectRadix.Icon className={`${s.icon}`}>{<ChevronDown />}</SelectRadix.Icon>
+          <SelectRadix.Icon className={`${s.icon}`}>
+            {isOpen ? <ArrowIosUp /> : <ArrowIosDownOutline />}
+          </SelectRadix.Icon>
         </SelectRadix.Trigger>
         <SelectRadix.Portal>
           <SelectRadix.Content className={`${s.content}`} collisionPadding={0} position={'popper'}>
