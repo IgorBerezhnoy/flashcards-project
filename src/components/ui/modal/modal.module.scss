@@ -1,0 +1,157 @@
+.dialogContent {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+
+  color: var(--light-100, #FFF);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.dialogClose {
+  padding: 0;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  transition: 0.4s;
+  display: flex;
+  justify-content: center;
+}
+
+.dialogTrigger {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+
+// Header story
+
+.containerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 17px 24px;
+  width: 542px;
+  border-radius: 2px 2px 0 0;
+  border: 1px solid var(--dark-500, #333);
+  background: var(--dark-700, #171717);
+}
+
+.headerClose {
+  align-self: flex-end;
+}
+
+.headerTitle {
+  font-size: 18px;
+
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-m);
+}
+
+//card
+
+.card {
+  width: 505px;
+  height: 258px;
+  opacity: 0.3;
+  background: var(--dark-500, #333);
+}
+
+//ContentText
+
+.containerContentText {
+  padding: 17px 24px;
+  border: 1px solid var(--dark-500, #333);
+  background: var(--dark-700, #171717);
+  width: 532px;
+}
+
+// ContentTextScroll
+
+.containerContentTextScroll {
+  padding: 17px 24px;
+  border: 1px solid var(--dark-500, #333);
+  background: var(--dark-700, #171717);
+  width: 532px;
+  overflow-y: auto;
+  max-height: 110px;
+
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// ContentComponents
+
+.containerContentComponents {
+  width: 532px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  border-right: 1px solid var(--dark-500, #333);
+  border-left: 1px solid var(--dark-500, #333);
+  background: var(--dark-700, #171717);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+
+}
+
+.select {
+  width: 100%;
+}
+
+.contentComponentsPicture {
+  width: 100%;
+  height: 100%
+}
+
+
+.containerContentComponents button {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.oneButton {
+  width: 532px;
+  padding-top: 24px;
+  padding-right: 24px;
+  padding-bottom: 36px;
+  display: flex;
+  justify-content: flex-end;
+
+
+  border-radius: 0 0 2px 2px;
+  border-right: 1px solid var(--dark-500, #333);
+  border-bottom: 1px solid var(--dark-500, #333);
+  border-left: 1px solid var(--dark-500, #333);
+  background: var(--dark-700, #171717);
+}
+
+.twoButton {
+  width: 532px;
+  padding: 24px 24px 36px 24px;
+
+  display: flex;
+
+  justify-content: space-between;
+
+
+  border-radius: 0 0 2px 2px;
+  border-right: 1px solid var(--dark-500, #333);
+  border-bottom: 1px solid var(--dark-500, #333);
+  border-left: 1px solid var(--dark-500, #333);
+  background: var(--dark-700, #171717);
+}

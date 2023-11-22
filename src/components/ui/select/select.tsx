@@ -23,7 +23,7 @@ export const Select = ({ disabled, label, options, placeholder }: SelectProps) =
 
   return (
     <div className={s.wrapper}>
-      <Typography className={'test'} variant={'body2'}>
+      <Typography className={s.title} variant={'body2'}>
         {label}
       </Typography>
       <SelectRadix.Root onOpenChange={setIsOpen}>
@@ -32,7 +32,7 @@ export const Select = ({ disabled, label, options, placeholder }: SelectProps) =
           className={`${s.trigger} ${disabled && s.disabled} `}
           disabled={disabled}
         >
-          <SelectRadix.Value placeholder={placeholder} />
+          <SelectRadix.Value className={s.value} placeholder={placeholder} />
           <SelectRadix.Icon className={`${s.icon}`}>
             {isOpen ? <ArrowIosUp /> : <ArrowIosDownOutline />}
           </SelectRadix.Icon>
