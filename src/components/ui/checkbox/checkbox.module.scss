@@ -6,15 +6,15 @@
 
   position: relative;
 
-  width: 44px;
-  height: 44px;
-  margin-left: 10px;
+  width: 36px;
+  height: 36px;
+  margin: 4px 0;
 }
 
 .around {
   position: absolute;
 
-  padding: 10px;
+  padding: 8px;
 
   background: transparent;
   border: none;
@@ -33,7 +33,7 @@
 .checkbox_label {
   display: flex;
   align-items: center;
-  margin-right: 15px;
+  margin-right: 0.5rem;
 }
 
 .checkboxRoot {
@@ -41,8 +41,8 @@
   align-items: center;
   justify-content: center;
 
-  width: 24px;
-  height: 24px;
+  width: 22px;
+  height: 22px;
 
   background: transparent;
   border: var(--color-light-100) solid 2px;
