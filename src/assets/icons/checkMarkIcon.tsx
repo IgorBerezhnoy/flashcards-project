@@ -5,7 +5,7 @@ export type IconPropsType = {
 }
 
 export const CheckMarkIcon = (props: IconPropsType) => {
-  const { color = 'black', height = '35', width = '35' } = props
+  const { color = 'black', height = '28', width = '36' } = props
 
   return (
     <svg

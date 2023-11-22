@@ -63,12 +63,12 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
           )}
           {isPassword && (
             <div className={s.eyesIcon} onClick={() => setIsPassword(false)}>
-              <Eye />
+              <Eye className={s.icon} />
             </div>
           )}
           {type === 'password' && !isPassword && (
             <div className={s.eyesIcon} onClick={() => setIsPassword(true)}>
-              <EyeOff />
+              <EyeOff className={s.icon} />
             </div>
           )}
         </div>

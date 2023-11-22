@@ -1,3 +1,5 @@
+import { ElementRef, forwardRef } from 'react'
+
 import { CheckMarkIcon } from '@/assets/icons/checkMarkIcon'
 import { Typography } from '@/components/ui/typography'
 import * as CheckboxRadix from '@radix-ui/react-checkbox'
@@ -12,34 +14,33 @@ type CheckboxType = CheckboxProps & {
   disabled?: boolean
   id?: string
   label?: string | undefined
-  onChange: (checked: boolean) => void
+  onValueChange?: (checked: boolean) => void
 }
 
-export const Checkbox = (props: CheckboxType) => {
-  const { className, disabled = false, id, label, onChange, ...rest } = props
-
-  return (
-    <div className={s.checkbox_label}>
-      <div className={s.wrapper}>
-        <div className={s.around}>
-          <CheckboxRadix.Root
-            className={s.checkboxRoot}
-            disabled={disabled}
-            onCheckedChange={onChange}
-            {...rest}
-            id={id}
-          >
-            <CheckboxRadix.Indicator className={s.checkboxIndicator}>
-              <CheckMarkIcon color={disabled ? '#dad9df' : 'black'} />
-            </CheckboxRadix.Indicator>
-          </CheckboxRadix.Root>
+export const Checkbox = forwardRef<ElementRef<typeof CheckboxRadix.Root>, CheckboxType>(
+  ({ className, disabled = false, id, label, onValueChange, ...rest }, ref) => {
+    return (
+      <div className={s.checkbox_label}>
+        <div className={s.wrapper}>
+          <div className={s.around}>
+            <CheckboxRadix.Root
+              className={s.checkboxRoot}
+              disabled={disabled}
+              onCheckedChange={onValueChange}
+              ref={ref}
+              {...rest}
+              id={id}
+            >
+              <CheckboxRadix.Indicator className={s.checkboxIndicator}>
+                <CheckMarkIcon color={disabled ? '#dad9df' : 'black'} />
+              </CheckboxRadix.Indicator>
+            </CheckboxRadix.Root>
+          </div>
         </div>
+        <Typography color={'white'}>
+          <label className={`${s.label} ${disabled ? s.labelDisabled : ''}`}>{label}</label>
+        </Typography>
       </div>
-      <Typography color={'white'}>
-        <label className={`${s.label} ${disabled ? s.labelDisabled : ''}`} htmlFor={'c1'}>
-          {label}
-        </label>
-      </Typography>
-    </div>
-  )
-}
+    )
+  }
+)
