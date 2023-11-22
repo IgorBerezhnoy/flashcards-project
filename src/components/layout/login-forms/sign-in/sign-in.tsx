@@ -40,8 +40,13 @@ export const SignIn = () => {
         Sign in
       </Typography>
       <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
-        <TextField label={'Email'} {...register('email')} />
-        <TextField label={'Password'} {...register('password')} type={'password'} />
+        <TextField label={'Email'} {...register('email')} placeholder={'email'} />
+        <TextField
+          label={'Password'}
+          {...register('password')}
+          placeholder={'password'}
+          type={'password'}
+        />
         <Checkbox
           checked={value}
           className={s.checkbox}
