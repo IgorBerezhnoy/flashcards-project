@@ -1,0 +1,108 @@
+.primary,
+.secondary,
+.tertiary {
+  display: flex;
+  gap: 0.625rem;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+
+.primary,
+.secondary,
+.tertiary,
+.link {
+  cursor: pointer;
+  padding: 0.38rem 1.75rem;
+  font-weight: var(--font-weight-bold);
+  line-height: 1.5rem;
+  border-radius: 4px;
+}
+
+.primary {
+  color: var(--color-light-100);
+  background: var(--color-accent-500);
+  box-shadow: 0 4px 18px 0 rgba(140, 97, 255, 0.35);
+}
+.primary:hover {
+  background: var(--color-accent-300);
+}
+.primary:active {
+  background: var(--color-accent-700);
+}
+.primary:disabled {
+  color: var(--color-light-900);
+  background: var(--color-accent-900);
+}
+.primary:focus-visible {
+  outline: 2px solid var(--color-info-700);
+}
+
+.secondary {
+  background: var(--color-dark-300);
+  box-shadow: 0 2px 10px 0 rgba(109, 109, 109, 0.25);
+}
+.secondary:hover {
+  background: var(--color-dark-100);
+}
+.secondary:active {
+  background: var(--color-dark-500);
+}
+.secondary:focus-visible {
+  outline: 2px solid var(--color-info-700);
+}
+.secondary:disabled {
+  color: var(--color-light-900);
+  background: var(--color-dark-300);
+}
+
+.tertiary {
+  color: var(--color-accent-500);
+  background-color: transparent;
+  border: 1px solid var(--primary-500, #8c61ff);
+}
+.tertiary:hover {
+  background: var(--color-dark-500);
+}
+.tertiary:active {
+  background: var(--color-accent-700);
+}
+.tertiary:focus-visible {
+  outline: 2px solid var(--color-info-700);
+}
+.tertiary:disabled {
+  color: var(--color-accent-900);
+  border: 1px solid var(--color-accent-900);
+}
+
+.link,
+.link:link,
+.link:visited {
+  color: var(--color-accent-500);
+  text-decoration: none;
+  background-color: transparent;
+  outline-color: transparent;
+}
+
+.link:hover {
+  color: var(--color-accent-300);
+}
+
+.link:active {
+  color: var(--color-accent-700);
+}
+
+.link:focus-visible {
+  border-radius: 130px;
+  outline: 2px solid var(--color-info-700);
+}
+
+.link:disabled {
+  color: var(--color-accent-900);
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+/*# sourceMappingURL=button.module.css.map */
