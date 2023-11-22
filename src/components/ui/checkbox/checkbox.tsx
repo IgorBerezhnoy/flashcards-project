@@ -37,8 +37,13 @@ export const Checkbox = forwardRef<ElementRef<typeof CheckboxRadix.Root>, Checkb
             </CheckboxRadix.Root>
           </div>
         </div>
-        <Typography color={'white'}>
-          <label className={`${s.label} ${disabled ? s.labelDisabled : ''}`}>{label}</label>
+        <Typography
+          as={'label'}
+          className={`${s.label} ${disabled ? s.labelDisabled : ''}`}
+          color={'white'}
+          htmlFor={id}
+        >
+          {label}
         </Typography>
       </div>
     )

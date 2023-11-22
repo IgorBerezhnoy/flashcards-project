@@ -30,7 +30,7 @@ export const LoginForm = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <TextField {...register('email')} label={'email'} />
       <TextField {...register('password')} label={'password'} />
-      <Checkbox checked={value} label={'remember me'} onCheckedChange={onChange} />
+      <Checkbox checked={value} id={'1'} label={'remember me'} onCheckedChange={onChange} />
       <Button type={'submit'}>Submit</Button>
     </form>
   )
