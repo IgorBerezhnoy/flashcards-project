@@ -54,10 +54,10 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
           {type === 'search' && (
             <>
               <div className={s.searchIcon}>
-                <Search />
+                <Search className={s.icon} />
               </div>
               <div className={s.crossIcon} onClick={() => (clearText ? clearText() : () => {})}>
-                <CloseOutline />
+                <CloseOutline className={s.icon} />
               </div>
             </>
           )}

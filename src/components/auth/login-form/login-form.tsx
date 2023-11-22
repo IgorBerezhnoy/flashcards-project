@@ -12,7 +12,13 @@ type FormValues = {
 }
 
 export const LoginForm = () => {
-  const { control, handleSubmit, register } = useForm<FormValues>()
+  const { control, handleSubmit, register } = useForm<FormValues>({
+    defaultValues: {
+      email: '',
+      password: '',
+      rememberMe: false,
+    },
+  })
 
   const {
     field: { onChange, value },
