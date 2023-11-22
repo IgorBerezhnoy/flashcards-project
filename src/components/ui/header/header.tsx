@@ -1,4 +1,5 @@
 import { Logo } from '@/assets'
+import { UserDropdown } from '@/components/layout/header/user-dropdown/user-dropdown'
 import { Button } from '@/components/ui/button'
 import { Typography } from '@/components/ui/typography'
 
@@ -18,8 +19,16 @@ export const Header = ({ isLogin, onClick, userPhoto }: HeaderType) => {
         <Button onClick={onClick}>Sign In</Button>
       ) : (
         <div className={s.userInfo}>
-          <Typography variant={'h3'}>Ivan</Typography>
-          <img alt={'UserPhoto'} className={s.userInfo_img} src={userPhoto} />
+          <Typography className={s.userName} variant={'h3'}>
+            Ivan
+          </Typography>
+          <UserDropdown
+            email={'ASasdas'}
+            name={'Ivan'}
+            photo={userPhoto}
+            photoDesc={'userPhoto'}
+            profilePageHref={''}
+          />
         </div>
       )}
     </header>
