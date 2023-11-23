@@ -1,0 +1,40 @@
+.container {
+  width: 100%;
+  max-width: 420px;
+  padding: 33px 36px;
+}
+
+.content {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 19px;
+
+  width: 100%;
+}
+
+
+
+.title {
+  margin-bottom: 27px;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.infoText {
+  text-align: center;
+  opacity: .5;
+  margin-bottom: 65px;
+  color: var(--color-light-900)
+}
+
+
+
+
+.footer {
+  display: flex;
+  gap: 11px;
+  flex-direction: column;
+}
