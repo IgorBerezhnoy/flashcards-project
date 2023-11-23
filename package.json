@@ -32,6 +32,7 @@
     "react-router-dom": "^6.18.0"
   },
   "devDependencies": {
+    "@hookform/devtools": "^4.3.1",
     "@it-incubator/eslint-config": "^1.0.1",
     "@it-incubator/prettier-config": "^0.1.2",
     "@it-incubator/stylelint-config": "^0.1.5",
