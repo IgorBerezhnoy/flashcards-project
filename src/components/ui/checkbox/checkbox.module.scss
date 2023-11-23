@@ -1,73 +1,77 @@
-@import '@radix-ui/colors/black-alpha.css';
-@import '@radix-ui/colors/violet.css';
+@mixin circle($backgroundColor) {
+  content: '';
+
+  position: absolute;
+  z-index: -1;
+
+  display: flex;
+
+  width: 36px;
+  height: 36px;
+
+  background-color: $backgroundColor;
+  border-radius: 50%;
+}
 
 .wrapper {
   cursor: pointer;
 
-  position: relative;
-
-  width: 36px;
-  height: 36px;
-  margin: 4px 0;
-}
-
-.around {
-  position: absolute;
-
-  padding: 8px;
-
-  background: transparent;
-  border: none;
-  border-radius: 100%;
-
-  &:hover {
-    background: #333;
-  }
-
-  &:active,
-  &:focus-visible {
-    background: #7f7f80;
-  }
-}
-
-.checkbox_label {
   display: flex;
+  gap: 11px;
   align-items: center;
+  padding: 6px 0;
+
+  width: fit-content;
+
+  color: var(--color-light-100);
 }
 
 .checkboxRoot {
+  all: revert;
+
+  cursor: pointer;
+
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 
-  width: 22px;
-  height: 22px;
+  width: 18px;
+  height: 18px;
 
-  background: transparent;
-  border: var(--color-light-100) solid 2px;
-  border-radius: 4px;
-  outline: none;
+  border: 2px solid var(--color-light-100);
+  border-radius: 2px;
+
+  transition: 0.5s;
+
+  &:hover::before {
+    @include circle(var(--color-dark-500));
+    background-color: var(--color-dark-100);
+    transition: 0.5s;
+  }
+
+  &:active::before {
+    @include circle(var(--color-dark-100));
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  &:focus-visible::before {
+    @include circle(var(--color-dark-100));
+  }
+
+  &:disabled {
+    border-color: var(--color-dark-100);
+  }
 }
 
-.checkboxRoot[data-state='checked'] {
-  background: var(--color-light-100);
+.uncheck {
+  background-color: black;
+  border-color: var(--color-light-900);
 }
 
-.checkboxRoot[data-state='checked']:disabled {
-  color: #dad9df;
-  background: var(--color-dark-100);
-  border: none;
-}
 
-.checkboxRoot[data-state='unchecked']:disabled {
-  border: 2px solid var(--color-dark-100);
-}
 
-.label {
-  margin-left: 0.5rem;
-  color: white;
-}
 
-.labelDisabled {
-  color: var(--color-dark-100);
-}
