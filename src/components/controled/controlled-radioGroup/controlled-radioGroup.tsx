@@ -1,43 +1,23 @@
-import { FieldValues, UseControllerProps, useController } from 'react-hook-form'
+import { Control, FieldPath, FieldValues, useController } from 'react-hook-form'
 
 import { RadioGroup, RadioType } from '@/components/ui/radio'
 import { RadioGroupProps } from '@radix-ui/react-radio-group'
 
-type Props<T extends FieldValues> = {
-  label: string
+export type ControlledRadioGroupProps<TFieldValues extends FieldValues> = {
+  control: Control<TFieldValues>
+  name: FieldPath<TFieldValues>
   radioGroup: RadioType[]
-} & UseControllerProps<T> &
-  Omit<RadioGroupProps, 'id' | 'onChange' | 'value'>
-export const ControlledRadioGroup = <T extends FieldValues>({
-  control,
-  defaultValue,
-  disabled,
-  label,
-  name,
-  radioGroup,
-  rules,
-  shouldUnregister,
-  ...rest
-}: Props<T>) => {
+} & Omit<RadioGroupProps, 'id' | 'onChange' | 'value'>
+
+export const ControlledRadioGroup = <TFieldValues extends FieldValues>(
+  props: ControlledRadioGroupProps<TFieldValues>
+) => {
   const {
-    field: { onChange, ref, value },
+    field: { onChange, ...field },
   } = useController({
-    control,
-    defaultValue,
-    disabled,
-    name,
-    rules,
-    shouldUnregister,
+    control: props.control,
+    name: props.name,
   })
 
-  return (
-    <RadioGroup
-      ref={ref}
-      {...rest}
-      defaultValue={value}
-      disabled={disabled}
-      onCheck={onChange}
-      radioGroup={radioGroup}
-    />
-  )
+  return <RadioGroup {...props} {...field} id={props.name} radioGroup={props.radioGroup} />
 }
