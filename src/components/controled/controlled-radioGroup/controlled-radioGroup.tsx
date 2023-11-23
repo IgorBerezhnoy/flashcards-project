@@ -1,13 +1,13 @@
 import { Control, FieldPath, FieldValues, useController } from 'react-hook-form'
 
 import { RadioGroup, RadioType } from '@/components/ui/radio'
-import { RadioGroupProps } from '@radix-ui/react-radio-group'
 
 export type ControlledRadioGroupProps<TFieldValues extends FieldValues> = {
   control: Control<TFieldValues>
   name: FieldPath<TFieldValues>
   radioGroup: RadioType[]
-} & Omit<RadioGroupProps, 'id' | 'onChange' | 'value'>
+}
+// & Omit<RadioGroupProps, 'id' | 'onChange' | 'value'>
 
 export const ControlledRadioGroup = <TFieldValues extends FieldValues>(
   props: ControlledRadioGroupProps<TFieldValues>
@@ -19,5 +19,13 @@ export const ControlledRadioGroup = <TFieldValues extends FieldValues>(
     name: props.name,
   })
 
-  return <RadioGroup {...props} {...field} id={props.name} radioGroup={props.radioGroup} />
+  return (
+    <RadioGroup
+      {...props}
+      {...field}
+      name={props.name}
+      onValueChange={onChange}
+      radioGroup={props.radioGroup}
+    />
+  )
 }

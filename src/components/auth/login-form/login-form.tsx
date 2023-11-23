@@ -4,9 +4,20 @@ import { ControlledCheckbox } from '@/components/controled/controlled-checkbox/c
 import { ControlledRadioGroup } from '@/components/controled/controlled-radioGroup'
 import { ControlledTextField } from '@/components/controled/controlled-textField'
 import { Button } from '@/components/ui/button'
+import { RadioType } from '@/components/ui/radio'
 import { DevTool } from '@hookform/devtools'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
+
+const radioData: RadioType[] = [
+  { id: '1', label: 'RadioGroup1', value: 'RadioGroup1' },
+  {
+    id: '2',
+    label: 'RadioGroup2',
+    value: 'RadioGroup2',
+  },
+  { id: '3', label: 'RadioGroup3', value: 'RadioGroup3' },
+]
 
 const loginSchema = z.object({
   email: z.string().email({ message: 'Invalid email address' }),
@@ -23,6 +34,7 @@ export const LoginForm = () => {
     resolver: zodResolver(loginSchema),
   })
 
+  console.log(control)
   const onSubmit = (data: FormValues) => console.log(data)
 
   return (
@@ -33,19 +45,7 @@ export const LoginForm = () => {
         <ControlledTextField control={control} label={'password'} name={'password'} />
         <ControlledCheckbox control={control} label={'remember me'} name={'rememberMe'} />
         <Button type={'submit'}>Submit</Button>
-        <ControlledRadioGroup
-          control={control}
-          name={'radioGroup'}
-          radioGroup={[
-            { id: '1', label: 'RadioGroup1', value: 'RadioGroup1' },
-            {
-              id: '2',
-              label: 'RadioGroup2',
-              value: 'RadioGroup2',
-            },
-            { id: '3', label: 'RadioGroup3', value: 'RadioGroup3' },
-          ]}
-        />
+        <ControlledRadioGroup control={control} name={'radioGroup'} radioGroup={radioData} />
       </form>
     </>
   )
