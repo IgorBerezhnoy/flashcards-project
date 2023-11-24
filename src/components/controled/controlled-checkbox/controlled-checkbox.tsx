@@ -28,18 +28,14 @@ export const ControlledCheckbox = <T extends FieldValues>({
     shouldUnregister,
   })
 
-  console.log(value)
-  console.log(defaultValue)
-  console.log(defaultValue)
-
   return (
     <Checkbox
       ref={ref}
       {...rest}
       checked={value}
       disabled={disabled}
+      id={name}
       label={label}
-      name={name}
       onValueChange={onChange}
     />
   )
