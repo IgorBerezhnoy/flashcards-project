@@ -1,0 +1,88 @@
+@import '@radix-ui/colors/black-alpha.css';
+@import '@radix-ui/colors/violet.css';
+/* reset */
+button {
+  all: unset;
+}
+
+.radioGroupItems {
+  display: flex;
+  flex-direction: column;
+}
+
+.around {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: transparent;
+  border: none;
+  border-radius: 100%;
+}
+.around:hover {
+  background: var(--color-dark-500);
+}
+.around:active {
+  background: var(--color-accent-900);
+}
+.around:focus-visible {
+  background: #171717;
+}
+
+.radioGroupRoot {
+  gap: 10px;
+}
+
+.radioAndLabel {
+  display: flex;
+  align-items: center;
+  margin-top: 0.75rem;
+}
+
+.radioGroupItem {
+  width: 16px;
+  height: 16px;
+  background-color: transparent;
+  border: 1px solid var(--color-accent-500);
+  border-radius: 100%;
+}
+
+.radioGroupIndicator {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.radioGroupIndicator::after {
+  content: "";
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: var(--color-accent-500);
+  border-radius: 50%;
+}
+
+.radioGroupItem:disabled {
+  border: 1px solid var(--color-accent-900);
+}
+.radioGroupItem:disabled .radioGroupIndicator::after {
+  background-color: var(--color-accent-900);
+}
+
+.label {
+  padding-left: 15px;
+  font-size: 15px;
+  line-height: 1;
+  color: var(--color-light-100);
+}
+
+.labelDisabled {
+  color: var(--color-dark-100);
+}
+
+/*# sourceMappingURL=radioGroup.module.css.map */
