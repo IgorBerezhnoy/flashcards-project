@@ -13,13 +13,13 @@ type RadioGroupPropsType = {
   className?: string
   defaultValue?: string
   disabled?: boolean
-  name: string
+  id?: string
   onValueChange?: () => void
   radioGroup: RadioType[]
 }
 
 export const RadioGroup = forwardRef<ElementRef<typeof RadioGroupRadix.Root>, RadioGroupPropsType>(
-  ({ className, defaultValue, disabled = false, name, onValueChange, radioGroup }, ref) => {
+  ({ className, defaultValue, disabled = false, id, onValueChange, radioGroup }, ref) => {
     const radioItems = radioGroup.map(el => (
       <div className={s.radioAndLabel} key={el.id}>
         <div className={s.around}>
@@ -42,7 +42,7 @@ export const RadioGroup = forwardRef<ElementRef<typeof RadioGroupRadix.Root>, Ra
         className={`${s.radioGroupRoot} ${className ? s[className] : ''}`}
         defaultValue={defaultValue}
         disabled={disabled}
-        name={name}
+        id={id}
         onValueChange={onValueChange}
         ref={ref}
       >
