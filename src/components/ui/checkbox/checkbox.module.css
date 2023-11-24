@@ -1,0 +1,66 @@
+@import '@radix-ui/colors/black-alpha.css';
+@import '@radix-ui/colors/violet.css';
+.wrapper {
+  cursor: pointer;
+  position: relative;
+  width: 44px;
+  height: 44px;
+  margin-left: 10px;
+}
+
+.around {
+  position: absolute;
+  padding: 10px;
+  background: transparent;
+  border: none;
+  border-radius: 100%;
+}
+.around:hover {
+  background: #333;
+}
+.around:active, .around:focus-visible {
+  background: #7f7f80;
+}
+
+.checkbox_label {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.checkboxRoot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: transparent;
+  border: var(--color-light-100) solid 2px;
+  border-radius: 4px;
+  outline: none;
+}
+
+.checkboxRoot[data-state=checked] {
+  background: var(--color-light-100);
+}
+
+.checkboxRoot[data-state=checked]:disabled {
+  color: #dad9df;
+  background: var(--color-dark-100);
+  border: none;
+}
+
+.checkboxRoot[data-state=unchecked]:disabled {
+  border: 2px solid var(--color-dark-100);
+}
+
+.label {
+  margin-left: 2px;
+  color: white;
+}
+
+.labelDisabled {
+  color: var(--color-dark-100);
+}
+
+/*# sourceMappingURL=checkbox.module.css.map */

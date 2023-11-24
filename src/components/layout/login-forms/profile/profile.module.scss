@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 420px;
+  padding: 33px 36px;
+  gap: 6px;
+}
+
+
+
+
+.title {
+  margin-bottom: 51px;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.avatarBlock {
+  position: relative;
+
+}
+
+.avatar {
+  display: block;
+  width: 96px;
+  height: 96px ;
+  border-radius: 100%;
+}
+.icon {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  padding: 4px;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  background: var(--color-dark-300);
+  box-shadow: 0 2px 10px 0 rgba(109, 109, 109, 0.25);
+  cursor: pointer;
+
+  svg {
+    height: 16px;
+    width: 16px;
+  }
+}

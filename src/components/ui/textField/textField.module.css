@@ -1,0 +1,82 @@
+.label {
+  color: var(--color-dark-300);
+}
+
+.defaultInput {
+  width: 100%;
+  padding: 6px 12px;
+  color: var(--color-dark-300);
+  text-decoration: none;
+  background-color: transparent;
+  border: 1px solid var(--color-dark-300);
+  border-radius: 2px;
+}
+.defaultInput:active {
+  color: var(--color-light-100);
+  border: 1px solid var(--color-light-100);
+}
+.defaultInput:hover {
+  color: var(--color-dark-100);
+  background: var(--color-dark-700);
+  border: 1px solid var(--color-dark-100);
+}
+.defaultInput:visited {
+  outline: 2px solid var(--color-info-700);
+}
+.defaultInput:disabled {
+  color: var(--color-dark-300);
+  border: 1px solid var(--color-dark-300);
+}
+
+.errorInput {
+  color: var(--color-danger-300);
+  border: 1px solid var(--color-danger-300);
+}
+
+.errorText {
+  font-size: 0.75rem;
+  color: var(--color-danger-300);
+}
+
+.wrapper {
+  position: relative;
+  display: inline;
+}
+
+.searchIcon {
+  cursor: pointer;
+  position: absolute;
+  top: 28px;
+  left: 4px;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.crossIcon {
+  cursor: pointer;
+  position: absolute;
+  top: 28px;
+  right: 4px;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.searchInput {
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+.eyesIcon {
+  cursor: pointer;
+  position: absolute;
+  top: 28px;
+  right: 16px;
+  width: 10px;
+  height: 10px;
+}
+
+.storyBook {
+  width: 200px;
+}
+
+/*# sourceMappingURL=textField.module.css.map */
