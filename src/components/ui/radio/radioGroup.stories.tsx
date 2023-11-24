@@ -14,12 +14,13 @@ type Story = StoryObj<typeof meta>
 export const Default: Story = {
   args: {
     radioGroup: [
-      { label: 'RadioGroup1', value: 'RadioGroup1' },
+      { id: '1', label: 'RadioGroup1', value: 'RadioGroup1' },
       {
+        id: '2',
         label: 'RadioGroup2',
         value: 'RadioGroup2',
       },
-      { label: 'RadioGroup3', value: 'RadioGroup3' },
+      { id: '3', label: 'RadioGroup3', value: 'RadioGroup3' },
     ],
   },
 }
@@ -27,12 +28,13 @@ export const Disabled: Story = {
   args: {
     disabled: true,
     radioGroup: [
-      { label: 'RadioGroup1', value: 'RadioGroup1' },
+      { id: '1', label: 'RadioGroup1', value: 'RadioGroup1' },
       {
+        id: '2',
         label: 'RadioGroup2',
         value: 'RadioGroup2',
       },
-      { label: 'RadioGroup3', value: 'RadioGroup3' },
+      { id: '3', label: 'RadioGroup3', value: 'RadioGroup3' },
     ],
   },
 }
@@ -41,12 +43,13 @@ export const DisabledWithValue: Story = {
     defaultValue: 'RadioGroup2',
     disabled: true,
     radioGroup: [
-      { label: 'RadioGroup1', value: 'RadioGroup1' },
+      { id: '1', label: 'RadioGroup1', value: 'RadioGroup1' },
       {
+        id: '2',
         label: 'RadioGroup2',
         value: 'RadioGroup2',
       },
-      { label: 'RadioGroup3', value: 'RadioGroup3' },
+      { id: '3', label: 'RadioGroup3', value: 'RadioGroup3' },
     ],
   },
 }

@@ -31,6 +31,16 @@ export const Default: Story = {
     value: 'value',
   },
 }
+export const DefaultWithPlaceholder: Story = {
+  args: {
+    className: s.storyBook,
+    disabled: false,
+    label: 'Input',
+    placeholder: 'placeholder',
+    type: 'default',
+    value: 'value',
+  },
+}
 export const DefaultWithError: Story = {
   args: {
     className: s.storyBook,

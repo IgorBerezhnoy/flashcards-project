@@ -9,7 +9,7 @@ import s from '@/components/ui/dropdownMenu/dropdown.module.scss'
 type Props = {
   email: string
   name: string
-  photo: string
+  photo?: string
   photoDesc: string
   profilePageHref: string
 }
