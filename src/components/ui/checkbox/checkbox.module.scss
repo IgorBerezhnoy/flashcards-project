@@ -27,7 +27,7 @@
 }
 
 .checkboxRoot {
-  all: revert;
+ all: revert;
 
   cursor: pointer;
 
@@ -71,6 +71,10 @@
   background-color: black;
   border-color: var(--color-light-900);
 }
+.label {
+  cursor: pointer;
+}
+
 
 
 
