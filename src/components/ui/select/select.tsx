@@ -33,7 +33,7 @@ export const Select = ({ disabled, label, options, placeholder }: SelectProps) =
           disabled={disabled}
         >
           <SelectRadix.Value className={s.value} placeholder={placeholder} />
-          <SelectRadix.Icon className={`${s.icon}`}>
+          <SelectRadix.Icon className={s.icon}>
             {isOpen ? <ArrowIosUp /> : <ArrowIosDownOutline />}
           </SelectRadix.Icon>
         </SelectRadix.Trigger>
