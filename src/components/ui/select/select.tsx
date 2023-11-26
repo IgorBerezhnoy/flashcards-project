@@ -32,8 +32,10 @@ export const Select = ({ disabled, label, options, placeholder }: SelectProps) =
           className={`${s.trigger} ${disabled && s.disabled} `}
           disabled={disabled}
         >
-          <SelectRadix.Value className={s.value} placeholder={placeholder} />
-          <SelectRadix.Icon className={`${s.icon}`}>
+          <div className={s.value}>
+            <SelectRadix.Value placeholder={placeholder} />
+          </div>
+          <SelectRadix.Icon className={s.icon}>
             {isOpen ? <ArrowIosUp /> : <ArrowIosDownOutline />}
           </SelectRadix.Icon>
         </SelectRadix.Trigger>
@@ -42,7 +44,7 @@ export const Select = ({ disabled, label, options, placeholder }: SelectProps) =
             <SelectRadix.Viewport>
               <SelectRadix.Group>
                 {options?.map(option => (
-                  <SelectItem key={option.value} value={option.value}>
+                  <SelectItem className={s.item} key={option.value} value={option.value}>
                     {option.title}
                   </SelectItem>
                 ))}

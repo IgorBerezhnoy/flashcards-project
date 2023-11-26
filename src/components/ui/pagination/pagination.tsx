@@ -111,4 +111,3 @@ export const Pagination: React.FC<PaginationPropsType> = ({ onChange, page, tota
     </div>
   )
 }
-console.log()

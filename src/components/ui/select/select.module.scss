@@ -22,7 +22,7 @@ button {
   display: inline-flex;
   justify-content: space-between;
   align-items: center;
-  padding: 6px 12px;
+  padding: 6px 0;
   font-size: var(--font-size-m);
   line-height: var(--line-height-m);
 
@@ -53,12 +53,14 @@ button {
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
+  padding-left: 12px;
 
 }
 
 .icon {
   display: flex;
   color: #FFFFFF;
+  padding-right: 12px;
 }
 
 .content {
