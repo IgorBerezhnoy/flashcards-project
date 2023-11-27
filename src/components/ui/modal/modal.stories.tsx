@@ -217,46 +217,34 @@ export const Header: Story = {
     trigger: <div>Open</div>,
   },
 }
-export const ContentText: Story = {
+export const ContentComponentsVariant: Story = {
   args: {
     children: (
-      <div className={s.containerContentText}>
-        <Typography>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. Ut enim ad minim veniamdsa
-        </Typography>
+      <div>
+        <div className={s.containerContentComponents}>
+          <div className={s.contentComponentsPicture}>
+            <img alt={'image'} src={img} />
+          </div>
+          <Button className={s.buttoncontentComponent} fullWidth variant={'secondary'}>
+            <ImageOutline />
+            <div>Change Cover</div>
+          </Button>
+          <TextField
+            disabled={false}
+            label={'Name Pack'}
+            placeholder={'placeholder'}
+            type={'default'}
+            value={'Name'}
+          />
+          <Checkbox label={'Private pack'} />
+        </div>
+        <div className={s.buttons}>
+          <Button variant={'secondary'}>Cancel</Button>
+          <Button variant={'primary'}>Add New Pack</Button>
+        </div>
       </div>
     ),
-    showHeader: false,
-    trigger: <div>Open</div>,
-  },
-}
-
-export const ContentTextScroll: Story = {
-  args: {
-    children: (
-      <div className={s.containerContentTextScroll}>
-        <Typography>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. Ut enim ad minim veniamdsa
-        </Typography>
-      </div>
-    ),
-    showHeader: false,
-    trigger: <div>Open</div>,
-  },
-}
-export const ContentComponents: Story = {
-  args: {
-    children: (
-      <div className={s.containerContentComponents}>
-        <Select label={'Select-box'} placeholder={'Select-box'} />
-        <TextField label={'Input'} value={'Input'} />
-        <TextField label={'Input'} value={'Input'} />
-        <Checkbox label={'Check-box'} onChange={() => {}} />
-      </div>
-    ),
-    showHeader: false,
+    title: 'Add New Pack',
     trigger: <div>Open</div>,
   },
 }
@@ -264,29 +252,37 @@ export const ContentComponents: Story = {
 export const ContentComponentsVariant2: Story = {
   args: {
     children: (
-      <div className={s.containerContentComponents}>
-        <Select label={'Select-box'} options={mockOptions} placeholder={'Test select...'} />
-        <Typography variant={'body1'}>Question:</Typography>
-        <div className={s.contentComponentsPicture}>
-          <img alt={'image'} src={img} />
+      <div>
+        <div className={s.containerContentComponents}>
+          <Select
+            label={'Choose a question format'}
+            options={mockOptions}
+            placeholder={'Picture'}
+          />
+          <Typography variant={'body1'}>Question:</Typography>
+          <div className={s.contentComponentsPicture}>
+            <img alt={'image'} src={img} />
+          </div>
+          <Button className={s.buttoncontentComponent} fullWidth variant={'secondary'}>
+            <ImageOutline />
+            <div>Change Cover</div>
+          </Button>
+          <Typography variant={'body1'}>Answer:</Typography>
+          <div className={s.contentComponentsPicture}>
+            <img alt={'image'} src={img} />
+          </div>
+          <Button className={s.buttoncontentComponent} fullWidth variant={'secondary'}>
+            <ImageOutline />
+            <div>Change Cover</div>
+          </Button>
         </div>
-        <Button className={s.buttoncontentComponent} fullWidth variant={'secondary'}>
-          <ImageOutline />
-          <div>Change Cover</div>
-        </Button>
-        <Typography variant={'body1'}>Answer:</Typography>
-        <div className={s.contentComponentsPicture}>
-          <img alt={'image'} src={img} />
+        <div className={s.buttons}>
+          <Button variant={'secondary'}>Cancel</Button>
+          <Button variant={'primary'}>Add New Card</Button>
         </div>
-        <Button className={s.buttoncontentComponent} fullWidth variant={'secondary'}>
-          <ImageOutline />
-          <div>Change Cover</div>
-        </Button>
-        <TextField label={'Input'} value={'Input'} />
-        <Checkbox defaultChecked={false} disabled={false} label={'Check-box'} />
       </div>
     ),
-    showHeader: false,
+    title: 'Add New Card',
     trigger: <div>Open</div>,
   },
 }

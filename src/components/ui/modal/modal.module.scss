@@ -179,46 +179,6 @@
   background: var(--dark-700, #171717);
 }
 
-
-//card
-
-.card {
-  width: 505px;
-  height: 258px;
-  opacity: 0.3;
-  background: var(--dark-500, #333);
-}
-
-//ContentText
-
-.containerContentText {
-  width: 532px;
-  padding: 17px 24px;
-  background: var(--dark-700, #171717);
-  border: 1px solid var(--dark-500, #333);
-}
-
-// ContentTextScroll
-
-.containerContentTextScroll {
-  scrollbar-width: none;
-
-  overflow-y: auto;
-
-  width: 532px;
-  max-height: 110px;
-  padding: 17px 24px;
-
-  background: var(--dark-700, #171717);
-  border: 1px solid var(--dark-500, #333);
-
-  -ms-overflow-style: none;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-}
-
 // ContentComponents
 
 .containerContentComponents {
@@ -227,47 +187,28 @@
   gap: 24px;
   align-items: flex-start;
 
-  width: 532px;
   padding: 24px;
 
   word-wrap: break-word;
   overflow-wrap: break-word;
 
-  background: var(--dark-700, #171717);
   border-right: 1px solid var(--dark-500, #333);
   border-left: 1px solid var(--dark-500, #333);
+  background: var(--dark-700, #171717);
 
 }
-
 .select {
   width: 100%;
 }
-
 .contentComponentsPicture {
   width: 100%;
-  height: 100%
+  max-width: 484px;
+  height: 100%;
+  max-heigth: 119px;
 }
-
-
 .containerContentComponents button {
   padding-right: 0;
   padding-left: 0;
-}
-
-.oneButton {
-  display: flex;
-  justify-content: flex-end;
-
-  width: 532px;
-  padding-top: 24px;
-  padding-right: 24px;
-  padding-bottom: 36px;
-
-  background: var(--dark-700, #171717);
-  border-right: 1px solid var(--dark-500, #333);
-  border-bottom: 1px solid var(--dark-500, #333);
-  border-left: 1px solid var(--dark-500, #333);
-  border-radius: 0 0 2px 2px;
 }
 
 
