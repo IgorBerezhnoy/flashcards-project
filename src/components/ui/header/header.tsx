@@ -13,24 +13,26 @@ type HeaderType = {
 
 export const Header = ({ isLogin, onClick, userPhoto }: HeaderType) => {
   return (
-    <header className={s.header}>
-      <Logo />
-      {!isLogin ? (
-        <Button onClick={onClick}>Sign In</Button>
-      ) : (
-        <div className={s.userInfo}>
-          <Typography className={s.userName} variant={'h3'}>
-            Ivan
-          </Typography>
-          <UserDropdown
-            email={'ASasdas'}
-            name={'Ivan'}
-            photo={userPhoto}
-            photoDesc={'userPhoto'}
-            profilePageHref={''}
-          />
-        </div>
-      )}
-    </header>
+    <div className={s.header}>
+      <div className={`${s.header__box} header__box`}>
+        <Logo className={s.header__logo} />
+        {!isLogin ? (
+          <Button className={s.header__btn} onClick={onClick}>Sign In</Button>
+        ) : (
+          <div className={s.header__userInfo}>
+            <Typography className={s.header__userName} variant={'h3'}>
+              Ivan
+            </Typography>
+            <UserDropdown
+              email={'ASasdas'}
+              name={'Ivan'}
+              photo={userPhoto}
+              photoDesc={'userPhoto'}
+              profilePageHref={''}
+            />
+          </div>
+        )}
+      </div>
+    </div>
   )
 }
