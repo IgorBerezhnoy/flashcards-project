@@ -13,8 +13,9 @@ import { DropdownMenu } from '@/components/ui/dropdownMenu/dropdownMenu'
 import { DropdownSeparator } from '@/components/ui/dropdownMenu/dropdownSeparator'
 import { Typography } from '@/components/ui/typography'
 
-
 import s from '@/components/ui/dropdownMenu/dropdown.module.scss'
+
+import foto from '../../../../public/img/userPhotoForTest.png'
 
 const meta = {
   component: DropdownMenu,
@@ -28,7 +29,7 @@ type Story = StoryObj<typeof meta>
 const user = {
   email: 'j&johnson@gmail.com',
   name: 'Ivan',
-  photo: { alt: 'UserPhoto', src: 'public/img/userPhotoForTest.png' },
+  photo: { alt: 'UserPhoto', src: foto },
 }
 
 export const WithUser: Story = {
