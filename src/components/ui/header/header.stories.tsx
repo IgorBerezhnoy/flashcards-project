@@ -2,6 +2,8 @@ import type { Meta, StoryObj } from '@storybook/react'
 
 import { Header } from '@/components/ui/header/header'
 
+import foto from '../../../../public/img/userPhotoForTest.png'
+
 const meta = {
   argTypes: {
     onClick: {
@@ -24,6 +26,6 @@ export const LogOut: Story = {
 export const LogIn: Story = {
   args: {
     isLogin: true,
-    userPhoto: 'public/img/userPhotoForTest.png',
+    userPhoto: foto,
   },
 }
