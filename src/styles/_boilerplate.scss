@@ -39,3 +39,12 @@ body {
 
   background-color: var(--color-dark-900);
 }
+
+[class*='__box'] {
+  max-width: 1008px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+
+

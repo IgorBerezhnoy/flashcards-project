@@ -16,7 +16,7 @@ export const DropdownMenu = (props: Props) => {
   return (
     <div className={s.root}>
       <DropdownMenuRadix.Root {...rest}>
-        <DropdownMenuRadix.Trigger>{trigger}</DropdownMenuRadix.Trigger>
+        <DropdownMenuRadix.Trigger className={s.trigger}>{trigger}</DropdownMenuRadix.Trigger>
         <DropdownMenuRadix.Portal>
           <DropdownMenuRadix.Content className={s.dropdownMenuContent} sideOffset={5}>
             {children}
