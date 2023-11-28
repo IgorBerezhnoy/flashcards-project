@@ -1,5 +1,5 @@
 export interface GetDecksResponse {
-  items: GetDecksResponseItems[]
+  items: DeckItem[]
   maxCardsCount: number
   pagination: GetDecksResponsePagination
 }
@@ -9,7 +9,17 @@ export type CreateDeckArgs = {
   isPrivate?: boolean
   name: string
 }
-export type GetDeckByIdArgs = { id: string }
+export type GetDeckByIdArgs = {
+  id: string
+}
+export type DeleteDeckByIdArg = {
+  id: string
+}
+export type PatchDeckByIdArg = {
+  id: string
+  isPrivate: boolean
+  name: string
+}
 export type GetDecksArgs = {
   authorId?: number
   currentPage?: number
@@ -32,14 +42,14 @@ export interface GetDecksResponseItemsAuthor {
   name: string
 }
 
-export interface GetDecksResponseItems {
+export interface DeckItem {
   author: GetDecksResponseItemsAuthor
   cardsCount: number
   cover?: any
   created: string
   id: string
-  isBlocked?: any
-  isDeleted?: any
+  isBlocked?: boolean | null
+  isDeleted?: boolean | null
   isPrivate: boolean
   name: string
   rating: number

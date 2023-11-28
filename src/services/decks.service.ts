@@ -1,9 +1,11 @@
 import { baseApi } from '@/services/base-api'
 import {
   CreateDeckArgs,
+  DeleteDeckByIdArg,
   GetDeckByIdArgs,
   GetDecksArgs,
   GetDecksResponse,
+  PatchDeckByIdArg,
 } from '@/services/flashcards.types'
 
 const decksService = baseApi.injectEndpoints({
@@ -17,6 +19,13 @@ const decksService = baseApi.injectEndpoints({
           url: `v1/decks`,
         }),
       }),
+      deleteDeck: builder.mutation<void, DeleteDeckByIdArg>({
+        invalidatesTags: ['Decks'],
+        query: id => ({
+          method: 'DELETE',
+          url: `v1/decks/${id.id}`,
+        }),
+      }),
       getDeckById: builder.query<GetDecksResponse, GetDeckByIdArgs>({
         query: id => `v1/decks/${id.id}`,
       }),
@@ -27,8 +36,22 @@ const decksService = baseApi.injectEndpoints({
           url: `v1/decks`,
         }),
       }),
+      patchDeck: builder.mutation<void, PatchDeckByIdArg>({
+        invalidatesTags: ['Decks'],
+        query: args => ({
+          body: args,
+          method: 'PATCH',
+          url: `v1/decks/${args.id}`,
+        }),
+      }),
     }
   },
 })
 
-export const { useCreateDeckMutation, useGetDeckByIdQuery, useGetDecksQuery } = decksService
+export const {
+  useCreateDeckMutation,
+  useDeleteDeckMutation,
+  useGetDeckByIdQuery,
+  useGetDecksQuery,
+  usePatchDeckMutation,
+} = decksService
