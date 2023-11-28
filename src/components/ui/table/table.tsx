@@ -1,152 +1,128 @@
-import { useState } from 'react'
+import { ComponentProps, ComponentPropsWithoutRef, ElementRef, FC, forwardRef } from 'react'
 
-import {
-  ArrowIosDownOutline,
-  ArrowIosUp,
-  Edit2Outline,
-  PlayCircleOutline,
-  TrashOutline,
-} from '@/assets'
+import { Typography } from '@/components/ui/typography'
+import { clsx } from 'clsx'
 
 import s from './table.module.scss'
 
-type ColumnHeaders = {
-  [key in keyof ItemProps]: string
-}
-
-const columnHeaders: ColumnHeaders = {
-  cardsCount: 'Cards',
-  createdBy: 'Created by',
-  figma: 'Figma',
-  title: 'Name',
-  updated: 'Last Updated',
-}
-
-type ItemProps = {
-  [key: string]: any
-  cardsCount: number
-  createdBy: string
-  figma: number
-  title: string
-  updated: string
-}
-
-type Props = {
-  columnOrder: string[]
-  data: ItemProps[]
-}
-
-export const Table = ({ columnOrder, data }: Props) => {
-  const [sortConfig, setSortConfig] = useState<{ direction: string; key: string } | null>(null)
-
-  const rearrangedData = data.map(item => {
-    const reorderedItem: any = {}
-
-    columnOrder.forEach(column => {
-      reorderedItem[column] = item[column]
-    })
-
-    return reorderedItem
-  })
-
-  const requestSort = (key: string) => {
-    if (key === 'updated') {
-      let direction = 'ascending'
-
-      if (sortConfig && sortConfig.key === key && sortConfig.direction === 'ascending') {
-        direction = 'descending'
-      }
-      setSortConfig({ direction, key })
-    }
-  }
-
-  const sortedData = () => {
-    if (!sortConfig) {
-      return rearrangedData
+export const Table = forwardRef<HTMLTableElement, ComponentPropsWithoutRef<'table'>>(
+  ({ className, ...rest }, ref) => {
+    const classNames = {
+      table: clsx(className, s.table),
     }
 
-    const { direction, key } = sortConfig
+    return <table className={classNames.table} {...rest} ref={ref} />
+  }
+)
+export const TableHead = forwardRef<ElementRef<'thead'>, ComponentPropsWithoutRef<'thead'>>(
+  ({ ...rest }, ref) => {
+    return <thead {...rest} ref={ref} />
+  }
+)
 
-    if (key === 'updated') {
-      return [...rearrangedData].sort((a, b) => {
-        if (a[key] < b[key]) {
-          return direction === 'ascending' ? -1 : 1
-        }
-        if (a[key] > b[key]) {
-          return direction === 'ascending' ? 1 : -1
-        }
+export const TableBody = forwardRef<ElementRef<'tbody'>, ComponentPropsWithoutRef<'tbody'>>(
+  ({ ...rest }, ref) => {
+    return <tbody {...rest} ref={ref} />
+  }
+)
 
-        return 0
-      })
+export const TableRow = forwardRef<ElementRef<'tr'>, ComponentPropsWithoutRef<'tr'>>(
+  ({ ...rest }, ref) => {
+    return <tr {...rest} ref={ref} />
+  }
+)
+
+export const TableHeadCell = forwardRef<ElementRef<'th'>, ComponentPropsWithoutRef<'th'>>(
+  ({ children, className, ...rest }, ref) => {
+    const classNames = {
+      headCell: clsx(className, s.headCell),
     }
 
-    return rearrangedData
-  }
-
-  const deleteRow = () => {
-    alert('Обработчик удаления ряда')
-  }
-
-  const editRow = () => {
-    alert('Обработчик редактирования ряда')
-  }
-
-  const playRow = () => {
-    alert('Обработчик проигрывания ряда')
-  }
-
-  const getColumnHeaders = () => {
-    if (rearrangedData.length === 0) {
-      return null
-    }
-
-    return columnOrder.map((header, index) => (
-      <th className={s.th} key={index} onClick={() => requestSort(header)}>
-        {columnHeaders[header]}
-        {sortConfig && sortConfig.key === header && (
-          <span>
-            {sortConfig.direction === 'ascending' ? <ArrowIosDownOutline /> : <ArrowIosUp />}
-          </span>
-        )}
+    return (
+      <th className={classNames.headCell} {...rest} ref={ref}>
+        <span>{children}</span>
       </th>
-    ))
+    )
   }
-
-  const getRows = () => {
-    if (rearrangedData.length === 0) {
-      return null
+)
+export const TableCell = forwardRef<ElementRef<'td'>, ComponentPropsWithoutRef<'td'>>(
+  ({ className, ...rest }, ref) => {
+    const classNames = {
+      cell: clsx(className, s.tableCell),
     }
 
-    return sortedData().map((item: any, index: number) => (
-      <tr key={index}>
-        {columnOrder.map((column, index) => (
-          <td className={s.td} key={index}>
-            {item[column]}
-          </td>
-        ))}
-        <td className={s.td}>
-          <div className={s.actions}>
-            <button onClick={() => playRow()}>
-              <PlayCircleOutline className={s.icon} />
-            </button>
-            <button onClick={() => editRow()}>
-              <Edit2Outline className={s.icon} />
-            </button>
-            <button onClick={() => deleteRow()}>
-              <TrashOutline className={s.icon} />
-            </button>
-          </div>
-        </td>
-      </tr>
-    ))
+    return <td className={classNames.cell} {...rest} ref={ref} />
+  }
+)
+
+export const TableEmpty: FC<ComponentProps<'div'> & { mb?: string; mt?: string }> = ({
+  className,
+  mb,
+  mt = '89px',
+}) => {
+  const classNames = {
+    empty: clsx(className, s.empty),
   }
 
   return (
-    <table className={s.table}>
-      <thead className={s.thead}>
-        <tr className={s.tr}>{getColumnHeaders()}</tr>
-      </thead>
-      <tbody className={s.row}>{getRows()}</tbody>
-    </table>
+    <Typography
+      className={classNames.empty}
+      style={{ marginBottom: mb, marginTop: mt }}
+      variant={'h2'}
+    >
+      Пока тут еще нет данных! :(
+    </Typography>
+  )
+}
+export type Column = {
+  key: string
+  sortable?: boolean
+  title: string
+}
+export type Sort = {
+  direction: 'asc' | 'desc'
+  key: string
+} | null
+
+export const TableHeader: FC<
+  Omit<
+    ComponentPropsWithoutRef<'thead'> & {
+      columns: Column[]
+      onSort?: (sort: Sort) => void
+      sort?: Sort
+    },
+    'children'
+  >
+> = ({ columns, onSort, sort, ...restProps }) => {
+  const handleSort = (key: string, sortable?: boolean) => () => {
+    if (!onSort || !sortable) {
+      return
+    }
+
+    if (sort?.key !== key) {
+      return onSort({ direction: 'asc', key })
+    }
+
+    if (sort.direction === 'desc') {
+      return onSort(null)
+    }
+
+    return onSort({
+      direction: sort?.direction === 'asc' ? 'desc' : 'asc',
+      key,
+    })
+  }
+
+  return (
+    <TableHead {...restProps}>
+      <TableRow>
+        {columns.map(({ key, sortable = true, title }) => (
+          <TableHeadCell key={key} onClick={handleSort(key, sortable)}>
+            {title}
+            {sort && sort.key === key && <span>{sort.direction === 'asc' ? '▲' : '▼'}</span>}
+          </TableHeadCell>
+        ))}
+      </TableRow>
+    </TableHead>
   )
 }
