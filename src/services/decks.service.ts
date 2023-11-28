@@ -1,6 +1,7 @@
 import { baseApi } from '@/services/base-api'
 import {
   CreateDeckArgs,
+  DeleteDeckByIdArg,
   GetDeckByIdArgs,
   GetDecksArgs,
   GetDecksResponse,
@@ -17,6 +18,13 @@ const decksService = baseApi.injectEndpoints({
           url: `v1/decks`,
         }),
       }),
+      deleteDeck: builder.mutation<void, DeleteDeckByIdArg>({
+        invalidatesTags: ['Decks'],
+        query: id => ({
+          method: 'DELETE',
+          url: `v1/decks/${id.id}`,
+        }),
+      }),
       getDeckById: builder.query<GetDecksResponse, GetDeckByIdArgs>({
         query: id => `v1/decks/${id.id}`,
       }),
@@ -31,4 +39,9 @@ const decksService = baseApi.injectEndpoints({
   },
 })
 
-export const { useCreateDeckMutation, useGetDeckByIdQuery, useGetDecksQuery } = decksService
+export const {
+  useCreateDeckMutation,
+  useDeleteDeckMutation,
+  useGetDeckByIdQuery,
+  useGetDecksQuery,
+} = decksService

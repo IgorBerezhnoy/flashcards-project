@@ -10,6 +10,7 @@ export type CreateDeckArgs = {
   name: string
 }
 export type GetDeckByIdArgs = { id: string }
+export type DeleteDeckByIdArg = { id: string }
 export type GetDecksArgs = {
   authorId?: number
   currentPage?: number
