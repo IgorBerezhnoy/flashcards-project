@@ -5,6 +5,7 @@ import {
   GetDeckByIdArgs,
   GetDecksArgs,
   GetDecksResponse,
+  PatchDeckByIdArg,
 } from '@/services/flashcards.types'
 
 const decksService = baseApi.injectEndpoints({
@@ -35,6 +36,14 @@ const decksService = baseApi.injectEndpoints({
           url: `v1/decks`,
         }),
       }),
+      patchDeck: builder.mutation<void, PatchDeckByIdArg>({
+        invalidatesTags: ['Decks'],
+        query: args => ({
+          body: args,
+          method: 'PATCH',
+          url: `v1/decks/${args.id}`,
+        }),
+      }),
     }
   },
 })
@@ -44,4 +53,5 @@ export const {
   useDeleteDeckMutation,
   useGetDeckByIdQuery,
   useGetDecksQuery,
+  usePatchDeckMutation,
 } = decksService

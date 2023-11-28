@@ -15,6 +15,11 @@ export type GetDeckByIdArgs = {
 export type DeleteDeckByIdArg = {
   id: string
 }
+export type PatchDeckByIdArg = {
+  id: string
+  isPrivate: boolean
+  name: string
+}
 export type GetDecksArgs = {
   authorId?: number
   currentPage?: number
@@ -43,8 +48,8 @@ export interface DeckItem {
   cover?: any
   created: string
   id: string
-  isBlocked?: any
-  isDeleted?: any
+  isBlocked?: boolean | null
+  isDeleted?: boolean | null
   isPrivate: boolean
   name: string
   rating: number
