@@ -1,9 +1,5 @@
-import { Rating } from '@/components/ui/rating/rating'
+import { Router } from '@/router'
 
 export function App() {
-  return (
-    <>
-      <Rating onClick={() => console.log('aaaa')} value={3} />
-    </>
-  )
+  return <Router />
 }
