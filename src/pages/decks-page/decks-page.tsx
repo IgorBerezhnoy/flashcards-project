@@ -9,6 +9,7 @@ import { Tab } from '@/components/ui/tabs'
 import { Typography } from '@/components/ui/typography'
 import { AddNewPack } from '@/pages/decks/addNewPack'
 import { Decks } from '@/pages/decks/decks'
+import { useGetDecksQuery } from '@/services/decks.service'
 import { DebouncedInput } from '@/utils/debounce'
 
 import s from './decks-page.module.scss'
@@ -17,7 +18,9 @@ import foto from '../../../public/img/userPhotoForTest.png'
 
 export const DecksPage = () => {
   const tabs = [{ title: 'My Cards' }, { title: 'All Cards' }]
-  const [value, setValue] = useState('')
+  const [value, setValue] = useState<string>('')
+  const [sliderValue, setValueSlide] = useState<number[]>([0, 61])
+  const { data, error, isLoading } = useGetDecksQuery()
 
   return (
     <Page>
@@ -35,7 +38,12 @@ export const DecksPage = () => {
               value={value}
             />
             <Tab tabs={tabs} />
-            <Slider value={[0, 60]} />
+            <Slider
+              defaultValue={sliderValue}
+              max={data?.maxCardsCount}
+              onValueChange={setValueSlide}
+              value={sliderValue}
+            />
             <Button variant={'secondary'}>
               <TrashOutline />
               <div>Clear Filter</div>

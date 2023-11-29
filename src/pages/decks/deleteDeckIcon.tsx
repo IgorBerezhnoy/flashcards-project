@@ -7,9 +7,7 @@ import { useDeleteDeckMutation } from '@/services/decks.service'
 import s from '@/components/ui/table/table.module.scss'
 
 export const DeleteDeckIcon = ({ id }: { id: string }) => {
-  const [deleteDeck, { isLoading: isDeckBeingDeleted }] = useDeleteDeckMutation()
-
-  console.log(isDeckBeingDeleted)
+  const [deleteDeck] = useDeleteDeckMutation()
 
   return (
     <Modal trigger={<TrashOutline className={s.icon} />}>
