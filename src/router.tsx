@@ -6,6 +6,7 @@ import {
   createBrowserRouter,
 } from 'react-router-dom'
 
+import { Cards } from '@/pages/cards/cards'
 import { DecksPage } from '@/pages/decks-page/decks-page'
 import { SignInPage } from '@/pages/sign-in-page'
 
@@ -21,7 +22,7 @@ const privateRoutes: RouteObject[] = [
     path: '/',
   },
   {
-    element: <div>Тут могли бы быть ваши карточки </div>,
+    element: <Cards />,
     path: 'decks/cards/:id',
   },
 ]

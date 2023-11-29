@@ -1,7 +1,31 @@
-import { Table, TableHead, TableHeadCell, TableRow } from '@/components/ui/table'
+import { useParams } from 'react-router-dom'
+
+import { Edit2Outline, TrashOutline } from '@/assets'
+import { Rating } from '@/components/ui/rating'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeadCell,
+  TableRow,
+} from '@/components/ui/table'
+import { Typography } from '@/components/ui/typography'
+import { useGetCardsQuery } from '@/services/decks.service'
 
 export const Cards = () => {
   /*TODO Не трогать идёт работа*/
+  const { id } = useParams()
+  const { data, error, isLoading } = useGetCardsQuery({ id: id ? id : '' })
+
+  console.log(id)
+  if (isLoading) {
+    return <Typography as={'h1'}>Loading</Typography>
+  }
+  if (error) {
+    return <Typography as={'h1'}>Error</Typography>
+  }
+
   return (
     <Table>
       <TableHead>
@@ -13,28 +37,28 @@ export const Cards = () => {
           <TableHeadCell></TableHeadCell>
         </TableRow>
       </TableHead>
-      {/*      <TableBody>
-        {cards.map(card => {
+      <TableBody>
+        {data?.items.map(card => {
           return (
             <TableRow key={card.id}>
               <TableCell>{card.question}</TableCell>
               <TableCell>{card.answer}</TableCell>
-              <TableCell>{new Date(card?.lastUpdated).toLocaleDateString()}</TableCell>
+              <TableCell>{new Date(card?.updated).toLocaleDateString()}</TableCell>
               <TableCell>
-                <Rating onClick={() => {}} value={4} />
+                <Rating onClick={() => {}} value={card.grade} />
               </TableCell>
               <TableCell>
                 {
-                  <div className={s.actions}>
-                    <Edit2Outline className={s.icon} onClick={() => console.log('Edit2Outline')} />
-                    <TrashOutline className={s.icon} onClick={() => console.log('TrashOutline')} />
+                  <div>
+                    <Edit2Outline onClick={() => console.log('Edit2Outline')} />
+                    <TrashOutline onClick={() => console.log('TrashOutline')} />
                   </div>
                 }
               </TableCell>
             </TableRow>
           )
         })}
-      </TableBody>*/}
+      </TableBody>
     </Table>
   )
 }

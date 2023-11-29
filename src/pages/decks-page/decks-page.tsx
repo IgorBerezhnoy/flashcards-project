@@ -3,32 +3,17 @@ import { Button } from '@/components/ui/button'
 import { Header } from '@/components/ui/header'
 import { Page } from '@/components/ui/page'
 import { Slider } from '@/components/ui/slider'
-import { Table, TableBody } from '@/components/ui/table'
 import { Tab } from '@/components/ui/tabs'
 import { TextField } from '@/components/ui/textField'
 import { Typography } from '@/components/ui/typography'
 import { AddNewPack } from '@/pages/decks/addNewPack'
-import { Deck } from '@/pages/decks/deck'
-import { DecksTableHeader } from '@/pages/decks/decksTableHeader'
-import { useGetDecksQuery } from '@/services/decks.service'
-import { DeckItem } from '@/services/flashcards.types'
+import { Decks } from '@/pages/decks/decks'
 
 import s from './decks-page.module.scss'
 
 import foto from '../../../public/img/userPhotoForTest.png'
 
-type Props = { deck: DeckItem }
-
-export const DecksPage = ({ deck }: Props) => {
-  const { data, error, isLoading } = useGetDecksQuery()
-
-  if (isLoading) {
-    return <Typography as={'h1'}>Loading</Typography>
-  }
-  if (error) {
-    return <Typography as={'h1'}>Error</Typography>
-  }
-
+export const DecksPage = () => {
   const tabs = [{ title: 'My Cards' }, { title: 'All Cards' }]
 
   return (
@@ -50,10 +35,7 @@ export const DecksPage = ({ deck }: Props) => {
             </Button>
           </div>
           <div className={s.deck__table}>
-            <Table>
-              <DecksTableHeader />
-              <TableBody>{data?.items.map(deck => <Deck deck={deck} key={deck.id} />)}</TableBody>
-            </Table>
+            <Decks />
           </div>
         </div>
       </div>
