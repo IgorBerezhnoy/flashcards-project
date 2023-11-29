@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 
 import { Edit2Outline, TrashOutline } from '@/assets'
 import { Rating } from '@/components/ui/rating'
@@ -27,39 +27,44 @@ export const Cards = () => {
   }
 
   return (
-    <Table>
-      <TableHead>
-        <TableRow>
-          <TableHeadCell>Question</TableHeadCell>
-          <TableHeadCell>Answer</TableHeadCell>
-          <TableHeadCell>Last Updated</TableHeadCell>
-          <TableHeadCell>Grade</TableHeadCell>
-          <TableHeadCell></TableHeadCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {data?.items.map(card => {
-          return (
-            <TableRow key={card.id}>
-              <TableCell>{card.question}</TableCell>
-              <TableCell>{card.answer}</TableCell>
-              <TableCell>{new Date(card?.updated).toLocaleDateString()}</TableCell>
-              <TableCell>
-                <Rating onClick={() => {}} value={card.grade} />
-              </TableCell>
-              <TableCell>
-                {
-                  <div>
-                    <Edit2Outline onClick={() => console.log('Edit2Outline')} />
-                    <TrashOutline onClick={() => console.log('TrashOutline')} />
-                  </div>
-                }
-              </TableCell>
-            </TableRow>
-          )
-        })}
-      </TableBody>
-    </Table>
+    <>
+      <div>
+        <Link to={'/'}>Back to Packs List</Link>
+      </div>
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableHeadCell>Question</TableHeadCell>
+            <TableHeadCell>Answer</TableHeadCell>
+            <TableHeadCell>Last Updated</TableHeadCell>
+            <TableHeadCell>Grade</TableHeadCell>
+            <TableHeadCell></TableHeadCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {data?.items.map(card => {
+            return (
+              <TableRow key={card.id}>
+                <TableCell>{card.question}</TableCell>
+                <TableCell>{card.answer}</TableCell>
+                <TableCell>{new Date(card?.updated).toLocaleDateString()}</TableCell>
+                <TableCell>
+                  <Rating onClick={() => {}} value={card.grade} />
+                </TableCell>
+                <TableCell>
+                  {
+                    <div>
+                      <Edit2Outline onClick={() => console.log('Edit2Outline')} />
+                      <TrashOutline onClick={() => console.log('TrashOutline')} />
+                    </div>
+                  }
+                </TableCell>
+              </TableRow>
+            )
+          })}
+        </TableBody>
+      </Table>
+    </>
   )
 }
 /*TODO Не трогать идёт работа*/
