@@ -6,6 +6,7 @@ import {
   GetDeckByIdArgs,
   GetDecksArgs,
   GetDecksResponse,
+  LearnCardsResponse,
   PatchDeckByIdArg,
 } from '@/services/flashcards.types'
 
@@ -41,6 +42,10 @@ const decksService = baseApi.injectEndpoints({
           url: `v1/decks`,
         }),
       }),
+      learnCards: builder.query<LearnCardsResponse, { id: string }>({
+        providesTags: ['Decks'],
+        query: id => `v1/decks/${id.id}/learn`,
+      }),
       patchDeck: builder.mutation<void, PatchDeckByIdArg>({
         invalidatesTags: ['Decks'],
         query: args => ({
@@ -59,5 +64,6 @@ export const {
   useGetCardsQuery,
   useGetDeckByIdQuery,
   useGetDecksQuery,
+  useLearnCardsQuery,
   usePatchDeckMutation,
 } = decksService

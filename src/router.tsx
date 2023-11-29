@@ -8,6 +8,7 @@ import {
 
 import { Cards } from '@/pages/cards/cards'
 import { DecksPage } from '@/pages/decks-page/decks-page'
+import { LearnCard } from '@/pages/learnCard/learnCard'
 import { SignInPage } from '@/pages/sign-in-page'
 
 const publicRouters: RouteObject[] = [
@@ -25,6 +26,10 @@ const privateRoutes: RouteObject[] = [
   {
     element: <Cards />,
     path: 'decks/cards/:id',
+  },
+  {
+    element: <LearnCard />,
+    path: 'learn/:id',
   },
 ]
 const router = createBrowserRouter([

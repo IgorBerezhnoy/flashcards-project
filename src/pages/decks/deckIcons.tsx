@@ -12,7 +12,7 @@ type Props = { deck: DeckItem }
 export const DeckIcons = ({ deck }: Props) => {
   return (
     <TableCell>
-      <Link to={'decks/id/card'}>
+      <Link to={`learn/${deck.id}`}>
         <PlayCircleOutline className={s.icon} />
       </Link>
       <EditDeckIcon id={deck.id} />
