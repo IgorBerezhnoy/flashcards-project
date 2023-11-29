@@ -3,6 +3,8 @@
   width: 100%;
   color: var(--color-light-100);
   border: 1px solid var(--color-dark-500);
+  background: var(--dark-500, #333);
+
 }
 
 .headCell {
@@ -38,6 +40,7 @@
 
   background-color: var(--color-bg-table);
   border-bottom: 1px solid var(--color-dark-500);
+  background: var(--dark-900, #000);
 }
 
 .chevronDown {
@@ -64,3 +67,219 @@
   width: 16px;
   height: 16px;
 }
+
+.dialogContent {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  color: var(--light-100, #FFF);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.dialogClose {
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+
+  padding: 0;
+
+  background-color: transparent;
+  border: none;
+
+  color: var(--color-light-100);
+
+  transition: 0.4s;
+}
+
+.dialogTrigger {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+
+// Header story
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 542px;
+  padding: 17px 24px;
+
+  background: var(--dark-700, #171717);
+  border: 1px solid var(--dark-500, #333);
+  border-radius: 2px 2px 0 0;
+}
+
+.headerClose {
+  align-self: flex-end;
+}
+
+.headerTitle {
+  font-size: 18px;
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-m);
+}
+
+
+.contentBlock {
+  border-right: 1px solid var(--dark-500, #333);
+  border-left: 1px solid var(--dark-500, #333);
+  background: var(--dark-700, #171717);
+}
+
+.contentBody {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contentDeleteBody {
+  padding: 18px 24px;
+  line-height: 24px;
+
+  span {
+    font-weight: 700;
+  }
+}
+
+
+.contentLearn {
+  padding: 33px 36px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  fill: var(--dark-700, #171717);
+  stroke-width: 1px;
+  stroke: #313131;
+  filter: drop-shadow(-1px -1px 2px rgba(0, 0, 0, 0.10)) drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.10));
+}
+
+.contentLearnTitle {
+  font-size: 26px;
+  font-weight: var(--font-weight-bold);
+  line-height: 36px;
+  margin-bottom: 45px;
+}
+
+.contentLearnBody {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 41px;
+}
+
+.contentLearnTextOne {
+  color: var(--light-100, #FFF);
+  line-height: 24px;
+  padding-right: 48px;
+
+  span {
+    font-weight: 700;
+  }
+}
+
+.contentLearnTextTwo {
+  color: var(--dark-100, #808080);
+  font-size: 14px;
+  line-height: 24px;
+
+  span {
+    font-weight: 700;
+  }
+}
+
+.contentLearnRadio {
+  padding: 33px 36px 36px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  fill: var(--dark-700, #171717);
+  stroke-width: 1px;
+  stroke: #313131;
+  filter: drop-shadow(-1px -1px 2px rgba(0, 0, 0, 0.10)) drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.10));
+}
+
+.contentLearnBodyRadio {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 35px;
+}
+
+.contentLearnSybText {
+  margin-bottom: 12px;
+  align-self: flex-start;
+
+  span {
+    font-weight: 700;
+  }
+}
+
+.radioButtonModule {
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  margin-bottom: 29px;
+}
+
+.radioButtonTitle {
+  font-weight: var(--font-weight-bold);
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 24px 24px 36px;
+  background: var(--dark-700, #171717);
+}
+
+// ContentComponents
+
+.containerContentComponents {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+
+  padding: 24px;
+
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+
+  border-right: 1px solid var(--dark-500, #333);
+  border-left: 1px solid var(--dark-500, #333);
+  background: var(--dark-700, #171717);
+
+}
+.select {
+  width: 100%;
+}
+.contentComponentsPicture {
+  width: 100%;
+  max-width: 484px;
+  height: 100%;
+  max-heigth: 119px;
+}
+.containerContentComponents button {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+
+

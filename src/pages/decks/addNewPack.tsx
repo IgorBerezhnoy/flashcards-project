@@ -15,7 +15,7 @@ export const AddNewPack = () => {
   console.log(isDeckBeingCreated)
 
   return (
-    <Modal title={'Add New Pack'} trigger={<Button>Add New Pack</Button>}>
+    <Modal title={'Add New Pack'} trigger={<Button variant={'primary'}>Add New Pack</Button>}>
       <div className={s.contentWrapper}>
         <div className={s.contentBody}>
           <TextField onValueChange={e => setValue(e)} value={value} />
