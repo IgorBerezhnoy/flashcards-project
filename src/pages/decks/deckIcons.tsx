@@ -15,7 +15,7 @@ export const DeckIcons = ({ deck }: Props) => {
       <Link to={'decks/id/card'}>
         <PlayCircleOutline className={s.icon} />
       </Link>
-      <EditDeckIcon />
+      <EditDeckIcon id={deck.id} />
       <DeleteDeckIcon id={deck.id} />
     </TableCell>
   )

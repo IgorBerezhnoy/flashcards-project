@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import { TableCell, TableRow } from '@/components/ui/table'
 import { DeckIcons } from '@/pages/decks/deckIcons'
 import { DeckItem } from '@/services/flashcards.types'
@@ -7,7 +9,9 @@ export const Deck = ({ deck }: Props) => {
   return (
     <>
       <TableRow key={deck.id}>
-        <TableCell>{deck?.name}</TableCell>
+        <TableCell>
+          <Link to={`decks/cards/${deck.id}`}>{deck?.name}</Link>
+        </TableCell>
         <TableCell>{deck?.cardsCount}</TableCell>
         <TableCell>{new Date(deck?.updated).toLocaleDateString()}</TableCell>
         <TableCell>{deck?.author.name}</TableCell>
