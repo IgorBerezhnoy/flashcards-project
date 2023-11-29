@@ -4,6 +4,7 @@ import { TrashOutline } from '@/assets'
 import { Button } from '@/components/ui/button'
 import { Header } from '@/components/ui/header'
 import { Page } from '@/components/ui/page'
+import { Pagination } from '@/components/ui/pagination'
 import { Slider } from '@/components/ui/slider'
 import { Tab } from '@/components/ui/tabs'
 import { Typography } from '@/components/ui/typography'
@@ -20,7 +21,11 @@ export const DecksPage = () => {
   const tabs = [{ title: 'My Cards' }, { title: 'All Cards' }]
   const [value, setValue] = useState<string>('')
   const [sliderValue, setValueSlide] = useState<number[]>([0, 61])
-  const { data, error, isLoading } = useGetDecksQuery()
+  const { data, error, isLoading } = useGetDecksQuery({
+    maxCardsCount: sliderValue[1],
+    minCardsCount: sliderValue[0],
+    name: value,
+  })
 
   return (
     <Page>
@@ -35,6 +40,7 @@ export const DecksPage = () => {
             <DebouncedInput
               onChange={e => setValue(e.currentTarget.value)}
               onDebouncedChange={() => console.log(value)}
+              type={'search'}
               value={value}
             />
             <Tab tabs={tabs} />
@@ -53,6 +59,13 @@ export const DecksPage = () => {
             <Decks />
           </div>
         </div>
+      </div>
+      <div>
+        <Pagination
+          onChange={() => {}}
+          page={data?.pagination.currentPage}
+          totalCount={data?.pagination.totalItems}
+        />
       </div>
     </Page>
   )

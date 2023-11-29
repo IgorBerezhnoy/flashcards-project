@@ -9,10 +9,8 @@ import { useCreateDeckMutation } from '@/services/decks.service'
 import s from '@/components/ui/table/table.module.scss'
 
 export const AddNewPack = () => {
-  const [createDeck, { isLoading: isDeckBeingCreated }] = useCreateDeckMutation()
+  const [createDeck] = useCreateDeckMutation()
   const [value, setValue] = useState('')
-
-  console.log(isDeckBeingCreated)
 
   return (
     <Modal title={'Add New Pack'} trigger={<Button variant={'primary'}>Add New Pack</Button>}>
