@@ -8,21 +8,30 @@ import { TextField } from '@/components/ui/textField'
 
 import s from '@/components/ui/table/table.module.scss'
 
-export const EditDeckIcon = () => {
-  //Доделаю не трогать
+export const EditDeckIcon = ({ id }: { id: string }) => {
+  // TODO компонента в работе
   // const [editDeck, { isLoading }] = usePatchDeckMutation()
   const [value, setValue] = useState('')
+  const [message, setMessage] = useState('')
+  const [isChecked, setIsChecked] = useState(false)
 
   return (
     <Modal title={'Edit Pack'} trigger={<Edit2Outline className={s.icon} />}>
       <div className={s.contentWrapper}>
         <div className={s.contentBody}>
           <TextField onValueChange={e => setValue(e)} value={value} />
-          <Checkbox label={'Private pack'} />
+          <Checkbox checked={isChecked} onValueChange={() => setIsChecked(!isChecked)} />
+          {message}
         </div>
         <div className={s.buttons}>
           <Button variant={'secondary'}>Cancel</Button>
-          <Button variant={'primary'}>Save Changes</Button>
+          <Button
+            // onClick={() => editDeck({ id, isPrivate: isChecked, name: value })}
+            onClick={() => setMessage('Я не работаю ')}
+            variant={'primary'}
+          >
+            Save Changes
+          </Button>
         </div>
       </div>
     </Modal>

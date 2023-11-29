@@ -21,7 +21,7 @@ const privateRoutes: RouteObject[] = [
   },
   {
     element: <div>Тут могли бы быть ваши карточки </div>,
-    path: 'decks/id/card',
+    path: 'decks/cards/:id',
   },
 ]
 const router = createBrowserRouter([

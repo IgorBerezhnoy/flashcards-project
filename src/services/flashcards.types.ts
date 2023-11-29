@@ -16,6 +16,7 @@ export type DeleteDeckByIdArg = {
   id: string
 }
 export type PatchDeckByIdArg = {
+  cover: string
   id: string
   isPrivate: boolean
   name: string
