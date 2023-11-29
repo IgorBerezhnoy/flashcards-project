@@ -1,6 +1,5 @@
 import { Table, TableBody } from '@/components/ui/table'
 import { Typography } from '@/components/ui/typography'
-import { AddNewPack } from '@/pages/decks/addNewPack'
 import { Deck } from '@/pages/decks/deck'
 import { DecksTableHeader } from '@/pages/decks/decksTableHeader'
 import { useGetDecksQuery } from '@/services/decks.service'
@@ -17,7 +16,6 @@ export const Decks = () => {
 
   return (
     <div>
-      <AddNewPack />
       <Table>
         <DecksTableHeader />
         <TableBody>{data?.items.map(deck => <Deck deck={deck} key={deck.id} />)}</TableBody>

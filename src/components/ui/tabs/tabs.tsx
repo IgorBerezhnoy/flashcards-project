@@ -6,8 +6,8 @@ import s from './tabs.module.scss'
 
 export type TabsType = {
   disabled?: boolean
-  title: string
-  value: string
+  title?: string
+  value?: string
 }
 
 export type TabSwitcherPropsType = {
