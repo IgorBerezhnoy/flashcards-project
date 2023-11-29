@@ -21,6 +21,7 @@ const privateRoutes: RouteObject[] = [
     element: <DecksPage />,
     path: '/',
   },
+
   {
     element: <Cards />,
     path: 'decks/cards/:id',
