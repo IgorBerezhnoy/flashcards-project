@@ -13,6 +13,7 @@ export type PaginationPropsType = {
 }
 
 export const Pagination: React.FC<PaginationPropsType> = ({ onChange, page, totalCount }) => {
+  console.log({ onChange, page, totalCount })
   const [selectedCount, setSelectedCount] = useState(100)
   const lastPage = Math.ceil(totalCount / selectedCount)
   const onChangeCallback = (targetPage: number) => {

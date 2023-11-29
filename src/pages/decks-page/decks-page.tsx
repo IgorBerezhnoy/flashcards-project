@@ -1,13 +1,17 @@
+import { useState } from 'react'
+
 import { TrashOutline } from '@/assets'
 import { Button } from '@/components/ui/button'
 import { Header } from '@/components/ui/header'
 import { Page } from '@/components/ui/page'
+import { Pagination } from '@/components/ui/pagination'
 import { Slider } from '@/components/ui/slider'
 import { Tab } from '@/components/ui/tabs'
-import { TextField } from '@/components/ui/textField'
 import { Typography } from '@/components/ui/typography'
 import { AddNewPack } from '@/pages/decks/addNewPack'
 import { Decks } from '@/pages/decks/decks'
+import { useGetDecksQuery } from '@/services/decks.service'
+import { DebouncedInput } from '@/utils/debounce'
 
 import s from './decks-page.module.scss'
 
@@ -15,6 +19,13 @@ import foto from '../../../public/img/userPhotoForTest.png'
 
 export const DecksPage = () => {
   const tabs = [{ title: 'My Cards' }, { title: 'All Cards' }]
+  const [value, setValue] = useState<string>('')
+  const [sliderValue, setValueSlide] = useState<number[]>([0, 61])
+  const { data, error, isLoading } = useGetDecksQuery({
+    maxCardsCount: sliderValue[1],
+    minCardsCount: sliderValue[0],
+    name: value,
+  })
 
   return (
     <Page>
@@ -26,9 +37,19 @@ export const DecksPage = () => {
             <AddNewPack />
           </div>
           <div className={s.deck__navigation}>
-            <TextField />
+            <DebouncedInput
+              onChange={e => setValue(e.currentTarget.value)}
+              onDebouncedChange={() => console.log(value)}
+              type={'search'}
+              value={value}
+            />
             <Tab tabs={tabs} />
-            <Slider value={[0, 20]} />
+            <Slider
+              defaultValue={sliderValue}
+              max={data?.maxCardsCount}
+              onValueChange={setValueSlide}
+              value={sliderValue}
+            />
             <Button variant={'secondary'}>
               <TrashOutline />
               <div>Clear Filter</div>
@@ -38,6 +59,13 @@ export const DecksPage = () => {
             <Decks />
           </div>
         </div>
+      </div>
+      <div>
+        <Pagination
+          onChange={() => {}}
+          page={data?.pagination.currentPage}
+          totalCount={data?.pagination.totalItems}
+        />
       </div>
     </Page>
   )
