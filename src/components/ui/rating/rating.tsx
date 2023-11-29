@@ -22,7 +22,7 @@ function StarRating({ onClick, selected, value }: StarPropsType) {
   )
 }
 
-export type RatingValueType = 0 | 1 | 2 | 3 | 4 | 5
+export type RatingValueType = 0 | 1 | 2 | 3 | 4 | 5 | number
 
 export type RatingPropsType = {
   onClick: (value: RatingValueType) => void
