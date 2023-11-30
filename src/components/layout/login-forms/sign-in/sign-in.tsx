@@ -18,9 +18,13 @@ const schema = z.object({
 
 type SignInData = z.infer<typeof schema>
 
-export const SignIn = () => {
+type Props = {
+  onSubmit: (data: SignInData) => void
+}
+
+export const SignIn = (props: Props) => {
   const onSubmit = (data: SignInData) => {
-    console.log(data)
+    props.onSubmit(data)
   }
 
   const { control, handleSubmit } = useForm<SignInData>({

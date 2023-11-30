@@ -3,7 +3,6 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { SignIn } from './'
 
 const meta = {
-  argTypes: {},
   component: SignIn,
   tags: ['autodocs'],
   title: 'Components/Layout/Forms/SignIn',
