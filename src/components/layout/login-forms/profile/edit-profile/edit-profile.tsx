@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form'
 
+import { ControlledTextField } from '@/components/controled/controlled-textField'
 import { Button } from '@/components/ui/button'
-import { TextField } from '@/components/ui/textField'
 import { z } from 'zod'
 
 import s from './edit-profile.module.scss'
@@ -17,11 +17,11 @@ type Props = {
 }
 
 export const EditProfile = (props: Props) => {
-  const { handleSubmit, register } = useForm<EditProfileData>()
+  const { control, handleSubmit } = useForm<EditProfileData>()
 
   return (
     <form className={s.form} onSubmit={handleSubmit(props.onSubmit)}>
-      <TextField className={s.input} label={'Nickname'} {...register('name')} />
+      <ControlledTextField className={s.input} control={control} label={'Nickname'} name={'name'} />
       <Button fullWidth type={'submit'}>
         Save Changes
       </Button>

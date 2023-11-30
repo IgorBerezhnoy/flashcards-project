@@ -1,8 +1,8 @@
 import { useForm } from 'react-hook-form'
 
+import { ControlledTextField } from '@/components/controled/controlled-textField'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
-import { TextField } from '@/components/ui/textField'
 import { Typography } from '@/components/ui/typography'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -20,7 +20,7 @@ type Props = {
 }
 
 export const ForgotPassword = (props: Props) => {
-  const { handleSubmit, register } = useForm<ForgotPasswordData>({ resolver: zodResolver(schema) })
+  const { control, handleSubmit } = useForm<ForgotPasswordData>({ resolver: zodResolver(schema) })
 
   return (
     <Card className={s.container}>
@@ -28,7 +28,12 @@ export const ForgotPassword = (props: Props) => {
         Forgot your password?
       </Typography>
       <form className={s.form} onSubmit={handleSubmit(props.onSubmit)}>
-        <TextField label={'Email'} placeholder={'email'} {...register('email')} />
+        <ControlledTextField
+          control={control}
+          label={'Email'}
+          name={'email'}
+          placeholder={'email'}
+        />
         <Typography className={s.infoText} variant={'body2'}>
           Enter your email address and we will send you further instructions
         </Typography>
