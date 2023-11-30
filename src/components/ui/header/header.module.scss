@@ -10,11 +10,7 @@
   align-items: center;
 }
 
-.header__userName {
-  border-bottom: 1px dashed var(--color-light-100);
-}
-
-.header__userInfo{
+.header__userInfo {
   display: flex;
   justify-content: space-between;
   align-items: center;
