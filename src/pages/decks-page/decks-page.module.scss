@@ -16,9 +16,13 @@
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-l);
 }
+
+.deck__table{
+  margin-bottom: 30px;
+}
 .deck__navigation {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   margin-bottom: 36px;
   gap: 20px;
