@@ -110,3 +110,28 @@ export interface GetAuthMe {
   name: string
   updated: string
 }
+
+export type CreateCard = {
+  answer: string
+  answerImg?: string
+  answerVideo?: string
+  id: string
+  question: string
+  questionImg?: string
+  questionVideo?: string
+}
+export type CreateCardResponseType = {
+  answer: string
+  answerImg: string
+  answerVideo: string
+  created: string
+  deckId: string
+  id: string
+  question: string
+  questionImg: string
+  questionVideo: string
+  rating: number
+  shots: number
+  updated: string
+  userId: string
+}
