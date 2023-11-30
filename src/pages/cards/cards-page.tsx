@@ -5,7 +5,7 @@ import { Typography } from '@/components/ui/typography'
 import { CardsSortHeader } from '@/pages/cards/cards-sort-header'
 import { CardsTableHeader } from '@/pages/cards/cards-table-header'
 import { TableBodyCards } from '@/pages/cards/table-body-cards'
-import { useGetCardsQuery } from '@/services/decks.service'
+import { useGetCardsQuery } from '@/services/cards.service'
 
 export const CardsPage = () => {
   const { id } = useParams()

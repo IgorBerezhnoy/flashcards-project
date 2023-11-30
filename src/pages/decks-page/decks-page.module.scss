@@ -1,29 +1,32 @@
 .deck {
   padding-top: 33px;
 }
-.deck__box {
 
+.deck__box {
 }
-.deck__header{
+
+.deck__header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
   margin-bottom: 39px;
 }
+
 .deck__title {
   font-size: var(--font-size-xxl);
-
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-l);
 }
+
 .deck__navigation {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 36px;
   gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 36px;
 }
 
-.deck__table{
+.deck__table {
   margin-bottom: 30px;
 }

@@ -26,6 +26,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       onValueChange,
       placeholder,
       type,
+      value,
       ...restProps
     },
     ref
@@ -47,6 +48,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
             onChange={onChangeHandler}
             ref={ref}
             type={isPassword ? 'password' : 'text'}
+            value={value}
             {...restProps}
           />
           {type === 'search' && (
@@ -55,7 +57,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
                 <Search className={s.icon} />
               </div>
               <div className={s.crossIcon} onClick={() => (clearText ? clearText() : () => {})}>
-                <CloseOutline className={s.icon} />
+                {value && <CloseOutline className={s.icon} />}
               </div>
             </>
           )}
