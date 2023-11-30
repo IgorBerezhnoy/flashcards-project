@@ -7,7 +7,7 @@ import { Typography } from '@/components/ui/typography'
 import pgn from './pagination.module.scss'
 
 export type PaginationPropsType = {
-  onChange: (page: number, count: number) => void
+  onChange: (page: number) => void
   page: number
   selectedCount: number
   setSelectedCount: (select: number) => void
@@ -22,13 +22,13 @@ export const Pagination: React.FC<PaginationPropsType> = ({
   totalCount,
 }) => {
   const lastPage = Math.ceil(totalCount / selectedCount)
-  const onChangeCallback = (targetPage: number) => onChange(targetPage, selectedCount)
+  const onChangeCallback = (targetPage: number) => onChange(targetPage)
 
   const onChangeSelect = (event: React.ChangeEvent<{ value: unknown }>) => {
     const count: number = Number(event.target.value)
 
     setSelectedCount(count)
-    onChange(1, count)
+    onChange(1)
   }
 
   const renderPageButton = (pageNumber: number) => (
@@ -104,11 +104,11 @@ export const Pagination: React.FC<PaginationPropsType> = ({
         Показать
       </Typography>
       <select className={pgn.select} onChange={onChangeSelect} value={selectedCount}>
+        <option value={4}>4</option>
+        <option value={7}>7</option>
         <option value={10}>10</option>
-        <option value={20}>20</option>
         <option value={30}>30</option>
         <option value={50}>50</option>
-        <option value={100}>100</option>
       </select>
       <Typography as={'span'} className={pgn.text2}>
         на странице

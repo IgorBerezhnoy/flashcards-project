@@ -20,15 +20,9 @@ import foto from '../../../public/img/userPhotoForTest.png'
 export const DecksPage = () => {
   const tabs = [{ title: 'My Cards' }, { title: 'All Cards' }]
   const [value, setValue] = useState<string>('')
-  const [page, setPage] = useState<number>(4)
+  const [localValue, setLocalValue] = useState<string>('')
+  const [page, setPage] = useState<number>(1)
   const [selectedCount, setSelectedCount] = useState<number>(10)
-
-  const onChange = (page: number, count: number) => {
-    setPage(page)
-    {
-      count
-    }
-  }
   const [sliderValue, setValueSlide] = useState<number[]>([0, 61])
   const { data, error, isLoading } = useGetDecksQuery({
     currentPage: page,
@@ -37,6 +31,9 @@ export const DecksPage = () => {
     minCardsCount: sliderValue[0],
     name: value,
   })
+  const onChange = (page: number) => {
+    setPage(page)
+  }
 
   return (
     <Page>
@@ -49,10 +46,10 @@ export const DecksPage = () => {
           </div>
           <div className={s.deck__navigation}>
             <DebouncedInput
-              onChange={e => setValue(e.currentTarget.value)}
-              onDebouncedChange={() => console.log(value)}
+              onChange={e => setLocalValue(e.currentTarget.value)}
+              onDebouncedChange={() => setValue(localValue)}
               type={'search'}
-              value={value}
+              value={localValue}
             />
             <Tab tabs={tabs} />
             <Slider
