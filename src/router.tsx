@@ -46,7 +46,7 @@ export const Router = () => {
 
 // TODO решить вопрос с isAuthenticated, нужен ли тут токен
 function PrivateRoutes() {
-  const isAuthenticated = false
+  const isAuthenticated = true
 
   return isAuthenticated ? <Outlet /> : <Navigate to={'/login'} />
 }

@@ -2,21 +2,21 @@ import { LoginParams, LoginResponse } from '@/services/auth.types'
 import { baseApi } from '@/services/base-api'
 import { GetAuthMe } from '@/services/flashcards.types'
 
-const decksService = baseApi.injectEndpoints({
+const authService = baseApi.injectEndpoints({
   endpoints: builder => {
     return {
-      me: builder.query<GetAuthMe, void>({
-        query: () => `v1/auth/me`,
-      }),
-        login: builder.mutation<LoginResponse, LoginParams>({
+      login: builder.mutation<LoginResponse, LoginParams>({
         query: body => ({
           body,
           method: 'POST',
           url: '/v1/auth/login',
         }),
       }),
+      me: builder.query<GetAuthMe, void>({
+        query: () => `v1/auth/me`,
+      }),
     }
   },
 })
 
-export const { useMeQuery,useLoginMutation } = decksService
+export const { useLoginMutation, useMeQuery } = authService
