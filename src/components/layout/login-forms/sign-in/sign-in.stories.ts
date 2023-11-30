@@ -3,7 +3,6 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { SignIn } from './'
 
 const meta = {
-  argTypes: {},
   component: SignIn,
   tags: ['autodocs'],
   title: 'Components/Layout/Forms/SignIn',
@@ -12,4 +11,8 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const SingInForm: Story = {}
+export const SingInForm: Story = {
+  args: {
+    onSubmit: () => console.log(),
+  },
+}
