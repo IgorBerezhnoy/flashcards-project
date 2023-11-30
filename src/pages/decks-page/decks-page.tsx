@@ -17,7 +17,7 @@ import { DebouncedInput } from '@/utils/debounce'
 import s from './decks-page.module.scss'
 
 export const DecksPage = () => {
-  const tabs = [{ title: 'My Cards' }, { title: 'All Cards' }]
+  const tabs = [{ title: 'My CardsPage' }, { title: 'All CardsPage' }]
   const [sliderValue, setValueSlide] = useState<number[]>([0, 61])
   const [localSliderValue, setLocalSliderValue] = useState(sliderValue)
   const [value, setValue] = useState<string>('')
@@ -40,6 +40,7 @@ export const DecksPage = () => {
 
   const clearSortData = () => {
     setValue('')
+    setLocalValue('')
     setPage(1)
     setValueSlide([0, data?.maxCardsCount!])
     setLocalSliderValue([0, data?.maxCardsCount!])
@@ -62,6 +63,10 @@ export const DecksPage = () => {
           </div>
           <div className={s.deck__navigation}>
             <DebouncedInput
+              clearText={() => {
+                setValue('')
+                setLocalValue('')
+              }}
               onChange={e => setLocalValue(e.currentTarget.value)}
               onDebouncedChange={value => setValue(value)}
               type={'search'}

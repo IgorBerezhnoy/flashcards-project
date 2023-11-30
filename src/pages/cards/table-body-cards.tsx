@@ -4,7 +4,8 @@ import { Edit2Outline, TrashOutline } from '@/assets'
 import { Rating } from '@/components/ui/rating'
 import { TableBody, TableCell, TableRow } from '@/components/ui/table'
 import { useMeQuery } from '@/services/auth.service'
-import { useGetCardsQuery, useGetDeckByIdQuery } from '@/services/decks.service'
+import { useGetCardsQuery } from '@/services/cards.service'
+import { useGetDeckByIdQuery } from '@/services/decks.service'
 
 export const TableBodyCards = () => {
   const { id } = useParams()
