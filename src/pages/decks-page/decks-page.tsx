@@ -58,7 +58,7 @@ export const DecksPage = () => {
             <Slider
               defaultValue={sliderValue}
               max={data?.maxCardsCount}
-              onValueChange={setValueSlide}
+              setGlobalValue={setValueSlide}
               value={sliderValue}
             />
             <Button variant={'secondary'}>
