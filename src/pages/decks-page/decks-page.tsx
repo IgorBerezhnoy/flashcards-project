@@ -55,7 +55,7 @@ export const DecksPage = () => {
           <div className={s.deck__navigation}>
             <DebouncedInput
               onChange={e => setLocalValue(e.currentTarget.value)}
-              onDebouncedChange={() => setValue(localValue)}
+              onDebouncedChange={value => setValue(value)}
               type={'search'}
               value={localValue}
             />
