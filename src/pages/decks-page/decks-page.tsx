@@ -10,26 +10,50 @@ import { Tab } from '@/components/ui/tabs'
 import { Typography } from '@/components/ui/typography'
 import { AddNewPack } from '@/pages/decks/addNewPack'
 import { Decks } from '@/pages/decks/decks'
+import { useMeQuery } from '@/services/auth.service'
 import { useGetDecksQuery } from '@/services/decks.service'
 import { DebouncedInput } from '@/utils/debounce'
 
 import s from './decks-page.module.scss'
 
-import foto from '../../../public/img/userPhotoForTest.png'
-
 export const DecksPage = () => {
   const tabs = [{ title: 'My Cards' }, { title: 'All Cards' }]
-  const [value, setValue] = useState<string>('')
   const [sliderValue, setValueSlide] = useState<number[]>([0, 61])
-  const { data, error, isLoading } = useGetDecksQuery({
+  const [localSliderValue, setLocalSliderValue] = useState(sliderValue)
+  const [value, setValue] = useState<string>('')
+  const [localValue, setLocalValue] = useState<string>('')
+  const [page, setPage] = useState<number>(1)
+  const [selectedCount, setSelectedCount] = useState<number>(10)
+
+  const { data: meData } = useMeQuery()
+
+  const { data } = useGetDecksQuery({
+    currentPage: page,
+    itemsPerPage: selectedCount,
     maxCardsCount: sliderValue[1],
     minCardsCount: sliderValue[0],
     name: value,
   })
+  const onChange = (page: number) => {
+    setPage(page)
+  }
+
+  const clearSortData = () => {
+    setValue('')
+    setPage(1)
+    setValueSlide([0, data?.maxCardsCount!])
+    setLocalSliderValue([0, data?.maxCardsCount!])
+    setSelectedCount(10)
+  }
 
   return (
     <Page>
-      <Header isLogin userPhoto={foto} />
+      <Header
+        email={meData?.email}
+        isLogin={!!meData?.id}
+        name={meData?.name}
+        userPhoto={meData?.avatar}
+      />
       <div className={s.deck}>
         <div className={`${s.deck__box} deck__box`}>
           <div className={s.deck__header}>
@@ -38,34 +62,37 @@ export const DecksPage = () => {
           </div>
           <div className={s.deck__navigation}>
             <DebouncedInput
-              onChange={e => setValue(e.currentTarget.value)}
-              onDebouncedChange={() => console.log(value)}
+              onChange={e => setLocalValue(e.currentTarget.value)}
+              onDebouncedChange={value => setValue(value)}
               type={'search'}
-              value={value}
+              value={localValue}
             />
             <Tab tabs={tabs} />
             <Slider
-              defaultValue={sliderValue}
+              localSliderValue={localSliderValue}
               max={data?.maxCardsCount}
-              onValueChange={setValueSlide}
+              setGlobalValue={setValueSlide}
+              setLocalSliderValue={setLocalSliderValue}
               value={sliderValue}
             />
-            <Button variant={'secondary'}>
+            <Button onClick={clearSortData} variant={'secondary'}>
               <TrashOutline />
               <div>Clear Filter</div>
             </Button>
           </div>
           <div className={s.deck__table}>
-            <Decks />
+            <Decks data={data} />
+          </div>
+          <div className={s.deck__pagination}>
+            <Pagination
+              onChange={onChange}
+              page={page}
+              selectedCount={selectedCount}
+              setSelectedCount={setSelectedCount}
+              totalCount={data?.pagination.totalItems!}
+            />
           </div>
         </div>
-      </div>
-      <div>
-        <Pagination
-          onChange={() => {}}
-          page={data?.pagination.currentPage}
-          totalCount={data?.pagination.totalItems}
-        />
       </div>
     </Page>
   )

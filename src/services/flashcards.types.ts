@@ -37,9 +37,7 @@ export type CreateDeckArgs = {
   isPrivate?: boolean
   name: string
 }
-export type GetDeckByIdArgs = {
-  id: string
-}
+
 export type DeleteDeckByIdArg = {
   id: string
 }
@@ -101,4 +99,14 @@ export interface LearnCardsResponse {
   shots: number
   updated: string
   userId: string
+}
+
+export interface GetAuthMe {
+  avatar: string
+  created: string
+  email: string
+  id: string
+  isEmailVerified: boolean
+  name: string
+  updated: string
 }

@@ -1,4 +1,6 @@
-import { LogOut } from '@/assets'
+import { Link } from 'react-router-dom'
+
+import { LogOut, PersonOutline } from '@/assets'
 import { DropDownItem } from '@/components/ui/dropdownMenu/dropDownItem'
 import { DropdownMenu } from '@/components/ui/dropdownMenu/dropdownMenu'
 import { DropdownSeparator } from '@/components/ui/dropdownMenu/dropdownSeparator'
@@ -14,9 +16,18 @@ type Props = {
   profilePageHref: string
 }
 
-export const UserDropdown = ({ email, name, photo, photoDesc, profilePageHref }: Props) => {
+export const UserDropdown = ({ email, name, photo, photoDesc }: Props) => {
   return (
-    <DropdownMenu trigger={<img alt={photoDesc} src={photo} />}>
+    <DropdownMenu
+      trigger={
+        <>
+          <Typography className={s.header__userName} variant={'h3'}>
+            {name || 'NoName'}
+          </Typography>
+          <img alt={photoDesc} className={s.userPhoto} src={photo} />
+        </>
+      }
+    >
       <DropDownItem>
         <div className={s.photoAndEmail}>
           <img alt={photoDesc} className={s.dropdownMenuItem_img} src={photo} />
@@ -32,16 +43,16 @@ export const UserDropdown = ({ email, name, photo, photoDesc, profilePageHref }:
       </DropDownItem>
       <DropdownSeparator />
       <DropDownItem asChild>
-        <a href={profilePageHref}>
-          {/*<WhitePerson color={'white'} height={'16'} width={'16'} />*/}
+        <Link to={'/profile'}>
+          <PersonOutline color={'white'} />
           My Profile
-        </a>
+        </Link>
       </DropDownItem>
       <DropdownSeparator />
-      <DropDownItem>
-        <LogOut color={'white'} height={'16'} width={'16'} />
+      <Link to={'/login'}>
+        <LogOut color={'white'} />
         Sign Out
-      </DropDownItem>
+      </Link>
     </DropdownMenu>
   )
 }

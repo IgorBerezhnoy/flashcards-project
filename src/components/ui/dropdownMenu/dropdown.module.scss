@@ -12,10 +12,10 @@ button {
 }
 
 .trigger {
-  padding: 0;
-  margin: 0;
   display: flex;
   align-items: center;
+  margin: 0;
+  padding: 0;
 }
 
 .dropdownMenuContent {
@@ -113,4 +113,14 @@ button {
   height: 16px;
   margin-right: 0.4rem;
   fill: var(--color-white-100);
+}
+
+.header__userName {
+  border-bottom: 1px dashed var(--color-light-100);
+}
+
+.userPhoto {
+  width: 36px;
+  height: 36px;
+  border-radius: 100%;
 }
