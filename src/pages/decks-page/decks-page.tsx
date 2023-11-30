@@ -20,8 +20,19 @@ import foto from '../../../public/img/userPhotoForTest.png'
 export const DecksPage = () => {
   const tabs = [{ title: 'My Cards' }, { title: 'All Cards' }]
   const [value, setValue] = useState<string>('')
+  const [page, setPage] = useState<number>(4)
+  const [selectedCount, setSelectedCount] = useState<number>(10)
+
+  const onChange = (page: number, count: number) => {
+    setPage(page)
+    {
+      count
+    }
+  }
   const [sliderValue, setValueSlide] = useState<number[]>([0, 61])
   const { data, error, isLoading } = useGetDecksQuery({
+    currentPage: page,
+    itemsPerPage: selectedCount,
     maxCardsCount: sliderValue[1],
     minCardsCount: sliderValue[0],
     name: value,
@@ -56,14 +67,16 @@ export const DecksPage = () => {
             </Button>
           </div>
           <div className={s.deck__table}>
-            <Decks />
+            <Decks data={data} />
           </div>
         </div>
       </div>
       <div>
         <Pagination
-          onChange={() => {}}
-          page={data?.pagination.currentPage}
+          onChange={onChange}
+          page={page}
+          selectedCount={selectedCount}
+          setSelectedCount={setSelectedCount}
           totalCount={data?.pagination.totalItems}
         />
       </div>

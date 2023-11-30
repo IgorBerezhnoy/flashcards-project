@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import KeyboardArrowLeft from '@/assets/icons/keyboard-arrow-left'
 import KeyboardArrowRight from '@/assets/icons/keyboard-arrow-right'
@@ -9,16 +9,20 @@ import pgn from './pagination.module.scss'
 export type PaginationPropsType = {
   onChange: (page: number, count: number) => void
   page: number
+  selectedCount: number
+  setSelectedCount: (select: number) => void
   totalCount: number
 }
 
-export const Pagination: React.FC<PaginationPropsType> = ({ onChange, page, totalCount }) => {
-  console.log({ onChange, page, totalCount })
-  const [selectedCount, setSelectedCount] = useState(100)
+export const Pagination: React.FC<PaginationPropsType> = ({
+  onChange,
+  page,
+  selectedCount,
+  setSelectedCount,
+  totalCount,
+}) => {
   const lastPage = Math.ceil(totalCount / selectedCount)
-  const onChangeCallback = (targetPage: number) => {
-    onChange(targetPage, selectedCount)
-  }
+  const onChangeCallback = (targetPage: number) => onChange(targetPage, selectedCount)
 
   const onChangeSelect = (event: React.ChangeEvent<{ value: unknown }>) => {
     const count: number = Number(event.target.value)
