@@ -15,16 +15,17 @@ import { DebouncedInput } from '@/utils/debounce'
 
 import s from './decks-page.module.scss'
 
-import foto from '../../../public/img/userPhotoForTest.png'
+import photo from '../../../public/img/userPhotoForTest.png'
 
 export const DecksPage = () => {
   const tabs = [{ title: 'My Cards' }, { title: 'All Cards' }]
+  const [sliderValue, setValueSlide] = useState<number[]>([0, 61])
+  const [localSliderValue, setLocalSliderValue] = useState(sliderValue)
   const [value, setValue] = useState<string>('')
   const [localValue, setLocalValue] = useState<string>('')
   const [page, setPage] = useState<number>(1)
   const [selectedCount, setSelectedCount] = useState<number>(10)
-  const [sliderValue, setValueSlide] = useState<number[]>([0, 61])
-  const { data, error, isLoading } = useGetDecksQuery({
+  const { data } = useGetDecksQuery({
     currentPage: page,
     itemsPerPage: selectedCount,
     maxCardsCount: sliderValue[1],
@@ -34,10 +35,17 @@ export const DecksPage = () => {
   const onChange = (page: number) => {
     setPage(page)
   }
+  const clearSortData = () => {
+    setValue('')
+    setPage(1)
+    setValueSlide([0, data?.maxCardsCount!])
+    setLocalSliderValue([0, data?.maxCardsCount!])
+    setSelectedCount(10)
+  }
 
   return (
     <Page>
-      <Header isLogin userPhoto={foto} />
+      <Header isLogin userPhoto={photo} />
       <div className={s.deck}>
         <div className={`${s.deck__box} deck__box`}>
           <div className={s.deck__header}>
@@ -53,12 +61,13 @@ export const DecksPage = () => {
             />
             <Tab tabs={tabs} />
             <Slider
-              defaultValue={sliderValue}
+              localSliderValue={localSliderValue}
               max={data?.maxCardsCount}
               setGlobalValue={setValueSlide}
+              setLocalSliderValue={setLocalSliderValue}
               value={sliderValue}
             />
-            <Button variant={'secondary'}>
+            <Button onClick={clearSortData} variant={'secondary'}>
               <TrashOutline />
               <div>Clear Filter</div>
             </Button>
@@ -74,7 +83,7 @@ export const DecksPage = () => {
           page={page}
           selectedCount={selectedCount}
           setSelectedCount={setSelectedCount}
-          totalCount={data?.pagination.totalItems}
+          totalCount={data?.pagination.totalItems!}
         />
       </div>
     </Page>
