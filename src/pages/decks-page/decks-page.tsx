@@ -75,16 +75,16 @@ export const DecksPage = () => {
           <div className={s.deck__table}>
             <Decks data={data} />
           </div>
+          <div className={s.deck__pagination}>
+            <Pagination
+              onChange={onChange}
+              page={page}
+              selectedCount={selectedCount}
+              setSelectedCount={setSelectedCount}
+              totalCount={data?.pagination.totalItems!}
+            />
+          </div>
         </div>
-      </div>
-      <div>
-        <Pagination
-          onChange={onChange}
-          page={page}
-          selectedCount={selectedCount}
-          setSelectedCount={setSelectedCount}
-          totalCount={data?.pagination.totalItems!}
-        />
       </div>
     </Page>
   )

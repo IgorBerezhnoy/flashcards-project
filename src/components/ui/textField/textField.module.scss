@@ -1,10 +1,15 @@
+.inputContainer {
+  position: relative;
+}
+
 .label {
   color: var(--color-dark-300);
 }
 
 .defaultInput {
+  box-sizing: border-box;
   width: 100%;
-  padding: 6px 12px;
+  padding: 6px 35px 6px 12px;
 
   color: var(--color-light-100);
   text-decoration: none;
@@ -39,22 +44,18 @@
   border: 1px solid var(--color-danger-300);
 }
 
-.errorText {
-  font-size: 0.75rem;
-  color: var(--color-danger-300);
-}
 
 .wrapper {
   position: relative;
-  display: inline;
 }
 
 .searchIcon {
   cursor: pointer;
 
   position: absolute;
-  top: 28px;
-  left: 4px;
+  top: 45%;
+  left: 5px;
+  transform: translateY(-55%);
 
   width: 1.25rem;
   height: 1.25rem;
@@ -64,8 +65,9 @@
   cursor: pointer;
 
   position: absolute;
-  top: 28px;
-  right: 4px;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-60%);
 
   width: 1.25rem;
   height: 1.25rem;
@@ -80,15 +82,21 @@
   cursor: pointer;
 
   position: absolute;
-  top: 28px;
-  right: 16px;
+  top: 50%;
+  right: 20px;
+
 
   width: 10px;
   height: 10px;
 }
 
-.storyBook {
-  width: 200px;
+
+.errorText {
+  font-size: 0.75rem;
+  color: var(--color-danger-300);
+  position: absolute;
+  bottom:-22px;
+  left: 0;
 }
 
 .icon {

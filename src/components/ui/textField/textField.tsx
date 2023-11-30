@@ -37,8 +37,8 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
     const [isPassword, setIsPassword] = useState(type === 'password')
 
     return (
-      <>
-        <div className={`${s.wrapper} `}>
+      <div className={s.inputContainer}>
+        <div className={s.wrapper}>
           {label && <div className={s.label}>{label}</div>}
           <input
             className={`${s.defaultInput} ${className} ${errorMessage ? s.errorInput : ''}  ${
@@ -71,7 +71,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
           )}
         </div>
         {errorMessage && <div className={s.errorText}>{errorMessage}</div>}
-      </>
+      </div>
     )
   }
 )
