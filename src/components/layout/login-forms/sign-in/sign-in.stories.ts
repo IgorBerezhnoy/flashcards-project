@@ -11,8 +11,4 @@ const meta = {
 export default meta
 type Story = StoryObj<typeof meta>
 
-export const SingInForm: Story = {
-  args: {
-    onSubmit: () => console.log(),
-  },
-}
+export const SingInForm: Story = {}
