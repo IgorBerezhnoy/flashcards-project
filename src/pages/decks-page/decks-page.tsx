@@ -16,8 +16,6 @@ import { DebouncedInput } from '@/utils/debounce'
 
 import s from './decks-page.module.scss'
 
-import photo from '../../../public/img/userPhotoForTest.png'
-
 export const DecksPage = () => {
   const tabs = [{ title: 'My Cards' }, { title: 'All Cards' }]
   const [sliderValue, setValueSlide] = useState<number[]>([0, 61])
@@ -50,7 +48,12 @@ export const DecksPage = () => {
 
   return (
     <Page>
-      <Header isLogin userPhoto={photo} />
+      <Header
+        email={meData?.email}
+        isLogin={!!meData?.id}
+        name={meData?.name}
+        userPhoto={meData?.avatar}
+      />
       <div className={s.deck}>
         <div className={`${s.deck__box} deck__box`}>
           <div className={s.deck__header}>
