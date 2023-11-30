@@ -16,14 +16,14 @@
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-l);
 }
-
-.deck__table{
-  margin-bottom: 30px;
-}
 .deck__navigation {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 36px;
   gap: 20px;
+}
+
+.deck__table{
+  margin-bottom: 30px;
 }
