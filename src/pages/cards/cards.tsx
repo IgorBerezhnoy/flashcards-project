@@ -13,6 +13,7 @@ import {
 } from '@/components/ui/table'
 import { TextField } from '@/components/ui/textField'
 import { Typography } from '@/components/ui/typography'
+import { useMeQuery } from '@/services/auth.service'
 import { useGetCardsQuery, useGetDeckByIdQuery } from '@/services/decks.service'
 
 export const Cards = () => {
@@ -20,6 +21,7 @@ export const Cards = () => {
   const { id } = useParams()
   const { data, error, isLoading } = useGetCardsQuery({ id: id ? id : '' })
   const { data: dataThisDeck } = useGetDeckByIdQuery({ id: id ? id : '' })
+  const { data: meData } = useMeQuery()
 
   if (isLoading) {
     return <Typography as={'h1'}>Loading</Typography>
@@ -37,13 +39,19 @@ export const Cards = () => {
         <Typography as={'h2'} variant={'h2'}>
           {dataThisDeck?.name}
         </Typography>
-        <TextField type={'search'} />
-      </div>
-      {data?.items.length ? (
-        <>
+        {meData?.id === dataThisDeck?.userId ? (
+          <Button>Add New Card</Button>
+        ) : data?.items.length ? (
           <Button>
             <Link to={`/learn/${dataThisDeck?.id}`}>Learn to Pack</Link>
           </Button>
+        ) : (
+          ''
+        )}
+        <TextField type={'search'} />
+      </div>
+      <div>
+        {data?.items.length ? (
           <Table>
             <TableHead>
               <TableRow>
@@ -67,8 +75,12 @@ export const Cards = () => {
                     <TableCell>
                       {
                         <div>
-                          <Edit2Outline onClick={() => console.log('Edit2Outline')} />
-                          <TrashOutline onClick={() => console.log('TrashOutline')} />
+                          {meData?.id === dataThisDeck?.author?.id && (
+                            <Edit2Outline onClick={() => console.log('Edit2Outline')} />
+                          )}
+                          {meData?.id === dataThisDeck?.author?.id && (
+                            <TrashOutline onClick={() => console.log('TrashOutline')} />
+                          )}
                         </div>
                       }
                     </TableCell>
@@ -77,10 +89,10 @@ export const Cards = () => {
               })}
             </TableBody>
           </Table>
-        </>
-      ) : (
-        <Typography>Can't find any pack of cards </Typography>
-      )}
+        ) : (
+          <Typography>{"Can't find any pack of cards "}</Typography>
+        )}
+      </div>
     </>
   )
 }
