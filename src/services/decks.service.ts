@@ -1,9 +1,9 @@
 import { baseApi } from '@/services/base-api'
 import {
   CreateDeckArgs,
+  DeckItem,
   DeleteDeckByIdArg,
   GetCardsResponse,
-  GetDeckByIdArgs,
   GetDecksArgs,
   GetDecksResponse,
   LearnCardsResponse,
@@ -32,7 +32,7 @@ const decksService = baseApi.injectEndpoints({
         providesTags: ['Decks'],
         query: id => `v1/decks/${id.id}/cards`,
       }),
-      getDeckById: builder.query<GetDecksResponse, GetDeckByIdArgs>({
+      getDeckById: builder.query<DeckItem, { id: string }>({
         query: id => `v1/decks/${id.id}`,
       }),
       getDecks: builder.query<GetDecksResponse, GetDecksArgs | void>({
