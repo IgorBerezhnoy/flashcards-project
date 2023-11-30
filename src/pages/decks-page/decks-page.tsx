@@ -20,12 +20,20 @@ import foto from '../../../public/img/userPhotoForTest.png'
 export const DecksPage = () => {
   const tabs = [{ title: 'My Cards' }, { title: 'All Cards' }]
   const [value, setValue] = useState<string>('')
+  const [localValue, setLocalValue] = useState<string>('')
+  const [page, setPage] = useState<number>(1)
+  const [selectedCount, setSelectedCount] = useState<number>(10)
   const [sliderValue, setValueSlide] = useState<number[]>([0, 61])
   const { data, error, isLoading } = useGetDecksQuery({
+    currentPage: page,
+    itemsPerPage: selectedCount,
     maxCardsCount: sliderValue[1],
     minCardsCount: sliderValue[0],
     name: value,
   })
+  const onChange = (page: number) => {
+    setPage(page)
+  }
 
   return (
     <Page>
@@ -38,16 +46,16 @@ export const DecksPage = () => {
           </div>
           <div className={s.deck__navigation}>
             <DebouncedInput
-              onChange={e => setValue(e.currentTarget.value)}
-              onDebouncedChange={() => console.log(value)}
+              onChange={e => setLocalValue(e.currentTarget.value)}
+              onDebouncedChange={() => setValue(localValue)}
               type={'search'}
-              value={value}
+              value={localValue}
             />
             <Tab tabs={tabs} />
             <Slider
               defaultValue={sliderValue}
               max={data?.maxCardsCount}
-              onValueChange={setValueSlide}
+              setGlobalValue={setValueSlide}
               value={sliderValue}
             />
             <Button variant={'secondary'}>
@@ -56,14 +64,16 @@ export const DecksPage = () => {
             </Button>
           </div>
           <div className={s.deck__table}>
-            <Decks />
+            <Decks data={data} />
           </div>
         </div>
       </div>
       <div>
         <Pagination
-          onChange={() => {}}
-          page={data?.pagination.currentPage}
+          onChange={onChange}
+          page={page}
+          selectedCount={selectedCount}
+          setSelectedCount={setSelectedCount}
           totalCount={data?.pagination.totalItems}
         />
       </div>

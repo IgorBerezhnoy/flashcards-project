@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef } from 'react'
+import { ComponentPropsWithoutRef, useState } from 'react'
 
 import { Typography } from '@/components/ui/typography'
 import * as SliderRadix from '@radix-ui/react-slider'
@@ -6,23 +6,27 @@ import * as SliderRadix from '@radix-ui/react-slider'
 import s from './slider.module.scss'
 
 export type SliderProps = {
+  setGlobalValue: any
   value: number[]
 } & ComponentPropsWithoutRef<typeof SliderRadix.Root>
 export const Slider = (props: SliderProps) => {
-  const { max, value, ...rest } = props
+  const { max, onValueChange, setGlobalValue, value, ...rest } = props
+  const [localValue, setValue] = useState(value)
 
   return (
     <div className={`${s.wrapper}`}>
       <Typography as={'div'} className={`${s.value}`} variant={'body2'}>
-        {value?.[0]}
+        {localValue?.[0]}
       </Typography>
       <SliderRadix.Root
         className={`${s.root}`}
         {...rest}
-        defaultValue={value}
         max={max}
         minStepsBetweenThumbs={1}
+        onPointerUp={() => setGlobalValue(localValue)}
+        onValueChange={setValue}
         step={1}
+        value={localValue}
       >
         <SliderRadix.Track className={`${s.track}`}>
           <SliderRadix.Range className={`${s.range}`} />
@@ -31,7 +35,7 @@ export const Slider = (props: SliderProps) => {
         <SliderRadix.Thumb aria-label={'Volume'} className={`${s.thumb}`} defaultValue={value[1]} />
       </SliderRadix.Root>
       <Typography as={'div'} className={`${s.value}`}>
-        {value?.[1]}
+        {localValue?.[1]}
       </Typography>
     </div>
   )

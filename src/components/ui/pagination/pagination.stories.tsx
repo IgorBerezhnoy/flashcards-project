@@ -11,12 +11,18 @@ export default {
 
 export const Default = () => {
   const [page, setPage] = useState(1)
-  const onChange = (page: number, count: number) => {
+  const onChange = (page: number) => {
     setPage(page)
-    {
-      count
-    }
   }
+  const [selectedCount, setSelectedCount] = useState<number>(10)
 
-  return <Pagination onChange={onChange} page={page} totalCount={5500} />
+  return (
+    <Pagination
+      onChange={onChange}
+      page={page}
+      selectedCount={selectedCount}
+      setSelectedCount={setSelectedCount}
+      totalCount={5500}
+    />
+  )
 }
