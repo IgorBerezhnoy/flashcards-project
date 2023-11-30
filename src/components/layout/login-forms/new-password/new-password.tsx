@@ -1,8 +1,8 @@
 import { useForm } from 'react-hook-form'
 
+import { ControlledTextField } from '@/components/controled/controlled-textField'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
-import { TextField } from '@/components/ui/textField'
 import { Typography } from '@/components/ui/typography'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -20,7 +20,7 @@ type Props = {
 }
 
 export const NewPassword = (props: Props) => {
-  const { handleSubmit, register } = useForm<NewPasswordData>({ resolver: zodResolver(schema) })
+  const { control, handleSubmit } = useForm<NewPasswordData>({ resolver: zodResolver(schema) })
 
   return (
     <Card className={s.container}>
@@ -28,11 +28,12 @@ export const NewPassword = (props: Props) => {
         Create new password
       </Typography>
       <form className={s.form} onSubmit={handleSubmit(props.onSubmit)}>
-        <TextField
+        <ControlledTextField
+          control={control}
           label={'Password'}
+          name={'password'}
           placeholder={'New password'}
           type={'password'}
-          {...register('password')}
         />
         <Typography className={s.infoText} variant={'body2'}>
           Create new password and we will send you further instructions to email

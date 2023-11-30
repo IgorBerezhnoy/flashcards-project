@@ -1,8 +1,8 @@
 import { useForm } from 'react-hook-form'
 
+import { ControlledTextField } from '@/components/controled/controlled-textField'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
-import { TextField } from '@/components/ui/textField'
 import { Typography } from '@/components/ui/typography'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -21,7 +21,7 @@ type Props = {
 }
 
 export const SignUp = (props: Props) => {
-  const { handleSubmit, register } = useForm<SignUpData>({
+  const { control, handleSubmit } = useForm<SignUpData>({
     resolver: zodResolver(schema),
   })
 
@@ -31,17 +31,24 @@ export const SignUp = (props: Props) => {
         Sign up
       </Typography>
       <form className={s.form} onSubmit={handleSubmit(props.onSubmit)}>
-        <TextField label={'Email'} placeholder={'email'} {...register('email')} />
-        <TextField
+        <ControlledTextField
+          control={control}
+          label={'Email'}
+          name={'email'}
+          placeholder={'email'}
+        />
+        <ControlledTextField
+          control={control}
           label={'Password'}
+          name={'password'}
           placeholder={'password'}
-          {...register('password')}
           type={'password'}
         />
-        <TextField
+        <ControlledTextField
+          control={control}
           label={'Confirm Password'}
+          name={'confirmPassword'}
           placeholder={'Confirm password'}
-          {...register('confirmPassword')}
           type={'password'}
         />
         <Button>Sign Up</Button>
