@@ -10,6 +10,7 @@ import { Tab } from '@/components/ui/tabs'
 import { Typography } from '@/components/ui/typography'
 import { AddNewPack } from '@/pages/decks/addNewPack'
 import { Decks } from '@/pages/decks/decks'
+import { useMeQuery } from '@/services/auth.service'
 import { useGetDecksQuery } from '@/services/decks.service'
 import { DebouncedInput } from '@/utils/debounce'
 
@@ -25,6 +26,9 @@ export const DecksPage = () => {
   const [localValue, setLocalValue] = useState<string>('')
   const [page, setPage] = useState<number>(1)
   const [selectedCount, setSelectedCount] = useState<number>(10)
+
+  const { data: meData } = useMeQuery()
+
   const { data } = useGetDecksQuery({
     currentPage: page,
     itemsPerPage: selectedCount,
@@ -35,6 +39,7 @@ export const DecksPage = () => {
   const onChange = (page: number) => {
     setPage(page)
   }
+
   const clearSortData = () => {
     setValue('')
     setPage(1)
