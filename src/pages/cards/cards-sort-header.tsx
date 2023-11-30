@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { TextField } from '@/components/ui/textField'
 import { Typography } from '@/components/ui/typography'
 import { useMeQuery } from '@/services/auth.service'
-import { useCreateCardMutation, useGetCardsQuery } from '@/services/cards.service'
+import { useGetCardsQuery } from '@/services/cards.service'
 import { useGetDeckByIdQuery } from '@/services/decks.service'
 import { BackToPacksList } from '@/utils/backToPack'
 
@@ -14,7 +14,7 @@ export const CardsSortHeader = () => {
   const { data: dataThisDeck } = useGetDeckByIdQuery({ id: id ? id : '' })
   const { data } = useGetCardsQuery({ id: id ? id : '' })
   const { data: meData } = useMeQuery()
-  const [createCard] = useCreateCardMutation()
+  // const [createCard] = useCreateCardMutation()
 
   return (
     <div>
