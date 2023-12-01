@@ -20,7 +20,6 @@
 
   &::placeholder {
     color: var(--color-dark-300);
-    border: 1px solid var(--color-dark-300);
   }
 
   &:hover {
@@ -43,7 +42,6 @@
   color: var(--color-danger-300);
   border: 1px solid var(--color-danger-300);
 }
-
 
 .wrapper {
   position: relative;
@@ -85,18 +83,17 @@
   top: 50%;
   right: 20px;
 
-
   width: 10px;
   height: 10px;
 }
 
-
 .errorText {
+  position: absolute;
+  bottom: -22px;
+  left: 0;
+
   font-size: 0.75rem;
   color: var(--color-danger-300);
-  position: absolute;
-  bottom:-22px;
-  left: 0;
 }
 
 .icon {
