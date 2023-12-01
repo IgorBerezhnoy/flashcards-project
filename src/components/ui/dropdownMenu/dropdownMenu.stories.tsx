@@ -72,7 +72,7 @@ export const WithOutUser: Story = {
   args: {
     children: (
       <div>
-        <DropDownItem asChild>
+        <DropDownItem>
           <Typography as={'div'} className={s.dropdownMenuItem} variant={'caption'}>
             <PlayCircleOutline className={s.icons} />
             Learn
