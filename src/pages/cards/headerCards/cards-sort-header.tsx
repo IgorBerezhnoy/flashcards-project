@@ -4,14 +4,14 @@ import { Button } from '@/components/ui/button'
 import { Modal } from '@/components/ui/modal/modal'
 import { TextField } from '@/components/ui/textField'
 import { Typography } from '@/components/ui/typography'
-import { AddNewCard } from '@/pages/cards/add-new-card'
-import { DropdownCards } from '@/pages/cards/dropdown-cards'
+import { AddNewCard } from '@/pages/cards/headerCards/add-new-card'
+import { DropdownCards } from '@/pages/cards/headerCards/dropdown-cards'
 import { useMeQuery } from '@/services/auth.service'
 import { useGetCardsQuery } from '@/services/cards.service'
 import { useGetDeckByIdQuery } from '@/services/decks.service'
 import { BackToPacksList } from '@/utils/backToPack'
 
-import s from './cards-page.module.scss'
+import s from '../cards-page.module.scss'
 
 export const CardsSortHeader = () => {
   const { id } = useParams()

@@ -4,7 +4,7 @@ import { Slider } from '@/components/ui/slider'
 import { Sort } from '@/components/ui/table'
 import { Tab } from '@/components/ui/tabs'
 import { Typography } from '@/components/ui/typography'
-import { AddNewPack } from '@/pages/decks/addNewPack'
+import { AddNewPack } from '@/pages/decks-page/addNewPack'
 import { DebouncedInput } from '@/utils/debounce'
 
 import s from '@/pages/decks-page/decks-page.module.scss'

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
 import { TableCell, TableRow } from '@/components/ui/table'
-import { DeckIcons } from '@/pages/decks/deckIcons'
+import { DeckIcons } from '@/pages/decks/icons/deckIcons'
 import { DeckItem } from '@/services/flashcards.types'
 
 type Props = { deck: DeckItem }

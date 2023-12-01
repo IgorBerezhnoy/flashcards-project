@@ -2,10 +2,9 @@ import { useParams } from 'react-router-dom'
 
 import { Header } from '@/components/ui/header'
 import { Page } from '@/components/ui/page'
-import { Table } from '@/components/ui/table'
+import { Table, TableHeader } from '@/components/ui/table'
 import { Typography } from '@/components/ui/typography'
-import { CardsSortHeader } from '@/pages/cards/cards-sort-header'
-import { CardsTableHeader } from '@/pages/cards/cards-table-header'
+import { CardsSortHeader } from '@/pages/cards/headerCards/cards-sort-header'
 import { TableBodyCards } from '@/pages/cards/table-body-cards'
 import { useMeQuery } from '@/services/auth.service'
 import { useGetCardsQuery } from '@/services/cards.service'
@@ -23,6 +22,24 @@ export const CardsPage = () => {
   if (error) {
     return <Typography as={'h1'}>Error</Typography>
   }
+  const columns = [
+    {
+      key: 'question',
+      title: 'Question',
+    },
+    {
+      key: 'answer',
+      title: 'Answer',
+    },
+    {
+      key: 'updated',
+      title: 'Last Updated',
+    },
+    {
+      key: 'grade',
+      title: 'Grade',
+    },
+  ]
 
   return (
     <Page>
@@ -38,7 +55,7 @@ export const CardsPage = () => {
           <div>
             {data?.items.length ? (
               <Table>
-                <CardsTableHeader />
+                <TableHeader columns={columns} />
                 <TableBodyCards />
               </Table>
             ) : (
