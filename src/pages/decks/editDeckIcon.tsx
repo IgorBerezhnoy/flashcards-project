@@ -5,14 +5,13 @@ import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Modal } from '@/components/ui/modal/modal'
 import { TextField } from '@/components/ui/textField'
+import { usePatchDeckMutation } from '@/services/decks.service'
 
 import s from '@/components/ui/table/table.module.scss'
 
 export const EditDeckIcon = ({ id }: { id: string }) => {
-  // TODO компонента в работе
-  // const [editDeck, { isLoading }] = usePatchDeckMutation()
+  const [editDeck] = usePatchDeckMutation()
   const [value, setValue] = useState('')
-  const [message, setMessage] = useState('')
   const [isChecked, setIsChecked] = useState(false)
 
   return (
@@ -21,13 +20,11 @@ export const EditDeckIcon = ({ id }: { id: string }) => {
         <div className={s.contentBody}>
           <TextField onValueChange={e => setValue(e)} value={value} />
           <Checkbox checked={isChecked} onValueChange={() => setIsChecked(!isChecked)} />
-          {message}
         </div>
         <div className={s.buttons}>
           <Button variant={'secondary'}>Cancel</Button>
           <Button
-            // onClick={() => editDeck({ id, isPrivate: isChecked, name: value })}
-            onClick={() => setMessage('Я не работаю ')}
+            onClick={() => editDeck({ id, isPrivate: isChecked, name: value })}
             variant={'primary'}
           >
             Save Changes

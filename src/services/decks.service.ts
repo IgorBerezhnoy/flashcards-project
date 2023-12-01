@@ -27,7 +27,14 @@ const decksService = baseApi.injectEndpoints({
           url: `v1/decks/${id.id}`,
         }),
       }),
-      getDeckById: builder.query<DeckItem, { id: string }>({
+      getDeckById: builder.query<
+        DeckItem,
+        {
+          id: string
+        }
+      >({
+        providesTags: ['Deck'],
+
         query: id => `v1/decks/${id.id}`,
       }),
       getDecks: builder.query<GetDecksResponse, GetDecksArgs | void>({
@@ -37,13 +44,22 @@ const decksService = baseApi.injectEndpoints({
           url: `v1/decks`,
         }),
       }),
-      learnCards: builder.query<LearnCardsResponse, { id: string }>({
+      learnCards: builder.query<
+        LearnCardsResponse,
+        {
+          id: string
+        }
+      >({
         query: id => `v1/decks/${id.id}/learn`,
       }),
       patchDeck: builder.mutation<void, PatchDeckByIdArg>({
-        invalidatesTags: ['Decks'],
+        invalidatesTags: ['Decks', 'Deck'],
         query: args => ({
-          body: args,
+          body: {
+            cover: args.cover,
+            isPrivate: args.isPrivate,
+            name: args.name,
+          },
           method: 'PATCH',
           url: `v1/decks/${args.id}`,
         }),
