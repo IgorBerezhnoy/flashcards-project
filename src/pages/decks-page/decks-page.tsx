@@ -17,7 +17,6 @@ import { DebouncedInput } from '@/utils/debounce'
 import s from './decks-page.module.scss'
 
 export const DecksPage = () => {
-  const tabs = [{ title: 'My CardsPage' }, { title: 'All CardsPage' }]
   const [sliderValue, setValueSlide] = useState<number[]>([0, 61])
   const [localSliderValue, setLocalSliderValue] = useState(sliderValue)
   const [value, setValue] = useState<string>('')
@@ -26,8 +25,14 @@ export const DecksPage = () => {
   const [selectedCount, setSelectedCount] = useState<number>(10)
 
   const { data: meData } = useMeQuery()
+  const tabs = [
+    { title: 'My CardsPage', value: meData?.id },
+    { title: 'All CardsPage', value: '' },
+  ]
+  const [activeTab, setActiveTab] = useState<string>(tabs[1].value!)
 
   const { data } = useGetDecksQuery({
+    authorId: activeTab,
     currentPage: page,
     itemsPerPage: selectedCount,
     maxCardsCount: sliderValue[1],
@@ -45,6 +50,7 @@ export const DecksPage = () => {
     setValueSlide([0, data?.maxCardsCount!])
     setLocalSliderValue([0, data?.maxCardsCount!])
     setSelectedCount(10)
+    setActiveTab('')
   }
 
   return (
@@ -72,7 +78,7 @@ export const DecksPage = () => {
               type={'search'}
               value={localValue}
             />
-            <Tab tabs={tabs} />
+            <Tab activeTab={activeTab} setActiveTab={setActiveTab} tabs={tabs} />
             <Slider
               localSliderValue={localSliderValue}
               max={data?.maxCardsCount}
