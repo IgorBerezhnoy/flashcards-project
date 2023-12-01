@@ -22,6 +22,17 @@ const privateRoutes: RouteObject[] = [
     element: <DecksPage />,
     path: '/',
   },
+  {
+    element: (
+      <div>
+        <h1>profile</h1>
+        Я не работаю <br />
+        Саня сделай меня
+        <img src={'https://i.imgur.com/1Kqs7Ui.jpg'} width={800} />
+      </div>
+    ),
+    path: '/profile',
+  },
 
   {
     element: <CardsPage />,

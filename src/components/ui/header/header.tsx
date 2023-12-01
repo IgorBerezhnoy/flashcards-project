@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import { Logo } from '@/assets'
 import { UserDropdown } from '@/components/layout/header/user-dropdown/user-dropdown'
 import { Button } from '@/components/ui/button'
@@ -16,7 +18,9 @@ export const Header = ({ email, isLogin, name, onClick, userPhoto }: HeaderType)
   return (
     <div className={s.header}>
       <div className={`${s.header__box} header__box`}>
-        <Logo className={s.header__logo} />
+        <Link to={'/'}>
+          <Logo className={s.header__logo} />
+        </Link>
         {!isLogin ? (
           <Button className={s.header__btn} onClick={onClick}>
             Sign In

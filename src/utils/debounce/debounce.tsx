@@ -20,7 +20,7 @@ export const DebouncedInput: React.FC<SuperDebouncedInputPropsType> = ({
       clearTimeout(timerId)
       const timer = setTimeout(() => {
         onDebouncedChange(value)
-      }, 1000)
+      }, 600)
 
       setTimerId(Number(timer))
     }
