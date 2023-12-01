@@ -26,8 +26,8 @@ export const DecksPage = () => {
 
   const { data: meData } = useMeQuery()
   const tabs = [
-    { title: 'My CardsPage', value: meData?.id },
-    { title: 'All CardsPage', value: '' },
+    { title: 'My Cards', value: meData?.id },
+    { title: 'All Cards', value: '' },
   ]
   const [activeTab, setActiveTab] = useState<string>(tabs[1].value!)
 
