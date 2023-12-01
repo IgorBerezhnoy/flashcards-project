@@ -80,9 +80,9 @@ export const DecksPage = () => {
               setLocalSliderValue={setLocalSliderValue}
               value={sliderValue}
             />
-            <Button onClick={clearSortData} variant={'secondary'}>
-              <TrashOutline />
-              <div>Clear Filter</div>
+            <Button className={s.deck__btn} onClick={clearSortData} variant={'secondary'}>
+              <TrashOutline className={s.deck__deleteIcon} />
+              <div className={s.deck__btnText}>Clear Filter</div>
             </Button>
           </div>
           <div className={s.deck__table}>

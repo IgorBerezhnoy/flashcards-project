@@ -1,0 +1,30 @@
+.cards {
+  padding-top: 24px;
+}
+.cards__container {
+  display: flex;
+  flex-direction: column;
+}
+
+.cards__backTo {
+  margin-bottom: 33px;
+}
+
+.cards__navigation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 27px;
+}
+
+.cards__title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.cards__search {
+  margin-bottom: 24px;
+}
