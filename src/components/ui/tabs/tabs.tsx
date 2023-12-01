@@ -24,9 +24,6 @@ export const Tab: FC<TabSwitcherPropsType> = ({
   showValue = false,
   tabs,
 }) => {
-  console.log(tabs[0].title)
-  console.log(tabs[1].title)
-
   return (
     <div className={s.wrapper}>
       <Tabs.Root

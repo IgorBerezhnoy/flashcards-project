@@ -1,21 +1,30 @@
-import { Table, TableBody } from '@/components/ui/table'
+import { Table, TableBody, TableHeader } from '@/components/ui/table'
 import { Deck } from '@/pages/decks/deck'
-import { DecksTableHeader } from '@/pages/decks/decksTableHeader'
 
-export const Decks = ({ data }: any) => {
-  // const { data, error, isLoading } = useGetDecksQuery()
-  //
-  // if (isLoading) {
-  //   return <Typography as={'h1'}>Loading</Typography>
-  // }
-  // if (error) {
-  //   return <Typography as={'h1'}>Error</Typography>
-  // }
+export const Decks = ({ data, setSort, sort }: any) => {
+  const columns = [
+    {
+      key: 'name',
+      title: 'Name',
+    },
+    {
+      key: 'cardsCount',
+      title: 'Cards',
+    },
+    {
+      key: 'updated',
+      title: 'Last Updated',
+    },
+    {
+      key: 'createdBy',
+      title: 'Created by',
+    },
+  ]
 
   return (
     <div>
       <Table>
-        <DecksTableHeader />
+        <TableHeader columns={columns} onSort={setSort} sort={sort} />
         <TableBody>{data?.items.map((deck: any) => <Deck deck={deck} key={deck.id} />)}</TableBody>
       </Table>
     </div>
