@@ -46,6 +46,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
               type === 'search' && s.searchInput
             }`}
             onChange={onChangeHandler}
+            placeholder={placeholder}
             ref={ref}
             type={isPassword ? 'password' : 'text'}
             value={value}

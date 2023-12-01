@@ -13,6 +13,10 @@ export const TableBodyCards = () => {
   const { data: meData } = useMeQuery()
   const { data: dataThisDeck } = useGetDeckByIdQuery({ id: id ? id : '' })
 
+  console.log(meData?.id)
+  console.log(dataThisDeck?.author?.id)
+  console.log(meData?.id === dataThisDeck?.userId)
+
   return (
     <TableBody>
       {data?.items.map(card => {
@@ -27,10 +31,10 @@ export const TableBodyCards = () => {
             <TableCell>
               {
                 <div>
-                  {meData?.id === dataThisDeck?.author?.id && (
+                  {meData?.id === dataThisDeck?.userId && (
                     <Edit2Outline onClick={() => console.log('Edit2Outline')} />
                   )}
-                  {meData?.id === dataThisDeck?.author?.id && (
+                  {meData?.id === dataThisDeck?.userId && (
                     <TrashOutline onClick={() => console.log('TrashOutline')} />
                   )}
                 </div>

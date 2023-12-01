@@ -7,12 +7,13 @@ const cardsService = baseApi.injectEndpoints({
       createCard: builder.mutation<CreateCardResponseType, CreateCard>({
         invalidatesTags: ['Cards'],
         query: args => ({
-          body: args,
-          method: 'PATCH',
+          body: { answer: args.answer, question: args.question },
+          method: 'POST',
           url: `v1/decks/${args.id}/cards`,
         }),
       }),
       getCards: builder.query<GetCardsResponse, { id: string }>({
+        providesTags: ['Cards'],
         query: id => `v1/decks/${id.id}/cards`,
       }),
     }
