@@ -60,6 +60,7 @@ export const DecksPage = () => {
         name={meData?.name}
         userPhoto={meData?.avatar}
       />
+      <img src={'https://i.playground.ru/p/nMJgw9I2LY93rNVne2DMQw.jpeg'} />
       <div className={s.deck}>
         <div className={`${s.deck__box} deck__box`}>
           <DesksSortHeader
