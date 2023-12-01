@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 
 import { TrashOutline } from '@/assets'
 import { Button } from '@/components/ui/button'
@@ -6,6 +6,7 @@ import { Header } from '@/components/ui/header'
 import { Page } from '@/components/ui/page'
 import { Pagination } from '@/components/ui/pagination'
 import { Slider } from '@/components/ui/slider'
+import { Sort } from '@/components/ui/table'
 import { Tab } from '@/components/ui/tabs'
 import { Typography } from '@/components/ui/typography'
 import { AddNewPack } from '@/pages/decks/addNewPack'
@@ -30,20 +31,30 @@ export const DecksPage = () => {
     { title: 'All CardsPage', value: '' },
   ]
   const [activeTab, setActiveTab] = useState<string>(tabs[1].value!)
+  const [sort, setSort] = useState<Sort>(null)
 
-  const { data } = useGetDecksQuery({
+  const sortedString = useMemo(() => {
+    if (!sort) {
+      return null
+    }
+
+    return `${sort.key}-${sort.direction}`
+  }, [sort])
+
+  const { data, error, isLoading } = useGetDecksQuery({
     authorId: activeTab,
     currentPage: page,
     itemsPerPage: selectedCount,
     maxCardsCount: sliderValue[1],
     minCardsCount: sliderValue[0],
     name: value,
+    orderBy: sortedString,
   })
   const onChange = (page: number) => {
     setPage(page)
   }
-
   const clearSortData = () => {
+    setSort(null)
     setValue('')
     setLocalValue('')
     setPage(1)
@@ -51,6 +62,13 @@ export const DecksPage = () => {
     setLocalSliderValue([0, data?.maxCardsCount!])
     setSelectedCount(10)
     setActiveTab('')
+  }
+
+  if (isLoading) {
+    return <Typography as={'h1'}>Loading</Typography>
+  }
+  if (error) {
+    return <Typography as={'h1'}>Error</Typography>
   }
 
   return (
@@ -92,7 +110,7 @@ export const DecksPage = () => {
             </Button>
           </div>
           <div className={s.deck__table}>
-            <Decks data={data} />
+            <Decks data={data} setSort={setSort} sort={sort} />
           </div>
           <div className={s.deck__pagination}>
             <Pagination
