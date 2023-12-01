@@ -2,38 +2,37 @@
 @import '../../../../node_modules/@radix-ui/colors/mauve.css';
 @import '../../../../node_modules/@radix-ui/colors/violet.css';
 
-/* reset */
-button {
-  all: unset;
-}
-
-.root {
-  position: relative;
-}
-
 .trigger {
   display: flex;
   align-items: center;
   margin: 0;
   padding: 0;
+  gap: 14px;
+  position: relative;
+  cursor: pointer;
+  transition: opacity 0.2s ease-in-out;
+
+  &:hover {
+    opacity: 0.7;
+  }
 }
 
 .dropdownMenuContent {
-  position: fixed;
+  position: relative;
   top: 6px;
-
+  right: calc(10% + 15px);
   margin: 0.5rem;
   padding: 0.75rem;
 
-  background: var(--color-dark-700);
-  border: 0.25rem solid var(--color-dark-500);
-  border-radius: 0.25rem;
+  background-color: var(--color-dark-700);
+  border: 1px solid var(--color-dark-500);
+  border-radius: 4px;
 
   &::after {
     content: '';
 
     position: absolute;
-    top: -10px;
+    top: -9px;
     right: 10px;
     transform: rotate(45deg);
 
@@ -41,17 +40,20 @@ button {
     height: 16px;
 
     background: var(--color-dark-700);
-    border-top: 0.25rem solid #333;
-    border-left: 0.25rem solid #333;
+    border-top: 1px solid #333;
+    border-left: 1px solid #333;
   }
 }
+
 
 .dropdownMenuItem {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  gap: 10px;
   outline: none;
 }
+
 
 .dropdownMenuLabel {
   padding-left: 25px;
@@ -121,5 +123,5 @@ button {
 .userPhoto {
   width: 36px;
   height: 36px;
-  border-radius: 100%;
+  border-radius: 50%;
 }

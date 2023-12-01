@@ -12,7 +12,7 @@ import { useGetCardsQuery } from '@/services/cards.service'
 import { useDeleteDeckMutation, useGetDeckByIdQuery } from '@/services/decks.service'
 import { BackToPacksList } from '@/utils/backToPack'
 
-import s from '@/components/ui/dropdownMenu/dropdown.module.scss'
+import s from './cards-page.module.scss'
 
 export const CardsSortHeader = () => {
   const { id } = useParams()
@@ -23,74 +23,80 @@ export const CardsSortHeader = () => {
   const [deleteDeck] = useDeleteDeckMutation()
 
   return (
-    <div>
-      <BackToPacksList />
-      <>
-        <Typography as={'h2'} variant={'h2'}>
-          {dataThisDeck?.name}
-        </Typography>
-        <DropdownMenu trigger={<MoreVerticalOutline />}>
-          <div>
+    <div className={s.cards__conteiner}>
+      <div className={s.cards__backTo}>
+        <BackToPacksList />
+      </div>
+      <div className={s.cards__navigation}>
+        <div className={s.cards__title}>
+          <Typography as={'h2'} variant={'h2'}>
+            {dataThisDeck?.name}
+          </Typography>
+          <DropdownMenu trigger={<MoreVerticalOutline />}>
             <div>
-              <DropDownItem asChild>
-                <Link to={`/learn/${dataThisDeck?.id}`}>
-                  {' '}
-                  <Typography as={'div'} className={s.dropdownMenuItem} variant={'caption'}>
-                    <PlayCircleOutline className={s.icons} />
-                    Learn
-                  </Typography>
-                </Link>
-              </DropDownItem>
-              <DropdownSeparator />
-              <DropDownItem>
-                <Typography as={'div'} className={s.dropdownMenuItem} variant={'caption'}>
-                  <Edit2Outline className={s.icons} />
-                  Edit
-                </Typography>
-              </DropDownItem>{' '}
-              <DropdownSeparator />
-              <DropDownItem>
-                <Modal
-                  trigger={
+              <div>
+                <DropDownItem asChild>
+                  <Link to={`/learn/${dataThisDeck?.id}`}>
+                    {' '}
                     <Typography as={'div'} className={s.dropdownMenuItem} variant={'caption'}>
-                      <TrashOutline className={s.icons} />
-                      Delete
+                      <PlayCircleOutline className={s.icons} />
+                      Learn
                     </Typography>
-                  }
-                >
-                  <div className={s.contentWrapper}>
-                    <div className={s.contentDeleteBody}>
-                      <Typography as={'div'}>
-                        Do you really want to remove <span>Pack Name</span>?
+                  </Link>
+                </DropDownItem>
+                <DropdownSeparator />
+                <DropDownItem>
+                  <Typography as={'div'} className={s.dropdownMenuItem} variant={'caption'}>
+                    <Edit2Outline className={s.icons} />
+                    Edit
+                  </Typography>
+                </DropDownItem>{' '}
+                <DropdownSeparator />
+                <DropDownItem>
+                  <Modal
+                    trigger={
+                      <Typography as={'div'} className={s.dropdownMenuItem} variant={'caption'}>
+                        <TrashOutline className={s.icons} />
+                        Delete
                       </Typography>
-                      <Typography as={'div'}>All cards will be deleted.</Typography>
+                    }
+                  >
+                    <div className={s.contentWrapper}>
+                      <div className={s.contentDeleteBody}>
+                        <Typography as={'div'}>
+                          Do you really want to remove <span>Pack Name</span>?
+                        </Typography>
+                        <Typography as={'div'}>All cards will be deleted.</Typography>
+                      </div>
+                      <div className={s.buttons}>
+                        <Button variant={'secondary'}>Cancel</Button>
+                        <Button onClick={() => deleteDeck({ id: id ?? '' })} variant={'primary'}>
+                          Delete Pack
+                        </Button>
+                      </div>
                     </div>
-                    <div className={s.buttons}>
-                      <Button variant={'secondary'}>Cancel</Button>
-                      <Button onClick={() => deleteDeck({ id })} variant={'primary'}>
-                        Delete Pack
-                      </Button>
-                    </div>
-                  </div>
-                </Modal>
-              </DropDownItem>
+                  </Modal>
+                </DropDownItem>
+              </div>
             </div>
-          </div>
-        </DropdownMenu>
-      </>
-      {/* eslint-disable-next-line no-nested-ternary */}
-      {meData?.id === dataThisDeck?.userId ? (
-        <Modal title={'Add New Card'} trigger={<Button>Add New Card</Button>}>
-          <AddNewCard />
-        </Modal>
-      ) : data?.items.length ? (
-        <Button>
-          <Link to={`/learn/${dataThisDeck?.id}`}>Learn to Pack</Link>
-        </Button>
-      ) : (
-        ''
-      )}
-      <TextField type={'search'} />
+          </DropdownMenu>
+        </div>
+        {/* eslint-disable-next-line no-nested-ternary */}
+        {meData?.id === dataThisDeck?.userId ? (
+          <Modal title={'Add New Card'} trigger={<Button>Add New Card</Button>}>
+            <AddNewCard />
+          </Modal>
+        ) : data?.items.length ? (
+          <Button>
+            <Link to={`/learn/${dataThisDeck?.id}`}>Learn to Pack</Link>
+          </Button>
+        ) : (
+          ''
+        )}
+      </div>
+      <div className={s.cards__search}>
+        <TextField type={'search'} />
+      </div>
     </div>
   )
 }
