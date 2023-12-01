@@ -48,7 +48,7 @@ export type PatchDeckByIdArg = {
   name: string
 }
 export type GetDecksArgs = {
-  authorId?: number
+  authorId?: string
   currentPage?: number
   itemsPerPage?: number
   maxCardsCount?: number
