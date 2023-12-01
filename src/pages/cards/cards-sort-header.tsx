@@ -29,6 +29,7 @@ export const CardsSortHeader = () => {
       <Typography as={'h2'} variant={'h2'}>
         {dataThisDeck?.name}
       </Typography>
+      {/* eslint-disable-next-line no-nested-ternary */}
       {meData?.id === dataThisDeck?.userId ? (
         <Modal title={'Add New Card'} trigger={<Button>Add New Card</Button>}>
           <div className={s.contentWrapper}>
