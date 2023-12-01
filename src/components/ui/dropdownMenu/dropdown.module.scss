@@ -2,9 +2,6 @@
 @import '../../../../node_modules/@radix-ui/colors/mauve.css';
 @import '../../../../node_modules/@radix-ui/colors/violet.css';
 
-
-
-
 .trigger {
   display: flex;
   align-items: center;
@@ -47,6 +44,7 @@
     border-left: 1px solid #333;
   }
 }
+
 
 .dropdownMenuItem {
   display: flex;
