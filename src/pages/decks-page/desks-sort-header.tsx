@@ -43,8 +43,8 @@ export const DesksSortHeader = (props: PropsType) => {
     userId,
   } = props
   const tabs = [
-    { title: 'My CardsPage', value: userId },
-    { title: 'All CardsPage', value: '' },
+    { title: 'My Cards', value: userId },
+    { title: 'All Cards', value: '' },
   ]
 
   const clearSortData = () => {

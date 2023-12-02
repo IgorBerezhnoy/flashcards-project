@@ -18,6 +18,8 @@
   border: 1px solid var(--color-dark-300);
   border-radius: 2px;
 
+  transition: all 0.3s ease 0s;
+
   &::placeholder {
     color: var(--color-dark-300);
   }
