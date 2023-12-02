@@ -23,6 +23,8 @@ button {
   border: none;
   border-radius: 100%;
 
+  transition: all 0.3s ease 0s;
+
   &:hover {
     background: var(--color-dark-500);
   }

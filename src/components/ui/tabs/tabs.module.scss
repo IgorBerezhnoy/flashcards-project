@@ -30,6 +30,8 @@ input {
   border-right: 1px solid var(--color-dark-300, #4c4c4c);
   border-bottom: 1px solid var(--color-dark-300, #4c4c4c);
   border-radius: 2px 0 0 2px;
+  cursor: pointer;
+  transition: all 0.3s ease 0s;
 
   &:first-child {
     border-left: 1px solid var(--color-dark-300, #4c4c4c);
