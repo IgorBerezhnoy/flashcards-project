@@ -28,7 +28,7 @@ const privateRoutes: RouteObject[] = [
       <div>
         <h1>profile</h1>
         Я не работаю <br />
-        Саня сделай меня
+        Саня сделай меня <h1>OK!</h1>
         <img src={'https://i.imgur.com/1Kqs7Ui.jpg'} width={800} />
       </div>
     ),
