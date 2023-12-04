@@ -7,7 +7,6 @@ import { Pagination } from '@/components/ui/pagination'
 import { Typography } from '@/components/ui/typography'
 import { useActions } from '@/hooks'
 import { Decks } from '@/pages/decks/decks'
-import { DesksSortHeader } from '@/pages/decks-page/desks-sort-header'
 import { useMeQuery } from '@/services/auth.service'
 import { useGetDecksQuery } from '@/services/decks.service'
 import { RootState } from '@/services/store'
@@ -15,6 +14,7 @@ import { RootState } from '@/services/store'
 import s from './decks-page.module.scss'
 
 import { SortParamsTypeObj, sortParamsActions } from '../../services/decksSortParams.slice'
+import { DesksSortHeader } from './desks-sort-header'
 
 export const DecksPage = () => {
   const {
@@ -27,7 +27,6 @@ export const DecksPage = () => {
     setSliderValue,
     setSort,
   } = useActions(sortParamsActions)
-  const sortParams = useSelector<RootState, SortParamsTypeObj>(state => state.sortParams.sortParams)
   const {
     activeTab,
     localNameDeck,
@@ -37,7 +36,7 @@ export const DecksPage = () => {
     selectedCount,
     sliderValue,
     sort,
-  } = sortParams
+  } = useSelector<RootState, SortParamsTypeObj>(state => state.sortParams.sortParams)
   const { data: meData } = useMeQuery()
 
   const sortedString = useMemo(() => {
@@ -57,9 +56,6 @@ export const DecksPage = () => {
     name: nameDeck,
     orderBy: sortedString,
   })
-  const onChange = (page: number) => {
-    setPage(page)
-  }
 
   if (isLoading) {
     return <Typography as={'h1'}>Loading</Typography>
@@ -99,7 +95,7 @@ export const DecksPage = () => {
           </div>
           <div className={s.deck__pagination}>
             <Pagination
-              onChange={onChange}
+              onChange={setPage}
               page={page}
               selectedCount={selectedCount}
               setSelectedCount={setSelectedCount}
