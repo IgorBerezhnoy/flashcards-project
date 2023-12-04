@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+
 import { TrashOutline } from '@/assets'
 import { Button } from '@/components/ui/button'
 import { Slider } from '@/components/ui/slider'
@@ -57,6 +59,13 @@ export const DesksSortHeader = (props: PropsType) => {
     setSelectedCount(10)
     setActiveTab('')
   }
+
+  useEffect(() => {
+    if (data) {
+      setValueSlide([0, data.maxCardsCount])
+      setLocalSliderValue([0, data.maxCardsCount])
+    }
+  }, [])
 
   return (
     <>
