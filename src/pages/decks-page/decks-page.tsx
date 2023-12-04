@@ -1,4 +1,5 @@
 import { useMemo, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { Header } from '@/components/ui/header'
 import { Page } from '@/components/ui/page'
@@ -9,6 +10,8 @@ import { Decks } from '@/pages/decks/decks'
 import { DesksSortHeader } from '@/pages/decks-page/desks-sort-header'
 import { useMeQuery } from '@/services/auth.service'
 import { useGetDecksQuery } from '@/services/decks.service'
+import { sortParamsActions } from '@/services/decksSortParams'
+import { RootState } from '@/services/store'
 
 import s from './decks-page.module.scss'
 
@@ -19,9 +22,11 @@ export const DecksPage = () => {
   const [localValue, setLocalValue] = useState<string>('')
   const [page, setPage] = useState<number>(1)
   const [selectedCount, setSelectedCount] = useState<number>(10)
-  const [activeTab, setActiveTab] = useState<string>('')
-  const [sort, setSort] = useState<Sort>(null)
 
+  const [sort, setSort] = useState<Sort>(null)
+  const dispatch = useDispatch()
+  const activeTab = useSelector<RootState, string>(state => state.sortParams.activeTab)
+  const setActiveTab = (str: string) => dispatch(sortParamsActions.setActiveTab(str))
   const { data: meData } = useMeQuery()
 
   const sortedString = useMemo(() => {
@@ -60,7 +65,6 @@ export const DecksPage = () => {
         name={meData?.name}
         userPhoto={meData?.avatar}
       />
-      <img src={'https://i.playground.ru/p/nMJgw9I2LY93rNVne2DMQw.jpeg'} />
       <div className={s.deck}>
         <div className={`${s.deck__box} deck__box`}>
           <DesksSortHeader
