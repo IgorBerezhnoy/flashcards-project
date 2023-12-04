@@ -1,27 +1,42 @@
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
+import { useSelector } from 'react-redux'
 
 import { Header } from '@/components/ui/header'
 import { Page } from '@/components/ui/page'
 import { Pagination } from '@/components/ui/pagination'
-import { Sort } from '@/components/ui/table'
 import { Typography } from '@/components/ui/typography'
+import { useActions } from '@/hooks'
 import { Decks } from '@/pages/decks/decks'
-import { DesksSortHeader } from '@/pages/decks-page/desks-sort-header'
 import { useMeQuery } from '@/services/auth.service'
 import { useGetDecksQuery } from '@/services/decks.service'
+import { RootState } from '@/services/store'
 
 import s from './decks-page.module.scss'
 
-export const DecksPage = () => {
-  const [sliderValue, setValueSlide] = useState<number[]>([0, 61])
-  const [localSliderValue, setLocalSliderValue] = useState(sliderValue)
-  const [value, setValue] = useState<string>('')
-  const [localValue, setLocalValue] = useState<string>('')
-  const [page, setPage] = useState<number>(1)
-  const [selectedCount, setSelectedCount] = useState<number>(10)
-  const [activeTab, setActiveTab] = useState<string>('')
-  const [sort, setSort] = useState<Sort>(null)
+import { SortParamsTypeObj, sortParamsActions } from '../../services/decksSortParams.slice'
+import { DesksSortHeader } from './desks-sort-header'
 
+export const DecksPage = () => {
+  const {
+    setActiveTab,
+    setLocalNameDeck,
+    setLocalSliderValue,
+    setNameDeck,
+    setPage,
+    setSelectedCount,
+    setSliderValue,
+    setSort,
+  } = useActions(sortParamsActions)
+  const {
+    activeTab,
+    localNameDeck,
+    localSliderValue,
+    nameDeck,
+    page,
+    selectedCount,
+    sliderValue,
+    sort,
+  } = useSelector<RootState, SortParamsTypeObj>(state => state.sortParams.sortParams)
   const { data: meData } = useMeQuery()
 
   const sortedString = useMemo(() => {
@@ -38,12 +53,9 @@ export const DecksPage = () => {
     itemsPerPage: selectedCount,
     maxCardsCount: sliderValue[1],
     minCardsCount: sliderValue[0],
-    name: value,
+    name: nameDeck,
     orderBy: sortedString,
   })
-  const onChange = (page: number) => {
-    setPage(page)
-  }
 
   if (isLoading) {
     return <Typography as={'h1'}>Loading</Typography>
@@ -60,22 +72,21 @@ export const DecksPage = () => {
         name={meData?.name}
         userPhoto={meData?.avatar}
       />
-      <img src={'https://i.playground.ru/p/nMJgw9I2LY93rNVne2DMQw.jpeg'} />
       <div className={s.deck}>
         <div className={`${s.deck__box} deck__box`}>
           <DesksSortHeader
             activeTab={activeTab}
             data={data}
             localSliderValue={localSliderValue}
-            localValue={localValue}
+            localValue={localNameDeck}
             setActiveTab={setActiveTab}
             setLocalSliderValue={setLocalSliderValue}
-            setLocalValue={setLocalValue}
+            setLocalValue={setLocalNameDeck}
             setPage={setPage}
             setSelectedCount={setSelectedCount}
             setSort={setSort}
-            setValue={setValue}
-            setValueSlide={setValueSlide}
+            setValue={setNameDeck}
+            setValueSlide={setSliderValue}
             sliderValue={sliderValue}
             userId={meData?.id}
           />
@@ -84,7 +95,7 @@ export const DecksPage = () => {
           </div>
           <div className={s.deck__pagination}>
             <Pagination
-              onChange={onChange}
+              onChange={setPage}
               page={page}
               selectedCount={selectedCount}
               setSelectedCount={setSelectedCount}
