@@ -6,6 +6,7 @@ import { Page } from '@/components/ui/page'
 import { Pagination } from '@/components/ui/pagination'
 import { Sort } from '@/components/ui/table'
 import { Typography } from '@/components/ui/typography'
+import { useActions } from '@/hooks'
 import { Decks } from '@/pages/decks/decks'
 import { DesksSortHeader } from '@/pages/decks-page/desks-sort-header'
 import { useMeQuery } from '@/services/auth.service'
@@ -24,7 +25,17 @@ export const DecksPage = () => {
   const [selectedCount, setSelectedCount] = useState<number>(10)
 
   const [sort, setSort] = useState<Sort>(null)
-  const dispatch = useDispatch()
+  const {
+    setActiveTab,
+    setLocalNameDeck,
+    setLocalNameDeck,
+    setLocalSliderValue,
+    setNameDeck,
+    setPage,
+    setSelectedCount,
+    setSliderValue,
+    setSort,
+  } = useActions(sortParamsActions)
   const activeTab = useSelector<RootState, string>(state => state.sortParams.activeTab)
   const setActiveTab = (str: string) => dispatch(sortParamsActions.setActiveTab(str))
   const { data: meData } = useMeQuery()
