@@ -1,12 +1,14 @@
-import { Provider } from 'react-redux'
-
-import { Router } from '@/router'
-import { store } from '@/services/store'
+import { AppRouter } from '@/router'
+import { useMeQuery } from '@/services/auth.service'
 
 export function App() {
-  return (
-    <Provider store={store}>
-      <Router />
-    </Provider>
-  )
+  const { isLoading } = useMeQuery()
+
+  console.log(useMeQuery())
+
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+
+  return <AppRouter />
 }
