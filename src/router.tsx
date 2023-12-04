@@ -10,6 +10,7 @@ import { CardsPage } from '@/pages/cards/cards-page'
 import { DecksPage } from '@/pages/decks-page/decks-page'
 import { LearnCard } from '@/pages/learnCard/learnCard'
 import { SignInPage } from '@/pages/sign-in-page'
+import { useMeQuery } from '@/services/auth.service'
 
 const publicRouters: RouteObject[] = [
   {
@@ -47,17 +48,19 @@ const router = createBrowserRouter([
   ...publicRouters,
   {
     children: privateRoutes,
-    element: <PrivateRoutes />,
+    element: <PrivateAppRoutes />,
   },
 ])
 
-export const Router = () => {
+export const AppRouter = () => {
   return <RouterProvider router={router} />
 }
 
 // TODO решить вопрос с isAuthenticated, нужен ли тут токен
-function PrivateRoutes() {
-  const isAuthenticated = true
+function PrivateAppRoutes() {
+  const { isError } = useMeQuery()
+
+  const isAuthenticated = !isError
 
   return isAuthenticated ? <Outlet /> : <Navigate to={'/login'} />
 }
