@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { Select } from '@/components/ui/select'
 import { TextField } from '@/components/ui/textField'
-import { useCreateCardMutation } from '@/services/cards.service'
+import { useCreateCardMutation } from '@/services/cards/cards.service'
 
 import s from '@/components/ui/modal/modal.module.scss'
 

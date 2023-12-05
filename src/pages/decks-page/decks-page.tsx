@@ -1,18 +1,21 @@
 import { useMemo } from 'react'
 import { useSelector } from 'react-redux'
 
-import { Header } from '@/components/ui/header'
+import { Header, Loader } from '@/components/ui'
 import { Page } from '@/components/ui/page'
 import { Pagination } from '@/components/ui/pagination'
 import { Typography } from '@/components/ui/typography'
 import { useActions } from '@/hooks'
 import { Decks } from '@/pages/decks/decks'
-import { useMeQuery } from '@/services/auth.service'
-import { useGetDecksQuery } from '@/services/decks.service'
-import { SortParamsTypeObj, sortParamsActions } from '@/services/decksSortParams.slice'
+import { useMeQuery } from '@/services/auth/auth.service'
+import { useGetDecksQuery } from '@/services/decks/decks.service'
+import {
+  SortParamsTypeObj,
+  sortParamsActions,
+} from '@/services/deskSortParams/decksSortParams.slice'
 import { RootState } from '@/services/store'
 
-import s from './decks-page.module.scss'
+import s from './decks-page.module.css'
 
 import { DesksSortHeader } from './desks-sort-header'
 
@@ -47,7 +50,7 @@ export const DecksPage = () => {
     return `${sort.key}-${sort.direction}`
   }, [sort])
 
-  const { data, error, isLoading } = useGetDecksQuery({
+  const { data, isError, isLoading } = useGetDecksQuery({
     authorId: activeTab,
     currentPage: page,
     itemsPerPage: selectedCount,
@@ -58,9 +61,9 @@ export const DecksPage = () => {
   })
 
   if (isLoading) {
-    return <Typography as={'h1'}>Loading</Typography>
+    return <Loader />
   }
-  if (error) {
+  if (isError || !data) {
     return <Typography as={'h1'}>Error</Typography>
   }
 
@@ -76,7 +79,7 @@ export const DecksPage = () => {
         <div className={`${s.deck__box} deck__box`}>
           <DesksSortHeader
             activeTab={activeTab}
-            data={data}
+            data={data} // Исправить
             localSliderValue={localSliderValue}
             localValue={localNameDeck}
             setActiveTab={setActiveTab}
@@ -99,7 +102,7 @@ export const DecksPage = () => {
               page={page}
               selectedCount={selectedCount}
               setSelectedCount={setSelectedCount}
-              totalCount={data?.pagination.totalItems!}
+              totalCount={data.pagination.totalItems}
             />
           </div>
         </div>

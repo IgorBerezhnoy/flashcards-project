@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Modal } from '@/components/ui/modal/modal'
 import { TextField } from '@/components/ui/textField'
-import { useCreateDeckMutation } from '@/services/decks.service'
+import { useCreateDeckMutation } from '@/services/decks/decks.service'
 
 import s from '@/components/ui/table/table.module.scss'
 

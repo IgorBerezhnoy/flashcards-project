@@ -6,11 +6,12 @@ import {
   createBrowserRouter,
 } from 'react-router-dom'
 
+import { Loader } from '@/components/ui/loading/loader'
 import { CardsPage } from '@/pages/cards/cards-page'
 import { DecksPage } from '@/pages/decks-page/decks-page'
 import { LearnCard } from '@/pages/learnCard/learnCard'
 import { SignInPage } from '@/pages/sign-in-page'
-import { useMeQuery } from '@/services/auth.service'
+import { useMeQuery } from '@/services/auth/auth.service'
 
 const publicRouters: RouteObject[] = [
   {
@@ -56,10 +57,12 @@ export const AppRouter = () => {
   return <RouterProvider router={router} />
 }
 
-// TODO решить вопрос с isAuthenticated, нужен ли тут токен
 function PrivateAppRoutes() {
-  const { isError } = useMeQuery()
+  const { isError, isLoading } = useMeQuery()
 
+  if (isLoading) {
+    return <Loader />
+  }
   const isAuthenticated = !isError
 
   return isAuthenticated ? <Outlet /> : <Navigate to={'/login'} />

@@ -1,7 +1,7 @@
-import { baseApi } from '@/services/base-api'
-import { CreateCard, CreateCardResponseType, GetCardsResponse } from '@/services/flashcards.types'
+import { baseApiService } from '@/services/baseApi/base-api.service'
+import { CreateCard, CreateCardResponseType, GetCardsResponse } from '@/services/cards/cards.types'
 
-const cardsService = baseApi.injectEndpoints({
+const cardsService = baseApiService.injectEndpoints({
   endpoints: builder => {
     return {
       createCard: builder.mutation<CreateCardResponseType, CreateCard>({
@@ -12,14 +12,24 @@ const cardsService = baseApi.injectEndpoints({
           url: `v1/decks/${args.id}/cards`,
         }),
       }),
-      deleteCard: builder.mutation<void, { id: string }>({
+      deleteCard: builder.mutation<
+        void,
+        {
+          id: string
+        }
+      >({
         invalidatesTags: ['Cards'],
         query: args => ({
           method: 'DELETE',
           url: `v1/cards/${args.id}`,
         }),
       }),
-      getCards: builder.query<GetCardsResponse, { id: string }>({
+      getCards: builder.query<
+        GetCardsResponse,
+        {
+          id: string
+        }
+      >({
         providesTags: ['Cards'],
         query: id => `v1/decks/${id.id}/cards`,
       }),

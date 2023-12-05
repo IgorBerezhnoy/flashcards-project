@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 import { TableCell, TableRow } from '@/components/ui/table'
 import { DeckIcons } from '@/pages/decks/icons/deckIcons'
-import { DeckItem } from '@/services/flashcards.types'
+import { DeckItem } from '@/services/decks/decks.types'
 
 type Props = { deck: DeckItem }
 export const Deck = ({ deck }: Props) => {

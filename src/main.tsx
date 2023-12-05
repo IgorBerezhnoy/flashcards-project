@@ -1,7 +1,6 @@
 import { StrictMode } from 'react'
 import { Provider } from 'react-redux'
 
-import { Router } from '@/router'
 import { store } from '@/services/store'
 import { createRoot } from 'react-dom/client'
 

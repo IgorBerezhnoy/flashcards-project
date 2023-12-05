@@ -4,8 +4,8 @@ import { PlayCircleOutline } from '@/assets'
 import { TableCell } from '@/components/ui/table'
 import { DeleteDeckIcon } from '@/pages/decks/icons/deleteDeckIcon'
 import { EditDeckIcon } from '@/pages/decks/icons/editDeckIcon'
-import { useMeQuery } from '@/services/auth.service'
-import { DeckItem } from '@/services/flashcards.types'
+import { useMeQuery } from '@/services/auth/auth.service'
+import { DeckItem } from '@/services/decks/decks.types'
 
 import s from '@/components/ui/table/table.module.scss'
 

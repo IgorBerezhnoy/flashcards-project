@@ -2,7 +2,7 @@ import { TrashOutline } from '@/assets'
 import { Button } from '@/components/ui/button'
 import { Modal } from '@/components/ui/modal/modal'
 import { Typography } from '@/components/ui/typography'
-import { useDeleteCardMutation } from '@/services/cards.service'
+import { useDeleteCardMutation } from '@/services/cards/cards.service'
 
 import s from '@/components/ui/modal/modal.module.scss'
 

@@ -2,9 +2,9 @@ import { useParams } from 'react-router-dom'
 
 import { DeleteCardIcon } from '@/pages/cards/icons/delete-card-icon'
 import { EditCardIcon } from '@/pages/cards/icons/edit-card-icon'
-import { useMeQuery } from '@/services/auth.service'
-import { useGetDeckByIdQuery } from '@/services/decks.service'
-import { RootObjectItems } from '@/services/flashcards.types'
+import { useMeQuery } from '@/services/auth/auth.service'
+import { RootObjectItems } from '@/services/cards/cards.types'
+import { useGetDeckByIdQuery } from '@/services/decks/decks.service'
 
 export const CardsIcons = ({ card }: { card: RootObjectItems }) => {
   const { id } = useParams()
