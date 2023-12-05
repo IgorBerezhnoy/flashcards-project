@@ -1,4 +1,4 @@
-import { GetAuthMe, LoginParams } from '@/services/auth/auth.types'
+import { LoginParams, User } from '@/services/auth/auth.types'
 import { baseApi } from '@/services/baseApi/base-api'
 
 const authService = baseApi.injectEndpoints({
@@ -11,7 +11,7 @@ const authService = baseApi.injectEndpoints({
           url: '/v1/auth/login',
         }),
       }),
-      me: builder.query<GetAuthMe, void>({
+      me: builder.query<User, void>({
         query: () => `v1/auth/me`,
       }),
     }

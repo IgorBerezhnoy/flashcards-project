@@ -2,6 +2,7 @@ import { useMemo } from 'react'
 import { useSelector } from 'react-redux'
 
 import { Header } from '@/components/ui/header'
+import { Loader } from '@/components/ui/loading/loader'
 import { Page } from '@/components/ui/page'
 import { Pagination } from '@/components/ui/pagination'
 import { Typography } from '@/components/ui/typography'
@@ -61,7 +62,7 @@ export const DecksPage = () => {
   })
 
   if (isLoading) {
-    return <Typography as={'h1'}>Loading</Typography>
+    return <Loader />
   }
   if (error) {
     return <Typography as={'h1'}>Error</Typography>

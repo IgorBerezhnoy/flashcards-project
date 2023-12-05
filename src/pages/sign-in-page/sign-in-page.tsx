@@ -12,12 +12,17 @@ export const SignInPage = () => {
   const navigate = useNavigate()
   const [login] = useLoginMutation()
 
-  const loginHandler = (data: LoginParams) => {
-    login(data)
-      .unwrap()
-      .then(() => {
-        navigate('/')
-      })
+  const loginHandler = async (data: LoginParams) => {
+    try {
+      await login(data)
+      navigate('/')
+    } catch (e: any) {
+      console.error(e)
+      //TODO Нужно поставить тост
+      // const notify = () => toast(e);
+      // notify()
+      // < ToastContainer / >
+    }
   }
 
   return (

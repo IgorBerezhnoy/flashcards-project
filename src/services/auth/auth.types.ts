@@ -4,11 +4,7 @@ export type LoginParams = {
   rememberMe?: boolean
 }
 
-export type LoginResponse = {
-  accessToken: string
-}
-
-export interface GetAuthMe {
+export interface User {
   avatar: string
   created: string
   email: string
