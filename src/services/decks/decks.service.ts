@@ -54,6 +54,12 @@ const decksService = baseApiService.injectEndpoints({
       }),
       patchDeck: builder.mutation<void, PatchDeckByIdArg>({
         invalidatesTags: ['Decks', 'Deck'],
+        //TODO Не трогать
+        // onQueryStarted: async ({ cover, id, isPrivate, name }, { dispatch }) => {
+        //  const state=ge
+        //   dispatch(decksService.util.updateQueryData('getDecks'))
+        //   await queryFulfilled
+        // },
         query: args => ({
           body: {
             cover: args.cover,

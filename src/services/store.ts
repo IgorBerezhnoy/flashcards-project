@@ -1,5 +1,5 @@
 import { baseApiService } from '@/services/baseApi/base-api.service'
-import { sortParamsSlice } from '@/services/deskSortParams/decksSortParams.slice'
+import { sortParamsSlice } from '@/services/decks/decks.slice'
 import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
 
