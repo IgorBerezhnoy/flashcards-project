@@ -6,6 +6,7 @@ import {
   createBrowserRouter,
 } from 'react-router-dom'
 
+import { Loader } from '@/components/ui/loading/loader'
 import { CardsPage } from '@/pages/cards/cards-page'
 import { DecksPage } from '@/pages/decks-page/decks-page'
 import { LearnCard } from '@/pages/learnCard/learnCard'
@@ -58,8 +59,11 @@ export const AppRouter = () => {
 
 // TODO решить вопрос с isAuthenticated, нужен ли тут токен
 function PrivateAppRoutes() {
-  const { isError } = useMeQuery()
+  const { isError, isLoading } = useMeQuery()
 
+  if (isLoading) {
+    return <Loader />
+  }
   const isAuthenticated = !isError
 
   return isAuthenticated ? <Outlet /> : <Navigate to={'/login'} />

@@ -16,7 +16,7 @@ import {
 } from '@/services/deskSortParams/decksSortParams.slice'
 import { RootState } from '@/services/store'
 
-import s from './decks-page.module.scss'
+import s from './decks-page.module.css'
 
 import { DesksSortHeader } from './desks-sort-header'
 

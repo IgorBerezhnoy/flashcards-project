@@ -1,12 +1,12 @@
-import { baseApi } from '@/services/baseApi/base-api'
+import { baseApiService } from '@/services/baseApi/base-api.service'
 import { sortParamsSlice } from '@/services/deskSortParams/decksSortParams.slice'
 import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
 
 export const store = configureStore({
-  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(baseApi.middleware),
+  middleware: getDefaultMiddleware => getDefaultMiddleware().concat(baseApiService.middleware),
   reducer: {
-    [baseApi.reducerPath]: baseApi.reducer,
+    [baseApiService.reducerPath]: baseApiService.reducer,
     sortParams: sortParamsSlice,
   },
 })

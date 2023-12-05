@@ -51,13 +51,12 @@
   height: 34px;
 
   background: radial-gradient(
-    ellipse at center,
-    #ffdf00 8%,
-    rgb(249 62 0 / 60%) 24%,
-    rgb(0 0 0 / 0%) 100%
-  );
-  background-repeat: no-repeat;
-  background-position: -44px -44px;
+      ellipse at center,
+      #ffdf00 8%,
+      rgb(249 62 0 / 60%) 24%,
+      rgb(0 0 0 / 0%) 100%
+    )
+    no-repeat -44px -44px;
   background-size: 100px 100px;
   border-radius: 50% 50% 0;
   box-shadow: 4px 4px 12px 0 rgb(255 61 0 / 50%);
