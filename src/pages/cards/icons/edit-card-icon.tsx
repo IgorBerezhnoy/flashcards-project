@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button'
 import { Modal } from '@/components/ui/modal/modal'
 import { Select } from '@/components/ui/select'
 import { TextField } from '@/components/ui/textField'
-import { usePatchCardMutation } from '@/services/cards.service'
+import { usePatchCardMutation } from '@/services/cards/cards.service'
 
 import s from '@/components/ui/modal/modal.module.scss'
 

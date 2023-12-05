@@ -1,5 +1,5 @@
 import { AppRouter } from '@/router'
-import { useMeQuery } from '@/services/auth.service'
+import { useMeQuery } from '@/services/auth/auth.service'
 
 export function App() {
   const { isLoading } = useMeQuery()

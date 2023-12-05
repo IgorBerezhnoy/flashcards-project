@@ -1,4 +1,4 @@
-import { baseApi } from '@/services/base-api'
+import { baseApi } from '@/services/baseApi/base-api'
 import {
   CreateDeckArgs,
   DeckItem,
@@ -7,7 +7,7 @@ import {
   GetDecksResponse,
   LearnCardsResponse,
   PatchDeckByIdArg,
-} from '@/services/flashcards.types'
+} from '@/services/decks/decks.types'
 
 const decksService = baseApi.injectEndpoints({
   endpoints: builder => {

@@ -6,8 +6,8 @@ import { Table, TableHeader } from '@/components/ui/table'
 import { Typography } from '@/components/ui/typography'
 import { CardsSortHeader } from '@/pages/cards/headerCards/cards-sort-header'
 import { TableBodyCards } from '@/pages/cards/table-body-cards'
-import { useMeQuery } from '@/services/auth.service'
-import { useGetCardsQuery } from '@/services/cards.service'
+import { useMeQuery } from '@/services/auth/auth.service'
+import { useGetCardsQuery } from '@/services/cards/cards.service'
 
 import s from '@/pages/cards/cards-page.module.scss'
 

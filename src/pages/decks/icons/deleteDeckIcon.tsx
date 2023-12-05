@@ -2,7 +2,7 @@ import { TrashOutline } from '@/assets'
 import { Button } from '@/components/ui/button'
 import { Modal } from '@/components/ui/modal/modal'
 import { Typography } from '@/components/ui/typography'
-import { useDeleteDeckMutation } from '@/services/decks.service'
+import { useDeleteDeckMutation } from '@/services/decks/decks.service'
 
 import s from '@/components/ui/table/table.module.scss'
 

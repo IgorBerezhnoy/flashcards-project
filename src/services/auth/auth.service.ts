@@ -1,11 +1,10 @@
-import { LoginParams, LoginResponse } from '@/services/auth.types'
-import { baseApi } from '@/services/base-api'
-import { GetAuthMe } from '@/services/flashcards.types'
+import { GetAuthMe, LoginParams } from '@/services/auth/auth.types'
+import { baseApi } from '@/services/baseApi/base-api'
 
 const authService = baseApi.injectEndpoints({
   endpoints: builder => {
     return {
-      login: builder.mutation<LoginResponse, LoginParams>({
+      login: builder.mutation<void, LoginParams>({
         query: body => ({
           body,
           method: 'POST',

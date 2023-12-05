@@ -7,9 +7,12 @@ import { Pagination } from '@/components/ui/pagination'
 import { Typography } from '@/components/ui/typography'
 import { useActions } from '@/hooks'
 import { Decks } from '@/pages/decks/decks'
-import { useMeQuery } from '@/services/auth.service'
-import { useGetDecksQuery } from '@/services/decks.service'
-import { SortParamsTypeObj, sortParamsActions } from '@/services/decksSortParams.slice'
+import { useMeQuery } from '@/services/auth/auth.service'
+import { useGetDecksQuery } from '@/services/decks/decks.service'
+import {
+  SortParamsTypeObj,
+  sortParamsActions,
+} from '@/services/deskSortParams/decksSortParams.slice'
 import { RootState } from '@/services/store'
 
 import s from './decks-page.module.scss'

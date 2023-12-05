@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { Rating } from '@/components/ui/rating'
 import { TableBody, TableCell, TableRow } from '@/components/ui/table'
 import { CardsIcons } from '@/pages/cards/icons/cards-icons'
-import { useGetCardsQuery } from '@/services/cards.service'
+import { useGetCardsQuery } from '@/services/cards/cards.service'
 
 export const TableBodyCards = () => {
   const { id } = useParams()

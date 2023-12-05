@@ -3,7 +3,7 @@ import { Card } from '@/components/ui/card'
 import { Header } from '@/components/ui/header'
 import { Page } from '@/components/ui/page'
 import { Typography } from '@/components/ui/typography'
-import { useMeQuery } from '@/services/auth.service'
+import { useMeQuery } from '@/services/auth/auth.service'
 import { BackToPacksList } from '@/utils/backToPack'
 
 import s from './learnCard .module.scss'
