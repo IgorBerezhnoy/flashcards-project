@@ -1,8 +1,7 @@
 import { useMemo } from 'react'
 import { useSelector } from 'react-redux'
 
-import { Header } from '@/components/ui/header'
-import { Loader } from '@/components/ui/loading/loader'
+import { Header, Loader } from '@/components/ui'
 import { Page } from '@/components/ui/page'
 import { Pagination } from '@/components/ui/pagination'
 import { Typography } from '@/components/ui/typography'
@@ -51,7 +50,7 @@ export const DecksPage = () => {
     return `${sort.key}-${sort.direction}`
   }, [sort])
 
-  const { data, error, isLoading } = useGetDecksQuery({
+  const { data, isError, isLoading } = useGetDecksQuery({
     authorId: activeTab,
     currentPage: page,
     itemsPerPage: selectedCount,
@@ -64,7 +63,7 @@ export const DecksPage = () => {
   if (isLoading) {
     return <Loader />
   }
-  if (error) {
+  if (isError || !data) {
     return <Typography as={'h1'}>Error</Typography>
   }
 
@@ -80,7 +79,7 @@ export const DecksPage = () => {
         <div className={`${s.deck__box} deck__box`}>
           <DesksSortHeader
             activeTab={activeTab}
-            data={data}
+            data={data} // Исправить
             localSliderValue={localSliderValue}
             localValue={localNameDeck}
             setActiveTab={setActiveTab}
@@ -103,7 +102,7 @@ export const DecksPage = () => {
               page={page}
               selectedCount={selectedCount}
               setSelectedCount={setSelectedCount}
-              totalCount={data?.pagination.totalItems!}
+              totalCount={data.pagination.totalItems}
             />
           </div>
         </div>

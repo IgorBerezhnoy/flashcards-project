@@ -57,7 +57,6 @@ export const AppRouter = () => {
   return <RouterProvider router={router} />
 }
 
-// TODO решить вопрос с isAuthenticated, нужен ли тут токен
 function PrivateAppRoutes() {
   const { isError, isLoading } = useMeQuery()
 

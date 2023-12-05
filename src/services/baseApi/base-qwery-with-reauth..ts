@@ -23,15 +23,9 @@ export const baseQueryWithReauth: BaseQueryFn<
       const release = await mutex.acquire()
 
       try {
-        const refreshResult = await baseQuery('/refreshToken', api, extraOptions)
+        await baseQuery({ method: 'POST', url: '/v1/auth/refresh-token' }, api, extraOptions)
 
-        if (refreshResult.data) {
-          //   api.dispatch(tokenReceived(refreshResult.data))
-          //   // retry the initial query
-          //   result = await baseQuery(args, api, extraOptions)
-          // } else {
-          //   api.dispatch(loggedOut())
-        }
+        result = await baseQuery(args, api, extraOptions)
       } finally {
         // release must be called once the mutex should be released again.
         release()
