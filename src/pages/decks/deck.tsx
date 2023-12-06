@@ -10,7 +10,9 @@ export const Deck = ({ deck }: Props) => {
     <>
       <TableRow key={deck.id}>
         <TableCell>
-          <Link to={`decks/cards/${deck.id}`}>{deck?.name}</Link>
+          <Link className={'link'} to={`decks/cards/${deck.id}`}>
+            {deck?.name}
+          </Link>
         </TableCell>
         <TableCell>{deck?.cardsCount}</TableCell>
         <TableCell>{new Date(deck?.updated).toLocaleDateString()}</TableCell>
