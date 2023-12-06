@@ -9,7 +9,7 @@ import { usePatchCardMutation } from '@/services/cards/cards.service'
 
 import s from '@/components/ui/modal/modal.module.scss'
 
-export const EditCardIcon = ({ id }: { id: string }) => {
+export const EditCardIcon = ({ deckId, id }: { deckId: string; id: string }) => {
   const [question, setQuestion] = useState<string>('')
   const [answer, setAnswer] = useState<string>('')
   const [patchCard] = usePatchCardMutation()
@@ -35,7 +35,7 @@ export const EditCardIcon = ({ id }: { id: string }) => {
         </div>
         <div className={s.buttons}>
           <Button variant={'secondary'}>Cancel</Button>
-          <Button onClick={() => patchCard({ answer, id, question })} variant={'primary'}>
+          <Button onClick={() => patchCard({ answer, deckId, id, question })} variant={'primary'}>
             Add New Card
           </Button>
         </div>

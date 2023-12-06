@@ -13,8 +13,14 @@ import s from '@/pages/cards/cards-page.module.scss'
 
 export const CardsPage = () => {
   const { id } = useParams()
-  const { data, error, isLoading } = useGetCardsQuery(id ?? '')
+  const {
+    currentData: currentCardData,
+    data: cardData,
+    error,
+    isLoading,
+  } = useGetCardsQuery(id ?? '')
   const { data: meData } = useMeQuery()
+  const data = currentCardData ?? cardData
 
   if (isLoading) {
     return <Typography as={'h1'}>Loading</Typography>
