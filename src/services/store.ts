@@ -1,5 +1,5 @@
 import { baseApiService } from '@/services/baseApi/base-api.service'
-import { sortParamsSlice } from '@/services/decks/decks.slice'
+import { descsSlice } from '@/services/decks/decks.slice'
 import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
 
@@ -7,7 +7,7 @@ export const store = configureStore({
   middleware: getDefaultMiddleware => getDefaultMiddleware().concat(baseApiService.middleware),
   reducer: {
     [baseApiService.reducerPath]: baseApiService.reducer,
-    sortParams: sortParamsSlice,
+    decks: descsSlice,
   },
 })
 

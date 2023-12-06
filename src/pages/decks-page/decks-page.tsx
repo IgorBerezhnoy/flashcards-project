@@ -36,7 +36,7 @@ export const DecksPage = () => {
     selectedCount,
     sliderValue,
     sort,
-  } = useSelector<RootState, SortParamsTypeObj>(state => state.sortParams.sortParams)
+  } = useSelector<RootState, SortParamsTypeObj>(state => state.decks.sortParams)
   const { data: meData } = useMeQuery()
 
   const sortedString = useMemo(() => {

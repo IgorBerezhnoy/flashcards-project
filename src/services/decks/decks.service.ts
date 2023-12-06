@@ -7,6 +7,7 @@ import {
   LearnCardsResponse,
   PatchDeckByIdArg,
 } from '@/services/decks/decks.types'
+import { RootState } from '@/services/store'
 
 const decksService = baseApiService.injectEndpoints({
   endpoints: builder => {
@@ -43,12 +44,37 @@ const decksService = baseApiService.injectEndpoints({
       }),
       patchDeck: builder.mutation<void, PatchDeckByIdArg>({
         invalidatesTags: ['Decks', 'Deck'],
-        //TODO Не трогать
-        onQueryStarted: async ({ id, ...body }, { dispatch, getState }) => {
-          const state = getState()
+        onQueryStarted: async ({ id, ...body }, { dispatch, getState, queryFulfilled }) => {
+          const state = getState() as RootState
+          const { activeTab, nameDeck, page, selectedCount, sliderValue, sort } =
+            state.decks.sortParams
 
-          dispatch(decksService.util.updateQueryData('getDecks'))
-          await queryFulfilled
+          dispatch(
+            decksService.util.updateQueryData(
+              'getDecks',
+              {
+                authorId: activeTab,
+                currentPage: page,
+                itemsPerPage: selectedCount,
+                maxCardsCount: sliderValue[1],
+                minCardsCount: sliderValue[0],
+                name: nameDeck,
+                orderBy: sort,
+              },
+              data => {
+                const deck = data.items.find(deck => deck.id == id)
+
+                if (deck) {
+                  Object.assign(deck, { ...deck, ...body })
+                }
+              }
+            )
+          )
+          try {
+            await queryFulfilled
+          } catch (error: any) {
+            alert(error)
+          }
         },
         query: ({ id, ...body }) => ({
           body,

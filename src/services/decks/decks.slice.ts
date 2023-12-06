@@ -17,7 +17,7 @@ const initialState = {
 }
 const slice = createSlice({
   initialState,
-  name: 'SortParams',
+  name: 'desks',
   reducers: {
     setActiveTab: (state, action: PayloadAction<string>) => {
       state.sortParams.activeTab = action.payload
@@ -46,5 +46,5 @@ const slice = createSlice({
   },
 })
 
-export const sortParamsSlice = slice.reducer
+export const descsSlice = slice.reducer
 export const sortParamsActions = slice.actions
