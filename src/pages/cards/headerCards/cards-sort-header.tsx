@@ -9,9 +9,10 @@ import { DropdownCards } from '@/pages/cards/headerCards/dropdown-cards'
 import { useMeQuery } from '@/services/auth/auth.service'
 import { useGetCardsQuery } from '@/services/cards/cards.service'
 import { useGetDeckByIdQuery } from '@/services/decks/decks.service'
-import { BackToPacksList } from '@/utils/backToPack'
 
 import s from '../cards-page.module.scss'
+
+import { BackToPacksList } from '../../../components/layout/backToPack'
 
 export const CardsSortHeader = () => {
   const { id } = useParams()

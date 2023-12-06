@@ -12,8 +12,34 @@ import { RootState } from '@/services/store'
 const decksService = baseApiService.injectEndpoints({
   endpoints: builder => {
     return {
-      createDeck: builder.mutation<void, CreateDeckArgs>({
+      createDeck: builder.mutation<DeckItem, CreateDeckArgs>({
         invalidatesTags: ['Decks'],
+        onQueryStarted: async (_, { dispatch, getState, queryFulfilled }) => {
+          const state = getState() as RootState
+          const { activeTab, nameDeck, page, selectedCount, sliderValue, sort } =
+            state.decks.sortParams
+
+          const res = await queryFulfilled
+
+          dispatch(
+            decksService.util.updateQueryData(
+              'getDecks',
+              {
+                authorId: activeTab,
+                currentPage: page,
+                itemsPerPage: selectedCount,
+                maxCardsCount: sliderValue[1],
+                minCardsCount: sliderValue[0],
+                name: nameDeck,
+                orderBy: sort,
+              },
+              data => {
+                data.items.unshift(res.data)
+              }
+            )
+          )
+        },
+
         query: args => ({
           body: args,
           method: 'POST',
@@ -22,6 +48,38 @@ const decksService = baseApiService.injectEndpoints({
       }),
       deleteDeck: builder.mutation<void, string>({
         invalidatesTags: ['Decks'],
+        onQueryStarted: async (id, { dispatch, getState, queryFulfilled }) => {
+          const state = getState() as RootState
+          const { activeTab, nameDeck, page, selectedCount, sliderValue, sort } =
+            state.decks.sortParams
+
+          dispatch(
+            decksService.util.updateQueryData(
+              'getDecks',
+              {
+                authorId: activeTab,
+                currentPage: page,
+                itemsPerPage: selectedCount,
+                maxCardsCount: sliderValue[1],
+                minCardsCount: sliderValue[0],
+                name: nameDeck,
+                orderBy: sort,
+              },
+              data => {
+                const index = data.items.findIndex(deck => deck.id == id)
+
+                if (index !== -1) {
+                  data.items.splice(index, 1)
+                }
+              }
+            )
+          )
+          try {
+            await queryFulfilled
+          } catch (error: any) {
+            alert(error)
+          }
+        },
         query: id => ({
           method: 'DELETE',
           url: `v1/decks/${id}`,
@@ -42,7 +100,7 @@ const decksService = baseApiService.injectEndpoints({
       learnCards: builder.query<LearnCardsResponse, string>({
         query: id => `v1/decks/${id}/learn`,
       }),
-      patchDeck: builder.mutation<void, PatchDeckByIdArg>({
+      patchDeck: builder.mutation<GetDecksResponse, PatchDeckByIdArg>({
         invalidatesTags: ['Decks', 'Deck'],
         onQueryStarted: async ({ id, ...body }, { dispatch, getState, queryFulfilled }) => {
           const state = getState() as RootState
