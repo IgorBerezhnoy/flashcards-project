@@ -34,6 +34,7 @@ const decksService = baseApiService.injectEndpoints({
                 orderBy: sort,
               },
               data => {
+                debugger
                 data.items.unshift(res.data)
               }
             )
@@ -53,7 +54,7 @@ const decksService = baseApiService.injectEndpoints({
           const { activeTab, nameDeck, page, selectedCount, sliderValue, sort } =
             state.decks.sortParams
 
-          dispatch(
+          const patchResult = dispatch(
             decksService.util.updateQueryData(
               'getDecks',
               {
@@ -74,10 +75,11 @@ const decksService = baseApiService.injectEndpoints({
               }
             )
           )
+
           try {
             await queryFulfilled
           } catch (error: any) {
-            alert(error)
+            patchResult.undo()
           }
         },
         query: id => ({
@@ -107,7 +109,7 @@ const decksService = baseApiService.injectEndpoints({
           const { activeTab, nameDeck, page, selectedCount, sliderValue, sort } =
             state.decks.sortParams
 
-          dispatch(
+          const patchResult = dispatch(
             decksService.util.updateQueryData(
               'getDecks',
               {
@@ -128,10 +130,11 @@ const decksService = baseApiService.injectEndpoints({
               }
             )
           )
+
           try {
             await queryFulfilled
           } catch (error: any) {
-            alert(error)
+            patchResult.undo()
           }
         },
         query: ({ id, ...body }) => ({
