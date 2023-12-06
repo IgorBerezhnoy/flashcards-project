@@ -10,9 +10,6 @@ export type CreateDeckArgs = {
   name: string
 }
 
-export type DeleteDeckByIdArg = {
-  id: string
-}
 export type PatchDeckByIdArg = {
   cover?: string
   id: string

@@ -2,7 +2,6 @@ import { baseApiService } from '@/services/baseApi/base-api.service'
 import {
   CreateDeckArgs,
   DeckItem,
-  DeleteDeckByIdArg,
   GetDecksArgs,
   GetDecksResponse,
   LearnCardsResponse,
@@ -20,22 +19,17 @@ const decksService = baseApiService.injectEndpoints({
           url: `v1/decks`,
         }),
       }),
-      deleteDeck: builder.mutation<void, DeleteDeckByIdArg>({
+      deleteDeck: builder.mutation<void, string>({
         invalidatesTags: ['Decks'],
         query: id => ({
           method: 'DELETE',
-          url: `v1/decks/${id.id}`,
+          url: `v1/decks/${id}`,
         }),
       }),
-      getDeckById: builder.query<
-        DeckItem,
-        {
-          id: string
-        }
-      >({
+      getDeckById: builder.query<DeckItem, string>({
         providesTags: ['Deck'],
 
-        query: id => `v1/decks/${id.id}`,
+        query: id => `v1/decks/${id}`,
       }),
       getDecks: builder.query<GetDecksResponse, GetDecksArgs | void>({
         providesTags: ['Decks'],
@@ -44,30 +38,22 @@ const decksService = baseApiService.injectEndpoints({
           url: `v1/decks`,
         }),
       }),
-      learnCards: builder.query<
-        LearnCardsResponse,
-        {
-          id: string
-        }
-      >({
-        query: id => `v1/decks/${id.id}/learn`,
+      learnCards: builder.query<LearnCardsResponse, string>({
+        query: id => `v1/decks/${id}/learn`,
       }),
       patchDeck: builder.mutation<void, PatchDeckByIdArg>({
         invalidatesTags: ['Decks', 'Deck'],
         //TODO Не трогать
-        // onQueryStarted: async ({ cover, id, isPrivate, name }, { dispatch }) => {
-        //  const state=ge
-        //   dispatch(decksService.util.updateQueryData('getDecks'))
-        //   await queryFulfilled
-        // },
-        query: args => ({
-          body: {
-            cover: args.cover,
-            isPrivate: args.isPrivate,
-            name: args.name,
-          },
+        onQueryStarted: async ({ id, ...body }, { dispatch, getState }) => {
+          const state = getState()
+
+          dispatch(decksService.util.updateQueryData('getDecks'))
+          await queryFulfilled
+        },
+        query: ({ id, ...body }) => ({
+          body,
           method: 'PATCH',
-          url: `v1/decks/${args.id}`,
+          url: `v1/decks/${id}`,
         }),
       }),
     }

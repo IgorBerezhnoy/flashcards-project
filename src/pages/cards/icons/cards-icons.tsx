@@ -10,7 +10,7 @@ export const CardsIcons = ({ card }: { card: RootObjectItems }) => {
   const { id } = useParams()
 
   const { data: meData } = useMeQuery()
-  const { data: dataThisDeck } = useGetDeckByIdQuery({ id: id ? id : '' })
+  const { data: dataThisDeck } = useGetDeckByIdQuery(id ?? '')
 
   return (
     <div>

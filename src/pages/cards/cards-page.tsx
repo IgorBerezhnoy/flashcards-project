@@ -13,7 +13,7 @@ import s from '@/pages/cards/cards-page.module.scss'
 
 export const CardsPage = () => {
   const { id } = useParams()
-  const { data, error, isLoading } = useGetCardsQuery({ id: id ? id : '' })
+  const { data, error, isLoading } = useGetCardsQuery(id ?? '')
   const { data: meData } = useMeQuery()
 
   if (isLoading) {
