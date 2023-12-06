@@ -9,10 +9,7 @@ import { useActions } from '@/hooks'
 import { Decks } from '@/pages/decks/decks'
 import { useMeQuery } from '@/services/auth/auth.service'
 import { useGetDecksQuery } from '@/services/decks/decks.service'
-import {
-  SortParamsTypeObj,
-  sortParamsActions,
-} from '@/services/deskSortParams/decksSortParams.slice'
+import { SortParamsTypeObj, sortParamsActions } from '@/services/decks/decks.slice'
 import { RootState } from '@/services/store'
 
 import s from './decks-page.module.css'
@@ -39,7 +36,7 @@ export const DecksPage = () => {
     selectedCount,
     sliderValue,
     sort,
-  } = useSelector<RootState, SortParamsTypeObj>(state => state.sortParams.sortParams)
+  } = useSelector<RootState, SortParamsTypeObj>(state => state.decks.sortParams)
   const { data: meData } = useMeQuery()
 
   const sortedString = useMemo(() => {

@@ -1,3 +1,5 @@
+import { Sort } from '@/components/ui/table'
+
 export interface GetDecksResponse {
   items: DeckItem[]
   maxCardsCount: number
@@ -10,9 +12,6 @@ export type CreateDeckArgs = {
   name: string
 }
 
-export type DeleteDeckByIdArg = {
-  id: string
-}
 export type PatchDeckByIdArg = {
   cover?: string
   id: string
@@ -26,7 +25,7 @@ export type GetDecksArgs = {
   maxCardsCount?: number
   minCardsCount?: number
   name?: string
-  orderBy?: null | string
+  orderBy?: Sort
 }
 
 export interface GetDecksResponsePagination {

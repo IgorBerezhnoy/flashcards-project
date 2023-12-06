@@ -15,6 +15,10 @@ export const AddNewCard = () => {
   const [answer, setAnswer] = useState<string>('')
   const [createCard] = useCreateCardMutation()
 
+  const onClick = () => {
+    createCard({ answer, id: id || '', question })
+  }
+
   return (
     <div className={s.contentWrapper}>
       <div className={s.contentBody}>
@@ -35,10 +39,11 @@ export const AddNewCard = () => {
       </div>
       <div className={s.buttons}>
         <Button variant={'secondary'}>Cancel</Button>
-        <Button onClick={() => createCard({ answer, id: id || '', question })} variant={'primary'}>
+        <Button onClick={onClick} variant={'primary'}>
           Add New Card
         </Button>
       </div>
+      {/*<ToastContainer />*/}
     </div>
   )
 }

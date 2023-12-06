@@ -20,7 +20,7 @@ export const DeleteDeckIcon = ({ id }: { id: string }) => {
         </div>
         <div className={s.buttons}>
           <Button variant={'secondary'}>Cancel</Button>
-          <Button onClick={() => deleteDeck({ id })} variant={'primary'}>
+          <Button onClick={() => deleteDeck(id)} variant={'primary'}>
             Delete Pack
           </Button>
         </div>

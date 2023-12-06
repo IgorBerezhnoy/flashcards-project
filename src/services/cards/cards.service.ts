@@ -6,39 +6,29 @@ const cardsService = baseApiService.injectEndpoints({
     return {
       createCard: builder.mutation<CreateCardResponseType, CreateCard>({
         invalidatesTags: ['Cards'],
-        query: args => ({
-          body: { answer: args.answer, question: args.question },
+        query: ({ id, ...body }) => ({
+          body,
           method: 'POST',
-          url: `v1/decks/${args.id}/cards`,
+          url: `v1/decks/${id}/cards`,
         }),
       }),
-      deleteCard: builder.mutation<
-        void,
-        {
-          id: string
-        }
-      >({
+      deleteCard: builder.mutation<void, string>({
         invalidatesTags: ['Cards'],
-        query: args => ({
+        query: id => ({
           method: 'DELETE',
-          url: `v1/cards/${args.id}`,
+          url: `v1/cards/${id}`,
         }),
       }),
-      getCards: builder.query<
-        GetCardsResponse,
-        {
-          id: string
-        }
-      >({
+      getCards: builder.query<GetCardsResponse, string>({
         providesTags: ['Cards'],
-        query: id => `v1/decks/${id.id}/cards`,
+        query: id => `v1/decks/${id}/cards`,
       }),
       patchCard: builder.mutation<CreateCardResponseType, CreateCard>({
         invalidatesTags: ['Cards'],
-        query: args => ({
-          body: { answer: args.answer, question: args.question },
+        query: ({ id, ...body }) => ({
+          body,
           method: 'PATCH',
-          url: `v1/cards/${args.id}`,
+          url: `v1/cards/${id}`,
         }),
       }),
     }
