@@ -1,7 +1,7 @@
 import { Sort } from '@/components/ui/table'
 
 export interface GetCardsResponse {
-  items: RootObjectItems[]
+  items: CardType[]
   pagination: RootObjectPagination
 }
 
@@ -10,7 +10,7 @@ export interface GetCardsPayload {
   orderBy?: Sort
 }
 
-export interface RootObjectItems {
+export interface CardType {
   answer: string
   answerImg: string
   answerVideo: string
@@ -21,6 +21,7 @@ export interface RootObjectItems {
   question: string
   questionImg: string
   questionVideo: string
+  rating: number
   shots: number
   updated: string
   userId: string
@@ -33,6 +34,7 @@ export interface RootObjectPagination {
   totalPages: number
 }
 
+export type PatchCard = CreateCard & { deckId: string }
 export type CreateCard = {
   answer: string
   answerImg?: string
@@ -41,19 +43,4 @@ export type CreateCard = {
   question: string
   questionImg?: string
   questionVideo?: string
-}
-export type CreateCardResponseType = {
-  answer: string
-  answerImg: string
-  answerVideo: string
-  created: string
-  deckId: string
-  id: string
-  question: string
-  questionImg: string
-  questionVideo: string
-  rating: number
-  shots: number
-  updated: string
-  userId: string
 }

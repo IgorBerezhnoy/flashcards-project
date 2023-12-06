@@ -1,11 +1,23 @@
 import { baseApiService } from '@/services/baseApi/base-api.service'
-import { CreateCard, CreateCardResponseType, GetCardsResponse } from '@/services/cards/cards.types'
+import { CardType, CreateCard, GetCardsResponse, PatchCard } from '@/services/cards/cards.types'
 
 const cardsService = baseApiService.injectEndpoints({
   endpoints: builder => {
     return {
-      createCard: builder.mutation<CreateCardResponseType, CreateCard>({
+      createCard: builder.mutation<CardType, CreateCard>({
         invalidatesTags: ['Cards'],
+        onQueryStarted: async ({ id }, { dispatch, queryFulfilled }) => {
+          const res = await queryFulfilled
+
+          dispatch(
+            cardsService.util.updateQueryData('getCards', id, data => {
+              console.log(data.items)
+              console.log(data)
+              debugger
+              data.items.unshift(res.data)
+            })
+          )
+        },
         query: ({ id, ...body }) => ({
           body,
           method: 'POST',
@@ -43,10 +55,30 @@ const cardsService = baseApiService.injectEndpoints({
         providesTags: ['Cards'],
         query: id => `v1/decks/${id}/cards`,
       }),
-      patchCard: builder.mutation<CreateCardResponseType, CreateCard>({
+      patchCard: builder.mutation<CardType, PatchCard>({
         invalidatesTags: ['Cards'],
+        onQueryStarted: async ({ deckId, id, ...body }, { dispatch, queryFulfilled }) => {
+          debugger
 
-        query: ({ id, ...body }) => ({
+          const patchResult = dispatch(
+            cardsService.util.updateQueryData('getCards', deckId, data => {
+              debugger
+              const card = data.items.find(deck => deck.id == id)
+
+              if (card) {
+                Object.assign(card, { ...card, ...body })
+              }
+            })
+          )
+
+          try {
+            await queryFulfilled
+          } catch (error) {
+            patchResult.undo()
+          }
+        },
+
+        query: ({ deckId, id, ...body }) => ({
           body,
           method: 'PATCH',
           url: `v1/cards/${id}`,
