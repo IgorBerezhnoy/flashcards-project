@@ -7,7 +7,7 @@ import { useGetCardsQuery } from '@/services/cards/cards.service'
 
 export const TableBodyCards = () => {
   const { id } = useParams()
-  const { data } = useGetCardsQuery({ id: id ? id : '' })
+  const { data } = useGetCardsQuery(id ?? '')
 
   return (
     <TableBody>

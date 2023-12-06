@@ -20,7 +20,7 @@ export const DeleteCardIcon = ({ id }: { id: string }) => {
         </div>
         <div className={s.buttons}>
           <Button variant={'secondary'}>Cancel</Button>
-          <Button onClick={() => deleteCard({ id })} variant={'primary'}>
+          <Button onClick={() => deleteCard(id)} variant={'primary'}>
             Delete Card
           </Button>
         </div>

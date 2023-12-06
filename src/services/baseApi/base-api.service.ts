@@ -1,4 +1,4 @@
-import { baseQueryWithReauth } from '@/services/baseApi/base-qwery-with-reauth.'
+import { baseQueryWithReauth } from '@/services/baseApi/base-qwery-with-reauth'
 import { createApi } from '@reduxjs/toolkit/query/react'
 
 export const baseApiService = createApi({

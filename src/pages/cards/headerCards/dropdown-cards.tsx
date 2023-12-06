@@ -23,7 +23,7 @@ export const DropdownCards = () => {
   const [deleteDeck] = useDeleteDeckMutation()
   const [isDeleted, setIsDeleted] = useState(false)
   const onClickDelete = () => {
-    deleteDeck({ id: id ?? '' })
+    deleteDeck(id ?? '')
     setIsDeleted(true)
   }
 

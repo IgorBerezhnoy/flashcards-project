@@ -16,8 +16,8 @@ import s from '../cards-page.module.scss'
 export const CardsSortHeader = () => {
   const { id } = useParams()
 
-  const { data: dataThisDeck } = useGetDeckByIdQuery({ id: id ? id : '' })
-  const { data } = useGetCardsQuery({ id: id ? id : '' })
+  const { data: dataThisDeck } = useGetDeckByIdQuery(id ?? '')
+  const { data } = useGetCardsQuery(id ?? '')
   const { data: meData } = useMeQuery()
 
   return (
