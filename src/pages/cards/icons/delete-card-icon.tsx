@@ -6,7 +6,7 @@ import { useDeleteCardMutation } from '@/services/cards/cards.service'
 
 import s from '@/components/ui/modal/modal.module.scss'
 
-export const DeleteCardIcon = ({ id }: { id: string }) => {
+export const DeleteCardIcon = ({ cardId, deckId }: { cardId: string; deckId: string }) => {
   const [deleteCard] = useDeleteCardMutation()
 
   return (
@@ -20,7 +20,7 @@ export const DeleteCardIcon = ({ id }: { id: string }) => {
         </div>
         <div className={s.buttons}>
           <Button variant={'secondary'}>Cancel</Button>
-          <Button onClick={() => deleteCard(id)} variant={'primary'}>
+          <Button onClick={() => deleteCard({ cardId, deckId })} variant={'primary'}>
             Delete Card
           </Button>
         </div>

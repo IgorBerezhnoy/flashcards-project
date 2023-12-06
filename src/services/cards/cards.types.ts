@@ -1,6 +1,13 @@
+import { Sort } from '@/components/ui/table'
+
 export interface GetCardsResponse {
   items: RootObjectItems[]
   pagination: RootObjectPagination
+}
+
+export interface GetCardsPayload {
+  id: string
+  orderBy?: Sort
 }
 
 export interface RootObjectItems {

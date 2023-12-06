@@ -12,11 +12,31 @@ const cardsService = baseApiService.injectEndpoints({
           url: `v1/decks/${id}/cards`,
         }),
       }),
-      deleteCard: builder.mutation<void, string>({
+      deleteCard: builder.mutation<void, { cardId: string; deckId: string }>({
         invalidatesTags: ['Cards'],
+        onQueryStarted: async ({ cardId, deckId }, { dispatch, queryFulfilled }) => {
+          debugger
+
+          const patchResult = dispatch(
+            cardsService.util.updateQueryData('getCards', deckId, data => {
+              debugger
+              const index = data.items.findIndex(deck => deck.id == cardId)
+
+              if (index !== -1) {
+                data.items.splice(index, 1)
+              }
+            })
+          )
+
+          try {
+            await queryFulfilled
+          } catch (error) {
+            patchResult.undo()
+          }
+        },
         query: id => ({
           method: 'DELETE',
-          url: `v1/cards/${id}`,
+          url: `v1/cards/${id.cardId}`,
         }),
       }),
       getCards: builder.query<GetCardsResponse, string>({
@@ -25,6 +45,7 @@ const cardsService = baseApiService.injectEndpoints({
       }),
       patchCard: builder.mutation<CreateCardResponseType, CreateCard>({
         invalidatesTags: ['Cards'],
+
         query: ({ id, ...body }) => ({
           body,
           method: 'PATCH',
