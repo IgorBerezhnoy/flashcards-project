@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { Header, Loader } from '@/components/ui'
 import { Page } from '@/components/ui/page'
 import { Pagination } from '@/components/ui/pagination'
+import { Sort } from '@/components/ui/table'
 import { Typography } from '@/components/ui/typography'
 import { useActions } from '@/hooks'
 import { Decks } from '@/pages/decks/decks'
@@ -47,15 +48,22 @@ export const DecksPage = () => {
     return `${sort.key}-${sort.direction}`
   }, [sort])
 
-  const { data, isError, isLoading } = useGetDecksQuery({
+  const {
+    currentData: currentDecksData,
+    data: deckData,
+    isError,
+    isLoading,
+  } = useGetDecksQuery({
     authorId: activeTab,
     currentPage: page,
     itemsPerPage: selectedCount,
     maxCardsCount: sliderValue[1],
     minCardsCount: sliderValue[0],
     name: nameDeck,
-    orderBy: sortedString,
+    orderBy: sortedString as Sort,
   })
+
+  const data = currentDecksData ?? deckData
 
   if (isLoading) {
     return <Loader />
