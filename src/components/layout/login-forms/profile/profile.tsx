@@ -42,6 +42,18 @@ export const Profile = ({ data }: Props) => {
         <img alt={name} className={s.avatar} src={src} />
         <div className={s.icon}>
           <Edit2Outline />
+          <input
+            onChange={e => {
+              const file = e.target?.files?.[0]
+              const formData = new FormData()
+
+              if (file) {
+                formData.append('avatar', file)
+              }
+              updateUserData(formData as unknown as { avatar: string })
+            }}
+            type={'file'}
+          />
         </div>
       </div>
       {editMode ? (
