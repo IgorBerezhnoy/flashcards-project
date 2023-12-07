@@ -19,3 +19,9 @@ export type PatchUserType = {
   email?: string
   name?: string
 }
+
+export type SingUpFormData = {
+  email: string
+  name: string
+  password: string
+}

@@ -1,10 +1,11 @@
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 
 import { LogOut, PersonOutline } from '@/assets'
 import { DropDownItem } from '@/components/ui/dropdownMenu/dropDownItem'
 import { DropdownMenu } from '@/components/ui/dropdownMenu/dropdownMenu'
 import { DropdownSeparator } from '@/components/ui/dropdownMenu/dropdownSeparator'
 import { Typography } from '@/components/ui/typography'
+import { useLogoutMutation } from '@/services/auth/auth.service'
 
 import s from '@/components/ui/dropdownMenu/dropdown.module.scss'
 
@@ -17,6 +18,8 @@ type Props = {
 }
 
 export const UserDropdown = ({ email, name, photo, photoDesc }: Props) => {
+  const [logout] = useLogoutMutation()
+
   return (
     <DropdownMenu
       trigger={
@@ -29,17 +32,19 @@ export const UserDropdown = ({ email, name, photo, photoDesc }: Props) => {
       }
     >
       <DropDownItem>
-        <div className={s.photoAndEmail}>
-          <img alt={photoDesc} className={s.dropdownMenuItem_img} src={photo} />
-          <div className={s.nameAndEmail}>
-            <Typography as={'div'} className={s.userName} variant={'subtitle2'}>
-              {name}
-            </Typography>
-            <Typography as={'div'} className={s.userEmail} variant={'caption'}>
-              {email}
-            </Typography>
+        <NavLink to={'/profile'}>
+          <div className={s.photoAndEmail}>
+            <img alt={photoDesc} className={s.dropdownMenuItem_img} src={photo} />
+            <div className={s.nameAndEmail}>
+              <Typography as={'div'} className={s.userName} variant={'subtitle2'}>
+                {name}
+              </Typography>
+              <Typography as={'div'} className={s.userEmail} variant={'caption'}>
+                {email}
+              </Typography>
+            </div>
           </div>
-        </div>
+        </NavLink>
       </DropDownItem>
       <DropdownSeparator />
       <DropDownItem asChild>
@@ -49,7 +54,7 @@ export const UserDropdown = ({ email, name, photo, photoDesc }: Props) => {
         </Link>
       </DropDownItem>
       <DropdownSeparator />
-      <Link to={'/login'}>
+      <Link onClick={() => logout()} to={'/login'}>
         <LogOut color={'white'} />
         Sign Out
       </Link>

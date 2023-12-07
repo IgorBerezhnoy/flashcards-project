@@ -1,6 +1,6 @@
 import { Profile } from '@/components/layout/login-forms/profile'
 import { Loader } from '@/components/ui'
-import { useMeQuery, usePatchUserMutation } from '@/services/auth/auth.service'
+import { useMeQuery } from '@/services/auth/auth.service'
 
 export const ProfileWrapper = () => {
   const { data, isError, isLoading } = useMeQuery()
