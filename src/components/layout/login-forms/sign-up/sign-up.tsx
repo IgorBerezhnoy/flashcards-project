@@ -1,5 +1,6 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { Link } from 'react-router-dom'
 
 import { ControlledTextField } from '@/components/controled/controlled-textField'
 import { Button } from '@/components/ui/button'
@@ -67,9 +68,11 @@ export const SignUp = ({ onSubmit }: Props) => {
         <Typography as={'a'} className={s.text}>
           {'Already have an account?'}
         </Typography>
-        <Typography as={'a'} className={s.signIn} variant={'link1'}>
-          Sign in
-        </Typography>
+        <Link to={'/login'}>
+          <Typography as={'a'} className={s.signIn} variant={'link1'}>
+            Sign in
+          </Typography>
+        </Link>
       </div>
     </Card>
   )
