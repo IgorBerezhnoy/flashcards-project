@@ -11,8 +11,6 @@ const cardsService = baseApiService.injectEndpoints({
 
           dispatch(
             cardsService.util.updateQueryData('getCards', id, data => {
-              console.log(data.items)
-              console.log(data)
               debugger
               data.items.unshift(res.data)
             })

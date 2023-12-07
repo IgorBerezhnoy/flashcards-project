@@ -5,7 +5,7 @@ import { Profile } from './'
 const meta = {
   component: Profile,
   tags: ['autodocs'],
-  title: 'Components/Layout/Forms/Profile',
+  title: 'Components/Layout/Forms/ProfilePage',
 } satisfies Meta<typeof Profile>
 
 export default meta

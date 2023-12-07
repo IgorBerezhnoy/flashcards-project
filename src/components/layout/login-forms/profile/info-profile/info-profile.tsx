@@ -13,11 +13,13 @@ type Props = {
 export const InfoProfile = ({ email, name, onEditProfile }: Props) => {
   return (
     <div className={s.wrapper}>
-      <div className={s.nameBlock}>
-        <Typography as={'h2'} variant={'h2'}>
-          {name}
-        </Typography>
-        <Edit2Outline onClick={onEditProfile} />
+      <div className={s.nameBlock} onClick={onEditProfile}>
+        <div className={s.iconAndName}>
+          <Typography as={'h2'} variant={'h2'}>
+            {name}
+          </Typography>
+          <Edit2Outline />
+        </div>
       </div>
       <Typography className={s.email} variant={'body2'}>
         {email}

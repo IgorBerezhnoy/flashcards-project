@@ -5,6 +5,7 @@ import { EditProfile, EditProfileData } from '@/components/layout/login-forms/pr
 import { InfoProfile } from '@/components/layout/login-forms/profile/info-profile'
 import { Card } from '@/components/ui/card'
 import { Typography } from '@/components/ui/typography'
+import { usePatchUserMutation } from '@/services/auth/auth.service'
 
 import s from './profile.module.scss'
 
@@ -22,13 +23,14 @@ type Props = {
 export const Profile = ({ data }: Props) => {
   const { email, name, src } = data
   const [editMode, setEditMode] = useState(false)
+  const [updateUserData] = usePatchUserMutation()
 
   const onEditProfile = () => {
     setEditMode(true)
   }
 
   const onSubmit = (data: EditProfileData) => {
-    console.log(data)
+    updateUserData(data)
     setEditMode(false)
   }
 
