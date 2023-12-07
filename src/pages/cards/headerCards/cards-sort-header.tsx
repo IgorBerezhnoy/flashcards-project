@@ -42,7 +42,9 @@ export const CardsSortHeader = () => {
           </Modal>
         ) : data?.items.length ? (
           <Button>
-            <Link to={`/learn/${dataThisDeck?.id}`}>Learn to Pack</Link>
+            <Link className={'link'} to={`/learn/${dataThisDeck?.id}`}>
+              Learn to Pack
+            </Link>
           </Button>
         ) : (
           ''
