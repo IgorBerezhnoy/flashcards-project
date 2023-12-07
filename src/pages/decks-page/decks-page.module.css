@@ -39,3 +39,8 @@ white-space: nowrap;
   width: 16px;
   height: 16px;
 }
+
+.deck__pagination {
+  display: flex;
+  justify-content: center;
+}
