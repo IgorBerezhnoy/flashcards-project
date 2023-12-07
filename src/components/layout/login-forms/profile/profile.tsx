@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 import { Edit2Outline } from '@/assets'
 import { EditProfile, EditProfileData } from '@/components/layout/login-forms/profile/edit-profile'
@@ -20,17 +20,58 @@ type Props = {
 }
 
 export const Profile = ({ data }: Props) => {
-  const { email, name, src } = data
+  const { email, name } = data
   const [editMode, setEditMode] = useState(false)
   const [updateUserData] = usePatchUserMutation()
+  const [selectedFile, setSelectedFile] = useState<File | null>(null)
+  const fileInputRef = useRef<HTMLInputElement>(null)
+  const [profileData, setProfileData] = useState<ProfileData>(data)
+
+  const onSubmit = async (data: EditProfileData) => {
+    const formData = new FormData()
+
+    if (selectedFile) {
+      formData.append('avatar', selectedFile)
+    }
+    formData.append('name', data.name)
+
+    await updateUserData(formData as any)
+
+    setEditMode(false)
+  }
 
   const onEditProfile = () => {
     setEditMode(true)
   }
 
-  const onSubmit = (data: EditProfileData) => {
-    updateUserData(data)
-    setEditMode(false)
+  const handleIconClick = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click()
+    }
+  }
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0] || null
+
+    if (file) {
+      setSelectedFile(file)
+
+      const reader = new FileReader()
+
+      reader.onload = async () => {
+        const newSrc = reader.result as string
+
+        setProfileData(prevData => ({ ...prevData, src: newSrc }))
+
+        const formData = new FormData()
+
+        formData.append('avatar', file)
+        formData.append('name', profileData.name)
+
+        await updateUserData(formData as any)
+      }
+      reader.readAsDataURL(file)
+    }
   }
 
   return (
@@ -39,19 +80,13 @@ export const Profile = ({ data }: Props) => {
         Personal Information
       </Typography>
       <div className={s.avatarBlock}>
-        <img alt={name} className={s.avatar} src={src} />
-        <div className={s.icon}>
+        <img alt={name} className={s.avatar} src={profileData.src} />
+        <div className={s.icon} onClick={handleIconClick}>
           <Edit2Outline />
           <input
-            onChange={e => {
-              const file = e.target?.files?.[0]
-              const formData = new FormData()
-
-              if (file) {
-                formData.append('avatar', file)
-              }
-              updateUserData(formData as unknown as { avatar: string })
-            }}
+            onChange={handleFileChange}
+            ref={fileInputRef}
+            style={{ display: 'none' }}
             type={'file'}
           />
         </div>
