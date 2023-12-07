@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { toast } from 'react-toastify'
 
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
@@ -9,8 +10,16 @@ import { useCreateDeckMutation } from '@/services/decks/decks.service'
 import s from '@/components/ui/table/table.module.scss'
 
 export const AddNewPack = () => {
-  const [createDeck] = useCreateDeckMutation()
+  const [createDeck, {}] = useCreateDeckMutation()
   const [value, setValue] = useState('')
+
+  const onClick = () => {
+    createDeck({ name: value })
+      .unwrap()
+      .then(() => {
+        toast('🦄 Created card')
+      })
+  }
 
   return (
     <Modal title={'Add New Pack'} trigger={<Button variant={'primary'}>Add New Pack</Button>}>
@@ -21,7 +30,7 @@ export const AddNewPack = () => {
         </div>
         <div className={s.buttons}>
           <Button variant={'secondary'}>Cancel</Button>
-          <Button onClick={() => createDeck({ name: value })} variant={'primary'}>
+          <Button onClick={onClick} variant={'primary'}>
             Add New Pack
           </Button>
         </div>

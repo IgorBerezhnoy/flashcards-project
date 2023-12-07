@@ -5,6 +5,6 @@ export const baseApiService = createApi({
   baseQuery: baseQueryWithReauth,
   endpoints: () => ({}),
   reducerPath: 'baseApiService',
-  refetchOnFocus: true,
+  // refetchOnFocus: true,
   tagTypes: ['Decks', 'Deck', 'Cards', 'Me'],
 })

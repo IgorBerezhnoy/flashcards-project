@@ -1,9 +1,11 @@
+import React from 'react'
 import { useForm } from 'react-hook-form'
 
 import { ControlledTextField } from '@/components/controled/controlled-textField'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Typography } from '@/components/ui/typography'
+import { SingUpFormData } from '@/services/auth/auth.types'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
@@ -15,22 +17,30 @@ const schema = z.object({
   password: z.string().min(3),
 })
 
-type SignUpData = z.infer<typeof schema>
+export type SignUpData = z.infer<typeof schema>
 type Props = {
-  onSubmit: (data: SignUpData) => void
+  onSubmit: (data: SingUpFormData) => void
 }
 
-export const SignUp = (props: Props) => {
-  const { control, handleSubmit } = useForm<SignUpData>({
+export const SignUp = ({ onSubmit }: Props) => {
+  const { control, getValues } = useForm<SignUpData>({
     resolver: zodResolver(schema),
   })
+
+  const submit = (e: React.FormEvent) => {
+    e.preventDefault()
+    const { email, password } = getValues()
+
+    debugger
+    onSubmit({ email, name: email, password })
+  }
 
   return (
     <Card className={s.container}>
       <Typography as={'h2'} className={s.title} variant={'large'}>
         Sign up
       </Typography>
-      <form className={s.form} onSubmit={handleSubmit(props.onSubmit)}>
+      <form className={s.form} onSubmit={submit}>
         <ControlledTextField
           control={control}
           label={'Email'}
