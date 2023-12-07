@@ -13,3 +13,9 @@ export interface User {
   name: string
   updated: string
 }
+
+export type PatchUserType = {
+  avatar?: string
+  email?: string
+  name?: string
+}

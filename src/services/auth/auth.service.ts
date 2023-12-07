@@ -1,4 +1,4 @@
-import { LoginParams, User } from '@/services/auth/auth.types'
+import { LoginParams, PatchUserType, User } from '@/services/auth/auth.types'
 import { baseApiService } from '@/services/baseApi/base-api.service'
 
 const authService = baseApiService.injectEndpoints({
@@ -16,8 +16,16 @@ const authService = baseApiService.injectEndpoints({
         providesTags: ['Me'],
         query: () => `v1/auth/me`,
       }),
+      patchUser: builder.mutation<User, PatchUserType>({
+        invalidatesTags: ['Me'],
+        query: body => ({
+          body,
+          method: 'PATCH',
+          url: '/v1/auth/me',
+        }),
+      }),
     }
   },
 })
 
-export const { useLoginMutation, useMeQuery } = authService
+export const { useLoginMutation, useMeQuery, usePatchUserMutation } = authService
