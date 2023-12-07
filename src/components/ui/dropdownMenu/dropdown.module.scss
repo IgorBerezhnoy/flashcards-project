@@ -3,13 +3,17 @@
 @import '../../../../node_modules/@radix-ui/colors/violet.css';
 
 .trigger {
+  cursor: pointer;
+
+  position: relative;
+
   display: flex;
+  gap: 14px;
   align-items: center;
+
   margin: 0;
   padding: 0;
-  gap: 14px;
-  position: relative;
-  cursor: pointer;
+
   transition: opacity 0.2s ease-in-out;
 
   &:hover {
@@ -21,6 +25,7 @@
   position: relative;
   top: 6px;
   right: calc(10% + 15px);
+
   margin: 0.5rem;
   padding: 0.75rem;
 
@@ -45,15 +50,14 @@
   }
 }
 
-
 .dropdownMenuItem {
   display: flex;
+  gap: 10px;
   align-items: center;
   justify-content: flex-start;
-  gap: 10px;
+
   outline: none;
 }
-
 
 .dropdownMenuLabel {
   padding-left: 25px;
@@ -98,11 +102,14 @@
   width: 2.25rem;
   height: 2.25rem;
   margin-right: 0.5rem;
+
+  object-fit: cover;
   border-radius: 100%;
 }
 
 .userEmail {
   color: var(--color-dark-100);
+  text-decoration: none;
 }
 
 .item_title {
@@ -123,5 +130,6 @@
 .userPhoto {
   width: 36px;
   height: 36px;
+  object-fit: cover;
   border-radius: 50%;
 }

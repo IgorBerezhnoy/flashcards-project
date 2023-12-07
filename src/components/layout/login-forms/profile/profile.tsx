@@ -10,7 +10,6 @@ import { usePatchUserMutation } from '@/services/auth/auth.service'
 import s from './profile.module.scss'
 
 export type ProfileData = {
-  avatar?: string
   email: string
   name: string
   src: string

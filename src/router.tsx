@@ -12,12 +12,17 @@ import { DecksPage } from '@/pages/decks-page/decks-page'
 import { LearnCard } from '@/pages/learnCard/learnCard'
 import { ProfilePage } from '@/pages/profile'
 import { SignInPage } from '@/pages/sign-in-page'
+import { SignUpPage } from '@/pages/sign-up-page'
 import { useMeQuery } from '@/services/auth/auth.service'
 
 const publicRouters: RouteObject[] = [
   {
     element: <SignInPage />,
     path: '/login',
+  },
+  {
+    element: <SignUpPage />,
+    path: '/sing-up',
   },
 ]
 const privateRoutes: RouteObject[] = [
