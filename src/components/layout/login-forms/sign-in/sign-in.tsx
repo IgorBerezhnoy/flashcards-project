@@ -57,9 +57,11 @@ export const SignIn = (props: Props) => {
           label={'Remember me'}
           name={'rememberMe'}
         />
-        <Typography as={'a'} className={s.forgotPassword} variant={'body2'}>
-          Forgot Password?
-        </Typography>
+        <Link to={'/password-recovery'}>
+          <Typography as={'a'} className={s.forgotPassword} variant={'body2'}>
+            Forgot Password?
+          </Typography>
+        </Link>
         <Button>Sign In</Button>
       </form>
       <div className={s.footer}>
