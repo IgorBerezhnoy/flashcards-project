@@ -8,7 +8,9 @@ import {
 
 import { Loader } from '@/components/ui/loading/loader'
 import { CardsPage } from '@/pages/cards/cards-page'
+import { CheckEmailFormPage } from '@/pages/checkEmailForm-page'
 import { DecksPage } from '@/pages/decks-page/decks-page'
+import { ForgotPasswordPage } from '@/pages/forgotPassword-page'
 import { LearnCard } from '@/pages/learnCard/learnCard'
 import { ProfilePage } from '@/pages/profile'
 import { SignInPage } from '@/pages/sign-in-page'
@@ -23,6 +25,14 @@ const publicRouters: RouteObject[] = [
   {
     element: <SignUpPage />,
     path: '/sing-up',
+  },
+  {
+    element: <ForgotPasswordPage />,
+    path: '/password-recovery',
+  },
+  {
+    element: <CheckEmailFormPage />,
+    path: '/check-email',
   },
 ]
 const privateRoutes: RouteObject[] = [

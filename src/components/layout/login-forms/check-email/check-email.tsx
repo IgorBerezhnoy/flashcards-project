@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import { CheckEmail } from '@/assets'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
@@ -23,7 +25,9 @@ export const CheckEmailForm = ({ email }: Props) => {
       </div>
 
       <div className={s.footer}>
-        <Button>Back to Sign In</Button>
+        <Link to={'/login'}>
+          <Button>Back to Sign In</Button>
+        </Link>
       </div>
     </Card>
   )
