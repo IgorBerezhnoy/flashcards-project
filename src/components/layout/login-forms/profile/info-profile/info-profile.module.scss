@@ -1,16 +1,17 @@
 .wrapper {
-  text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+
+  text-align: center;
 }
 
 .nameBlock {
   display: flex;
+  gap: 9px;
   align-items: center;
   justify-content: center;
-  gap: 9px;
 
   h2 {
     margin: 0;
@@ -19,5 +20,10 @@
 
 .email {
   margin-bottom: 13px;
-  color: var(--color-dark-100)
+  color: var(--color-dark-100);
+}
+
+.iconAndName {
+  cursor: pointer;
+  display: flex;
 }
