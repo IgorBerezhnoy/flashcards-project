@@ -39,7 +39,6 @@ export const DecksPage = () => {
     sort,
   } = useSelector<RootState, SortParamsTypeObj>(state => state.decks.sortParams)
   const { data: meData } = useMeQuery()
-
   const sortedString = useMemo(() => {
     if (!sort) {
       return null

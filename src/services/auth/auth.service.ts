@@ -12,6 +12,14 @@ const authService = baseApiService.injectEndpoints({
           url: '/v1/auth/login',
         }),
       }),
+      logout: builder.mutation<void, void>({
+        invalidatesTags: ['Me'],
+        query: body => ({
+          body,
+          method: 'POST',
+          url: '/v1/auth/logout',
+        }),
+      }),
       me: builder.query<User, void>({
         providesTags: ['Me'],
         query: () => `v1/auth/me`,
@@ -28,4 +36,4 @@ const authService = baseApiService.injectEndpoints({
   },
 })
 
-export const { useLoginMutation, useMeQuery, usePatchUserMutation } = authService
+export const { useLoginMutation, useLogoutMutation, useMeQuery, usePatchUserMutation } = authService
