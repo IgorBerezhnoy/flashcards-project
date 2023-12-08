@@ -1,3 +1,3 @@
-import { RootState } from '../../services/store'
+import { RootState } from '@/services/store'
 
-export const selectSortParams = (state: RootState) => state.decks
+export const selectSortParams = (state: RootState) => state.decks.sortParams

@@ -7,7 +7,7 @@ import { Modal } from '@/components/ui/modal/modal'
 import { TextField } from '@/components/ui/textField'
 import { useCreateDeckMutation } from '@/services/decks/decks.service'
 
-import s from '@/components/ui/table/table.module.scss'
+import s from './decks.module.scss'
 
 export const AddNewPack = () => {
   const [createDeck, {}] = useCreateDeckMutation()
