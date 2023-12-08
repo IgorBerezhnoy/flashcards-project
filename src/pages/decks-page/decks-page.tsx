@@ -7,6 +7,8 @@ import { Pagination } from '@/components/ui/pagination'
 import { Sort } from '@/components/ui/table'
 import { Typography } from '@/components/ui/typography'
 import { useActions } from '@/hooks'
+import { AddNewCard } from '@/pages/modal/addNewCard'
+import { EditPack } from '@/pages/modal/editPack'
 import { useGetMeQuerySate } from '@/services/auth/auth.service'
 import { useGetDecksQuery } from '@/services/decks/decks.service'
 import { SortParamsTypeObj, sortParamsActions } from '@/services/decks/decks.slice'
@@ -101,6 +103,8 @@ export const DecksPage = () => {
             totalCount={data.pagination.totalItems}
           />
         </div>
+        <AddNewCard />
+        <EditPack />
       </div>
     </div>
   )
