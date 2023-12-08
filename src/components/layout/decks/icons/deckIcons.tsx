@@ -7,7 +7,7 @@ import { TableCell } from '@/components/ui/table'
 import { useMeQuery } from '@/services/auth/auth.service'
 import { DeckItem } from '@/services/decks/decks.types'
 
-import s from '@/components/ui/table/table.module.scss'
+import s from './../decks.module.scss'
 
 type Props = { deck: DeckItem }
 export const DeckIcons = ({ deck }: Props) => {

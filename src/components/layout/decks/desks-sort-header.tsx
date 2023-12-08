@@ -1,15 +1,15 @@
 import { useEffect } from 'react'
 
 import { TrashOutline } from '@/assets'
+import { AddNewPack } from '@/components/layout/decks/addNewPack'
 import { Button } from '@/components/ui/button'
 import { Slider } from '@/components/ui/slider'
 import { Sort } from '@/components/ui/table'
 import { Tab } from '@/components/ui/tabs'
 import { Typography } from '@/components/ui/typography'
-import { AddNewPack } from '@/pages/decks-page/addNewPack'
 import { DebouncedInput } from '@/utils/debounce'
 
-import s from '@/pages/decks-page/decks-page.module.scss'
+import s from './decks.module.scss'
 
 type PropsType = {
   activeTab: string

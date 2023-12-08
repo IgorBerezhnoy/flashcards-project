@@ -4,7 +4,7 @@ import { Modal } from '@/components/ui/modal/modal'
 import { Typography } from '@/components/ui/typography'
 import { useDeleteDeckMutation } from '@/services/decks/decks.service'
 
-import s from '@/components/ui/table/table.module.scss'
+import s from './../decks.module.scss'
 
 export const DeleteDeckIcon = ({ id }: { id: string }) => {
   const [deleteDeck] = useDeleteDeckMutation()
