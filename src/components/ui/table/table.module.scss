@@ -62,11 +62,6 @@
   width: 100%;
 }
 
-.icon {
-  cursor: pointer;
-  width: 16px;
-  height: 16px;
-}
 
 .dialogContent {
   position: fixed;
@@ -281,5 +276,27 @@
   padding-left: 0;
 }
 
+.iconBody {
+  height: 100%;
+}
 
+.iconBlock {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+
+}
+.iconLearn {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.icon {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+}
 

@@ -14,12 +14,14 @@ export const DeckIcons = ({ deck }: Props) => {
   const { data } = useMeQuery()
 
   return (
-    <TableCell>
-      <Link to={`learn/${deck.id}`}>
-        <PlayCircleOutline className={s.icon} />
-      </Link>
-      {data?.id === deck.author.id && <EditDeckIcon id={deck.id} />}
-      {data?.id === deck.author.id && <DeleteDeckIcon id={deck.id} />}
+    <TableCell className={s.iconBody}>
+      <div className={s.iconBlock}>
+        <Link className={s.iconLearn} to={`learn/${deck.id}`}>
+          <PlayCircleOutline className={s.icon} />
+        </Link>
+        {data?.id === deck.author.id && <EditDeckIcon id={deck.id} />}
+        {data?.id === deck.author.id && <DeleteDeckIcon id={deck.id} />}
+      </div>
     </TableCell>
   )
 }
