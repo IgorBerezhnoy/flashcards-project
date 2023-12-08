@@ -61,3 +61,5 @@ export const {
   useRecoverPasswordMutation,
   useSingUpMutation,
 } = authService
+
+export const { useQueryState: useGetMeQuerySate } = authService.endpoints.me
