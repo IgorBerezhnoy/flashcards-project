@@ -300,3 +300,37 @@
   height: 16px;
 }
 
+.imageAddBody {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--dark-500, #333);
+  padding: 5px;
+  gap: 10px;
+}
+
+.imageNav {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.iconImage {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  color: #FFFFFF;
+}
+
+.image {
+  flex: 0 1 50%;
+  border: 1px solid var(--dark-500, #333);
+  height: 80px;
+  object-fit: contain;
+}
+
+.input {
+  display: none;
+}
+
