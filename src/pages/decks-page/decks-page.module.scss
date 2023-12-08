@@ -2,39 +2,8 @@
   padding-top: 33px;
 }
 
-.deck__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 39px;
-}
-
-.deck__title {
-  font-size: var(--font-size-xxl);
-  font-weight: var(--font-weight-bold);
-  line-height: var(--line-height-l);
-}
-
-.deck__navigation {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-  justify-content: space-between;
-
-  margin-bottom: 36px;
-}
-
 .deck__table {
   margin-bottom: 30px;
-}
-
-.deck__btnText {
-  white-space: nowrap;
-}
-
-.deck__deleteIcon {
-  width: 16px;
-  height: 16px;
 }
 
 .deck__pagination {

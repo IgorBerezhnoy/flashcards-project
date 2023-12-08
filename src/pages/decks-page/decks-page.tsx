@@ -2,19 +2,19 @@ import { useMemo } from 'react'
 import { useSelector } from 'react-redux'
 
 import { Decks } from '@/components/layout/decks/decks'
+import { DesksSortHeader } from '@/components/layout/decks/desks-sort-header'
 import { Loader } from '@/components/ui'
 import { Pagination } from '@/components/ui/pagination'
 import { Sort } from '@/components/ui/table'
 import { Typography } from '@/components/ui/typography'
 import { useActions } from '@/hooks'
+import { selectSortParams } from '@/pages/decks-page/decksSortSelectors'
 import { useGetMeQuerySate } from '@/services/auth/auth.service'
 import { useGetDecksQuery } from '@/services/decks/decks.service'
 import { SortParamsTypeObj, sortParamsActions } from '@/services/decks/decks.slice'
 import { RootState } from '@/services/store'
 
 import s from './decks-page.module.scss'
-
-import { DesksSortHeader } from './desks-sort-header'
 
 export const DecksPage = () => {
   const {
@@ -36,7 +36,7 @@ export const DecksPage = () => {
     selectedCount,
     sliderValue,
     sort,
-  } = useSelector<RootState, SortParamsTypeObj>(state => state.decks.sortParams)
+  } = useSelector<RootState, SortParamsTypeObj>(state => selectSortParams(state))
   const { data: meData } = useGetMeQuerySate()
   const sortedString = useMemo(() => {
     if (!sort) {
