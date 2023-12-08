@@ -1,12 +1,12 @@
 import { useParams } from 'react-router-dom'
 
+import { CardsSortHeader } from '@/components/layout/cards/headerCards/cards-sort-header'
+import { TableBodyCards } from '@/components/layout/cards/table-body-cards'
 import { Table, TableHeader } from '@/components/ui/table'
 import { Typography } from '@/components/ui/typography'
-import { CardsSortHeader } from '@/pages/cards/headerCards/cards-sort-header'
-import { TableBodyCards } from '@/pages/cards/table-body-cards'
 import { useGetCardsQuery } from '@/services/cards/cards.service'
 
-import s from '@/pages/cards/cards-page.module.scss'
+import s from './cards-page.module.scss'
 
 export const CardsPage = () => {
   const { id } = useParams()

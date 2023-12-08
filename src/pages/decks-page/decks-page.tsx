@@ -1,18 +1,18 @@
 import { useMemo } from 'react'
 import { useSelector } from 'react-redux'
 
+import { Decks } from '@/components/layout/decks/decks'
 import { Loader } from '@/components/ui'
 import { Pagination } from '@/components/ui/pagination'
 import { Sort } from '@/components/ui/table'
 import { Typography } from '@/components/ui/typography'
 import { useActions } from '@/hooks'
-import { Decks } from '@/pages/decks/decks'
 import { useGetMeQuerySate } from '@/services/auth/auth.service'
 import { useGetDecksQuery } from '@/services/decks/decks.service'
 import { SortParamsTypeObj, sortParamsActions } from '@/services/decks/decks.slice'
 import { RootState } from '@/services/store'
 
-import s from './decks-page.module.css'
+import s from './decks-page.module.scss'
 
 import { DesksSortHeader } from './desks-sort-header'
 

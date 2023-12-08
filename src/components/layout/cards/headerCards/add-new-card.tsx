@@ -6,7 +6,7 @@ import { Select } from '@/components/ui/select'
 import { TextField } from '@/components/ui/textField'
 import { useCreateCardMutation } from '@/services/cards/cards.service'
 
-import s from '@/components/ui/modal/modal.module.scss'
+import s from './../cards.module.scss'
 
 export const AddNewCard = () => {
   const { id } = useParams()

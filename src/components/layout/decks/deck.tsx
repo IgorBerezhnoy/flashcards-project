@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
+import { DeckIcons } from '@/components/layout/decks/icons/deckIcons'
 import { TableCell, TableRow } from '@/components/ui/table'
-import { DeckIcons } from '@/pages/decks/icons/deckIcons'
 import { DeckItem } from '@/services/decks/decks.types'
 
 type Props = { deck: DeckItem }
@@ -10,7 +10,7 @@ export const Deck = ({ deck }: Props) => {
     <>
       <TableRow key={deck.id}>
         <TableCell>
-          {deck?.cover && <img src={deck?.cover} width={50} />}
+          {deck?.cover && <img alt={'picture of this card'} height={50} src={deck?.cover} />}
           <Link className={'link'} to={`decks/cards/${deck.id}`}>
             {deck?.name}
           </Link>

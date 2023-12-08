@@ -1,18 +1,17 @@
 import { Link, useParams } from 'react-router-dom'
 
+import { BackToPacksList } from '@/components/layout/backToPack'
+import { AddNewCard } from '@/components/layout/cards/headerCards/add-new-card'
+import { DropdownCards } from '@/components/layout/cards/headerCards/dropdown-cards'
 import { Button } from '@/components/ui/button'
 import { Modal } from '@/components/ui/modal/modal'
 import { TextField } from '@/components/ui/textField'
 import { Typography } from '@/components/ui/typography'
-import { AddNewCard } from '@/pages/cards/headerCards/add-new-card'
-import { DropdownCards } from '@/pages/cards/headerCards/dropdown-cards'
 import { useGetMeQuerySate } from '@/services/auth/auth.service'
 import { useGetCardsQuery } from '@/services/cards/cards.service'
 import { useGetDeckByIdQuery } from '@/services/decks/decks.service'
 
-import s from '../cards-page.module.scss'
-
-import { BackToPacksList } from '../../../components/layout/backToPack'
+import s from './../cards.module.scss'
 
 export const CardsSortHeader = () => {
   const { id } = useParams()

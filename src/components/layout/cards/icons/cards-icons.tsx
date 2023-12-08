@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 
-import { DeleteCardIcon } from '@/pages/cards/icons/delete-card-icon'
-import { EditCardIcon } from '@/pages/cards/icons/edit-card-icon'
+import { DeleteCardIcon } from '@/components/layout/cards/icons/delete-card-icon'
+import { EditCardIcon } from '@/components/layout/cards/icons/edit-card-icon'
 import { useMeQuery } from '@/services/auth/auth.service'
 import { CardType } from '@/services/cards/cards.types'
 import { useGetDeckByIdQuery } from '@/services/decks/decks.service'
