@@ -6,7 +6,7 @@ import { TextField } from '@/components/ui/textField'
 import { Typography } from '@/components/ui/typography'
 import { AddNewCard } from '@/pages/cards/headerCards/add-new-card'
 import { DropdownCards } from '@/pages/cards/headerCards/dropdown-cards'
-import { useMeQuery } from '@/services/auth/auth.service'
+import { useGetMeQuerySate } from '@/services/auth/auth.service'
 import { useGetCardsQuery } from '@/services/cards/cards.service'
 import { useGetDeckByIdQuery } from '@/services/decks/decks.service'
 
@@ -19,7 +19,7 @@ export const CardsSortHeader = () => {
 
   const { data: dataThisDeck } = useGetDeckByIdQuery(id ?? '')
   const { data } = useGetCardsQuery(id ?? '')
-  const { data: meData } = useMeQuery()
+  const { data: meData } = useGetMeQuerySate()
 
   return (
     <div className={s.cards__conteiner}>

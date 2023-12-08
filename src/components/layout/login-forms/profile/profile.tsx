@@ -1,7 +1,7 @@
-import { useRef, useState } from 'react'
+import { ChangeEvent, useRef, useState } from 'react'
 
 import { Edit2Outline } from '@/assets'
-import { EditProfile, EditProfileData } from '@/components/layout/login-forms/profile/edit-profile'
+import { EditProfile } from '@/components/layout/login-forms/profile/edit-profile'
 import { InfoProfile } from '@/components/layout/login-forms/profile/info-profile'
 import { Card } from '@/components/ui/card'
 import { Typography } from '@/components/ui/typography'
@@ -27,13 +27,12 @@ export const Profile = ({ data }: Props) => {
   const fileInputRef = useRef<HTMLInputElement>(null)
   const [profileData, setProfileData] = useState<ProfileData>(data)
 
-  const onSubmit = async (data: EditProfileData) => {
+  const onSubmit = async () => {
     const formData = new FormData()
 
     if (selectedFile) {
       formData.append('avatar', selectedFile)
     }
-    formData.append('name', data.name)
 
     await updateUserData(formData as any)
 
@@ -50,8 +49,8 @@ export const Profile = ({ data }: Props) => {
     }
   }
 
-  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0] || null
+  const handleFileChange = async (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
 
     if (file) {
       setSelectedFile(file)
@@ -66,9 +65,7 @@ export const Profile = ({ data }: Props) => {
         const formData = new FormData()
 
         formData.append('avatar', file)
-        formData.append('name', profileData.name)
-
-        await updateUserData(formData as any)
+        await updateUserData(formData as unknown as { avatar: string })
       }
       reader.readAsDataURL(file)
     }
@@ -92,7 +89,7 @@ export const Profile = ({ data }: Props) => {
         </div>
       </div>
       {editMode ? (
-        <EditProfile onSubmit={onSubmit} />
+        <EditProfile cancel={() => setEditMode(false)} onSubmit={onSubmit} />
       ) : (
         <InfoProfile email={email} name={name} onEditProfile={onEditProfile} />
       )}

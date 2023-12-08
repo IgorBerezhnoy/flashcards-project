@@ -13,6 +13,7 @@ const schema = z.object({
 export type EditProfileData = z.infer<typeof schema>
 
 type Props = {
+  cancel: () => void
   onSubmit: (data: EditProfileData) => void
 }
 
@@ -22,9 +23,12 @@ export const EditProfile = (props: Props) => {
   return (
     <form className={s.form} onSubmit={handleSubmit(props.onSubmit)}>
       <ControlledTextField className={s.input} control={control} label={'Nickname'} name={'name'} />
-      <Button fullWidth type={'submit'}>
-        Save Changes
-      </Button>
+      <div className={s.buttons}>
+        <Button onClick={props.cancel} variant={'secondary'}>
+          Cancel
+        </Button>
+        <Button type={'submit'}>Save Changes</Button>
+      </div>
     </form>
   )
 }

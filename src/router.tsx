@@ -6,7 +6,9 @@ import {
   createBrowserRouter,
 } from 'react-router-dom'
 
+import { Header } from '@/components/ui'
 import { Loader } from '@/components/ui/loading/loader'
+import { Page } from '@/components/ui/page'
 import { CardsPage } from '@/pages/cards/cards-page'
 import { CheckEmailFormPage } from '@/pages/checkEmailForm-page'
 import { DecksPage } from '@/pages/decks-page/decks-page'
@@ -15,7 +17,7 @@ import { LearnCard } from '@/pages/learnCard/learnCard'
 import { ProfilePage } from '@/pages/profile'
 import { SignInPage } from '@/pages/sign-in-page'
 import { SignUpPage } from '@/pages/sign-up-page'
-import { useMeQuery } from '@/services/auth/auth.service'
+import { useGetMeQuerySate } from '@/services/auth/auth.service'
 
 const publicRouters: RouteObject[] = [
   {
@@ -54,11 +56,17 @@ const privateRoutes: RouteObject[] = [
     path: 'learn/:id',
   },
 ]
+
 const router = createBrowserRouter([
-  ...publicRouters,
   {
-    children: privateRoutes,
-    element: <PrivateAppRoutes />,
+    children: [
+      ...publicRouters,
+      {
+        children: privateRoutes,
+        element: <PrivateAppRoutes />,
+      },
+    ],
+    element: <Layout />,
   },
 ])
 
@@ -66,8 +74,26 @@ export const AppRouter = () => {
   return <RouterProvider router={router} />
 }
 
+function Layout() {
+  const { data } = useGetMeQuerySate()
+
+  return (
+    <>
+      <Page>
+        <Header
+          email={data?.email}
+          isLogin={!!data?.id}
+          name={data?.name}
+          userPhoto={data?.avatar}
+        />
+        <Outlet />
+      </Page>
+    </>
+  )
+}
+
 function PrivateAppRoutes() {
-  const { isError, isLoading } = useMeQuery()
+  const { isError, isLoading } = useGetMeQuerySate()
 
   if (isLoading) {
     return <Loader />

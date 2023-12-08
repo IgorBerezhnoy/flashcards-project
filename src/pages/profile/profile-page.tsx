@@ -1,18 +1,25 @@
-import { Header } from '@/components/ui/header'
-import { Page } from '@/components/ui/page'
-import { ProfileWrapper } from '@/pages/profile/profile-wrapper'
+import { Profile } from '@/components/layout/login-forms/profile'
+import { Loader } from '@/components/ui'
+import { useMeQuery } from '@/services/auth/auth.service'
 
 import s from './profile-page.module.scss'
 
 export const ProfilePage = () => {
+  const { data, isError, isLoading } = useMeQuery()
+
+  if (isLoading) {
+    return <Loader />
+  }
+  if (isError) {
+    return <h1>Error</h1>
+  }
+  const { avatar: src, email, name } = data!
+
   return (
-    <Page>
-      <Header isLogin={false} />
-      <div className={s.body}>
-        <div className={`${s.body__box} body__box`}>
-          <ProfileWrapper />
-        </div>
+    <div className={s.body}>
+      <div className={`${s.body__box} body__box`}>
+        <Profile data={{ email, name, src }} />
       </div>
-    </Page>
+    </div>
   )
 }
