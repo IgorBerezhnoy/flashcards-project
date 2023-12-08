@@ -4,6 +4,7 @@ import { toast } from 'react-toastify'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Modal } from '@/components/ui/modal/modal'
+import { DialogClose } from '@/components/ui/modal/modalClose'
 import { TextField } from '@/components/ui/textField'
 import { useCreateDeckMutation } from '@/services/decks/decks.service'
 
@@ -28,12 +29,14 @@ export const AddNewPack = () => {
           <TextField onValueChange={e => setValue(e)} value={value} />
           <Checkbox label={'Private pack'} />
         </div>
-        <div className={s.buttons}>
-          <Button variant={'secondary'}>Cancel</Button>
-          <Button onClick={onClick} variant={'primary'}>
-            Add New Pack
-          </Button>
-        </div>
+        <DialogClose>
+          <div className={s.buttons}>
+            <Button variant={'secondary'}>Cancel</Button>
+            <Button onClick={onClick} variant={'primary'}>
+              Add New Pack
+            </Button>
+          </div>
+        </DialogClose>
       </div>
     </Modal>
   )
