@@ -4,7 +4,7 @@ import { Modal } from '@/components/ui/modal/modal'
 import { Typography } from '@/components/ui/typography'
 import { useDeleteCardMutation } from '@/services/cards/cards.service'
 
-import s from '@/components/ui/modal/modal.module.scss'
+import s from './../cards.module.scss'
 
 export const DeleteCardIcon = ({ cardId, deckId }: { cardId: string; deckId: string }) => {
   const [deleteCard] = useDeleteCardMutation()

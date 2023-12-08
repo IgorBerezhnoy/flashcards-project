@@ -9,7 +9,7 @@ import { Typography } from '@/components/ui/typography'
 import { AddNewPack } from '@/pages/decks-page/addNewPack'
 import { DebouncedInput } from '@/utils/debounce'
 
-import s from '@/pages/decks-page/decks-page.module.css'
+import s from '@/pages/decks-page/decks-page.module.scss'
 
 type PropsType = {
   activeTab: string

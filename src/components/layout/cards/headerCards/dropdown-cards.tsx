@@ -10,7 +10,7 @@ import { TextField } from '@/components/ui/textField'
 import { Typography } from '@/components/ui/typography'
 import { useDeleteDeckMutation, usePatchDeckMutation } from '@/services/decks/decks.service'
 
-import s from '@/pages/cards/cards-page.module.scss'
+import s from './../cards.module.scss'
 
 export const DropdownCards = () => {
   const { id } = useParams()

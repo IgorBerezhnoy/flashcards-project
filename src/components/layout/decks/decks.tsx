@@ -1,5 +1,5 @@
+import { Deck } from '@/components/layout/decks/deck'
 import { Table, TableBody, TableHeader } from '@/components/ui/table'
-import { Deck } from '@/pages/decks/deck'
 
 export const Decks = ({ data, setSort, sort }: any) => {
   const columns = [
