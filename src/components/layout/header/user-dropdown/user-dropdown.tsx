@@ -48,15 +48,15 @@ export const UserDropdown = ({ email, name, photo, photoDesc }: Props) => {
       </DropDownItem>
       <DropdownSeparator />
       <DropDownItem asChild>
-        <Link to={'/profile'}>
-          <PersonOutline color={'white'} />
-          My Profile
+        <Link className={s.item} to={'/profile'}>
+          <PersonOutline className={s.icon} color={'white'} />
+          <div className={s.text}>My Profile</div>
         </Link>
       </DropDownItem>
       <DropdownSeparator />
-      <Link onClick={() => logout()} to={'/login'}>
-        <LogOut color={'white'} />
-        Sign Out
+      <Link className={s.item} onClick={() => logout()} to={'/login'}>
+        <LogOut className={s.icon} color={'white'} />
+        <div className={s.text}>Sign Out</div>
       </Link>
     </DropdownMenu>
   )

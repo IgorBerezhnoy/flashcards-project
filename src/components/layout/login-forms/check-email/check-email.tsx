@@ -25,8 +25,8 @@ export const CheckEmailForm = ({ email }: Props) => {
       </div>
 
       <div className={s.footer}>
-        <Link to={'/login'}>
-          <Button>Back to Sign In</Button>
+        <Link className={s.footerLink} to={'/login'}>
+          <Button fullWidth>Back to Sign In</Button>
         </Link>
       </div>
     </Card>

@@ -18,10 +18,10 @@ export const InfoProfile = ({ email, name, onEditProfile }: Props) => {
     <div className={s.wrapper}>
       <div className={s.nameBlock} onClick={onEditProfile}>
         <div className={s.iconAndName}>
-          <Typography as={'h2'} variant={'h2'}>
+          <Typography as={'h2'} className={s.text} variant={'h2'}>
             {name}
           </Typography>
-          <Edit2Outline />
+          <Edit2Outline className={s.icon} />
         </div>
       </div>
       <Typography className={s.email} variant={'body2'}>
