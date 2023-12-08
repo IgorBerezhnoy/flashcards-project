@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom'
 
 import { PlayCircleOutline } from '@/assets'
+import { DeleteDeckIcon } from '@/components/layout/decks/icons/deleteDeckIcon'
+import { EditDeckIcon } from '@/components/layout/decks/icons/editDeckIcon'
 import { TableCell } from '@/components/ui/table'
-import { DeleteDeckIcon } from '@/pages/decks/icons/deleteDeckIcon'
-import { EditDeckIcon } from '@/pages/decks/icons/editDeckIcon'
 import { useMeQuery } from '@/services/auth/auth.service'
 import { DeckItem } from '@/services/decks/decks.types'
 
