@@ -26,5 +26,21 @@
 .iconAndName {
   cursor: pointer;
   display: flex;
-}
+  align-items: center;
+  gap: 9px;
 
+  :hover {
+    transition: 0.5s;
+    color: #4C4C4C;
+  }
+}
+.text {
+  color: var(--light-100, #FFF);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 36px; /* 180% */
+}
+.icon {
+  width: 16px;
+  height: 16px;
+}

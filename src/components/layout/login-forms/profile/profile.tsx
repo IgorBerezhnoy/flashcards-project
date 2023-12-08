@@ -82,7 +82,7 @@ export const Profile = ({ data }: Props) => {
       <div className={s.avatarBlock}>
         <img alt={name} className={s.avatar} src={profileData.src} />
         <div className={s.icon} onClick={handleIconClick}>
-          <Edit2Outline />
+          <Edit2Outline className={s.iconAvatar} />
           <input
             onChange={handleFileChange}
             ref={fileInputRef}

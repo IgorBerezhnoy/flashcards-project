@@ -50,3 +50,11 @@
     height: 16px;
   }
 }
+
+.iconAvatar {
+
+  &:hover {
+    transition: 0.4s;
+    color: #000000;
+  }
+}
