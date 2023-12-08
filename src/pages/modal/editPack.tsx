@@ -4,6 +4,7 @@ import { ImageOutline } from '@/assets'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Modal } from '@/components/ui/modal/modal'
+import { DialogClose } from '@/components/ui/modal/modalClose'
 import { TextField } from '@/components/ui/textField'
 
 import s from '@/components/ui/table/table.module.scss'
@@ -56,12 +57,14 @@ export const EditPack = () => {
           <TextField label={'Name Pack'} onValueChange={e => setValue(e)} value={value} />
           <Checkbox label={'Private pack'} />
         </div>
-        <div className={s.buttons}>
-          <Button variant={'secondary'}>Cancel</Button>
-          <Button onClick={onClick} variant={'primary'}>
-            Save Changes
-          </Button>
-        </div>
+        <DialogClose>
+          <div className={s.buttons}>
+            <Button variant={'secondary'}>Cancel</Button>
+            <Button onClick={onClick} variant={'primary'}>
+              Save Changes
+            </Button>
+          </div>
+        </DialogClose>
       </div>
     </Modal>
   )
