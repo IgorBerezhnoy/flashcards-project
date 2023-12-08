@@ -6,6 +6,7 @@ import { DropdownMenu } from '@/components/ui/dropdownMenu/dropdownMenu'
 import { DropdownSeparator } from '@/components/ui/dropdownMenu/dropdownSeparator'
 import { Typography } from '@/components/ui/typography'
 import { useLogoutMutation } from '@/services/auth/auth.service'
+import * as Avatar from '@radix-ui/react-avatar'
 
 import s from '@/components/ui/dropdownMenu/dropdown.module.scss'
 
@@ -27,14 +28,26 @@ export const UserDropdown = ({ email, name, photo, photoDesc }: Props) => {
           <Typography className={s.header__userName} variant={'h3'}>
             {name || 'NoName'}
           </Typography>
-          <img alt={photoDesc} className={s.userPhoto} src={photo} />
+          {photo ? (
+            <img alt={photoDesc} className={s.userPhoto} src={photo} />
+          ) : (
+            <Avatar.Root className={s.avatarRoot}>
+              <Avatar.Fallback className={s.avatarFallback}>{name.slice(0, 1)}</Avatar.Fallback>
+            </Avatar.Root>
+          )}
         </>
       }
     >
       <DropDownItem>
         <NavLink to={'/profile'}>
           <div className={s.photoAndEmail}>
-            <img alt={photoDesc} className={s.dropdownMenuItem_img} src={photo} />
+            {photo ? (
+              <img alt={photoDesc} className={s.dropdownMenuItem_img} src={photo} />
+            ) : (
+              <Avatar.Root className={s.avatarRoot}>
+                <Avatar.Fallback className={s.avatarFallback}>{name.slice(0, 1)}</Avatar.Fallback>
+              </Avatar.Root>
+            )}
             <div className={s.nameAndEmail}>
               <Typography as={'div'} className={s.userName} variant={'subtitle2'}>
                 {name}
