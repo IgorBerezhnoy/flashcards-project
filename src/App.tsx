@@ -25,7 +25,6 @@ export function App() {
         rtl={false}
         theme={'light'}
       />
-      {/* Same as */}
       <ToastContainer />
 
       <AppRouter />

@@ -6,6 +6,7 @@ import {
   createBrowserRouter,
 } from 'react-router-dom'
 
+import { Header } from '@/components/ui'
 import { Loader } from '@/components/ui/loading/loader'
 import { CardsPage } from '@/pages/cards/cards-page'
 import { CheckEmailFormPage } from '@/pages/checkEmailForm-page'
@@ -60,19 +61,42 @@ const router = createBrowserRouter([
     children: privateRoutes,
     element: <PrivateAppRoutes />,
   },
+  {
+    children: publicRouters,
+    element: <PublicAppRouters />,
+  },
 ])
 
 export const AppRouter = () => {
   return <RouterProvider router={router} />
 }
 
+function PublicAppRouters() {
+  const { data } = useMeQuery()
+
+  return (
+    <>
+      aaaaaaaaaaaaaaaaa
+      <Header email={data?.email} isLogin={!!data?.id} name={data?.name} userPhoto={data?.avatar} />
+      <Outlet />
+    </>
+  )
+}
+
 function PrivateAppRoutes() {
-  const { isError, isLoading } = useMeQuery()
+  const { data, isError, isLoading } = useMeQuery()
 
   if (isLoading) {
     return <Loader />
   }
   const isAuthenticated = !isError
 
-  return isAuthenticated ? <Outlet /> : <Navigate to={'/login'} />
+  return isAuthenticated ? (
+    <>
+      <Header email={data?.email} isLogin={!!data?.id} name={data?.name} userPhoto={data?.avatar} />
+      <Outlet />
+    </>
+  ) : (
+    <Navigate to={'/login'} />
+  )
 }
