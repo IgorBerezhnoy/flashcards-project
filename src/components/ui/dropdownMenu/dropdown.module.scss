@@ -2,6 +2,10 @@
 @import '../../../../node_modules/@radix-ui/colors/mauve.css';
 @import '../../../../node_modules/@radix-ui/colors/violet.css';
 
+* {
+  text-decoration: none;
+}
+
 .trigger {
   cursor: pointer;
 
@@ -94,6 +98,7 @@
   align-items: center;
   justify-content: flex-start;
 
+
   width: 13.5rem;
   margin-bottom: 0.75rem;
 }
@@ -109,7 +114,7 @@
 
 .userEmail {
   color: var(--color-dark-100);
-  text-decoration: none;
+
 }
 
 .item_title {
@@ -117,8 +122,8 @@
 }
 
 .icons {
-  width: 16px;
-  height: 16px;
+  width: 10px;
+  height: 10px;
   margin-right: 0.4rem;
   fill: var(--color-white-100);
 }
@@ -132,4 +137,26 @@
   height: 36px;
   object-fit: cover;
   border-radius: 50%;
+}
+
+.item {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  :hover {
+    transition: 0.4s;
+    color: #4C4C4C;
+  }
+}
+.icon {
+  width: 16px;
+  height: 16px;
+}
+
+.text {
+  color: var(--light-100, #FFF);
+  font-size: 12px;
+  line-height: 16px;
 }

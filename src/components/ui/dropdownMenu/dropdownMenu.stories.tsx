@@ -53,14 +53,14 @@ export const WithUser: Story = {
         <DropDownItem asChild>
           <Typography as={'div'} className={s.dropdownMenuItem} variant={'caption'}>
             <PersonOutline className={s.icons} />
-            My Profile
+            <div>My Profile</div>
           </Typography>
         </DropDownItem>
         <DropdownSeparator />
         <DropDownItem>
           <Typography as={'div'} className={s.dropdownMenuItem} variant={'caption'}>
             <LogOut className={s.icons} />
-            Sign Out
+            <div>Sign Out</div>
           </Typography>
         </DropDownItem>
       </div>
