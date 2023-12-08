@@ -1,8 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 
 import { ForgotPassword } from '@/components/layout/login-forms/forgot-password'
-import { Header } from '@/components/ui/header'
-import { Page } from '@/components/ui/page'
 import { useRecoverPasswordMutation } from '@/services/auth/auth.service'
 
 import s from './forgotPassword-page.module.scss'
@@ -29,13 +27,10 @@ export const ForgotPasswordPage = () => {
   }
 
   return (
-    <Page>
-      <Header isLogin={false} />
-      <div className={s.body}>
-        <div className={`${s.body__box} body__box`}>
-          <ForgotPassword onSubmit={recoverPasswordSub} />
-        </div>
+    <div className={s.body}>
+      <div className={`${s.body__box} body__box`}>
+        <ForgotPassword onSubmit={recoverPasswordSub} />
       </div>
-    </Page>
+    </div>
   )
 }

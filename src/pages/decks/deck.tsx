@@ -10,6 +10,7 @@ export const Deck = ({ deck }: Props) => {
     <>
       <TableRow key={deck.id}>
         <TableCell>
+          {deck?.cover && <img src={deck?.cover} width={50} />}
           <Link className={'link'} to={`decks/cards/${deck.id}`}>
             {deck?.name}
           </Link>

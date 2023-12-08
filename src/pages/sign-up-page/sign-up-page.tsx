@@ -2,8 +2,6 @@ import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 import { SignUp } from '@/components/layout/login-forms/sign-up'
-import { Header } from '@/components/ui/header'
-import { Page } from '@/components/ui/page'
 import { useSingUpMutation } from '@/services/auth/auth.service'
 import { SingUpFormData } from '@/services/auth/auth.types'
 
@@ -24,13 +22,10 @@ export const SignUpPage = () => {
   }
 
   return (
-    <Page>
-      <Header isLogin={false} />
-      <div className={s.body}>
-        <div className={`${s.body__box} body__box`}>
-          <SignUp onSubmit={singUpHandler} />
-        </div>
+    <div className={s.body}>
+      <div className={`${s.body__box} body__box`}>
+        <SignUp onSubmit={singUpHandler} />
       </div>
-    </Page>
+    </div>
   )
 }
