@@ -10,7 +10,7 @@ const initialState = {
     localSliderValue: [0, 0] as number[],
     nameDeck: '' as string,
     page: 1 as number,
-    selectedCount: 10 as number,
+    selectedCount: 7 as number,
     sliderValue: [0, 0] as number[],
     sort: null as Sort,
   },

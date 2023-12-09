@@ -9,7 +9,7 @@ import s from './cards.module.scss'
 
 export const TableBodyCards = () => {
   const { id } = useParams()
-  const { data } = useGetCardsQuery(id ?? '')
+  const { data,{} } = useGetCardsQuery(id ?? '')
 
   return (
     <TableBody>
