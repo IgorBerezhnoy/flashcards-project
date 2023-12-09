@@ -3,12 +3,13 @@ import { useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 import { Button } from '@/components/ui/button'
+import { DialogClose } from '@/components/ui/modal/modalClose'
 import { Select } from '@/components/ui/select'
 import { TextField } from '@/components/ui/textField'
 import { useCreateCardMutation } from '@/services/cards/cards.service'
 import { ErrorType } from '@/services/decks/decks.types'
 
-import s from './../cards.module.scss'
+import s from '../../../ui/table/table.module.scss'
 
 export const AddNewCard = () => {
   const { id } = useParams()
@@ -56,12 +57,14 @@ export const AddNewCard = () => {
           value={answer}
         />
       </div>
-      <div className={s.buttons}>
-        <Button variant={'secondary'}>Cancel</Button>
-        <Button onClick={onClick} variant={'primary'}>
-          Add New Card
-        </Button>
-      </div>
+      <DialogClose>
+        <div className={s.buttons}>
+          <Button variant={'secondary'}>Cancel</Button>
+          <Button onClick={onClick} variant={'primary'}>
+            Add New Card
+          </Button>
+        </div>
+      </DialogClose>
       {/*<ToastContainer />*/}
     </div>
   )

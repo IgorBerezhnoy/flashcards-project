@@ -19,8 +19,8 @@ export const DeckIcons = ({ deck }: Props) => {
         <Link className={s.iconLearn} to={`learn/${deck.id}`}>
           <PlayCircleOutline className={s.icon} />
         </Link>
-        {data?.id === deck.author.id && <EditDeckIcon id={deck.id} />}
-        {data?.id === deck.author.id && <DeleteDeckIcon id={deck.id} />}
+        {data?.id === deck.author.id && <EditDeckIcon className={s.icon} id={deck.id} />}
+        {data?.id === deck.author.id && <DeleteDeckIcon className={s.icon} id={deck.id} />}
       </div>
     </TableCell>
   )

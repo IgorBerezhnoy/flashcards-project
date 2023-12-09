@@ -11,7 +11,7 @@ import { useGetMeQuerySate } from '@/services/auth/auth.service'
 import { useGetCardsQuery } from '@/services/cards/cards.service'
 import { useGetDeckByIdQuery } from '@/services/decks/decks.service'
 
-import s from './../cards.module.scss'
+import s from '../../../../pages/cards-page/cards-page.module.scss'
 
 export const CardsSortHeader = () => {
   const { id } = useParams()

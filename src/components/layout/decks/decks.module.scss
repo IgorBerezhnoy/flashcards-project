@@ -38,4 +38,38 @@
 .imgAndName {
   display: flex;
   align-items: center;
+
+  &:hover {
+    transition: 0.4s;
+    color: #4C4C4C;
+  }
+}
+
+.iconBody {
+  height: 100%;
+}
+
+.iconBlock {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+
+}
+.iconLearn {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+.icon {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+
+  &:hover {
+    transition: 0.4s;
+    color: #4C4C4C;
+  }
 }

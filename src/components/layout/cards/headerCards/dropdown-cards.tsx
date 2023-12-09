@@ -6,10 +6,12 @@ import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { DropDownItem, DropdownMenu, DropdownSeparator } from '@/components/ui/dropdownMenu'
 import { Modal } from '@/components/ui/modal/modal'
+import { DialogClose } from '@/components/ui/modal/modalClose'
 import { TextField } from '@/components/ui/textField'
 import { Typography } from '@/components/ui/typography'
 import { useDeleteDeckMutation, usePatchDeckMutation } from '@/services/decks/decks.service'
 
+import s1 from '../../../ui/table/table.module.scss'
 import s from './../cards.module.scss'
 
 export const DropdownCards = () => {
@@ -38,10 +40,9 @@ export const DropdownCards = () => {
           <div>
             <DropDownItem asChild>
               <Link to={`/learn/${id}`}>
-                {' '}
                 <Typography as={'div'} className={s.dropdownMenuItem} variant={'caption'}>
                   <PlayCircleOutline className={s.icons} />
-                  Learn
+                  <div>Learn</div>
                 </Typography>
               </Link>
             </DropDownItem>
@@ -54,9 +55,9 @@ export const DropdownCards = () => {
                 variant={'caption'}
               >
                 <Edit2Outline className={s.icons} />
-                Edit
+                <div>Edit</div>
               </Typography>
-            </DropDownItem>{' '}
+            </DropDownItem>
             <DropdownSeparator />
             <DropDownItem>
               <Typography
@@ -66,43 +67,51 @@ export const DropdownCards = () => {
                 variant={'caption'}
               >
                 <TrashOutline className={s.icons} />
-                Delete
+                <div>Delete</div>
               </Typography>
             </DropDownItem>
           </div>
         </div>
       </DropdownMenu>
       <Modal onOpenChange={setIsOpenEditeModal} open={isOpenEditeModal} title={'Edit Pack'}>
-        <div className={s.contentWrapper}>
-          <div className={s.contentBody}>
+        <div className={s1.contentWrapper}>
+          <div className={s1.contentBody}>
             <TextField onValueChange={e => setValue(e)} value={value} />
-            <Checkbox checked={isChecked} onValueChange={() => setIsChecked(!isChecked)} />
+            <Checkbox
+              checked={isChecked}
+              label={'Private pack'}
+              onValueChange={() => setIsChecked(!isChecked)}
+            />
           </div>
-          <div className={s.buttons}>
-            <Button variant={'secondary'}>Cancel</Button>
-            <Button
-              onClick={() => editDeck({ id: id!, isPrivate: isChecked, name: value })}
-              variant={'primary'}
-            >
-              Save Changes
-            </Button>
-          </div>
+          <DialogClose>
+            <div className={s1.buttons}>
+              <Button variant={'secondary'}>Cancel</Button>
+              <Button
+                onClick={() => editDeck({ id: id!, isPrivate: isChecked, name: value })}
+                variant={'primary'}
+              >
+                Save Changes
+              </Button>
+            </div>
+          </DialogClose>
         </div>
       </Modal>
       <Modal onOpenChange={setIsOpenDeleteModal} open={isOpenDeleteModal} title={'Delete Pack'}>
-        <div className={s.contentWrapper}>
-          <div className={s.contentDeleteBody}>
+        <div className={s1.contentWrapper}>
+          <div className={s1.contentDeleteBody}>
             <Typography as={'div'}>
               Do you really want to remove <span>Pack Name</span>?
             </Typography>
             <Typography as={'div'}>All cards will be deleted.</Typography>
           </div>
-          <div className={s.buttons}>
-            <Button variant={'secondary'}>Cancel</Button>
-            <Button onClick={onClickDelete} variant={'primary'}>
-              Delete Pack
-            </Button>
-          </div>
+          <DialogClose>
+            <div className={s1.buttons}>
+              <Button variant={'secondary'}>Cancel</Button>
+              <Button onClick={onClickDelete} variant={'primary'}>
+                Delete Pack
+              </Button>
+            </div>
+          </DialogClose>
         </div>
       </Modal>
     </>

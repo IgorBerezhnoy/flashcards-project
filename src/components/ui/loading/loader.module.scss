@@ -1,5 +1,7 @@
 .loader {
-  position: relative;
+  position: fixed;
+  top: 30%;
+  left: 50%;
 
   display: block;
 
@@ -36,6 +38,7 @@
 
   border-radius: 50%;
   box-shadow: 0 15px #ff3d00 inset;
+
 }
 
 .loader::after {
@@ -97,3 +100,5 @@
     box-shadow: 2px 2px 8px 0 rgb(255 61 0 / 50%);
   }
 }
+
+

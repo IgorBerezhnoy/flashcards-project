@@ -36,16 +36,27 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
       onValueChange?.(e.currentTarget.value)
     }
     const [isPassword, setIsPassword] = useState(type === 'password')
+    const [isInputFocused, setIsInputFocused] = useState(false)
+
+    const handleInputFocus = () => {
+      setIsInputFocused(true)
+    }
+
+    const handleInputBlur = () => {
+      setIsInputFocused(false)
+    }
 
     return (
       <div className={s.inputContainer}>
         <div className={s.wrapper}>
           {label && <div className={s.label}>{label}</div>}
           <input
-            className={`${s.defaultInput} ${className} ${errorMessage ? s.errorInput : ''}  ${
+            className={`${s.defaultInput} ${className} ${errorMessage ? s.errorInput : ''} ${
               type === 'search' && s.searchInput
             }`}
+            onBlur={handleInputBlur} // Добавлен обработчик события onBlur
             onChange={onChangeHandler}
+            onFocus={handleInputFocus} // Добавлен обработчик события onFocus
             placeholder={placeholder}
             ref={ref}
             type={isPassword ? 'password' : 'text'}
@@ -54,7 +65,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
           />
           {type === 'search' && (
             <>
-              <div className={s.searchIcon}>
+              <div className={`${s.searchIcon} ${isInputFocused ? s.searchIconFocused : ''}`}>
                 <Search className={s.icon} />
               </div>
               <div className={s.crossIcon} onClick={() => (clearText ? clearText() : () => {})}>

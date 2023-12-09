@@ -9,8 +9,6 @@ import { Sort } from '@/components/ui/table'
 import { Typography } from '@/components/ui/typography'
 import { useActions } from '@/hooks'
 import { selectSortParams } from '@/pages/decks-page/decksSortSelectors'
-import { AddNewCard } from '@/pages/modal/addNewCard'
-import { EditPack } from '@/pages/modal/editPack'
 import { useGetMeQuerySate } from '@/services/auth/auth.service'
 import { useGetDecksQuery } from '@/services/decks/decks.service'
 import { SortParamsTypeObj, sortParamsActions } from '@/services/decks/decks.slice'
@@ -104,9 +102,7 @@ export const DecksPage = () => {
           />
         </div>
       </div>
-      <AddNewCard />
-      <EditPack />
     </div>
   )
 }
-//
+
