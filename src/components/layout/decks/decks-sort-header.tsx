@@ -27,7 +27,7 @@ type PropsType = {
   sliderValue: number[]
   userId: string | undefined
 }
-export const DesksSortHeader = (props: PropsType) => {
+export const DecksSortHeader = (props: PropsType) => {
   const {
     activeTab,
     data,

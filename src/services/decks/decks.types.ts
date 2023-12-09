@@ -71,3 +71,12 @@ export interface LearnCardsResponse {
   updated: string
   userId: string
 }
+
+export type ErrorType = {
+  data: {
+    message: string
+    path: string
+    statusCode: number
+    timestamp: string
+  }
+}

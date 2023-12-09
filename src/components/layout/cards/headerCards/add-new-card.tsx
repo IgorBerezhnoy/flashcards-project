@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 import { Button } from '@/components/ui/button'
 import { Select } from '@/components/ui/select'
 import { TextField } from '@/components/ui/textField'
 import { useCreateCardMutation } from '@/services/cards/cards.service'
+import { ErrorType } from '@/services/decks/decks.types'
 
 import s from './../cards.module.scss'
 
@@ -13,10 +15,27 @@ export const AddNewCard = () => {
 
   const [question, setQuestion] = useState<string>('')
   const [answer, setAnswer] = useState<string>('')
-  const [createCard] = useCreateCardMutation()
+  const [createCard, { error, isError }] = useCreateCardMutation()
 
   const onClick = () => {
     createCard({ answer, id: id || '', question })
+      .unwrap()
+      .then(() => {
+        toast('🦄 Created card')
+      })
+  }
+
+  if (isError) {
+    const err = error as ErrorType
+
+    toast.error(err?.data?.message, {
+      draggable: true,
+      hideProgressBar: false,
+      pauseOnHover: true,
+      position: 'top-right',
+      progress: undefined,
+      theme: 'light',
+    })
   }
 
   return (

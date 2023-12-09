@@ -2,13 +2,15 @@ import { useMemo } from 'react'
 import { useSelector } from 'react-redux'
 
 import { Decks } from '@/components/layout/decks/decks'
-import { DesksSortHeader } from '@/components/layout/decks/desks-sort-header'
+import { DecksSortHeader } from '@/components/layout/decks/decks-sort-header'
 import { Loader } from '@/components/ui'
 import { Pagination } from '@/components/ui/pagination'
 import { Sort } from '@/components/ui/table'
 import { Typography } from '@/components/ui/typography'
 import { useActions } from '@/hooks'
 import { selectSortParams } from '@/pages/decks-page/decksSortSelectors'
+import { AddNewCard } from '@/pages/modal/addNewCard'
+import { EditPack } from '@/pages/modal/editPack'
 import { useGetMeQuerySate } from '@/services/auth/auth.service'
 import { useGetDecksQuery } from '@/services/decks/decks.service'
 import { SortParamsTypeObj, sortParamsActions } from '@/services/decks/decks.slice'
@@ -73,7 +75,7 @@ export const DecksPage = () => {
   return (
     <div className={s.deck}>
       <div className={`${s.deck__box} deck__box`}>
-        <DesksSortHeader
+        <DecksSortHeader
           activeTab={activeTab}
           data={data} // Исправить
           localSliderValue={localSliderValue}
@@ -102,6 +104,8 @@ export const DecksPage = () => {
           />
         </div>
       </div>
+      <AddNewCard />
+      <EditPack />
     </div>
   )
 }
