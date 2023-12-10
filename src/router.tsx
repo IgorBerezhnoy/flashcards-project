@@ -75,7 +75,9 @@ export const AppRouter = () => {
 }
 
 function Layout() {
-  const { data, isLoading } = useGetMeQuerySate()
+  const { data, isError, isLoading } = useGetMeQuerySate()
+
+  const user = !isError ? data : undefined
 
   if (isLoading) {
     return <Loader />
@@ -85,10 +87,10 @@ function Layout() {
     <>
       <Page>
         <Header
-          email={data?.email}
-          isLogin={!!data?.id}
-          name={data?.name}
-          userPhoto={data?.avatar}
+          email={user?.email}
+          isLogin={!!user?.id}
+          name={user?.name}
+          userPhoto={user?.avatar}
         />
         <Outlet />
       </Page>
