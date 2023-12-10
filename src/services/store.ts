@@ -1,5 +1,5 @@
 import { baseApiService } from '@/services/baseApi/base-api.service'
-import { currentCardSlice } from '@/services/decks/card.slice'
+import { currentCardSlice } from '@/services/cards/card.slice'
 import { descsSlice } from '@/services/decks/decks.slice'
 import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
