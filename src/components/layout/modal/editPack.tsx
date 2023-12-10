@@ -1,4 +1,4 @@
-import { ChangeEvent, useRef, useState } from 'react'
+import { ChangeEvent, ReactNode, RefObject } from 'react'
 
 import { ImageOutline } from '@/assets'
 import { Button } from '@/components/ui/button'
@@ -8,12 +8,34 @@ import { TextField } from '@/components/ui/textField'
 
 import s from '@/components/ui/table/table.module.scss'
 
-export const EditPack = () => {
-  const [value, setValue] = useState('')
-  const [selectedImage, setSelectedImage] = useState<null | string>(null)
-  const fileInputRef = useRef<HTMLInputElement>(null)
+interface Props {
+  buttonOnclick: () => void
+  children: ReactNode
+  fileInputRef: RefObject<HTMLInputElement>
+  isChecked: boolean
+  selectedImage: null | string
+  setIsChecked: (value: boolean) => void
+  setSelectedImage: (value: null | string) => void
+  setValue: (value: string) => void
+  title: string
+  value: string
+}
 
-  const onClick = () => {}
+export const EditPack = ({
+  buttonOnclick,
+  children,
+  fileInputRef,
+  isChecked,
+  selectedImage,
+  setIsChecked,
+  setSelectedImage,
+  setValue,
+  title,
+  value,
+}: Props) => {
+  const onClick = () => {
+    buttonOnclick()
+  }
 
   const handleImageClick = () => {
     if (fileInputRef.current) {
@@ -30,7 +52,7 @@ export const EditPack = () => {
   }
 
   return (
-    <Modal title={'Edit Pack'} trigger={<Button variant={'primary'}>Edit Pack</Button>}>
+    <Modal title={title} trigger={children}>
       <div className={s.contentWrapper}>
         <div className={s.contentBody}>
           <div className={s.imageAddBody}>
@@ -54,7 +76,7 @@ export const EditPack = () => {
             </div>
           </div>
           <TextField label={'Name Pack'} onValueChange={e => setValue(e)} value={value} />
-          <Checkbox label={'Private pack'} />
+          <Checkbox checked={isChecked} label={'Private pack'} onValueChange={setIsChecked} />
         </div>
         <div className={s.buttons}>
           <Button variant={'secondary'}>Cancel</Button>
