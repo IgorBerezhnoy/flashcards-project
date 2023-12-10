@@ -1,4 +1,12 @@
-import { ChangeEvent, ComponentProps, ComponentPropsWithoutRef, forwardRef, useState } from 'react'
+import {
+  ChangeEvent,
+  ComponentProps,
+  ComponentPropsWithoutRef,
+  forwardRef,
+  useEffect,
+  useRef,
+  useState,
+} from 'react'
 
 import { CloseOutline, Eye, EyeOff, Search } from '@/assets'
 
@@ -37,6 +45,29 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
     }
     const [isPassword, setIsPassword] = useState(type === 'password')
     const [isInputFocused, setIsInputFocused] = useState(false)
+    const rootNodeRef = useRef<HTMLDivElement>(null)
+
+    useEffect(() => {
+      const handleClickOutside = (event: MouseEvent) => {
+        if (rootNodeRef.current && !rootNodeRef.current.contains(event.target as Node)) {
+          setIsInputFocused(false)
+        }
+      }
+
+      const handleKeyDown = (event: KeyboardEvent) => {
+        if (event.key === 'Tab') {
+          setIsInputFocused(false)
+        }
+      }
+
+      document.addEventListener('click', handleClickOutside)
+      document.addEventListener('keydown', handleKeyDown)
+
+      return () => {
+        document.removeEventListener('click', handleClickOutside)
+        document.removeEventListener('keydown', handleKeyDown)
+      }
+    }, [])
 
     const handleInputFocus = () => {
       setIsInputFocused(true)
@@ -47,16 +78,16 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
     }
 
     return (
-      <div className={s.inputContainer}>
+      <div className={s.inputContainer} ref={rootNodeRef}>
         <div className={s.wrapper}>
           {label && <div className={s.label}>{label}</div>}
           <input
             className={`${s.defaultInput} ${className} ${errorMessage ? s.errorInput : ''} ${
               type === 'search' && s.searchInput
             }`}
-            onBlur={handleInputBlur} // Добавлен обработчик события onBlur
+            onBlur={handleInputBlur}
             onChange={onChangeHandler}
-            onFocus={handleInputFocus} // Добавлен обработчик события onFocus
+            onFocus={handleInputFocus}
             placeholder={placeholder}
             ref={ref}
             type={isPassword ? 'password' : 'text'}
@@ -65,7 +96,7 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
           />
           {type === 'search' && (
             <>
-              <div className={`${s.searchIcon} ${isInputFocused ? s.searchIconFocused : ''}`}>
+              <div className={`${s.searchIcon} ${isInputFocused ? s.iconFocused : ''}`}>
                 <Search className={s.icon} />
               </div>
               <div className={s.crossIcon} onClick={() => (clearText ? clearText() : () => {})}>
@@ -73,14 +104,12 @@ export const TextField = forwardRef<HTMLInputElement, TextFieldProps>(
               </div>
             </>
           )}
-          {isPassword && (
-            <div className={s.eyesIcon} onClick={() => setIsPassword(false)}>
-              <Eye className={s.icon} />
-            </div>
-          )}
-          {type === 'password' && !isPassword && (
-            <div className={s.eyesIcon} onClick={() => setIsPassword(true)}>
-              <EyeOff className={s.icon} />
+          {type === 'password' && (
+            <div
+              className={`${s.eyesIcon} ${isInputFocused ? s.iconFocused : ''}`}
+              onClick={() => setIsPassword(!isPassword)}
+            >
+              {isPassword ? <Eye className={s.icon} /> : <EyeOff className={s.icon} />}
             </div>
           )}
         </div>
