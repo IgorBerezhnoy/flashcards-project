@@ -13,10 +13,12 @@ export type CreateDeckArgs = {
 }
 
 export type PatchDeckByIdArg = {
-  cover?: string
+  formData: {
+    cover?: string
+    isPrivate: boolean
+    name: string
+  }
   id: string
-  isPrivate: boolean
-  name: string
 }
 export type GetDecksArgs = {
   authorId?: string

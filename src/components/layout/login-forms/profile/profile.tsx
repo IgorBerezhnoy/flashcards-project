@@ -6,6 +6,7 @@ import { InfoProfile } from '@/components/layout/login-forms/profile/info-profil
 import { Card } from '@/components/ui/card'
 import { Typography } from '@/components/ui/typography'
 import { usePatchUserMutation } from '@/services/auth/auth.service'
+import { PatchUserType } from '@/services/auth/auth.types'
 
 import s from './profile.module.scss'
 
@@ -23,19 +24,15 @@ export const Profile = ({ data }: Props) => {
   const { email, name } = data
   const [editMode, setEditMode] = useState(false)
   const [updateUserData] = usePatchUserMutation()
-  const [selectedFile, setSelectedFile] = useState<File | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
   const [profileData, setProfileData] = useState<ProfileData>(data)
 
   const onSubmit = async (data: EditProfileData) => {
     const formData = new FormData()
 
-    if (selectedFile) {
-      formData.append('avatar', selectedFile)
-    }
     formData.append('name', data.name)
 
-    await updateUserData(formData as any)
+    await updateUserData(formData as unknown as PatchUserType)
 
     setEditMode(false)
   }
@@ -54,8 +51,6 @@ export const Profile = ({ data }: Props) => {
     const file = e.target.files?.[0]
 
     if (file) {
-      setSelectedFile(file)
-
       const reader = new FileReader()
 
       reader.onload = async () => {

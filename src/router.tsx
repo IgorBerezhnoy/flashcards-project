@@ -77,7 +77,7 @@ export const AppRouter = () => {
 function Layout() {
   const { data, isError, isLoading } = useGetMeQuerySate()
 
-  const user = !isError ? data : undefined
+  const user = isError ? undefined : data
 
   if (isLoading) {
     return <Loader />
