@@ -108,7 +108,7 @@ const decksService = baseApiService.injectEndpoints({
       }),
       patchDeck: builder.mutation<GetDecksResponse, PatchDeckByIdArg>({
         invalidatesTags: ['Decks', 'Deck'],
-        onQueryStarted: async ({ id, ...body }, { dispatch, getState, queryFulfilled }) => {
+        onQueryStarted: async ({ formData, id }, { dispatch, getState, queryFulfilled }) => {
           const state = getState() as RootState
           const { activeTab, nameDeck, page, selectedCount, sliderValue, sort } =
             state.decks.sortParams
@@ -129,7 +129,7 @@ const decksService = baseApiService.injectEndpoints({
                 const deck = data.items.find(deck => deck.id == id)
 
                 if (deck) {
-                  Object.assign(deck, { ...deck, ...body })
+                  Object.assign(deck, { ...deck, ...formData })
                 }
               }
             )
@@ -141,8 +141,8 @@ const decksService = baseApiService.injectEndpoints({
             patchResult.undo()
           }
         },
-        query: ({ id, ...body }) => ({
-          body,
+        query: ({ formData, id }) => ({
+          body: formData,
           method: 'PATCH',
           url: `v1/decks/${id}`,
         }),
