@@ -1,4 +1,4 @@
-import { ChangeEvent, ReactNode, RefObject } from 'react'
+import { ChangeEvent, ReactNode, useRef, useState } from 'react'
 
 import { ImageOutline } from '@/assets'
 import { Button } from '@/components/ui/button'
@@ -11,11 +11,9 @@ import s from '@/components/ui/table/table.module.scss'
 interface Props {
   buttonOnclick: () => void
   children: ReactNode
-  fileInputRef: RefObject<HTMLInputElement>
   isChecked: boolean
-  selectedImage: null | string
+  setCurrentImage: (value: File) => void
   setIsChecked: (value: boolean) => void
-  setSelectedImage: (value: null | string) => void
   setValue: (value: string) => void
   title: string
   value: string
@@ -24,11 +22,9 @@ interface Props {
 export const EditPack = ({
   buttonOnclick,
   children,
-  fileInputRef,
   isChecked,
-  selectedImage,
+  setCurrentImage,
   setIsChecked,
-  setSelectedImage,
   setValue,
   title,
   value,
@@ -36,6 +32,8 @@ export const EditPack = ({
   const onClick = () => {
     buttonOnclick()
   }
+  const [selectedImage, setSelectedImage] = useState<null | string>(null)
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   const handleImageClick = () => {
     if (fileInputRef.current) {
@@ -48,6 +46,7 @@ export const EditPack = ({
 
     if (file) {
       setSelectedImage(URL.createObjectURL(file))
+      setCurrentImage(file)
     }
   }
 
