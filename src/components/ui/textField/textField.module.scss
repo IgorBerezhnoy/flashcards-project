@@ -38,6 +38,8 @@
     color: var(--color-dark-300);
     border: 1px solid var(--color-dark-300);
   }
+
+
 }
 
 .errorInput {
@@ -57,8 +59,12 @@
   left: 5px;
   transform: translateY(-55%);
 
-  width: 1.25rem;
-  height: 1.25rem;
+  width: 20px;
+  height: 20px;
+  color: #4C4C4C;
+  &:active {
+    color: #fff;
+  }
 }
 
 .crossIcon {
@@ -98,6 +104,7 @@
   color: var(--color-danger-300);
 }
 
-.icon {
-  fill: var(--color-white-100);
+.searchIconFocused {
+  color: var(--color-light-100, #fff);
 }
+

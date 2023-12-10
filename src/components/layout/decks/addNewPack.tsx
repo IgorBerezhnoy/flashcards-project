@@ -9,7 +9,7 @@ import { TextField } from '@/components/ui/textField'
 import { useCreateDeckMutation } from '@/services/decks/decks.service'
 import { ErrorType } from '@/services/decks/decks.types'
 
-import s from './decks.module.scss'
+import s from '@/components/ui/table/table.module.scss'
 
 export const AddNewPack = () => {
   const [createDeck, { error, isError }] = useCreateDeckMutation()

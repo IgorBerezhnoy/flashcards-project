@@ -57,14 +57,12 @@ export const EditPack = () => {
           <TextField label={'Name Pack'} onValueChange={e => setValue(e)} value={value} />
           <Checkbox label={'Private pack'} />
         </div>
-        <DialogClose>
-          <div className={s.buttons}>
-            <Button variant={'secondary'}>Cancel</Button>
-            <Button onClick={onClick} variant={'primary'}>
-              Save Changes
-            </Button>
-          </div>
-        </DialogClose>
+        <div className={s.buttons}>
+          <Button variant={'secondary'}>Cancel</Button>
+          <Button onClick={onClick} variant={'primary'}>
+            Save Changes
+          </Button>
+        </div>
       </div>
     </Modal>
   )
