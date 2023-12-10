@@ -75,7 +75,11 @@ export const AppRouter = () => {
 }
 
 function Layout() {
-  const { data } = useGetMeQuerySate()
+  const { data, isLoading } = useGetMeQuerySate()
+
+  if (isLoading) {
+    return <Loader />
+  }
 
   return (
     <>

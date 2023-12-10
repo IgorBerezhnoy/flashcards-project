@@ -4,7 +4,6 @@ import { ImageOutline } from '@/assets'
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Modal } from '@/components/ui/modal/modal'
-import { DialogClose } from '@/components/ui/modal/modalClose'
 import { TextField } from '@/components/ui/textField'
 
 import s from '@/components/ui/table/table.module.scss'

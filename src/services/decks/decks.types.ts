@@ -80,3 +80,8 @@ export type ErrorType = {
     timestamp: string
   }
 }
+
+export type SendAnswerType = {
+  cardId: string
+  grade: number
+}
