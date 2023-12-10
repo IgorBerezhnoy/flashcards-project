@@ -1,7 +1,11 @@
 import s from './linear.module.scss'
-export const Linear = () => {
+
+type Props = {
+  className?: string
+}
+export const Linear = ({ className }: Props) => {
   return (
-    <div className={s.loader}>
+    <div className={`${s.loader} ${className}`}>
       <div className={s.loaderGradient}></div>
     </div>
   )
