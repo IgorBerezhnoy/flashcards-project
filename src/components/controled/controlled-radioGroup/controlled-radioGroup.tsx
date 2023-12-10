@@ -4,6 +4,7 @@ import { RadioGroup, RadioType } from '@/components/ui/radio'
 
 export type ControlledRadioGroupProps<TFieldValues extends FieldValues> = {
   control: Control<TFieldValues>
+  defaultValue?: string
   name: FieldPath<TFieldValues>
   radioGroup: RadioType[]
 }

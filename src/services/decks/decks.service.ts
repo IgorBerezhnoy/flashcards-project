@@ -6,6 +6,7 @@ import {
   GetDecksResponse,
   LearnCardsResponse,
   PatchDeckByIdArg,
+  SendAnswerType,
 } from '@/services/decks/decks.types'
 import { RootState } from '@/services/store'
 
@@ -100,7 +101,10 @@ const decksService = baseApiService.injectEndpoints({
         }),
       }),
       learnCards: builder.query<LearnCardsResponse, string>({
-        query: id => `v1/decks/${id}/learn`,
+        query: id => ({
+          providesTags: ['learnCard'],
+          url: `v1/decks/${id}/learn`,
+        }),
       }),
       patchDeck: builder.mutation<GetDecksResponse, PatchDeckByIdArg>({
         invalidatesTags: ['Decks', 'Deck'],
@@ -143,6 +147,13 @@ const decksService = baseApiService.injectEndpoints({
           url: `v1/decks/${id}`,
         }),
       }),
+      sendAnswer: builder.mutation<LearnCardsResponse, SendAnswerType>({
+        query: body => ({
+          body,
+          method: 'POST',
+          url: `/v1/decks/${body.cardId}/learn`,
+        }),
+      }),
     }
   },
 })
@@ -154,4 +165,5 @@ export const {
   useGetDecksQuery,
   useLearnCardsQuery,
   usePatchDeckMutation,
+  useSendAnswerMutation,
 } = decksService
