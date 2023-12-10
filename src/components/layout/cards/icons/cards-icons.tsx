@@ -6,6 +6,8 @@ import { useMeQuery } from '@/services/auth/auth.service'
 import { CardType } from '@/services/cards/cards.types'
 import { useGetDeckByIdQuery } from '@/services/decks/decks.service'
 
+import s from '@/components/layout/decks/decks.module.scss'
+
 export const CardsIcons = ({ card }: { card: CardType }) => {
   const { id } = useParams()
 
@@ -13,9 +15,13 @@ export const CardsIcons = ({ card }: { card: CardType }) => {
   const { data: dataThisDeck } = useGetDeckByIdQuery(id ?? '')
 
   return (
-    <div>
-      {meData?.id === dataThisDeck?.userId && <EditCardIcon deckId={id ?? ''} id={card.id} />}
-      {meData?.id === dataThisDeck?.userId && <DeleteCardIcon cardId={card.id} deckId={id ?? ''} />}
+    <div className={s.iconBlock}>
+      {meData?.id === dataThisDeck?.userId && (
+        <EditCardIcon className={s.icon} deckId={id ?? ''} id={card.id} />
+      )}
+      {meData?.id === dataThisDeck?.userId && (
+        <DeleteCardIcon cardId={card.id} className={s.icon} deckId={id ?? ''} />
+      )}
     </div>
   )
 }

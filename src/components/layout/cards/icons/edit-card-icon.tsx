@@ -11,7 +11,15 @@ import { ErrorType } from '@/services/decks/decks.types'
 
 import s from './../cards.module.scss'
 
-export const EditCardIcon = ({ deckId, id }: { deckId: string; id: string }) => {
+export const EditCardIcon = ({
+  className,
+  deckId,
+  id,
+}: {
+  className: string
+  deckId: string
+  id: string
+}) => {
   const [question, setQuestion] = useState<string>('')
   const [answer, setAnswer] = useState<string>('')
   const [patchCard, { error, isError }] = usePatchCardMutation()
@@ -32,7 +40,7 @@ export const EditCardIcon = ({ deckId, id }: { deckId: string; id: string }) => 
   }
 
   return (
-    <Modal title={'Edit Card'} trigger={<Edit2Outline />}>
+    <Modal title={'Edit Card'} trigger={<Edit2Outline className={`${s.icon} ${className}`} />}>
       <div className={s.contentWrapper}>
         <div className={s.contentBody}>
           <Select label={'Choose a question format'} placeholder={'Text'} />

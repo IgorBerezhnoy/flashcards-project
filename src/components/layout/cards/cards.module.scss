@@ -15,6 +15,11 @@
 .questionAndImg {
   display: flex;
   align-items: center;
+  cursor: pointer;
+  &:hover {
+    color:#4C4C4C;
+    transition: all 0.4s;
+  }
 }
 
 .img {
