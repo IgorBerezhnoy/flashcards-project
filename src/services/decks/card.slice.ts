@@ -12,6 +12,7 @@ const initialState = {
       img: '' as string | undefined,
       text: '' as string | undefined,
     },
+    shots: 0 as number | string | undefined,
   },
 }
 

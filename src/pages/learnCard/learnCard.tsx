@@ -33,10 +33,11 @@ export const LearnCard = () => {
   const { data, error, isError, isLoading } = useLearnCardsQuery(id ?? '')
   const [sendAnswer, { data: nextData }] = useSendAnswerMutation()
   const { currentCard } = useSelector<RootState, CurrentCardType>(state => state.currentCard)
-  const { control, getValues } = useForm<SignInData>({
+  const { control, getValues, setValue } = useForm<SignInData>({
     resolver: zodResolver(schema),
   })
 
+  console.log(currentCard.shots)
   useEffect(() => {
     setCurrentCard({
       currentCard: {
@@ -48,6 +49,7 @@ export const LearnCard = () => {
           img: data?.questionImg,
           text: data?.question,
         },
+        shots: data?.shots,
       },
     })
   }, [])
@@ -65,6 +67,7 @@ export const LearnCard = () => {
   const onClickNextQuestion = async () => {
     setShowAnswer(false)
     await sendAnswer({ cardId: data?.id ?? '', grade: +getValues().grade })
+    setValue('grade', '1')
     setCurrentCard({
       currentCard: {
         answer: {
@@ -75,6 +78,7 @@ export const LearnCard = () => {
           img: nextData?.questionImg,
           text: nextData?.question,
         },
+        shots: nextData?.shots,
       },
     })
   }
@@ -108,7 +112,8 @@ export const LearnCard = () => {
               </div>
             </Typography>
             <Typography className={s.contentLearnTextTwo}>
-              Количество попыток ответов на вопрос: <span>10</span>
+              Number of attempts to answer the question:{' '}
+              <span>{currentCard.shots?.toString()}</span>
             </Typography>
           </div>
           {showAnswer && (
