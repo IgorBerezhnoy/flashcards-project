@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit'
 
-export type CurrentCardType = typeof initialState
+export type CurrentCardStateType = typeof initialState
 
 const initialState = {
   currentCard: {
@@ -20,7 +20,7 @@ const slice = createSlice({
   initialState,
   name: 'currentCard',
   reducers: {
-    setCurrentCard: (state, action: PayloadAction<CurrentCardType>) => {
+    setCurrentCard: (state, action: PayloadAction<CurrentCardStateType>) => {
       state.currentCard = action.payload.currentCard
     },
   },
@@ -28,3 +28,14 @@ const slice = createSlice({
 
 export const currentCardSlice = slice.reducer
 export const currentCardActions = slice.actions
+export type CurrentType = {
+  answer: {
+    img: string | undefined
+    text: string | undefined
+  }
+  question: {
+    img: string | undefined
+    text: string | undefined
+  }
+  shots: number | string | undefined
+}
