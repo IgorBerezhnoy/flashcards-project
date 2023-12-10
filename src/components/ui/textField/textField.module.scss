@@ -93,6 +93,7 @@
 
   width: 10px;
   height: 10px;
+  color: #4C4C4C;
 }
 
 .errorText {
@@ -104,7 +105,9 @@
   color: var(--color-danger-300);
 }
 
-.searchIconFocused {
+.iconFocused {
   color: var(--color-light-100, #fff);
 }
+
+
 

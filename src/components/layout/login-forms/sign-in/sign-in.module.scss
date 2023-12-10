@@ -23,6 +23,7 @@
 .forgotPassword {
   display: flex;
   justify-content: flex-end;
+  cursor: pointer;
 
   width: 100%;
   margin-bottom: 66px;
@@ -30,6 +31,10 @@
   color: inherit;
   text-align: right;
   text-decoration: none;
+  &:hover {
+    color: #4C4C4C;
+    transition: all 0.3s;
+  }
 }
 
 
@@ -41,11 +46,17 @@
 .signUp {
   display: flex;
   justify-content: center;
+  cursor: pointer;
 
   font-size: var(--font-size-m);
   font-weight: var(--font-weight-bold);
   color: var(--color-accent-500);
   text-decoration-color: var(--color-accent-500);
+
+  &:hover {
+    color: #4C4C4C;
+    transition: all 0.3s;
+  }
 }
 
 .footer {

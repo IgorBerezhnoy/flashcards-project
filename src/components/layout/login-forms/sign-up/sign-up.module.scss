@@ -30,11 +30,16 @@
 .signIn {
   display: flex;
   justify-content: center;
+  cursor: pointer;
 
   font-size: var(--font-size-m);
   font-weight: var(--font-weight-bold);
   color: var(--color-accent-500);
   text-decoration-color: var(--color-accent-500);
+  &:hover {
+    color: #4C4C4C;
+    transition: all 0.3s;
+  }
 }
 
 .footer {
