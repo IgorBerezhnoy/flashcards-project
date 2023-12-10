@@ -13,7 +13,7 @@ import { CardsPage } from '@/pages/cards-page'
 import { CheckEmailFormPage } from '@/pages/checkEmailForm-page'
 import { DecksPage } from '@/pages/decks-page/decks-page'
 import { ForgotPasswordPage } from '@/pages/forgotPassword-page'
-import { LearnCard } from '@/pages/learnCard/learnCard'
+import { LearnCardPage } from '@/pages/learnCard-page/learnCard-Page'
 import { ProfilePage } from '@/pages/profile'
 import { SignInPage } from '@/pages/sign-in-page'
 import { SignUpPage } from '@/pages/sign-up-page'
@@ -52,7 +52,7 @@ const privateRoutes: RouteObject[] = [
     path: 'decks/cards/:id',
   },
   {
-    element: <LearnCard />,
+    element: <LearnCardPage />,
     path: 'learn/:id',
   },
 ]

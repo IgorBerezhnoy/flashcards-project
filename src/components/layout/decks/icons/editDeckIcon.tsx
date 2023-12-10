@@ -1,64 +1,45 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { toast } from 'react-toastify'
 
 import { Edit2Outline } from '@/assets'
-import { Button } from '@/components/ui/button'
-import { Checkbox } from '@/components/ui/checkbox'
-import { Modal } from '@/components/ui/modal/modal'
-import { DialogClose } from '@/components/ui/modal/modalClose'
-import { TextField } from '@/components/ui/textField'
+import { EditPack } from '@/components/layout/modal/editPack'
 import { usePatchDeckMutation } from '@/services/decks/decks.service'
 import { ErrorType } from '@/services/decks/decks.types'
 
-import s from '@/components/ui/table/table.module.scss'
+import s from './../decks.module.scss'
 
-type Props = {
-  className?: string
-  id: string
-}
-export const EditDeckIcon = ({ className, id }: Props) => {
+export const EditDeckIcon = ({ id }: { id: string }) => {
   const [editDeck, { error, isError }] = usePatchDeckMutation()
   const [value, setValue] = useState('')
   const [isChecked, setIsChecked] = useState(false)
+  const fileInputRef = useRef<HTMLInputElement>(null)
+  const [selectedImage, setSelectedImage] = useState<null | string>(null)
 
   if (isError) {
     const err = error as ErrorType
 
     toast.error(err?.data?.message, {
       autoClose: 5000,
-      closeOnClick: true,
-      draggable: true,
-      hideProgressBar: false,
-      pauseOnHover: true,
-      position: 'top-right',
-      progress: undefined,
-      theme: 'light',
     })
   }
 
+  const onClick = () => editDeck({ id, isPrivate: isChecked, name: value })
+
   return (
-    <Modal title={'Edit Pack'} trigger={<Edit2Outline className={`${s.icon} ${className}`} />}>
-      <div className={s.contentWrapper}>
-        <div className={s.contentBody}>
-          <TextField onValueChange={e => setValue(e)} value={value} />
-          <Checkbox
-            checked={isChecked}
-            label={'Private pack'}
-            onValueChange={() => setIsChecked(!isChecked)}
-          />
-        </div>
-        <DialogClose>
-          <div className={s.buttons}>
-            <Button variant={'secondary'}>Cancel</Button>
-            <Button
-              onClick={() => editDeck({ id, isPrivate: isChecked, name: value })}
-              variant={'primary'}
-            >
-              Save Changes
-            </Button>
-          </div>
-        </DialogClose>
-      </div>
-    </Modal>
+    <>
+      <EditPack
+        buttonOnclick={onClick}
+        fileInputRef={fileInputRef}
+        isChecked={isChecked}
+        selectedImage={selectedImage}
+        setIsChecked={setIsChecked}
+        setSelectedImage={setSelectedImage}
+        setValue={setValue}
+        title={'Edit Pack'}
+        value={value}
+      >
+        <Edit2Outline className={s.icon} />
+      </EditPack>
+    </>
   )
 }

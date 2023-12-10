@@ -1,9 +1,9 @@
 import { useState } from 'react'
 
+import { ImageBlock } from '@/components/layout/modal/imageBlock'
 import { Button } from '@/components/ui/button'
 import { Modal } from '@/components/ui/modal/modal'
 import { TextField } from '@/components/ui/textField'
-import { ImageBlock } from '@/pages/modal/imageBlock'
 import { DialogClose } from '@radix-ui/react-dialog'
 
 import s from '@/components/ui/table/table.module.scss'
