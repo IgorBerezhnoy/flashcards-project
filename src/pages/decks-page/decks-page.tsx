@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 
 import { Decks } from '@/components/layout/decks/decks'
 import { DecksSortHeader } from '@/components/layout/decks/decks-sort-header'
-import { Loader } from '@/components/ui'
+import { Linear } from '@/components/ui/linear'
 import { Pagination } from '@/components/ui/pagination'
 import { Sort } from '@/components/ui/table'
 import { Typography } from '@/components/ui/typography'
@@ -64,7 +64,7 @@ export const DecksPage = () => {
   const data = currentDecksData ?? deckData
 
   if (isLoading) {
-    return <Loader />
+    return <Linear />
   }
   if (isError || !data) {
     return <Typography as={'h1'}>Error</Typography>
@@ -105,4 +105,3 @@ export const DecksPage = () => {
     </div>
   )
 }
-
