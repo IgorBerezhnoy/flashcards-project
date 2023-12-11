@@ -1,15 +1,23 @@
 import { useParams } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 import { CardsIcons } from '@/components/layout/cards/icons/cards-icons'
 import { Rating } from '@/components/ui/rating'
 import { TableBody, TableCell, TableRow } from '@/components/ui/table'
 import { useGetCardsQuery } from '@/services/cards/cards.service'
+import { ErrorType } from '@/services/decks/decks.types'
 
 import s from './cards.module.scss'
 
 export const TableBodyCards = () => {
   const { id } = useParams()
-  const { data } = useGetCardsQuery(id ?? '')
+  const { data, error, isError } = useGetCardsQuery(id ?? '')
+
+  if (isError) {
+    const err = error as ErrorType
+
+    toast.error(err?.data?.message)
+  }
 
   return (
     <TableBody>

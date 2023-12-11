@@ -1,17 +1,22 @@
+import { toast } from 'react-toastify'
+
 import { Profile } from '@/components/layout/login-forms/profile'
 import { Loader } from '@/components/ui'
 import { useMeQuery } from '@/services/auth/auth.service'
+import { ErrorType } from '@/services/decks/decks.types'
 
 import s from './profile-page.module.scss'
 
 export const ProfilePage = () => {
-  const { data, isError, isLoading } = useMeQuery()
+  const { data, error, isError, isLoading } = useMeQuery()
 
   if (isLoading) {
     return <Loader />
   }
   if (isError) {
-    return <h1>Error</h1>
+    const err = error as ErrorType
+
+    toast.error(err?.data?.message)
   }
   const { avatar: src, email, name } = data!
 

@@ -1,4 +1,5 @@
 import { useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
 
 import { ControlledRadioGroup } from '@/components/controled/controlled-radioGroup'
 import { Button } from '@/components/ui'
@@ -6,6 +7,7 @@ import { Typography } from '@/components/ui/typography'
 import { useActions } from '@/hooks'
 import { CurrentType, currentCardActions } from '@/services/cards/card.slice'
 import { useSendAnswerMutation } from '@/services/decks/decks.service'
+import { ErrorType } from '@/services/decks/decks.types'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 
@@ -27,9 +29,14 @@ export const ShowAnswer = ({ cardId, currentCard, setShowAnswer }: Props) => {
   const { control, getValues, setValue } = useForm<SignInData>({
     resolver: zodResolver(schema),
   })
-  const [sendAnswer] = useSendAnswerMutation()
+  const [sendAnswer, { error, isError }] = useSendAnswerMutation()
   const { setCurrentCard } = useActions(currentCardActions)
 
+  if (isError) {
+    const err = error as ErrorType
+
+    toast.error(err?.data?.message)
+  }
   const onClickNextQuestion = async () => {
     setShowAnswer(false)
     const response: any = await sendAnswer({ cardId, grade: +getValues().grade || 1 })
