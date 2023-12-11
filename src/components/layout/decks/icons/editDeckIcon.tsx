@@ -25,14 +25,16 @@ export const EditDeckIcon = ({ id }: { id: string }) => {
   const onClick = async () => {
     const formData = new FormData()
 
-    debugger
     if (currentImage) {
       formData.append('cover', currentImage)
+    }
+    if (value) {
+      formData.append('name', value)
     }
     const isPrivate = isChecked.toString()
 
     formData.append('isPrivate', isPrivate)
-    formData.append('name', value)
+
     editDeck({ formData, id } as unknown as PatchDeckByIdArg)
   }
 

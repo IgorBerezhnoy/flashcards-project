@@ -10,8 +10,10 @@ import s from '@/components/ui/table/table.module.scss'
 
 interface Props {
   buttonOnclick: () => void
-  children: ReactNode
+  children?: ReactNode
   isChecked: boolean
+  onOpenChange?: (boolean: boolean) => void
+  open?: boolean
   setCurrentImage: (value: File) => void
   setIsChecked: (value: boolean) => void
   setValue: (value: string) => void
@@ -23,6 +25,8 @@ export const DeckModal = ({
   buttonOnclick,
   children,
   isChecked,
+  onOpenChange,
+  open,
   setCurrentImage,
   setIsChecked,
   setValue,
@@ -51,7 +55,7 @@ export const DeckModal = ({
   }
 
   return (
-    <Modal title={title} trigger={children}>
+    <Modal onOpenChange={onOpenChange} open={open} title={title} trigger={children}>
       <div className={s.contentWrapper}>
         <div className={s.contentBody}>
           <div className={s.imageAddBody}>

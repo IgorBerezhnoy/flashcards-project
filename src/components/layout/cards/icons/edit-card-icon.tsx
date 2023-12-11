@@ -42,8 +42,12 @@ export const EditCardIcon = ({
     if (videoAnswer) {
       formData.append('answerVideo', videoAnswer)
     }
-    formData.append('answer', answer)
-    formData.append('question', question)
+    if (answer) {
+      formData.append('answer', answer)
+    }
+    if (question) {
+      formData.append('answer', answer)
+    }
 
     patchCard({ deckId, formData, id } as unknown as PatchCard)
       .unwrap()
