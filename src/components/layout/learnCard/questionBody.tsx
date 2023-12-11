@@ -12,9 +12,9 @@ export const QuestionBody = ({ currentCard }: CurrentCardStateType) => {
           <span>Question</span>:{' '}
           <div className={s.questionAndImg}>
             <span>
-              {currentCard.question.text !== 'undefined' || currentCard.question.text.trim() !== ''
-                ? currentCard.question.text
-                : 'no question'}
+              {currentCard.question.text?.trim() === 'undefined'
+                ? 'no question'
+                : currentCard.question.text}
             </span>
             {currentCard.question.img && (
               <div>

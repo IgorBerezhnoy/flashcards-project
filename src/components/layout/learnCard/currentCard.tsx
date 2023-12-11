@@ -23,20 +23,23 @@ export const CurrentCard = () => {
   const { currentCard } = useSelector<RootState, CurrentCardStateType>(state => state.currentCard)
 
   useEffect(() => {
-    setCurrentCard({
-      currentCard: {
-        answer: {
-          img: data?.answerImg,
-          text: data?.answer,
+    console.log(1)
+    if (data) {
+      setCurrentCard({
+        currentCard: {
+          answer: {
+            img: data?.answerImg,
+            text: data?.answer,
+          },
+          question: {
+            img: data?.questionImg,
+            text: data?.question,
+          },
+          shots: data?.shots,
         },
-        question: {
-          img: data?.questionImg,
-          text: data?.question,
-        },
-        shots: data?.shots,
-      },
-    })
-  }, [])
+      })
+    }
+  }, [data])
   if (isLoading) {
     return <Loader />
   }
