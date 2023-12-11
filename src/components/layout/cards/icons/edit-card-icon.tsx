@@ -4,23 +4,26 @@ import { toast } from 'react-toastify'
 import { Edit2Outline } from '@/assets'
 import { CardModal } from '@/components/layout/modal/cardModal'
 import { usePatchCardMutation } from '@/services/cards/cards.service'
-import { PatchCard } from '@/services/cards/cards.types'
-import { ErrorType } from '@/services/decks/decks.types'
+import { ErrorEditCardType, PatchCard } from '@/services/cards/cards.types'
 
 import s from '@/components/layout/cards/cards.module.scss'
 
 export const EditCardIcon = ({
   className,
+  currentAnswer,
+  currentQuestion,
   deckId,
   id,
 }: {
   className: string
+  currentAnswer: string
+  currentQuestion: string
   deckId: string
   id: string
 }) => {
-  const [question, setQuestion] = useState<string>('')
-  const [answer, setAnswer] = useState<string>('')
-  const [patchCard, { error, isError }] = usePatchCardMutation()
+  const [question, setQuestion] = useState<string>(currentQuestion)
+  const [answer, setAnswer] = useState<string>(currentAnswer)
+  const [patchCard] = usePatchCardMutation()
 
   const [imageAnswer, setImageAnswer] = useState<File | string>('')
   const [imageQuestion, setImageQuestion] = useState<File | string>('')
@@ -46,7 +49,7 @@ export const EditCardIcon = ({
       formData.append('answer', answer)
     }
     if (question) {
-      formData.append('answer', answer)
+      formData.append('question', question)
     }
 
     patchCard({ deckId, formData, id } as unknown as PatchCard)
@@ -54,12 +57,9 @@ export const EditCardIcon = ({
       .then(() => {
         toast('🦄 Edit card')
       })
-  }
-
-  if (isError) {
-    const err = error as ErrorType
-
-    toast.error(err?.data?.message)
+      .catch((e: { data: ErrorEditCardType }) => {
+        toast.error(e.data.errorMessages[0].message)
+      })
   }
 
   return (

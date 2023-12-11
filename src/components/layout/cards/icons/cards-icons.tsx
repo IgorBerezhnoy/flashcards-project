@@ -25,7 +25,13 @@ export const CardsIcons = ({ card }: { card: CardType }) => {
   return (
     <div className={s.iconBlock}>
       {meData?.id === dataThisDeck?.userId && (
-        <EditCardIcon className={s.icon} deckId={id ?? ''} id={card.id} />
+        <EditCardIcon
+          className={s.icon}
+          currentAnswer={card.answer}
+          currentQuestion={card.question}
+          deckId={id ?? ''}
+          id={card.id}
+        />
       )}
       {meData?.id === dataThisDeck?.userId && (
         <DeleteCardIcon cardId={card.id} className={s.icon} deckId={id ?? ''} />
