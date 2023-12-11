@@ -76,8 +76,8 @@ const cardsService = baseApiService.injectEndpoints({
           }
         },
 
-        query: ({ deckId, id, ...body }) => ({
-          body,
+        query: ({ formData, id }) => ({
+          body: formData,
           method: 'PATCH',
           url: `v1/cards/${id}`,
         }),

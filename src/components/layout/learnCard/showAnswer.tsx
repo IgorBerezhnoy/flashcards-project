@@ -18,7 +18,7 @@ type Props = {
 }
 
 const schema = z.object({
-  grade: z.string().email('Invalid email address'),
+  grade: z.any(),
 })
 
 type SignInData = z.infer<typeof schema>
@@ -27,26 +27,30 @@ export const ShowAnswer = ({ cardId, currentCard, setShowAnswer }: Props) => {
   const { control, getValues, setValue } = useForm<SignInData>({
     resolver: zodResolver(schema),
   })
-  const [sendAnswer, { data: nextData }] = useSendAnswerMutation()
+  const [sendAnswer] = useSendAnswerMutation()
   const { setCurrentCard } = useActions(currentCardActions)
 
   const onClickNextQuestion = async () => {
     setShowAnswer(false)
-    await sendAnswer({ cardId, grade: +getValues().grade })
-    setValue('grade', '1')
-    setCurrentCard({
-      currentCard: {
-        answer: {
-          img: nextData?.answerImg,
-          text: nextData?.answer,
+    const response: any = await sendAnswer({ cardId, grade: +getValues().grade || 1 })
+
+    setValue('grade', 1)
+
+    if (response) {
+      setCurrentCard({
+        currentCard: {
+          answer: {
+            img: response?.data?.answerImg,
+            text: response?.data?.answer,
+          },
+          question: {
+            img: response?.data?.questionImg,
+            text: response?.data?.question,
+          },
+          shots: response?.data?.shots,
         },
-        question: {
-          img: nextData?.questionImg,
-          text: nextData?.question,
-        },
-        shots: nextData?.shots,
-      },
-    })
+      })
+    }
   }
 
   return (
