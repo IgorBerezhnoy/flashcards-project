@@ -19,7 +19,7 @@ interface Props {
   value: string
 }
 
-export const EditPack = ({
+export const DeckModal = ({
   buttonOnclick,
   children,
   isChecked,
@@ -58,7 +58,7 @@ export const EditPack = ({
             <img
               alt={'No image'}
               className={s.image}
-              src={selectedImage || 'path/to/default/image'}
+              src={selectedImage ?? 'path/to/default/image'}
             />
             <div className={s.imageNav}>
               <div>Cover</div>

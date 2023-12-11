@@ -36,11 +36,14 @@ export interface RootObjectPagination {
 
 export type PatchCard = CreateCard & { deckId: string }
 export type CreateCard = {
-  answer: string
-  answerImg?: string
-  answerVideo?: string
+  formData: {
+    answer: string
+    answerImg?: string
+    answerVideo?: string
+    question: string
+    questionImg?: string
+    questionVideo?: string
+  }
+
   id: string
-  question: string
-  questionImg?: string
-  questionVideo?: string
 }

@@ -6,10 +6,11 @@ import { Button } from '@/components/ui'
 import s from '@/components/ui/table/table.module.scss'
 
 type Props = {
+  setFile: (value: File) => void
   title: string
 }
 
-export const ImageBlock = ({ title }: Props) => {
+export const ImageBlock = ({ setFile, title }: Props) => {
   const [selectedImage, setSelectedImage] = useState<null | string>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
@@ -24,6 +25,7 @@ export const ImageBlock = ({ title }: Props) => {
 
     if (file) {
       setSelectedImage(URL.createObjectURL(file))
+      setFile(file)
     }
   }
 

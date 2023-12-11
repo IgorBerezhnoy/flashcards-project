@@ -2,14 +2,11 @@ import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
+import { CardModal } from '@/components/layout/modal/cardModal'
 import { Button } from '@/components/ui/button'
-import { DialogClose } from '@/components/ui/modal/modalClose'
-import { Select } from '@/components/ui/select'
-import { TextField } from '@/components/ui/textField'
 import { useCreateCardMutation } from '@/services/cards/cards.service'
+import { CreateCard } from '@/services/cards/cards.types'
 import { ErrorType } from '@/services/decks/decks.types'
-
-import s from '../../../ui/table/table.module.scss'
 
 export const AddNewCard = () => {
   const { id } = useParams()
@@ -18,8 +15,30 @@ export const AddNewCard = () => {
   const [answer, setAnswer] = useState<string>('')
   const [createCard, { error, isError }] = useCreateCardMutation()
 
+  const [imageAnswer, setImageAnswer] = useState<File | string>('')
+  const [imageQuestion, setImageQuestion] = useState<File | string>('')
+  const [videoAnswer, setVideoAnswer] = useState<File | string>('')
+  const [videoQuestion, setVideoQuestion] = useState<File | string>('')
+
   const onClick = () => {
-    createCard({ answer, id: id || '', question })
+    const formData = new FormData()
+
+    if (imageAnswer) {
+      formData.append('answerImg', imageAnswer)
+    }
+    if (imageQuestion) {
+      formData.append('questionImg', imageQuestion)
+    }
+    if (videoQuestion) {
+      formData.append('questionVideo', videoQuestion)
+    }
+    if (videoAnswer) {
+      formData.append('answerVideo', videoAnswer)
+    }
+    formData.append('answer', answer)
+    formData.append('question', question)
+
+    createCard({ formData, id } as unknown as CreateCard)
       .unwrap()
       .then(() => {
         toast('🦄 Created card')
@@ -29,43 +48,23 @@ export const AddNewCard = () => {
   if (isError) {
     const err = error as ErrorType
 
-    toast.error(err?.data?.message, {
-      draggable: true,
-      hideProgressBar: false,
-      pauseOnHover: true,
-      position: 'top-right',
-      progress: undefined,
-      theme: 'light',
-    })
+    toast.error(err?.data?.message)
   }
 
   return (
-    <div className={s.contentWrapper}>
-      <div className={s.contentBody}>
-        <Select label={'Choose a question format'} placeholder={'Text'} />
-        <TextField
-          label={'Question'}
-          onValueChange={setQuestion}
-          placeholder={'How "This" works in JavaScript?'}
-          value={question}
-        />
-        <TextField
-          label={'Answer'}
-          onValueChange={setAnswer}
-          placeholder={'This is how "This" works in JavaScript'}
-          type={'default'}
-          value={answer}
-        />
-      </div>
-      <DialogClose>
-        <div className={s.buttons}>
-          <Button variant={'secondary'}>Cancel</Button>
-          <Button onClick={onClick} variant={'primary'}>
-            Add New Card
-          </Button>
-        </div>
-      </DialogClose>
-      {/*<ToastContainer />*/}
-    </div>
+    <CardModal
+      buttonOnclick={onClick}
+      setImageAnswer={setImageAnswer}
+      setImageQuestion={setImageQuestion}
+      setValueAnswer={setAnswer}
+      setValueQuestion={setQuestion}
+      setVideoAnswer={setVideoAnswer}
+      setVideoQuestion={setVideoQuestion}
+      title={'Add New Card'}
+      valueAnswer={answer}
+      valueQuestion={question}
+    >
+      <Button>Add New Card</Button>
+    </CardModal>
   )
 }
