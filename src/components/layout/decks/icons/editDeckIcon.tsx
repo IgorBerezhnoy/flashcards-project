@@ -8,9 +8,9 @@ import { ErrorType, PatchDeckByIdArg } from '@/services/decks/decks.types'
 
 import s from './../decks.module.scss'
 
-export const EditDeckIcon = ({ id }: { id: string }) => {
+export const EditDeckIcon = ({ id, name }: { id: string; name: string }) => {
   const [editDeck, { error, isError }] = usePatchDeckMutation()
-  const [value, setValue] = useState('')
+  const [value, setValue] = useState(name)
   const [isChecked, setIsChecked] = useState<boolean>(false)
   const [currentImage, setCurrentImage] = useState<File | string>('')
 

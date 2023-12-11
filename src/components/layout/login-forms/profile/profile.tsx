@@ -85,7 +85,7 @@ export const Profile = ({ data }: Props) => {
         </div>
       </div>
       {editMode ? (
-        <EditProfile cancel={() => setEditMode(false)} onSubmit={onSubmit} />
+        <EditProfile cancel={() => setEditMode(false)} defaultValue={name} onSubmit={onSubmit} />
       ) : (
         <InfoProfile email={email} name={name} onEditProfile={onEditProfile} />
       )}

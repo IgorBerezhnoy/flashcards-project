@@ -15,10 +15,15 @@ import { ErrorType, PatchDeckByIdArg } from '@/services/decks/decks.types'
 import s1 from '../../../ui/table/table.module.scss'
 import s from './../cards.module.scss'
 
-export const DropdownCards = () => {
+export const DropdownCards = ({ nameDeck }: { nameDeck: string }) => {
   const { id } = useParams()
   const [currentImage, setCurrentImage] = useState<File | string>('')
-
+  const [isOpenEditeModal, setIsOpenEditeModal] = useState<boolean>(false)
+  const [isOpenDeleteModal, setIsOpenDeleteModal] = useState<boolean>(false)
+  const [isChecked, setIsChecked] = useState<boolean>(false)
+  const [value, setValue] = useState<string>(nameDeck)
+  const [deleteDeck] = useDeleteDeckMutation()
+  const [isDeleted, setIsDeleted] = useState(false)
   const [editDeck, { error, isError }] = usePatchDeckMutation()
 
   if (isError) {
@@ -43,12 +48,7 @@ export const DropdownCards = () => {
 
     editDeck({ formData, id } as unknown as PatchDeckByIdArg)
   }
-  const [isOpenEditeModal, setIsOpenEditeModal] = useState<boolean>(false)
-  const [isOpenDeleteModal, setIsOpenDeleteModal] = useState<boolean>(false)
-  const [isChecked, setIsChecked] = useState<boolean>(false)
-  const [value, setValue] = useState<string>('')
-  const [deleteDeck] = useDeleteDeckMutation()
-  const [isDeleted, setIsDeleted] = useState(false)
+
   const onClickDelete = () => {
     deleteDeck(id ?? '')
     setIsDeleted(true)
