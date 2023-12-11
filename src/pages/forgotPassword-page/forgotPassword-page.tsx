@@ -24,12 +24,10 @@ export const ForgotPasswordPage = () => {
           email: data.email,
         },
       })
-    } catch (e: any) {
-      console.error(e)
-      //TODO Нужно поставить тост
-      // const notify = () => toast(e);
-      // notify()
-      // < ToastContainer / >
+    } catch (e) {
+      const err = e as ErrorType
+
+      toast.error(err.data.message)
     }
   }
 
