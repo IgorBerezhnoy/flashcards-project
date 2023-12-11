@@ -25,31 +25,30 @@ export const EditDeckIcon = ({ id }: { id: string }) => {
   const onClick = async () => {
     const formData = new FormData()
 
-    debugger
     if (currentImage) {
       formData.append('cover', currentImage)
+    }
+    if (value) {
+      formData.append('name', value)
     }
     const isPrivate = isChecked.toString()
 
     formData.append('isPrivate', isPrivate)
-    formData.append('name', value)
-    console.log({ formData, id })
+
     editDeck({ formData, id } as unknown as PatchDeckByIdArg)
   }
 
   return (
-    <>
-      <DeckModal
-        buttonOnclick={onClick}
-        isChecked={isChecked}
-        setCurrentImage={setCurrentImage}
-        setIsChecked={setIsChecked}
-        setValue={setValue}
-        title={'Edit Pack'}
-        value={value}
-      >
-        <Edit2Outline className={s.icon} />
-      </DeckModal>
-    </>
+    <DeckModal
+      buttonOnclick={onClick}
+      isChecked={isChecked}
+      setCurrentImage={setCurrentImage}
+      setIsChecked={setIsChecked}
+      setValue={setValue}
+      title={'Edit Pack'}
+      value={value}
+    >
+      <Edit2Outline className={s.icon} />
+    </DeckModal>
   )
 }
