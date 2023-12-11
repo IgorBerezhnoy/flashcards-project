@@ -17,13 +17,9 @@ export const CardsPage = () => {
     data: cardData,
     error,
     isError,
-    isLoading,
   } = useGetCardsQuery(id ?? '')
   const data = currentCardData ?? cardData
 
-  if (isLoading) {
-    return <Typography as={'h1'}>Loading</Typography>
-  }
   if (isError) {
     const err = error as ErrorType
 

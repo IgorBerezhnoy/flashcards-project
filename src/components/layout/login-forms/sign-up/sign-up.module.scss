@@ -13,14 +13,11 @@
   width: 100%;
 }
 
-
 .title {
   margin-bottom: 27px;
   text-align: center;
   text-transform: capitalize;
 }
-
-
 
 .text {
   color: var(--color-light-900);
@@ -37,7 +34,7 @@
   color: var(--color-accent-500);
   text-decoration-color: var(--color-accent-500);
   &:hover {
-    color: #4C4C4C;
+    color: #4c4c4c;
     transition: all 0.3s;
   }
 }
