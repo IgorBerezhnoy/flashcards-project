@@ -16,8 +16,8 @@ const cardsService = baseApiService.injectEndpoints({
             })
           )
         },
-        query: ({ id, ...body }) => ({
-          body,
+        query: ({ formData, id }) => ({
+          body: formData,
           method: 'POST',
           url: `v1/decks/${id}/cards`,
         }),
