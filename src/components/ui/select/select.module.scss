@@ -8,7 +8,6 @@ button {
   flex-direction: column;
   justify-content: flex-start;
   width: 100%;
-
 }
 
 .title {
@@ -51,17 +50,16 @@ button {
   }
 }
 .value {
-  color: var(--light-100, #FFF);
+  color: var(--light-100, #fff);
   font-size: 16px;
   font-weight: 400;
   line-height: 24px;
   padding-left: 12px;
-
 }
 
 .icon {
   display: flex;
-  color: #FFFFFF;
+  color: #ffffff;
   padding-right: 12px;
 }
 
@@ -107,5 +105,3 @@ button {
   font-size: 12px;
   color: var(--color-light-300);
 }
-
-

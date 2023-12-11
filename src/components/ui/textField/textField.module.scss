@@ -38,8 +38,6 @@
     color: var(--color-dark-300);
     border: 1px solid var(--color-dark-300);
   }
-
-
 }
 
 .errorInput {
@@ -61,7 +59,7 @@
 
   width: 20px;
   height: 20px;
-  color: #4C4C4C;
+  color: #4c4c4c;
   &:active {
     color: #fff;
   }
@@ -93,7 +91,7 @@
 
   width: 10px;
   height: 10px;
-  color: #4C4C4C;
+  color: #4c4c4c;
 }
 
 .errorText {
@@ -108,6 +106,3 @@
 .iconFocused {
   color: var(--color-light-100, #fff);
 }
-
-
-

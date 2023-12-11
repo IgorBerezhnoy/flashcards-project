@@ -18,7 +18,8 @@
 .around:hover {
   background: #333;
 }
-.around:active, .around:focus-visible {
+.around:active,
+.around:focus-visible {
   background: #7f7f80;
 }
 
@@ -40,17 +41,17 @@
   outline: none;
 }
 
-.checkboxRoot[data-state=checked] {
+.checkboxRoot[data-state='checked'] {
   background: var(--color-light-100);
 }
 
-.checkboxRoot[data-state=checked]:disabled {
+.checkboxRoot[data-state='checked']:disabled {
   color: #dad9df;
   background: var(--color-dark-100);
   border: none;
 }
 
-.checkboxRoot[data-state=unchecked]:disabled {
+.checkboxRoot[data-state='unchecked']:disabled {
   border: 2px solid var(--color-dark-100);
 }
 

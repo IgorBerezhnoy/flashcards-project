@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
 import { Logo } from '@/assets'
-import { UserDropdown } from '@/components/layout/header/user-dropdown/user-dropdown'
+import { UserDropdown } from '@/components/layout/user-dropdown/user-dropdown'
 import { Button } from '@/components/ui/button'
 
 import s from './header.module.scss'

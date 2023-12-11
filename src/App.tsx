@@ -14,7 +14,7 @@ export function App() {
   return (
     <>
       <ToastContainer
-        autoClose={5000}
+        autoClose={3000}
         closeOnClick
         draggable
         hideProgressBar={false}

@@ -94,7 +94,7 @@ export const DecksPage = () => {
           userId={meData?.id}
         />
         <div className={s.deck__table}>
-          <Decks data={data} setSort={setSort} sort={sort} />
+          <Decks items={data?.items!} setSort={setSort} sort={sort} />
         </div>
         <div className={s.deck__pagination}>
           <Pagination
@@ -102,7 +102,7 @@ export const DecksPage = () => {
             page={page}
             selectedCount={selectedCount}
             setSelectedCount={setSelectedCount}
-            totalCount={data.pagination.totalItems}
+            totalCount={data?.pagination?.totalItems!}
           />
         </div>
       </div>
