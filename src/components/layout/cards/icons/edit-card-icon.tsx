@@ -2,14 +2,12 @@ import { useState } from 'react'
 import { toast } from 'react-toastify'
 
 import { Edit2Outline } from '@/assets'
-import { Button } from '@/components/ui/button'
-import { Modal } from '@/components/ui/modal/modal'
-import { Select } from '@/components/ui/select'
-import { TextField } from '@/components/ui/textField'
+import { CardModal } from '@/components/layout/modal/cardModal'
 import { usePatchCardMutation } from '@/services/cards/cards.service'
+import { PatchCard } from '@/services/cards/cards.types'
 import { ErrorType } from '@/services/decks/decks.types'
 
-import s from './../cards.module.scss'
+import s from '@/components/layout/cards/cards.module.scss'
 
 export const EditCardIcon = ({
   className,
@@ -24,47 +22,56 @@ export const EditCardIcon = ({
   const [answer, setAnswer] = useState<string>('')
   const [patchCard, { error, isError }] = usePatchCardMutation()
 
+  const [imageAnswer, setImageAnswer] = useState<File | string>('')
+  const [imageQuestion, setImageQuestion] = useState<File | string>('')
+  const [videoAnswer, setVideoAnswer] = useState<File | string>('')
+  const [videoQuestion, setVideoQuestion] = useState<File | string>('')
+
+  const onClick = () => {
+    const formData = new FormData()
+
+    if (imageAnswer) {
+      formData.append('answerImg', imageAnswer)
+    }
+    if (imageQuestion) {
+      formData.append('questionImg', imageQuestion)
+    }
+    if (videoQuestion) {
+      formData.append('questionVideo', videoQuestion)
+    }
+    if (videoAnswer) {
+      formData.append('answerVideo', videoAnswer)
+    }
+    formData.append('answer', answer)
+    formData.append('question', question)
+
+    patchCard({ deckId, formData, id } as unknown as PatchCard)
+      .unwrap()
+      .then(() => {
+        toast('🦄 Edit card')
+      })
+  }
+
   if (isError) {
     const err = error as ErrorType
 
-    toast.error(err?.data?.message, {
-      autoClose: 5000,
-      closeOnClick: true,
-      draggable: true,
-      hideProgressBar: false,
-      pauseOnHover: true,
-      position: 'top-right',
-      progress: undefined,
-      theme: 'light',
-    })
+    toast.error(err?.data?.message)
   }
 
   return (
-    <Modal title={'Edit Card'} trigger={<Edit2Outline className={`${s.icon} ${className}`} />}>
-      <div className={s.contentWrapper}>
-        <div className={s.contentBody}>
-          <Select label={'Choose a question format'} placeholder={'Text'} />
-          <TextField
-            label={'Question'}
-            onValueChange={setQuestion}
-            placeholder={'How "This" works in JavaScript?'}
-            value={question}
-          />
-          <TextField
-            label={'Answer'}
-            onValueChange={setAnswer}
-            placeholder={'This is how "This" works in JavaScript'}
-            type={'default'}
-            value={answer}
-          />
-        </div>
-        <div className={s.buttons}>
-          <Button variant={'secondary'}>Cancel</Button>
-          <Button onClick={() => patchCard({ answer, deckId, id, question })} variant={'primary'}>
-            Add New Card
-          </Button>
-        </div>
-      </div>
-    </Modal>
+    <CardModal
+      buttonOnclick={onClick}
+      setImageAnswer={setImageAnswer}
+      setImageQuestion={setImageQuestion}
+      setValueAnswer={setAnswer}
+      setValueQuestion={setQuestion}
+      setVideoAnswer={setVideoAnswer}
+      setVideoQuestion={setVideoQuestion}
+      title={'Add New Card'}
+      valueAnswer={answer}
+      valueQuestion={question}
+    >
+      <Edit2Outline className={`${s.icon} ${className}`} />
+    </CardModal>
   )
 }
