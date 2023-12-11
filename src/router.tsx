@@ -14,6 +14,7 @@ import { CheckEmailFormPage } from '@/pages/checkEmailForm-page'
 import { DecksPage } from '@/pages/decks-page/decks-page'
 import { ForgotPasswordPage } from '@/pages/forgotPassword-page'
 import { LearnCardPage } from '@/pages/learnCard-page/learnCard-Page'
+import { NotFoundPage } from '@/pages/not-found-page'
 import { ProfilePage } from '@/pages/profile'
 import { SignInPage } from '@/pages/sign-in-page'
 import { SignUpPage } from '@/pages/sign-up-page'
@@ -35,6 +36,10 @@ const publicRouters: RouteObject[] = [
   {
     element: <CheckEmailFormPage />,
     path: '/check-email',
+  },
+  {
+    element: <NotFoundPage />,
+    path: '*',
   },
 ]
 const privateRoutes: RouteObject[] = [
