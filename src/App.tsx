@@ -19,8 +19,8 @@ export function App() {
         draggable
         hideProgressBar={false}
         newestOnTop={false}
-        pauseOnFocusLoss
-        pauseOnHover
+        pauseOnFocusLoss={false}
+        pauseOnHover={false}
         position={'top-right'}
         rtl={false}
         theme={'light'}
