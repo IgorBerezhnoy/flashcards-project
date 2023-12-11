@@ -14,17 +14,24 @@ export type EditProfileData = z.infer<typeof schema>
 
 type Props = {
   cancel: () => void
+  defaultValue: string
   onSubmit: (data: EditProfileData) => void
 }
 
-export const EditProfile = (props: Props) => {
+export const EditProfile = ({ cancel, defaultValue, onSubmit }: Props) => {
   const { control, handleSubmit } = useForm<EditProfileData>()
 
   return (
-    <form className={s.form} onSubmit={handleSubmit(props.onSubmit)}>
-      <ControlledTextField className={s.input} control={control} label={'Nickname'} name={'name'} />
+    <form className={s.form} onSubmit={handleSubmit(onSubmit)}>
+      <ControlledTextField
+        className={s.input}
+        control={control}
+        defaultValue={defaultValue}
+        label={'Nickname'}
+        name={'name'}
+      />
       <div className={s.buttons}>
-        <Button onClick={props.cancel} variant={'secondary'}>
+        <Button onClick={cancel} variant={'secondary'}>
           Cancel
         </Button>
         <Button type={'submit'}>Save Changes</Button>

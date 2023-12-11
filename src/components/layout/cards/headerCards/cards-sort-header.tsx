@@ -30,7 +30,7 @@ export const CardsSortHeader = () => {
             {dataThisDeck?.name}
           </Typography>
 
-          {meData?.id === dataThisDeck?.userId && <DropdownCards />}
+          {meData?.id === dataThisDeck?.userId && <DropdownCards nameDeck={dataThisDeck?.name!} />}
         </div>
 
         {/* eslint-disable-next-line no-nested-ternary */}

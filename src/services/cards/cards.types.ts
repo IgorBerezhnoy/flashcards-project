@@ -47,3 +47,11 @@ export type CreateCard = {
 
   id: string
 }
+export type ErrorMessages = {
+  field: string
+  message: string
+}
+
+export type ErrorEditCardType = {
+  errorMessages: ErrorMessages[]
+}
