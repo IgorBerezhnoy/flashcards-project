@@ -46,9 +46,7 @@ export const CurrentCard = () => {
   if (isError) {
     const err = error as ErrorType
 
-    toast.error(err?.data?.message, {
-      theme: 'light',
-    })
+    toast.error(err?.data?.message)
   }
 
   return (
