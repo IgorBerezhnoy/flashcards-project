@@ -1,6 +1,7 @@
 .cards {
   padding-top: 24px;
 }
+
 .cards__container {
   display: flex;
   flex-direction: column;
@@ -12,19 +13,29 @@
 
 .cards__navigation {
   display: flex;
+  gap: 20px;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+
   margin-bottom: 27px;
 }
 
 .cards__title {
   display: flex;
+  gap: 16px;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
 }
 
 .cards__search {
   margin-bottom: 24px;
+}
+
+.title {
+  font-size: 28px;
+}
+
+.imgDeck {
+  max-width: 170px;
+  max-height: 110px;
 }
