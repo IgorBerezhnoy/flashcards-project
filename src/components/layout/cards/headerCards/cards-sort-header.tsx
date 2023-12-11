@@ -4,7 +4,6 @@ import { BackToPacksList } from '@/components/layout/backToPack'
 import { AddNewCard } from '@/components/layout/cards/headerCards/add-new-card'
 import { DropdownCards } from '@/components/layout/cards/headerCards/dropdown-cards'
 import { Button } from '@/components/ui/button'
-import { Modal } from '@/components/ui/modal/modal'
 import { TextField } from '@/components/ui/textField'
 import { Typography } from '@/components/ui/typography'
 import { useGetMeQuerySate } from '@/services/auth/auth.service'
@@ -36,9 +35,7 @@ export const CardsSortHeader = () => {
 
         {/* eslint-disable-next-line no-nested-ternary */}
         {meData?.id === dataThisDeck?.userId ? (
-          <Modal title={'Add New Card'} trigger={<Button>Add New Card</Button>}>
-            <AddNewCard />
-          </Modal>
+          <AddNewCard />
         ) : data?.items.length ? (
           <Button>
             <Link className={'link'} to={`/learn/${dataThisDeck?.id}`}>

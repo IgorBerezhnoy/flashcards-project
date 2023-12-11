@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { toast } from 'react-toastify'
 
 import { Edit2Outline } from '@/assets'
-import { EditPack } from '@/components/layout/modal/editPack'
+import { DeckModal } from '@/components/layout/modal/deckModal'
 import { usePatchDeckMutation } from '@/services/decks/decks.service'
 import { ErrorType, PatchDeckByIdArg } from '@/services/decks/decks.types'
 
@@ -39,7 +39,7 @@ export const EditDeckIcon = ({ id }: { id: string }) => {
 
   return (
     <>
-      <EditPack
+      <DeckModal
         buttonOnclick={onClick}
         isChecked={isChecked}
         setCurrentImage={setCurrentImage}
@@ -49,7 +49,7 @@ export const EditDeckIcon = ({ id }: { id: string }) => {
         value={value}
       >
         <Edit2Outline className={s.icon} />
-      </EditPack>
+      </DeckModal>
     </>
   )
 }

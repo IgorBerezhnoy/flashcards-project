@@ -1,59 +1,52 @@
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 
+import { DeckModal } from '@/components/layout/modal/deckModal'
 import { Button } from '@/components/ui/button'
-import { Checkbox } from '@/components/ui/checkbox'
-import { Modal } from '@/components/ui/modal/modal'
-import { DialogClose } from '@/components/ui/modal/modalClose'
-import { TextField } from '@/components/ui/textField'
 import { useCreateDeckMutation } from '@/services/decks/decks.service'
-import { ErrorType } from '@/services/decks/decks.types'
-
-import s from '@/components/ui/table/table.module.scss'
+import { CreateDeckArgs, ErrorType } from '@/services/decks/decks.types'
 
 export const AddNewPack = () => {
   const [createDeck, { error, isError }] = useCreateDeckMutation()
   const [value, setValue] = useState('')
+  const [isChecked, setIsChecked] = useState<boolean>(false)
+  const [currentImage, setCurrentImage] = useState<File | string>('')
 
+  if (isError) {
+    const err = error as ErrorType
+
+    toast.error(err?.data?.message, {
+      theme: 'light',
+    })
+  }
   const onClick = () => {
-    createDeck({ name: value })
+    const formData = new FormData()
+
+    if (currentImage) {
+      formData.append('cover', currentImage)
+    }
+    const isPrivate = isChecked.toString()
+
+    formData.append('isPrivate', isPrivate)
+    formData.append('name', value)
+    createDeck(formData as unknown as CreateDeckArgs)
       .unwrap()
       .then(() => {
         toast('🦄 Created deck')
       })
   }
 
-  if (isError) {
-    const err = error as ErrorType
-
-    toast.error(err?.data?.message, {
-      autoClose: 5000,
-      closeOnClick: true,
-      draggable: true,
-      hideProgressBar: false,
-      pauseOnHover: true,
-      position: 'top-right',
-      progress: undefined,
-      theme: 'light',
-    })
-  }
-
   return (
-    <Modal title={'Add New Pack'} trigger={<Button variant={'primary'}>Add New Pack</Button>}>
-      <div className={s.contentWrapper}>
-        <div className={s.contentBody}>
-          <TextField onValueChange={e => setValue(e)} value={value} />
-          <Checkbox label={'Private pack'} />
-        </div>
-        <DialogClose>
-          <div className={s.buttons}>
-            <Button variant={'secondary'}>Cancel</Button>
-            <Button onClick={onClick} variant={'primary'}>
-              Add New Pack
-            </Button>
-          </div>
-        </DialogClose>
-      </div>
-    </Modal>
+    <DeckModal
+      buttonOnclick={onClick}
+      isChecked={isChecked}
+      setCurrentImage={setCurrentImage}
+      setIsChecked={setIsChecked}
+      setValue={setValue}
+      title={'Add New Pack'}
+      value={value}
+    >
+      <Button variant={'primary'}>Add New Pack</Button>
+    </DeckModal>
   )
 }
