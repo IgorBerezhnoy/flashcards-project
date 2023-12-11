@@ -1,4 +1,5 @@
 import { Link, NavLink } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 import { LogOut, PersonOutline } from '@/assets'
 import { DropDownItem } from '@/components/ui/dropdownMenu/dropDownItem'
@@ -6,6 +7,7 @@ import { DropdownMenu } from '@/components/ui/dropdownMenu/dropdownMenu'
 import { DropdownSeparator } from '@/components/ui/dropdownMenu/dropdownSeparator'
 import { Typography } from '@/components/ui/typography'
 import { useLogoutMutation } from '@/services/auth/auth.service'
+import { ErrorType } from '@/services/decks/decks.types'
 import * as Avatar from '@radix-ui/react-avatar'
 
 import s from '@/components/ui/dropdownMenu/dropdown.module.scss'
@@ -19,7 +21,13 @@ type Props = {
 }
 
 export const UserDropdown = ({ email, name, photo, photoDesc }: Props) => {
-  const [logout] = useLogoutMutation()
+  const [logout, { error, isError }] = useLogoutMutation()
+
+  if (isError) {
+    const err = error as ErrorType
+
+    toast.error(err?.data?.message)
+  }
 
   return (
     <DropdownMenu

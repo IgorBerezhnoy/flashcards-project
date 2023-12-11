@@ -17,9 +17,7 @@ export const EditDeckIcon = ({ id }: { id: string }) => {
   if (isError) {
     const err = error as ErrorType
 
-    toast.error(err?.data?.message, {
-      autoClose: 5000,
-    })
+    toast.error(err?.data?.message)
   }
 
   const onClick = async () => {

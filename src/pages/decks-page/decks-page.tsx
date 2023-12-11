@@ -1,17 +1,18 @@
 import { useMemo } from 'react'
 import { useSelector } from 'react-redux'
+import { toast } from 'react-toastify'
 
 import { Decks } from '@/components/layout/decks/decks'
 import { DecksSortHeader } from '@/components/layout/decks/decks-sort-header'
 import { Linear } from '@/components/ui/linear'
 import { Pagination } from '@/components/ui/pagination'
 import { Sort } from '@/components/ui/table'
-import { Typography } from '@/components/ui/typography'
 import { useActions } from '@/hooks'
 import { selectSortParams } from '@/pages/decks-page/decksSortSelectors'
 import { useGetMeQuerySate } from '@/services/auth/auth.service'
 import { useGetDecksQuery } from '@/services/decks/decks.service'
 import { SortParamsTypeObj, sortParamsActions } from '@/services/decks/decks.slice'
+import { ErrorType } from '@/services/decks/decks.types'
 import { RootState } from '@/services/store'
 
 import s from './decks-page.module.scss'
@@ -49,6 +50,7 @@ export const DecksPage = () => {
   const {
     currentData: currentDecksData,
     data: deckData,
+    error,
     isError,
     isLoading,
   } = useGetDecksQuery({
@@ -66,8 +68,10 @@ export const DecksPage = () => {
   if (isLoading) {
     return <Linear />
   }
-  if (isError || !data) {
-    return <Typography as={'h1'}>Error</Typography>
+  if (isError) {
+    const err = error as ErrorType
+
+    toast.error(err?.data?.message)
   }
 
   return (

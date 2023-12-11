@@ -4,12 +4,13 @@ import { toast } from 'react-toastify'
 import { SignUp } from '@/components/layout/login-forms/sign-up'
 import { useSingUpMutation } from '@/services/auth/auth.service'
 import { SingUpFormData } from '@/services/auth/auth.types'
+import { ErrorType } from '@/services/decks/decks.types'
 
 import s from './sign-up-page.module.scss'
 
 export const SignUpPage = () => {
   const navigate = useNavigate()
-  const [singUp] = useSingUpMutation()
+  const [singUp, { error }] = useSingUpMutation()
 
   const singUpHandler = async (data: SingUpFormData) => {
     try {
@@ -17,7 +18,9 @@ export const SignUpPage = () => {
       navigate('/login')
       toast('🦄 Are you registered')
     } catch (e: any) {
-      console.error(e)
+      const err = error as ErrorType
+
+      toast.error(err?.data?.message)
     }
   }
 

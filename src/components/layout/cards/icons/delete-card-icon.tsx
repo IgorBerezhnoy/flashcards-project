@@ -24,16 +24,7 @@ export const DeleteCardIcon = ({
   if (isError) {
     const err = error as ErrorType
 
-    toast.error(err?.data?.message, {
-      autoClose: 5000,
-      closeOnClick: true,
-      draggable: true,
-      hideProgressBar: false,
-      pauseOnHover: true,
-      position: 'top-right',
-      progress: undefined,
-      theme: 'light',
-    })
+    toast.error(err?.data?.message)
   }
 
   return (
