@@ -1,5 +1,11 @@
 import { baseApiService } from '@/services/baseApi/base-api.service'
-import { CardType, CreateCard, GetCardsResponse, PatchCard } from '@/services/cards/cards.types'
+import {
+  CardType,
+  CreateCard,
+  GetCardsResponse,
+  GetSortedCardsParams,
+  PatchCard,
+} from '@/services/cards/cards.types'
 
 const cardsService = baseApiService.injectEndpoints({
   endpoints: builder => {
@@ -52,6 +58,13 @@ const cardsService = baseApiService.injectEndpoints({
       getCards: builder.query<GetCardsResponse, string>({
         providesTags: ['Cards'],
         query: id => `v1/decks/${id}/cards`,
+      }),
+      getSortedCards: builder.query<GetCardsResponse, GetSortedCardsParams>({
+        providesTags: ['Cards'],
+        query: ({ id, ...body }) => ({
+          body,
+          url: `v1/decks/${id}/cards}`,
+        }),
       }),
       patchCard: builder.mutation<CardType, PatchCard>({
         invalidatesTags: ['Cards'],

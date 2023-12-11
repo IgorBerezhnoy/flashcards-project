@@ -25,14 +25,21 @@ export const CardsSortHeader = () => {
         <BackToPacksList />
       </div>
       <div className={s.cards__navigation}>
-        <div className={s.cards__title}>
-          <Typography as={'h2'} variant={'h2'}>
-            {dataThisDeck?.name}
-          </Typography>
+        <>
+          <div className={s.cards__title}>
+            <Typography as={'h2'} className={s.title} variant={'h2'}>
+              {dataThisDeck?.name}
+            </Typography>
 
-          {meData?.id === dataThisDeck?.userId && <DropdownCards nameDeck={dataThisDeck?.name!} />}
-        </div>
+            {meData?.id === dataThisDeck?.userId && (
+              <DropdownCards nameDeck={dataThisDeck?.name!} />
+            )}
+          </div>
+        </>
 
+        {dataThisDeck?.cover && (
+          <img alt={'img this deck'} className={s.imgDeck} src={dataThisDeck.cover} />
+        )}
         {/* eslint-disable-next-line no-nested-ternary */}
         {meData?.id === dataThisDeck?.userId ? (
           <AddNewCard />

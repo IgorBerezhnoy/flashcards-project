@@ -55,3 +55,12 @@ export type ErrorMessages = {
 export type ErrorEditCardType = {
   errorMessages: ErrorMessages[]
 }
+
+export type GetSortedCardsParams = {
+  answer?: string
+  currentPage?: string
+  id: string
+  itemsPerPage?: string
+  orderBy?: string
+  question?: string
+}
