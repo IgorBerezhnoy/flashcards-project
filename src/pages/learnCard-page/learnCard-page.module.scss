@@ -8,13 +8,14 @@
   gap: 36px;
 }
 
+
 //card
 .contentLearn {
   display: flex;
   flex-direction: column;
-  align-items: center;
   align-self: center;
   justify-content: center;
+  gap: 40px;
 
   width: 100%;
   max-width: 420px;
@@ -28,26 +29,29 @@
 }
 
 .contentLearnTitle {
-  margin-bottom: 45px;
   font-size: 26px;
   font-weight: var(--font-weight-bold);
   line-height: 36px;
-}
-
-.contentLearnBody {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 41px;
+  align-self: center;
 }
 
 .contentLearnTextOne {
-  padding-right: 48px;
+  width: 100%;
   line-height: 24px;
   color: var(--light-100, #fff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 12px;
+}
 
-  span {
-    font-weight: 700;
-  }
+.contentQuestion {
+  color: var(--light-100, #FFF);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  align-self: flex-start;
+
 }
 
 .contentLearnTextTwo {
@@ -73,4 +77,17 @@
 
 .headerError {
   margin: 0 auto;
+}
+
+.radioButtonModule {
+  margin-bottom: 20px;
+}
+.contentBtns {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 24px;
 }

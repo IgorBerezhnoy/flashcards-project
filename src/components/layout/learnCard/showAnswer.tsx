@@ -64,7 +64,7 @@ export const ShowAnswer = ({ cardId, currentCard, setShowAnswer }: Props) => {
     <>
       <div>
         <Typography className={s.contentLearnTextOne}>
-          <span>Answer:</span>{' '}
+          <div className={s.contentQuestion}>Answer:</div>
           <div className={s.questionAndImg}>
             <span>
               {currentCard.answer.text !== 'undefined' || currentCard.answer.text.trim() !== ''

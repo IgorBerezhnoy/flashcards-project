@@ -1,6 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Header } from '@/components/ui/header/header'
+import { Provider } from 'react-redux'
+import { BrowserRouter } from 'react-router-dom'
+
+import { Header } from '@/components'
+import { store } from '@/services'
 
 import foto from '../../../../public/img/userPhotoForTest.png'
 
@@ -22,10 +26,29 @@ export const LogOut: Story = {
   args: {
     isLogin: false,
   },
+  decorators: [
+    Story => (
+      <Provider store={store}>
+        <BrowserRouter basename={''}>
+          <Story />
+        </BrowserRouter>
+      </Provider>
+    ),
+  ],
 }
+
 export const LogIn: Story = {
   args: {
     isLogin: true,
     userPhoto: foto,
   },
+  decorators: [
+    Story => (
+      <Provider store={store}>
+        <BrowserRouter basename={''}>
+          <Story />
+        </BrowserRouter>
+      </Provider>
+    ),
+  ],
 }
