@@ -12,6 +12,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const SliderTest: Story = {
+  // @ts-ignore
   args: {
     value: [20, 59],
   },
