@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  color: var(--light-100, #FFF);
+  color: var(--light-100, #fff);
 
   font-size: 14px;
   font-weight: 400;
@@ -11,15 +11,15 @@
   text-decoration: none;
 
   &:hover {
-    color: #4C4C4C;
+    color: #4c4c4c;
   }
 }
 .arrow {
-  color: #FFF;
+  color: #fff;
   width: 16px;
   height: 16px;
   transition: 0.3s;
   &:hover {
-    color: #4C4C4C;
+    color: #4c4c4c;
   }
 }

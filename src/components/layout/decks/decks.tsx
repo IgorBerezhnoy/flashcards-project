@@ -1,7 +1,13 @@
 import { Deck } from '@/components/layout/decks/deck'
-import { Table, TableBody, TableHeader } from '@/components/ui/table'
+import { Sort, Table, TableBody, TableHeader } from '@/components/ui/table'
+import { DeckItem } from '@/services/decks/decks.types'
 
-export const Decks = ({ data, setSort, sort }: any) => {
+type Props = {
+  items: DeckItem[]
+  setSort: (payload: Sort) => any
+  sort: Sort
+}
+export const Decks = ({ items, setSort, sort }: Props) => {
   const columns = [
     {
       key: 'name',
@@ -25,7 +31,11 @@ export const Decks = ({ data, setSort, sort }: any) => {
     <div>
       <Table>
         <TableHeader columns={columns} onSort={setSort} sort={sort} />
-        <TableBody>{data?.items.map((deck: any) => <Deck deck={deck} key={deck.id} />)}</TableBody>
+        <TableBody>
+          {items.map((deck: any) => (
+            <Deck deck={deck} key={deck.id} />
+          ))}
+        </TableBody>
       </Table>
     </div>
   )
