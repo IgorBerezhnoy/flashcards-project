@@ -79,9 +79,9 @@ export const DecksPage = () => {
       <div className={`${s.deck__box} deck__box`}>
         <DecksSortHeader
           activeTab={activeTab}
-          data={data} // Исправить
           localSliderValue={localSliderValue}
           localValue={localNameDeck}
+          maxCardsCount={data?.maxCardsCount!}
           setActiveTab={setActiveTab}
           setLocalSliderValue={setLocalSliderValue}
           setLocalValue={setLocalNameDeck}
