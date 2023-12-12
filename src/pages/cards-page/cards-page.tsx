@@ -83,13 +83,15 @@ export const CardsPage = () => {
             <Typography>{"Can't find any pack of cards "}</Typography>
           )}
         </div>
-        <Pagination
-          onChange={setPage}
-          page={page}
-          selectedCount={selectedCount}
-          setSelectedCount={setSelectedCount}
-          totalCount={data?.pagination?.totalItems!}
-        />
+        <div className={s.cardsPagination}>
+          <Pagination
+            onChange={setPage}
+            page={page}
+            selectedCount={selectedCount}
+            setSelectedCount={setSelectedCount}
+            totalCount={data?.pagination?.totalItems!}
+          />
+        </div>
       </div>
     </div>
   )
