@@ -20,7 +20,9 @@ export const CurrentCard = ({ id }: { id: string }) => {
       {showAnswer && (
         <ShowAnswer cardId={id} currentCard={currentCard} setShowAnswer={setShowAnswer} />
       )}
-      <Buttons setShowAnswer={setShowAnswer} showAnswer={showAnswer} />
+      <div className={s.contentBtns}>
+        <Buttons setShowAnswer={setShowAnswer} showAnswer={showAnswer} />
+      </div>
     </Card>
   )
 }

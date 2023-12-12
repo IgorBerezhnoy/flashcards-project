@@ -9,7 +9,7 @@ export const QuestionBody = ({ currentCard }: CurrentCardStateType) => {
       <Typography className={s.contentLearnTitle}>Learn “Pack Name”</Typography>
       <div className={s.contentLearnBody}>
         <Typography className={s.contentLearnTextOne}>
-          <span>Question</span>:{' '}
+          <div className={s.contentQuestion}>Question:</div>
           <div className={s.questionAndImg}>
             <span>
               {currentCard.question.text?.trim() === 'undefined'

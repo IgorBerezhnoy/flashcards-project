@@ -9,6 +9,7 @@ button {
 .radioGroupItems {
   display: flex;
   flex-direction: column;
+  cursor: pointer;
 }
 
 .around {
@@ -96,6 +97,12 @@ button {
   font-size: 15px;
   line-height: 1;
   color: var(--color-light-100);
+  cursor: pointer;
+
+  &:hover {
+    transition: color 0.4s;
+    color:#8c61ff;
+  }
 }
 
 .labelDisabled {

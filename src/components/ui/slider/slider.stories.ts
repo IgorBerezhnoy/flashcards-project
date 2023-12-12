@@ -1,8 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { Slider } from './slider'
+import { Slider } from '@/components'
 
 const meta = {
+  argTypes: {},
   component: Slider,
   tags: ['autodocs'],
   title: 'Components/UI/Slider',
@@ -10,10 +11,10 @@ const meta = {
 
 export default meta
 type Story = StoryObj<typeof meta>
-
-export const SliderTest: Story = {
-  // @ts-ignore
+export const DefaultSlider: Story = {
   args: {
-    value: [20, 59],
+    defaultValue: [10, 75],
+    localSliderValue: [10, 75],
+    value: [10, 75],
   },
 }
