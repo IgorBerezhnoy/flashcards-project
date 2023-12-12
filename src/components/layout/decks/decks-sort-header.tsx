@@ -13,9 +13,9 @@ import s from './decks.module.scss'
 
 type PropsType = {
   activeTab: string
-  data: any
   localSliderValue: number[]
   localValue: string
+  maxCardsCount: number
   setActiveTab: (str: string) => void
   setLocalSliderValue: (nums: number[]) => void
   setLocalValue: (str: string) => void
@@ -30,9 +30,9 @@ type PropsType = {
 export const DecksSortHeader = (props: PropsType) => {
   const {
     activeTab,
-    data,
     localSliderValue,
     localValue,
+    maxCardsCount,
     setActiveTab,
     setLocalSliderValue,
     setLocalValue,
@@ -54,16 +54,16 @@ export const DecksSortHeader = (props: PropsType) => {
     setValue('')
     setLocalValue('')
     setPage(1)
-    setValueSlide([0, data?.maxCardsCount!])
-    setLocalSliderValue([0, data?.maxCardsCount!])
+    setValueSlide([0, maxCardsCount])
+    setLocalSliderValue([0, maxCardsCount])
     setSelectedCount(10)
     setActiveTab('')
   }
 
   useEffect(() => {
-    if (data) {
-      setValueSlide([0, data.maxCardsCount])
-      setLocalSliderValue([0, data.maxCardsCount])
+    if (maxCardsCount) {
+      setValueSlide([0, maxCardsCount])
+      setLocalSliderValue([0, maxCardsCount])
     }
   }, [])
 
@@ -87,7 +87,7 @@ export const DecksSortHeader = (props: PropsType) => {
         <Tab activeTab={activeTab} setActiveTab={setActiveTab} tabs={tabs} />
         <Slider
           localSliderValue={localSliderValue}
-          max={data?.maxCardsCount}
+          max={maxCardsCount}
           setGlobalValue={setValueSlide}
           setLocalSliderValue={setLocalSliderValue}
           value={sliderValue}

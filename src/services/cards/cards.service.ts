@@ -16,7 +16,7 @@ const cardsService = baseApiService.injectEndpoints({
           const res = await queryFulfilled
 
           dispatch(
-            cardsService.util.updateQueryData('getCards', id, data => {
+            cardsService.util.updateQueryData('getCards', { id }, data => {
               debugger
               data.items.unshift(res.data)
             })
@@ -34,7 +34,7 @@ const cardsService = baseApiService.injectEndpoints({
           debugger
 
           const patchResult = dispatch(
-            cardsService.util.updateQueryData('getCards', deckId, data => {
+            cardsService.util.updateQueryData('getCards', { id: deckId }, data => {
               debugger
               const index = data.items.findIndex(deck => deck.id == cardId)
 
@@ -55,15 +55,12 @@ const cardsService = baseApiService.injectEndpoints({
           url: `v1/cards/${id.cardId}`,
         }),
       }),
-      getCards: builder.query<GetCardsResponse, string>({
-        providesTags: ['Cards'],
-        query: id => `v1/decks/${id}/cards`,
-      }),
-      getSortedCards: builder.query<GetCardsResponse, GetSortedCardsParams>({
+
+      getCards: builder.query<GetCardsResponse, GetSortedCardsParams>({
         providesTags: ['Cards'],
         query: ({ id, ...body }) => ({
-          body,
-          url: `v1/decks/${id}/cards}`,
+          params: body || {},
+          url: `v1/decks/${id}/cards`,
         }),
       }),
       patchCard: builder.mutation<CardType, PatchCard>({
@@ -72,7 +69,7 @@ const cardsService = baseApiService.injectEndpoints({
           debugger
 
           const patchResult = dispatch(
-            cardsService.util.updateQueryData('getCards', deckId, data => {
+            cardsService.util.updateQueryData('getCards', { id: deckId }, data => {
               debugger
               const card = data.items.find(deck => deck.id == id)
 

@@ -7,16 +7,23 @@ import { Button } from '@/components/ui/button'
 import { TextField } from '@/components/ui/textField'
 import { Typography } from '@/components/ui/typography'
 import { useGetMeQuerySate } from '@/services/auth/auth.service'
-import { useGetCardsQuery } from '@/services/cards/cards.service'
 import { useGetDeckByIdQuery } from '@/services/decks/decks.service'
 
 import s from '../../../../pages/cards-page/cards-page.module.scss'
 
-export const CardsSortHeader = () => {
+export const CardsSortHeader = ({
+  itemsLength,
+  question,
+  setQuestion,
+}: {
+  itemsLength: number
+  question: string
+  setQuestion: (qwe: string) => void
+}) => {
   const { id } = useParams()
 
   const { data: dataThisDeck } = useGetDeckByIdQuery(id ?? '')
-  const { data } = useGetCardsQuery(id ?? '')
+
   const { data: meData } = useGetMeQuerySate()
 
   return (
@@ -43,7 +50,7 @@ export const CardsSortHeader = () => {
         {/* eslint-disable-next-line no-nested-ternary */}
         {meData?.id === dataThisDeck?.userId ? (
           <AddNewCard />
-        ) : data?.items.length ? (
+        ) : itemsLength ? (
           <Button>
             <Link className={'link'} to={`/learn/${dataThisDeck?.id}`}>
               Learn to Pack
@@ -54,7 +61,12 @@ export const CardsSortHeader = () => {
         )}
       </div>
       <div className={s.cards__search}>
-        <TextField type={'search'} />
+        <TextField
+          onValueChange={setQuestion}
+          placeholder={'Input search'}
+          type={'search'}
+          value={question}
+        />
       </div>
     </div>
   )
