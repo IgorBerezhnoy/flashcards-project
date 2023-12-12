@@ -1,13 +1,8 @@
-import { Sort } from '@/components/ui/table'
+import { Sort } from '@/components'
 
 export interface GetCardsResponse {
   items: CardType[]
   pagination: RootObjectPagination
-}
-
-export interface GetCardsPayload {
-  id: string
-  orderBy?: Sort
 }
 
 export interface CardType {
@@ -58,9 +53,9 @@ export type ErrorEditCardType = {
 
 export type GetSortedCardsParams = {
   answer?: string
-  currentPage?: string
+  currentPage?: number
   id: string
-  itemsPerPage?: string
-  orderBy?: string
+  itemsPerPage?: number
+  orderBy?: Sort
   question?: string
 }
