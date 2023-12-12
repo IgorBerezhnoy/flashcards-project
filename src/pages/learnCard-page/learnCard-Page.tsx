@@ -4,7 +4,7 @@ import { toast } from 'react-toastify'
 
 import { BackToPacksList } from '@/components/layout/backToPack'
 import { CurrentCard } from '@/components/layout/learnCard/currentCard'
-import { Loader } from '@/components/ui'
+import { Linear } from '@/components/ui'
 import { useActions } from '@/hooks'
 import { currentCardActions } from '@/services/cards/card.slice'
 import { useLearnCardsQuery } from '@/services/decks/decks.service'
@@ -37,7 +37,7 @@ export const LearnCardPage = () => {
     }
   }, [data])
   if (isLoading) {
-    return <Loader />
+    return <Linear />
   }
   if (isError) {
     const err = error as ErrorType

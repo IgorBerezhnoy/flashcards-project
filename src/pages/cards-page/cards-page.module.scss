@@ -1,5 +1,6 @@
 .cards {
   padding-top: 24px;
+  position: relative;
 }
 
 .cards__container {
@@ -44,4 +45,12 @@
   display: flex;
   justify-content: center;
   margin-top: 20px;
+}
+
+.cardsText {
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #4c4c4c;
 }

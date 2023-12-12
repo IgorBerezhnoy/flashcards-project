@@ -12,11 +12,15 @@
   height: 100%;
   background: linear-gradient(to right, #bea6ff, #a280ff, #8c61ff, #382766);
   animation: loaderAnimation 3s linear infinite;
+  animation-delay: -0.45s;
 }
 
 @keyframes loaderAnimation {
   0% {
     width: 0;
+  }
+  15% {
+    width: 10%;
   }
   100% {
     width: 100%;

@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
-import { Pagination, Sort } from '@/components'
+import { Linear, Pagination, Sort } from '@/components'
 import { CardsSortHeader } from '@/components/layout/cards/headerCards/cards-sort-header'
 import { TableBodyCards } from '@/components/layout/cards/table-body-cards'
 import { Table, TableHeader } from '@/components/ui/table'
@@ -31,6 +31,7 @@ export const CardsPage = () => {
     data: cardData,
     error,
     isError,
+    isLoading,
   } = useGetCardsQuery({
     currentPage: page,
     id: id ?? '',
@@ -40,6 +41,9 @@ export const CardsPage = () => {
   })
   const data = currentCardData ?? cardData
 
+  if (isLoading) {
+    return <Linear />
+  }
   if (isError) {
     const err = error as ErrorType
 
@@ -80,7 +84,7 @@ export const CardsPage = () => {
               <TableBodyCards cards={data.items} />
             </Table>
           ) : (
-            <Typography>{"Can't find any pack of cards "}</Typography>
+            <Typography className={s.cardsText}>{"Can't find any pack of cards "}</Typography>
           )}
         </div>
         <div className={s.cardsPagination}>
