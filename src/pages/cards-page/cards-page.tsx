@@ -84,13 +84,15 @@ export const CardsPage = () => {
           )}
         </div>
         <div className={s.cardsPagination}>
-          <Pagination
-            onChange={setPage}
-            page={page}
-            selectedCount={selectedCount}
-            setSelectedCount={setSelectedCount}
-            totalCount={data?.pagination?.totalItems!}
-          />
+          {data?.items?.length! > 0 && (
+            <Pagination
+              onChange={setPage}
+              page={page}
+              selectedCount={selectedCount}
+              setSelectedCount={setSelectedCount}
+              totalCount={data?.pagination?.totalItems!}
+            />
+          )}
         </div>
       </div>
     </div>
